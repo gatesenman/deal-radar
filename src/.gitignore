@@ -1,0 +1,11 @@
+node_modules
+dist/
+release/
+test/live-result.json
+screenshots/*.csv
+screenshots/[0-9]*.png
+screenshots/export-*
+screenshots/en-*.png
+screenshots/e2e-*.png
+screenshots/h[0-9]*.png
+

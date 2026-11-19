@@ -1,0 +1,2232 @@
+[
+ {
+  "id": "ch-openai-news",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 120,
+  "ms": 355,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-openai-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 102,
+  "ms": 666,
+  "error": "",
+  "note": "已建立基线（102 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-openai-api-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 215,
+  "ms": 532,
+  "error": "",
+  "note": "已建立基线（215 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-openai-biz-pricing",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 3755,
+  "error": "",
+  "note": "已建立基线（10 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-openai-students",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 9,
+  "ms": 2507,
+  "error": "",
+  "note": "已建立基线（9 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-openai-release-notes",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 2113,
+  "ms": 707,
+  "error": "",
+  "note": "已建立基线（2113 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-openai-sitemap",
+  "type": "sitemap",
+  "flaky": false,
+  "ok": true,
+  "total": 80,
+  "ms": 678,
+  "error": "",
+  "note": "已建立基线（80 个页面），出现新页面时提醒"
+ },
+ {
+  "id": "ch-openai-status",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 200,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-openai-community",
+  "type": "discourse",
+  "flaky": false,
+  "ok": true,
+  "total": 27,
+  "ms": 595,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-openai-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": true,
+  "total": 50,
+  "ms": 551,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-openai-reddit-chatgpt",
+  "type": "reddit",
+  "flaky": true,
+  "ok": false,
+  "total": 0,
+  "ms": 3042,
+  "error": "HTTP 429",
+  "note": ""
+ },
+ {
+  "id": "ch-openai-youtube",
+  "type": "youtube",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 51,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-openai-codex",
+  "type": "github",
+  "flaky": true,
+  "ok": true,
+  "total": 10,
+  "ms": 597,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-openai-sdk",
+  "type": "github",
+  "flaky": true,
+  "ok": true,
+  "total": 10,
+  "ms": 519,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-openai-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 32,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-openai-android",
+  "type": "gplay",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 159,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-openai-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 547,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-openai-hn",
+  "type": "hn",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 295,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-anthropic-news",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 63,
+  "ms": 194,
+  "error": "",
+  "note": "已建立基线（63 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-anthropic-sitemap",
+  "type": "sitemap",
+  "flaky": false,
+  "ok": true,
+  "total": 266,
+  "ms": 86,
+  "error": "",
+  "note": "已建立基线（266 个页面），出现新页面时提醒"
+ },
+ {
+  "id": "ch-anthropic-blog",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 75,
+  "ms": 329,
+  "error": "",
+  "note": "已建立基线（75 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-anthropic-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 719,
+  "ms": 251,
+  "error": "",
+  "note": "已建立基线（719 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-anthropic-api-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 207,
+  "ms": 497,
+  "error": "",
+  "note": "已建立基线（207 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-anthropic-education",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 69,
+  "ms": 529,
+  "error": "",
+  "note": "已建立基线（69 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-anthropic-release-notes",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 1279,
+  "ms": 422,
+  "error": "",
+  "note": "已建立基线（1279 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-anthropic-status",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 255,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-anthropic-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": false,
+  "total": 0,
+  "ms": 3029,
+  "error": "HTTP 429",
+  "note": ""
+ },
+ {
+  "id": "ch-anthropic-youtube",
+  "type": "youtube",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 9,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-anthropic-claude-code",
+  "type": "github",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 27,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-anthropic-sdk",
+  "type": "github",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 15,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-anthropic-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 10,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-anthropic-android",
+  "type": "gplay",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 136,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-anthropic-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 545,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-anthropic-hn",
+  "type": "hn",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 225,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gemini-blog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 20,
+  "ms": 216,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gemini-deepmind",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 129,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gemini-devblog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 20,
+  "ms": 254,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gemini-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 357,
+  "ms": 163,
+  "error": "",
+  "note": "已建立基线（357 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-gemini-ai-plans",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 584,
+  "ms": 73,
+  "error": "",
+  "note": "已建立基线（584 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-gemini-students",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 71,
+  "ms": 82,
+  "error": "",
+  "note": "已建立基线（71 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-gemini-api-pricing",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 686,
+  "ms": 3908,
+  "error": "",
+  "note": "已建立基线（686 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-gemini-forum",
+  "type": "discourse",
+  "flaky": false,
+  "ok": true,
+  "total": 28,
+  "ms": 616,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gemini-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": false,
+  "total": 0,
+  "ms": 3036,
+  "error": "HTTP 429",
+  "note": ""
+ },
+ {
+  "id": "ch-gemini-youtube",
+  "type": "youtube",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 15,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gemini-gemini-cli",
+  "type": "github",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 385,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gemini-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 49,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gemini-android",
+  "type": "gplay",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 135,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gemini-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 382,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gemini-hn",
+  "type": "hn",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 515,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-ms-copilot-m365-blog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 95,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-ms-copilot-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 37,
+  "ms": 325,
+  "error": "",
+  "note": "已建立基线（37 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-ms-copilot-youtube",
+  "type": "youtube",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 12,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-ms-copilot-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 451,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-xai-news",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 268,
+  "ms": 2930,
+  "error": "",
+  "note": "已建立基线（268 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-xai-api",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 48,
+  "ms": 3298,
+  "error": "",
+  "note": "已建立基线（48 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-xai-models",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 8,
+  "ms": 180,
+  "error": "",
+  "note": "已建立基线（8 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-xai-status",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 73,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-xai-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": false,
+  "total": 0,
+  "ms": 3029,
+  "error": "HTTP 429",
+  "note": ""
+ },
+ {
+  "id": "ch-xai-sdk",
+  "type": "github",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 7,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-xai-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 7,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-xai-android",
+  "type": "gplay",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 130,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-xai-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 356,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-xai-hn",
+  "type": "hn",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 391,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-meta-newsroom",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 69,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-meta-ai-blog",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 122,
+  "ms": 5027,
+  "error": "",
+  "note": "已建立基线（122 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-meta-llama-stack",
+  "type": "github",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 1120,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-meta-android",
+  "type": "gplay",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 164,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-meta-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 476,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-meta-hn",
+  "type": "hn",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 366,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-mistral-news",
+  "type": "sitemap",
+  "flaky": false,
+  "ok": true,
+  "total": 270,
+  "ms": 276,
+  "error": "",
+  "note": "已建立基线（270 个页面），出现新页面时提醒"
+ },
+ {
+  "id": "ch-mistral-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 192,
+  "ms": 457,
+  "error": "",
+  "note": "已建立基线（192 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-mistral-changelog",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 348,
+  "ms": 320,
+  "error": "",
+  "note": "已建立基线（348 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-mistral-sdk",
+  "type": "github",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 17,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-mistral-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": false,
+  "total": 0,
+  "ms": 3030,
+  "error": "HTTP 429",
+  "note": ""
+ },
+ {
+  "id": "ch-mistral-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 20,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-mistral-android",
+  "type": "gplay",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 135,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-mistral-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 56,
+  "ms": 368,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-mistral-hn",
+  "type": "hn",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 523,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-perplexity-hub",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 63,
+  "ms": 5477,
+  "error": "",
+  "note": "已建立基线（63 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-perplexity-pro",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 36,
+  "ms": 5890,
+  "error": "",
+  "note": "已建立基线（36 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-perplexity-api-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 34,
+  "ms": 201,
+  "error": "",
+  "note": "已建立基线（34 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-perplexity-changelog",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 924,
+  "ms": 234,
+  "error": "",
+  "note": "已建立基线（924 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-perplexity-status",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 130,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-perplexity-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": false,
+  "total": 0,
+  "ms": 3055,
+  "error": "HTTP 429",
+  "note": ""
+ },
+ {
+  "id": "ch-perplexity-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 57,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-perplexity-android",
+  "type": "gplay",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 176,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-perplexity-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 413,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-perplexity-hn",
+  "type": "hn",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 318,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-cursor-changelog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 50,
+  "ms": 56,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-cursor-blog",
+  "type": "sitemap",
+  "flaky": false,
+  "ok": true,
+  "total": 120,
+  "ms": 24,
+  "error": "",
+  "note": "已建立基线（120 个页面），出现新页面时提醒"
+ },
+ {
+  "id": "ch-cursor-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 92,
+  "ms": 119,
+  "error": "",
+  "note": "已建立基线（92 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-cursor-students",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 37,
+  "ms": 410,
+  "error": "",
+  "note": "已建立基线（37 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-cursor-forum",
+  "type": "discourse",
+  "flaky": false,
+  "ok": true,
+  "total": 29,
+  "ms": 313,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-cursor-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": false,
+  "total": 0,
+  "ms": 3034,
+  "error": "HTTP 429",
+  "note": ""
+ },
+ {
+  "id": "ch-cursor-status",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 275,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-cursor-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 9,
+  "ms": 237,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-cursor-hn",
+  "type": "hn",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 336,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-github-copilot-changelog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 41,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-github-copilot-blog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 49,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-github-copilot-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 114,
+  "ms": 332,
+  "error": "",
+  "note": "已建立基线（114 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-github-copilot-plans-docs",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 303,
+  "ms": 83,
+  "error": "",
+  "note": "已建立基线（303 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-github-copilot-vscode",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 41,
+  "ms": 52,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-github-copilot-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": false,
+  "total": 0,
+  "ms": 3032,
+  "error": "HTTP 429",
+  "note": ""
+ },
+ {
+  "id": "ch-github-copilot-bluesky",
+  "type": "bluesky",
+  "flaky": false,
+  "ok": true,
+  "total": 29,
+  "ms": 141,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-github-copilot-youtube",
+  "type": "youtube",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 9,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-github-copilot-status",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 253,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-github-copilot-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 379,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-github-copilot-hn",
+  "type": "hn",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 308,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-midjourney-updates",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 1651,
+  "ms": 3318,
+  "error": "",
+  "note": "已建立基线（1651 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-midjourney-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": false,
+  "total": 0,
+  "ms": 3031,
+  "error": "HTTP 429",
+  "note": ""
+ },
+ {
+  "id": "ch-midjourney-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 51,
+  "ms": 343,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-midjourney-hn",
+  "type": "hn",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 313,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-deepseek-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 70,
+  "ms": 1325,
+  "error": "",
+  "note": "已建立基线（70 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-deepseek-pricing-zh",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 41,
+  "ms": 331,
+  "error": "",
+  "note": "已建立基线（41 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-deepseek-updates",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 288,
+  "ms": 326,
+  "error": "",
+  "note": "已建立基线（288 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-deepseek-news",
+  "type": "sitemap",
+  "flaky": false,
+  "ok": true,
+  "total": 18,
+  "ms": 11,
+  "error": "",
+  "note": "已建立基线（18 个页面），出现新页面时提醒"
+ },
+ {
+  "id": "ch-deepseek-status",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 1923,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-deepseek-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": true,
+  "total": 50,
+  "ms": 3699,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-deepseek-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 7,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-deepseek-android",
+  "type": "gplay",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 134,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-deepseek-news-zh",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 49,
+  "ms": 327,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-deepseek-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 389,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-deepseek-hn",
+  "type": "hn",
+  "flaky": false,
+  "ok": true,
+  "total": 40,
+  "ms": 279,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-kimi-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 12,
+  "ms": 4377,
+  "error": "",
+  "note": "已建立基线（12 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-kimi-pricing-intl",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 28,
+  "ms": 1459,
+  "error": "",
+  "note": "已建立基线（28 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-kimi-status",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 15,
+  "ms": 814,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-kimi-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 8,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-kimi-news-zh",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 33,
+  "ms": 335,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-kimi-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 325,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-zhipu-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 165,
+  "ms": 366,
+  "error": "",
+  "note": "已建立基线（165 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-zhipu-releases",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 142,
+  "ms": 425,
+  "error": "",
+  "note": "已建立基线（142 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-zhipu-news-zh",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 42,
+  "ms": 370,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-zhipu-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 13,
+  "ms": 290,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-qwen-models",
+  "type": "page",
+  "flaky": false,
+  "ok": false,
+  "total": 0,
+  "ms": 1890,
+  "error": "未从页面提取到文字（可能需要 JS 渲染，或关键词/选择器不匹配）",
+  "note": ""
+ },
+ {
+  "id": "ch-qwen-free-quota",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 63,
+  "ms": 643,
+  "error": "",
+  "note": "已建立基线（63 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-qwen-new-models",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 5,
+  "ms": 1184,
+  "error": "",
+  "note": "已建立基线（5 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-qwen-bailian",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 102,
+  "ms": 2194,
+  "error": "",
+  "note": "已建立基线（102 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-qwen-news-zh",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 12,
+  "ms": 267,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-qwen-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 234,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-doubao-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": false,
+  "total": 0,
+  "ms": 5920,
+  "error": "未从页面提取到文字（可能需要 JS 渲染，或关键词/选择器不匹配）",
+  "note": ""
+ },
+ {
+  "id": "ch-doubao-activity",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 198,
+  "ms": 1481,
+  "error": "",
+  "note": "已建立基线（198 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-doubao-product",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 98,
+  "ms": 4012,
+  "error": "",
+  "note": "已建立基线（98 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-doubao-releases",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 4912,
+  "error": "",
+  "note": "已建立基线（60 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-doubao-news-zh",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 22,
+  "ms": 378,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-doubao-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 56,
+  "ms": 318,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-ernie-qianfan",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 119,
+  "ms": 11275,
+  "error": "",
+  "note": "已建立基线（119 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-ernie-docs",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 152,
+  "ms": 5193,
+  "error": "",
+  "note": "已建立基线（152 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-ernie-news-zh",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 2,
+  "ms": 228,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-ernie-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 0,
+  "ms": 218,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-hunyuan-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 2073,
+  "error": "",
+  "note": "已建立基线（60 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-hunyuan-releases",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 71,
+  "ms": 1077,
+  "error": "",
+  "note": "已建立基线（71 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-hunyuan-github",
+  "type": "github",
+  "flaky": false,
+  "ok": true,
+  "total": 20,
+  "ms": 170,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-hunyuan-news-zh",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 9,
+  "ms": 285,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-hunyuan-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 0,
+  "ms": 236,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-spark-api",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 82,
+  "ms": 16969,
+  "error": "",
+  "note": "已建立基线（82 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-spark-docs",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 337,
+  "ms": 3167,
+  "error": "",
+  "note": "已建立基线（337 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-spark-news-zh",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 39,
+  "ms": 324,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-spark-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 249,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-minimax-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 68,
+  "ms": 795,
+  "error": "",
+  "note": "已建立基线（68 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-minimax-news",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 52,
+  "ms": 358,
+  "error": "",
+  "note": "已建立基线（52 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-minimax-news-cn",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 25,
+  "ms": 4174,
+  "error": "",
+  "note": "已建立基线（25 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-minimax-news-zh",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 7,
+  "ms": 240,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-minimax-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 0,
+  "ms": 174,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-notion-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 346,
+  "ms": 114,
+  "error": "",
+  "note": "已建立基线（346 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-notion-releases",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 145,
+  "ms": 80,
+  "error": "",
+  "note": "已建立基线（145 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-notion-bluesky",
+  "type": "bluesky",
+  "flaky": false,
+  "ok": true,
+  "total": 30,
+  "ms": 169,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-notion-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": false,
+  "total": 0,
+  "ms": 3036,
+  "error": "HTTP 429",
+  "note": ""
+ },
+ {
+  "id": "ch-notion-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 7,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-notion-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 418,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-adobe-firefly",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 27,
+  "ms": 65,
+  "error": "",
+  "note": "已建立基线（27 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-adobe-cc",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 84,
+  "ms": 22,
+  "error": "",
+  "note": "已建立基线（84 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-adobe-reddit",
+  "type": "reddit",
+  "flaky": true,
+  "ok": false,
+  "total": 0,
+  "ms": 3031,
+  "error": "HTTP 429",
+  "note": ""
+ },
+ {
+  "id": "ch-adobe-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 426,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-canva-pricing",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 51,
+  "ms": 3626,
+  "error": "",
+  "note": "已建立基线（51 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-canva-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 9,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-canva-android",
+  "type": "gplay",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 107,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-canva-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 536,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-figma-blog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 335,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-figma-release-notes",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 195,
+  "ms": 207,
+  "error": "",
+  "note": "已建立基线（195 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-figma-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 48,
+  "ms": 301,
+  "error": "",
+  "note": "已建立基线（48 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-figma-education",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 138,
+  "ms": 282,
+  "error": "",
+  "note": "已建立基线（138 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-figma-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 58,
+  "ms": 357,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-elevenlabs-blog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 50,
+  "ms": 163,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-elevenlabs-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 55,
+  "ms": 92,
+  "error": "",
+  "note": "已建立基线（55 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-elevenlabs-changelog",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 811,
+  "ms": 931,
+  "error": "",
+  "note": "已建立基线（811 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-elevenlabs-bluesky",
+  "type": "bluesky",
+  "flaky": false,
+  "ok": true,
+  "total": 28,
+  "ms": 113,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-elevenlabs-sdk",
+  "type": "github",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 465,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-elevenlabs-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 337,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-runway-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 223,
+  "ms": 379,
+  "error": "",
+  "note": "已建立基线（223 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-runway-news",
+  "type": "render",
+  "flaky": false,
+  "ok": true,
+  "total": 44,
+  "ms": 4311,
+  "error": "",
+  "note": "已建立基线（44 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-runway-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 7,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-runway-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 7,
+  "ms": 219,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-suno-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 56,
+  "ms": 250,
+  "error": "",
+  "note": "已建立基线（56 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-suno-blog",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 254,
+  "ms": 96,
+  "error": "",
+  "note": "已建立基线（254 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-suno-ios",
+  "type": "appstore",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 27,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-suno-android",
+  "type": "gplay",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 147,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-suno-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 23,
+  "ms": 247,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-aws-blog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 20,
+  "ms": 752,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-aws-whats-new",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 682,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-aws-ml-blog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 20,
+  "ms": 1364,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-aws-free",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 102,
+  "ms": 1733,
+  "error": "",
+  "note": "已建立基线（102 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-aws-bedrock",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 36,
+  "ms": 377,
+  "error": "",
+  "note": "已建立基线（36 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-aws-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 505,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gcp-blog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 20,
+  "ms": 2208,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gcp-release-notes",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 30,
+  "ms": 376,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gcp-vertex-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 75,
+  "ms": 1527,
+  "error": "",
+  "note": "已建立基线（75 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-gcp-free",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 54,
+  "ms": 196,
+  "error": "",
+  "note": "已建立基线（54 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-gcp-startup",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 16,
+  "ms": 229,
+  "error": "",
+  "note": "已建立基线（16 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-gcp-status",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 1,
+  "ms": 42,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-gcp-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 55,
+  "ms": 382,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-azure-blog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 10,
+  "ms": 61,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-azure-updates",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 83,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-azure-openai-pricing",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 6,
+  "ms": 5244,
+  "error": "",
+  "note": "已建立基线（6 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-azure-free",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 36,
+  "ms": 560,
+  "error": "",
+  "note": "已建立基线（36 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-azure-students",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 59,
+  "ms": 455,
+  "error": "",
+  "note": "已建立基线（59 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-azure-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 50,
+  "ms": 417,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-cloudflare-blog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 20,
+  "ms": 105,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-cloudflare-changelog",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 603,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-cloudflare-workers-ai",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 381,
+  "ms": 55,
+  "error": "",
+  "note": "已建立基线（381 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-cloudflare-plans",
+  "type": "page",
+  "flaky": false,
+  "ok": true,
+  "total": 39,
+  "ms": 377,
+  "error": "",
+  "note": "已建立基线（39 行），内容变化时提醒"
+ },
+ {
+  "id": "ch-cloudflare-bluesky",
+  "type": "bluesky",
+  "flaky": false,
+  "ok": true,
+  "total": 30,
+  "ms": 116,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-cloudflare-status",
+  "type": "rss",
+  "flaky": false,
+  "ok": true,
+  "total": 25,
+  "ms": 55,
+  "error": "",
+  "note": ""
+ },
+ {
+  "id": "ch-cloudflare-news-en",
+  "type": "search",
+  "flaky": false,
+  "ok": true,
+  "total": 60,
+  "ms": 390,
+  "error": "",
+  "note": ""
+ }
+]

@@ -1,0 +1,84 @@
+{
+  "name": "deal-radar",
+  "version": "2.9.0",
+  "description": "全网国际品牌优惠实时监控桌面应用",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/core.test.js test/v2.test.js test/ai.test.js test/v22.test.js test/v23.test.js test/v24.test.js test/v25.test.js test/v26.test.js test/v27.test.js test/v28.test.js test/v29.test.js",
+    "live": "node scripts/live-check.js",
+    "shots": "xvfb-run -a -s \"-screen 0 1440x900x24\" electron . --no-sandbox",
+    "dist:win": "electron-builder --win portable nsis --x64",
+    "dist:linux": "electron-builder --linux dir --x64"
+  },
+  "keywords": [],
+  "author": "GAOSICHUN",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "acorn": "^8.19.0",
+    "acorn-walk": "^8.3.5",
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.5.7",
+    "node-html-parser": "^6.1.13"
+  },
+  "productName": "全网优惠雷达",
+  "build": {
+    "appId": "com.gaosichun.dealradar",
+    "productName": "全网优惠雷达",
+    "artifactName": "DealRadar-${version}-${os}-${arch}-${target}.${ext}",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json",
+      "!**/test/**"
+    ],
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": true
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "全网优惠雷达",
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "language": "2052",
+      "artifactName": "DealRadar-Setup-${version}-x64.${ext}"
+    },
+    "portable": {
+      "artifactName": "DealRadar-Portable-${version}-x64.${ext}"
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "target": [
+        "dir"
+      ],
+      "category": "Utility"
+    },
+    "asarUnpack": [
+      "assets/**"
+    ]
+  }
+}

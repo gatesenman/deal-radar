@@ -1,0 +1,408 @@
+{
+ "openai": {
+  "src": "https://www.google.com/s2/favicons?domain=openai.com&sz=256",
+  "orig": [
+   180,
+   180
+  ]
+ },
+ "anthropic": {
+  "src": "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67d31dd7aa394792257596c5_webclip.png",
+  "orig": [
+   256,
+   256
+  ]
+ },
+ "gemini": {
+  "src": "https://www.gstatic.com/lamda/images/gemini_sparkle_4g_512_lt_f94943af3be039176192d.png",
+  "orig": [
+   512,
+   512
+  ]
+ },
+ "ms-copilot": {
+  "src": "https://www.microsoft.com/favicon.ico?v2",
+  "orig": [
+   128,
+   128
+  ]
+ },
+ "xai": {
+  "src": "https://x.ai/icon.png?icon.2jebtfdg6783w.png?dpl=ab454ea7755a2946aa356e94e08e512d1de7bd4c",
+  "orig": [
+   512,
+   512
+  ]
+ },
+ "meta": {
+  "src": "https://www.google.com/s2/favicons?domain=meta.ai&sz=256",
+  "orig": [
+   256,
+   256
+  ]
+ },
+ "mistral": {
+  "src": "https://www.google.com/s2/favicons?domain=mistral.ai&sz=256",
+  "orig": [
+   256,
+   256
+  ]
+ },
+ "perplexity": {
+  "src": "https://perplexity.ai/apple-touch-icon.png",
+  "orig": [
+   180,
+   180
+  ]
+ },
+ "cursor": {
+  "src": "https://cursor.com/marketing-static/favicon.svg",
+  "orig": [
+   256,
+   256
+  ]
+ },
+ "github-copilot": {
+  "src": "https://github.githubassets.com/favicons/favicon.svg",
+  "orig": [
+   256,
+   256
+  ]
+ },
+ "devin": {
+  "src": "https://devin.ai/icon.png",
+  "orig": [
+   568,
+   568
+  ]
+ },
+ "manus": {
+  "src": "https://manus.im/icon.png?icon.1k-e-nyr3k65n.png",
+  "orig": [
+   512,
+   512
+  ]
+ },
+ "coze": {
+  "src": "https://sf-coze-web-cdn.coze.com/obj/coze-web-sg/obric/coze/favicon.1970.png",
+  "orig": [
+   144,
+   144
+  ]
+ },
+ "dify": {
+  "src": "https://dify.ai/favicon.svg",
+  "orig": [
+   256,
+   256
+  ]
+ },
+ "langchain": {
+  "src": "https://cdn.prod.website-files.com/65b8cd72835ceeacd4449a53/69a17e4f0c916c644f4de1cd_webclip%20lg.png",
+  "orig": [
+   256,
+   256
+  ]
+ },
+ "n8n": {
+  "src": "https://n8n.io/apple-touch-icon.png",
+  "orig": [
+   180,
+   180
+  ]
+ },
+ "genspark": {
+  "src": "https://genspark.ai/apple-touch-icon.png",
+  "orig": [
+   180,
+   180
+  ]
+ },
+ "midjourney": {
+  "src": "https://www.google.com/s2/favicons?domain=midjourney.com&sz=256",
+  "orig": [
+   180,
+   180
+  ]
+ },
+ "deepseek": {
+  "src": "https://deepseek.com/favicon.ico",
+  "orig": [
+   225,
+   225
+  ]
+ },
+ "kimi": {
+  "src": "https://kimi.com/pwa-192.png",
+  "orig": [
+   192,
+   192
+  ]
+ },
+ "zhipu": {
+  "src": "https://www.google.com/s2/favicons?domain=zhipuai.cn&sz=256",
+  "orig": [
+   96,
+   96
+  ]
+ },
+ "qwen": {
+  "src": "https://www.google.com/s2/favicons?domain=qwenlm.ai&sz=256",
+  "orig": [
+   80,
+   80
+  ]
+ },
+ "doubao": {
+  "src": "https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/favicon/new-doubao/192x192.png",
+  "orig": [
+   192,
+   192
+  ]
+ },
+ "ernie": {
+  "src": "https://www.baidu.com/favicon.ico",
+  "orig": [
+   64,
+   64
+  ]
+ },
+ "hunyuan": {
+  "src": "https://hunyuan-blog-web-prod-1258344703.cos.ap-guangzhou.myqcloud.com/logo.svg",
+  "orig": [
+   256,
+   248
+  ]
+ },
+ "spark": {
+  "src": "https://xfyun.cn/static/favicon.ico",
+  "orig": [
+   32,
+   32
+  ]
+ },
+ "minimax": {
+  "src": "https://cdn.hailuoai.com/hailuo-video-web/public_assets/favicon.png",
+  "orig": [
+   64,
+   64
+  ]
+ },
+ "notion": {
+  "src": "https://notion.com/front-static/logo-ios.png",
+  "orig": [
+   512,
+   512
+  ]
+ },
+ "adobe": {
+  "src": "https://www.google.com/s2/favicons?domain=adobe.com&sz=256",
+  "orig": [
+   180,
+   180
+  ]
+ },
+ "canva": {
+  "src": "https://static.canva.com/domain-assets/canva/static/images/android-192x192-2.png",
+  "orig": [
+   193,
+   192
+  ]
+ },
+ "figma": {
+  "src": "https://static.figma.com/app/icon/2/favicon.svg",
+  "orig": [
+   256,
+   256
+  ]
+ },
+ "elevenlabs": {
+  "src": "https://elevenlabs.io/apple-icon.png?6592732ab34b1d42",
+  "orig": [
+   180,
+   180
+  ]
+ },
+ "runway": {
+  "src": "https://runwayml.com/icon.png?icon.35ps9bmugbe1e.png",
+  "orig": [
+   320,
+   320
+  ]
+ },
+ "suno": {
+  "src": "https://cdn-o.suno.com/favicon-512x512.png",
+  "orig": [
+   512,
+   512
+  ]
+ },
+ "aws": {
+  "src": "https://a0.awsstatic.com/libra-css/images/site/touch-icon-ipad-144-smile.png",
+  "orig": [
+   144,
+   144
+  ]
+ },
+ "gcp": {
+  "src": "https://www.gstatic.com/cgc/super_cloud_gradient.png",
+  "orig": [
+   192,
+   192
+  ]
+ },
+ "azure": {
+  "src": "https://azure.microsoft.com/favicon.ico?v2",
+  "orig": [
+   128,
+   128
+  ]
+ },
+ "cloudflare": {
+  "src": "https://cloudflare.com/favicon.ico",
+  "orig": [
+   99,
+   96
+  ]
+ },
+ "apple": {
+  "src": "https://apple.com/apple-touch-icon.png",
+  "orig": [
+   152,
+   152
+  ]
+ },
+ "samsung": {
+  "src": "https://www.google.com/s2/favicons?domain=samsung.com&sz=256",
+  "orig": [
+   144,
+   144
+  ]
+ },
+ "sony": {
+  "src": "https://www.google.com/s2/favicons?domain=sony.com&sz=256",
+  "orig": [
+   48,
+   48
+  ]
+ },
+ "nike": {
+  "src": "https://www.nike.com/android-icon-192x192.png",
+  "orig": [
+   192,
+   192
+  ]
+ },
+ "adidas": {
+  "src": "https://www.google.com/s2/favicons?domain=adidas.com&sz=256",
+  "orig": [
+   48,
+   48
+  ]
+ },
+ "dyson": {
+  "src": "https://www.google.com/s2/favicons?domain=dyson.com&sz=256",
+  "orig": [
+   32,
+   32
+  ]
+ },
+ "lenovo": {
+  "src": "https://www.lenovo.com/favicon.ico",
+  "orig": [
+   32,
+   32
+  ]
+ },
+ "xiaomi": {
+  "src": "https://i02.appmifile.com/i18n/scm/favicon.png",
+  "orig": [
+   196,
+   196
+  ]
+ },
+ "huawei": {
+  "src": "https://huawei.com/-/media/htemplate-home/1.0.1.20251205144752/components/assets/img/favicon-logo.svg",
+  "orig": [
+   256,
+   256
+  ]
+ },
+ "microsoft": {
+  "src": "https://www.microsoft.com/favicon.ico?v2",
+  "orig": [
+   128,
+   128
+  ]
+ },
+ "nintendo": {
+  "src": "https://assets.nintendo.com/image/upload/ncom/icons/fav-icons/apple-touch-icon.png",
+  "orig": [
+   180,
+   180
+  ]
+ },
+ "logitech": {
+  "src": "https://logitech.com/favicon.ico",
+  "orig": [
+   144,
+   144
+  ]
+ },
+ "dell": {
+  "src": "https://dell.com/apple-touch-icon.png",
+  "orig": [
+   180,
+   180
+  ]
+ },
+ "asus": {
+  "src": "https://asus.com/new_asus_ico_256x256.png",
+  "orig": [
+   256,
+   256
+  ]
+ },
+ "lg": {
+  "src": "https://www.google.com/s2/favicons?domain=lg.com&sz=256",
+  "orig": [
+   228,
+   228
+  ]
+ },
+ "bose": {
+  "src": "https://bose.com/on/demandware.static/Sites-Bose_US-Site/-/default/dw7b4a215c/images/apple-touch-icon.png",
+  "orig": [
+   512,
+   512
+  ]
+ },
+ "anker": {
+  "src": "https://anker.com/favicon.png",
+  "orig": [
+   114,
+   114
+  ]
+ },
+ "dji": {
+  "src": "https://www-cdn.djiits.com/dps/5622076973f439e11ffdac3c57b73558.png",
+  "orig": [
+   180,
+   180
+  ]
+ },
+ "lego": {
+  "src": "https://lego.com/apple-touch-icon.png",
+  "orig": [
+   180,
+   180
+  ]
+ },
+ "uniqlo": {
+  "src": "https://www.google.com/s2/favicons?domain=uniqlo.com&sz=256",
+  "orig": [
+   180,
+   180
+  ]
+ }
+}
