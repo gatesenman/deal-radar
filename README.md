@@ -1,31 +1,108 @@
-# 全网优惠雷达 DealRadar 2.9.0
+# 全网优惠雷达
 
-## 文件
+**2.9.0** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
 
-- `安装包\DealRadar-Setup-2.9.0-x64.exe`  
-  SHA256 `d7464de239301fd03b64af8350c5c4904b1f41b2b002f3be806873e66b7cbee4`
-- `源代码\DealRadar-2.9.0-source.zip`  
-  SHA256 `9e8749b5b0538547ab8e1c36ddf363c998c396cdb2cc291045daea00f3ef8ff5`
-- `文档\PM_REVIEW.md`（保留）
+## 界面截图
 
-双击安装包覆盖安装即可。收藏、已领取、规则、设置都会保留。
+![欢迎页](src/screenshots/final2-16-00-welcome.png)
 
-## 本版要点（2.9）
+*欢迎页 / Welcome screen*
 
-- **MinHash 去重**：同一优惠的多篇报道更准地合并，误合并更少
-- **正文抽取**：忽略 Cookie 横幅、「几小时前更新」、导航栏等噪声
-- **价格页智能对比**：只在金额 / 套餐 / 优惠变化时提醒，少误报
-- **ETag / Last-Modified 缓存**：重启后仍可用，少打重复请求、省流量
-- **多源互证可信度**：多个独立网站报道的优惠可信度更高
-- **自适应轮询**：按页面变化频率调整抓取节奏，高峰更省
+![优惠卡片（深色）](src/screenshots/final3-01-deals-cards-dark.png)
 
-## 继承自 2.7 / 2.8
+*优惠卡片（深色） / Deal cards, dark theme*
 
-- 2.7：自适应轮询、价格表（人民币换算 + 历史）、来源可靠度、偏好学习（首页「帮我判断」）
-- 2.8：推送渠道（企业微信 / 飞书 / 钉钉 / Telegram / Server酱 / ntfy / Webhook）、每日 / 每周摘要、保存的视图、分享卡片、上手预设、试用到期提醒
+![厂商与品牌](src/screenshots/final3-05-brands.png)
 
-## 安装说明
+*厂商与品牌 / Vendors and brands*
 
-1. 退出正在运行的 DealRadar（如有）
-2. 双击 `安装包\DealRadar-Setup-2.9.0-x64.exe` 覆盖安装
-3. 用户数据目录不会被本交付过程改动
+![设置](src/screenshots/final3-09-settings.png)
+
+*设置 / Settings*
+
+## 功能特性
+
+- 多渠道采集：官方博客、价格页、更新日志、YouTube、GitHub、社区，以及新闻 / HN / Reddit 等聚合源。
+- 自动识别试用、折扣、赠送额度、学生与创业计划、限时活动、价格页变动；发现优惠时桌面通知。
+- 可筛选厂商与类型、搜索、卡片 / 表格视图、收藏与导出 CSV；支持自定义厂商和渠道。
+- 实物商品监控为可选项，默认关闭。
+
+## 技术栈
+
+- Electron
+- JavaScript
+- HTML 解析与 RSS/XML（fast-xml-parser、node-html-parser）
+
+## 从源码运行
+
+源码在 `src/`。本仓库不包含安装包。
+
+```bash
+cd src
+npm install
+npm start            # Electron
+npm test
+```
+
+数据保存在本机用户目录。更完整的使用说明见 `src/README.md`（其中若提到安装包，以本仓库实际文件为准：只提供源码）。
+
+## 文档
+
+- [使用说明](src/README.md)
+
+---
+
+## English
+
+# Deal Radar
+
+**2.9.0** · A Windows desktop app that watches deals from AI and software vendors such as ChatGPT, Claude, Gemini, Cursor, and DeepSeek, with optional physical-brand discount monitoring.
+
+## Screenshots
+
+![Welcome screen](src/screenshots/final2-16-00-welcome.png)
+
+*欢迎页 / Welcome screen*
+
+![Deal cards, dark theme](src/screenshots/final3-01-deals-cards-dark.png)
+
+*优惠卡片（深色） / Deal cards, dark theme*
+
+![Vendors and brands](src/screenshots/final3-05-brands.png)
+
+*厂商与品牌 / Vendors and brands*
+
+![Settings](src/screenshots/final3-09-settings.png)
+
+*设置 / Settings*
+
+## Features
+
+- Multi-channel intake: official blogs, pricing pages, changelogs, YouTube, GitHub, forums, plus news / HN / Reddit aggregators.
+- Classifies trials, discounts, credits, student and startup programs, limited-time offers, and pricing-page changes; desktop notifications on new deals.
+- Filter by vendor and type, search, card/table views, favorites, and CSV export; custom vendors and channels are supported.
+- Physical-goods monitoring is optional and off by default.
+
+## Tech stack
+
+- Electron
+- JavaScript
+- HTML 解析与 RSS/XML（fast-xml-parser、node-html-parser）
+
+## Getting started
+
+Source is under `src/`. This repository does not include installers.
+
+```bash
+cd src
+npm install
+npm start            # Electron
+npm test
+```
+
+Data stays in the local user directory. The in-tree `src/README.md` has a longer user guide; ignore installer paths that are not present in this repository.
+
+## Documentation
+
+- [使用说明](src/README.md)
+
