@@ -20,7 +20,6 @@ src/
 test/core.test.js    node:test unit tests (offline fixtures) + one LIVE test hitting every preset source
 scripts/live-check.js  Prints per-source live status table
 ```
-
 ## Data flow
 1. Scheduler (`poll()` in main) runs on start, on manual refresh, and every N minutes (setTimeout chain; `nextRunAt` exposed to UI).
 2. `runAll` groups enabled sources by hostname; each host group runs sequentially with a 1.5 s gap (avoids Reddit/Google 429), groups run 6-way parallel. Every source is isolated: errors become `status.error`, never exceptions.

@@ -4,19 +4,19 @@
 
 ## 界面截图
 
-![欢迎页](src/screenshots/final2-16-00-welcome.png)
+![欢迎页](screenshots/final2-16-00-welcome.png)
 
 *欢迎页 / Welcome screen*
 
-![优惠卡片（深色）](src/screenshots/final3-01-deals-cards-dark.png)
+![优惠卡片（深色）](screenshots/final3-01-deals-cards-dark.png)
 
 *优惠卡片（深色） / Deal cards, dark theme*
 
-![厂商与品牌](src/screenshots/final3-05-brands.png)
+![厂商与品牌](screenshots/final3-05-brands.png)
 
 *厂商与品牌 / Vendors and brands*
 
-![设置](src/screenshots/final3-09-settings.png)
+![设置](screenshots/final3-09-settings.png)
 
 *设置 / Settings*
 
@@ -35,20 +35,18 @@
 
 ## 从源码运行
 
-源码在 `src/`。本仓库不包含安装包。
+源码在仓库根目录。本仓库不包含安装包。
 
 ```bash
-cd src
 npm install
 npm start            # Electron
 npm test
 ```
-
-数据保存在本机用户目录。更完整的使用说明见 `src/README.md`（其中若提到安装包，以本仓库实际文件为准：只提供源码）。
+数据保存在本机用户目录。更完整的使用说明见 `README.original.md`（其中若提到安装包，以本仓库实际文件为准：只提供源码）。
 
 ## 文档
 
-- [使用说明](src/README.md)
+- [使用说明](README.original.md)
 
 ---
 
@@ -60,19 +58,19 @@ npm test
 
 ## Screenshots
 
-![Welcome screen](src/screenshots/final2-16-00-welcome.png)
+![Welcome screen](screenshots/final2-16-00-welcome.png)
 
 *欢迎页 / Welcome screen*
 
-![Deal cards, dark theme](src/screenshots/final3-01-deals-cards-dark.png)
+![Deal cards, dark theme](screenshots/final3-01-deals-cards-dark.png)
 
 *优惠卡片（深色） / Deal cards, dark theme*
 
-![Vendors and brands](src/screenshots/final3-05-brands.png)
+![Vendors and brands](screenshots/final3-05-brands.png)
 
 *厂商与品牌 / Vendors and brands*
 
-![Settings](src/screenshots/final3-09-settings.png)
+![Settings](screenshots/final3-09-settings.png)
 
 *设置 / Settings*
 
@@ -91,18 +89,16 @@ npm test
 
 ## Getting started
 
-Source is under `src/`. This repository does not include installers.
+Source is at the repository root. This repository does not include installers.
 
 ```bash
-cd src
 npm install
 npm start            # Electron
 npm test
 ```
-
-Data stays in the local user directory. The in-tree `src/README.md` has a longer user guide; ignore installer paths that are not present in this repository.
+Data stays in the local user directory. The in-tree `README.original.md` has a longer user guide; ignore installer paths that are not present in this repository.
 
 ## Documentation
 
-- [使用说明](src/README.md)
+- [使用说明](README.original.md)
 
