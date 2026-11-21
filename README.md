@@ -42,11 +42,18 @@ npm install
 npm start            # Electron
 npm test
 ```
-数据保存在本机用户目录。更完整的使用说明见 `README.original.md`（其中若提到安装包，以本仓库实际文件为准：只提供源码）。
+数据保存在本机用户目录。本仓库只提供源码；请忽略旧文档中可能出现、但本仓库并不包含的安装包路径。
 
 ## 文档
+- [English](README.en.md)
 
-- [使用说明](README.original.md)
+## 贡献
+
+欢迎通过 Issue 和 Pull Request 参与，详见 [CONTRIBUTING.md](CONTRIBUTING.md)。安全问题请按 [SECURITY.md](SECURITY.md) 私下报告。参与时请遵守 [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)。
+
+## 许可证
+
+本仓库尚未附带 LICENSE 文件，许可证未指定。
 
 ---
 
@@ -96,9 +103,16 @@ npm install
 npm start            # Electron
 npm test
 ```
-Data stays in the local user directory. The in-tree `README.original.md` has a longer user guide; ignore installer paths that are not present in this repository.
+Data stays in the local user directory. This repository ships source only; ignore installer paths from older notes that are not present here.
 
 ## Documentation
 
-- [使用说明](README.original.md)
+- [English](README.en.md)
 
+## Contributing
+
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). Please report vulnerabilities privately via [SECURITY.md](SECURITY.md). This project follows [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+
+## License
+
+No LICENSE file is included in this repository; the license is unspecified.

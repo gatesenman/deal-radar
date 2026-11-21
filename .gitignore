@@ -9,3 +9,17 @@ screenshots/en-*.png
 screenshots/e2e-*.png
 screenshots/h[0-9]*.png
 
+# Additional hygiene
+.DS_Store
+Thumbs.db
+.env
+.env.local
+.env.*.local
+target/
+logs/
+*.log
+.venv/
+__pycache__/
+coverage/
+!.env.example
+!.env.example.*
