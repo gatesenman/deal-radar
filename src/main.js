@@ -20,6 +20,7 @@ const V27 = require('./core/v27');
 const V28 = require('./core/v28');
 const V210 = require('./core/v210');
 const V212 = require('./core/v212');
+const V213 = require('./core/v213');
 const I18N = require('./renderer/i18n');
 const L = I18N.t; const tx = I18N.tx;
 const { fetchLogo, dataUrl, NOT_VENDOR } = require('./core/logo');
@@ -197,6 +198,7 @@ function publicState() {
     runtime: runtime(),
     logs,
     version: app.getVersion(),
+    update: { current: app.getVersion(), latest: (store.config.settings.latestUpdate || null), checkedAt: store.config.settings.lastUpdateCheck || 0 },
     dataDir: app.getPath('userData'),
   };
 }
@@ -529,9 +531,32 @@ function dailyDigest(force) {
 function channelFetch(url, opts) { return net.fetch(url, { ...opts, bypassCustomProtocolHandlers: true }); }
 async function sendTo(c, msg) {
   const ch = (store.config.settings.channels || []).find((x) => x.id === c.id) || c;
-  try { await V28.sendChannel(ch, msg, channelFetch); ch.last = { at: Date.now(), ok: true, kind: msg.kind, n: msg.count }; return true; }
-  catch (e) { ch.last = { at: Date.now(), ok: false, kind: msg.kind, err: String(e.message || e).slice(0, 200) }; log(L('推送到「{0}」失败：{1}', ch.name, ch.last.err), 'warn'); return false; }
-  finally { store.saveConfig(); }
+  try {
+    await V213.withRetry(() => V28.sendChannel(ch, msg, channelFetch), { tries: 3, delays: [400, 1200] });
+    ch.last = { at: Date.now(), ok: true, kind: msg.kind, n: msg.count, tries: 1 };
+    return true;
+  } catch (e) {
+    ch.last = { at: Date.now(), ok: false, kind: msg.kind, err: String(e.message || e).slice(0, 200) };
+    log(L('推送到「{0}」失败：{1}', ch.name, ch.last.err), 'warn');
+    return false;
+  } finally { store.saveConfig(); }
+}
+
+async function checkForUpdate({ force = false, notify = false } = {}) {
+  const now = Date.now();
+  const st = store.config.settings;
+  if (!force && !V213.shouldCheck(st.lastUpdateCheck, now)) {
+    return { current: app.getVersion(), latest: st.latestUpdate || null, skipped: true };
+  }
+  const res = await channelFetch(V213.RELEASE_API, { headers: { Accept: 'application/vnd.github+json', 'User-Agent': 'DealRadar/' + app.getVersion() } });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const info = V213.parseRelease(await res.json());
+  store.updateSettings({ lastUpdateCheck: now, latestUpdate: info });
+  const newer = V213.isNewer(info.version, app.getVersion());
+  if (notify && newer && st.dismissedUpdate !== info.tag && Notification.isSupported()) {
+    showNote({ title: L('发现新版本 {0}', info.version), body: L('当前版本 {0}。点击查看下载页（不会自动安装）。', app.getVersion()) }, () => shell.openExternal(info.url));
+  }
+  return { current: app.getVersion(), latest: info, newer };
 }
 const pushT = (k, ...a) => L(k, ...a);
 async function pushChannels(kind, items, { title, viewId } = {}) {
@@ -996,6 +1021,22 @@ function registerIPC() {
     store.saveDealsSoon(); updateTray(); send('state', publicState());
     return { affected, reason: r };
   });
+  handle('update:check', async (force) => {
+    const r = await checkForUpdate({ force: force !== false, notify: false });
+    send('state', publicState());
+    return r;
+  });
+  handle('update:open', () => {
+    const u = (store.config.settings.latestUpdate || {}).url;
+    if (u) shell.openExternal(u);
+    return !!u;
+  });
+  handle('update:dismiss', () => {
+    const tag = (store.config.settings.latestUpdate || {}).tag;
+    if (tag) store.updateSettings({ dismissedUpdate: tag });
+    send('state', publicState());
+    return true;
+  });
   handle('backup:export', async () => {
     const data = JSON.stringify(V212.exportBackup({ config: store.config, deals: store.deals, views: store.config.settings.views, prices: store.prices }), null, 2);
     const file = SHOT_DIR ? path.join(SHOT_DIR, 'export-backup.json') : (await dialog.showSaveDialog(win, { title: L('导出完整备份'), defaultPath: path.join(app.getPath('downloads'), (L('优惠雷达备份') + ".json")), filters: [{ name: 'JSON', extensions: ['json'] }] })).filePath;
@@ -1297,7 +1338,10 @@ app.whenReady().then(async () => {
   const wake = () => { if (!paused && !polling && nextRunAt && Date.now() > nextRunAt - 5000) setTimeout(() => poll(L('唤醒后补刷新')), 15000); };
   try { powerMonitor.on('resume', wake); powerMonitor.on('unlock-screen', wake); } catch { /* 忽略 */ }
   if (SHOT_DIR) { fs.mkdirSync(SHOT_DIR, { recursive: true }); win.webContents.once('did-finish-load', () => shotMode().catch((e) => { console.error(e); app.exit(1); })); return; }
-  win.webContents.once('did-finish-load', () => setTimeout(() => poll(L('启动')), 200));
+  win.webContents.once('did-finish-load', () => {
+    setTimeout(() => poll(L('启动')), 200);
+    if (!SHOT_DIR) setTimeout(() => checkForUpdate({ force: false, notify: true }).then((r) => { if (r && r.newer) send('state', publicState()); }).catch((e) => log(L('检查更新失败：') + e.message, 'warn')), 8000);
+  });
 });
 app.on('before-quit', () => { quitting = true; if (store) { store.saveDealsNow(); store.saveConfig(); } });
 app.on('window-all-closed', () => { if (process.platform !== 'darwin' && (quitting || !tray)) app.quit(); });

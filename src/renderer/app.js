@@ -661,6 +661,15 @@ function renderSources() {
 }
 
 // —— 渲染：设置 / 日志 ——
+function paintUpdate() {
+  const u = (S.state && S.state.update) || {}; const el = $('#sUpdateHint'); const open = $('#btnUpdateOpen');
+  if (!el) return;
+  if (u.latest && u.latest.version && u.latest.version !== u.current) el.textContent = L('发现新版本 {0}（当前 {1}）', u.latest.version, u.current || '');
+  else if (u.checkedAt) el.textContent = L('当前已是最新版本 {0}', u.current || '');
+  else el.textContent = L('尚未检查');
+  if (open) open.hidden = !(u.latest && u.latest.url && u.latest.version && u.latest.version !== u.current);
+}
+
 function renderSettings() {
   if (EN) setTimeout(() => trDom($('#view-settings') || document.body), 0);
   const s = S.state.settings;
@@ -690,6 +699,7 @@ function renderSettings() {
   if (document.activeElement !== $('#sProxyUrl')) $('#sProxyUrl').value = s.proxyUrl || ''; // 正在输入时不被后台状态推送覆盖
   $('#sProxyUrl').disabled = s.proxyMode !== 'custom';
   $('#sDataDir').textContent = S.state.dataDir;
+  paintUpdate();
   $('#sConc').value = String(s.concurrency || 6); $('#sGap').value = String(s.hostGap ?? 1500);
   $('#sBackoff').checked = s.backoff !== false; $('#sCache').checked = s.httpCache !== false; $('#sRender').checked = s.renderEnabled !== false; $('#sDedupe').checked = s.dedupe !== false;
   if (document.activeElement !== $('#sRsshub')) $('#sRsshub').value = s.rsshubBase || '';
@@ -1521,6 +1531,12 @@ function bind() {
     if (v && !/^(https?|socks[45]?):\/\/[^\s]+:\d+$/i.test(v)) { toast(L('代理地址格式应为 http://主机:端口 或 socks5://主机:端口'), 'err'); return; }
     saveSetting({ proxyUrl: v }); toast(L('代理已更新'), 'ok');
   });
+    $('#btnUpdateCheck').onclick = async () => {
+    $('#sUpdateHint').textContent = L('正在检查…');
+    try { const r = await call('update:check', true); S.state.update = { current: r.current, latest: r.latest, checkedAt: Date.now() }; paintUpdate(); toast(r.newer ? L('发现新版本 {0}', r.latest.version) : L('当前已是最新版本 {0}', r.current), r.newer ? 'ok' : ''); }
+    catch (e) { $('#sUpdateHint').textContent = e.message; toast(L('检查更新失败：') + e.message, 'err'); }
+  };
+  $('#btnUpdateOpen').onclick = () => call('update:open');
   $('#btnOpenDir').onclick = () => call('data:openDir');
   $('#btnTestNotify').onclick = async () => { try { await call('notify:test'); toast(L('已发送测试通知，请留意屏幕右下角'), 'ok'); } catch { /* 已提示 */ } };
   $('#btnNetCheck').onclick = netCheck;
