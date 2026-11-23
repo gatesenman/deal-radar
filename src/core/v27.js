@@ -48,12 +48,12 @@ function adaptiveSkip(status, { now = Date.now(), base = 15, max = 360, id = '' 
 
 // ———————————— 2. 价格抽取 ————————————
 const CUR = { '$': 'USD', 'US$': 'USD', '€': 'EUR', '£': 'GBP', '¥': 'CNY', '￥': 'CNY', 'HK$': 'HKD', 'NT$': 'TWD', 'S$': 'SGD', '₹': 'INR', 'A$': 'AUD', 'C$': 'CAD' };
-const PRICE_RE = /(US\$|HK\$|NT\$|S\$|A\$|C\$|[$€£¥￥₹])\s?(\d{1,5}(?:[.,]\d{1,3})?)|(\d{1,6}(?:\.\d{1,2})?)\s?(元|美元|欧元|USD|EUR|CNY|RMB)(?![A-Za-z])/;
-const UNIT_CUR = { '元': 'CNY', 'RMB': 'CNY', 'CNY': 'CNY', '美元': 'USD', 'USD': 'USD', '欧元': 'EUR', 'EUR': 'EUR' };
+const PRICE_RE = /(US\$|HK\$|NT\$|S\$|A\$|C\$|[$€£¥￥₹])\s?(\d{1,5}(?:[.,]\d{1,3})?)|(USD|EUR|GBP|CNY)\s*\$?\s*(\d{1,5}(?:[.,]\d{1,3})?)|(\d{1,6}(?:\.\d{1,2})?)\s?(元|美元|美金|欧元|英镑|dollars?|euros?|pounds?|USD|EUR|GBP|CNY|RMB)(?![A-Za-z])/;
+const UNIT_CUR = { '元': 'CNY', 'RMB': 'CNY', 'CNY': 'CNY', '美元': 'USD', '美金': 'USD', 'USD': 'USD', '欧元': 'EUR', 'EUR': 'EUR', '英镑': 'GBP', 'GBP': 'GBP', 'dollar': 'USD', 'dollars': 'USD', 'euro': 'EUR', 'euros': 'EUR', 'pound': 'GBP', 'pounds': 'GBP' };
 const PERIOD_RE = [
   [/per\s*1m|\/\s*1m|1m tokens|百万\s*tokens|per million|\/\s*mtok|每百万/i, 'mtok'],
   [/per\s*(?:user|seat)\s*(?:\/|per)?\s*month|user\/month|seat per month|\/\s*seat/i, 'seat-month'],
-  [/\/\s*(?:mo|month)\b|per\s*month|a month|monthly|\/月|每月|每个月|月付/i, 'month'],
+  [/\/\s*(?:mo|month)\b|per\s*month|a month|monthly|billed monthly|\/月|每月|每个月|月付/i, 'month'],
   [/\/\s*(?:yr|year)\b|per\s*year|annually|yearly|\/年|每年|年付/i, 'year'],
 ];
 const PLAN_RE = /^(free|hobby|plus|pro\+?|max|team|teams|business|enterprise|premium|standard|basic|starter|ultra|ultimate|individual|personal|developer|scale|growth|go|lite|advanced|免费版|专业版|团队版|企业版|个人版|旗舰版|标准版|高级版|基础版)(?![a-z])/i;
@@ -71,8 +71,10 @@ function extractPrices(lines, { max = 16 } = {}) {
     if (t.length <= 28 && t.split(/\s+/).length <= 3 && PLAN_RE.test(t) && !PRICE_RE.test(t)) { plan = t.replace(/\s+/g, ' '); planAge = 0; continue; }
     planAge++;
     const m = t.match(PRICE_RE); if (!m || t.length > 160) continue;
-    const amount = m[2] ? parseAmount(m[2]) : parseAmount(m[3]);
-    const currency = m[1] ? CUR[m[1]] : UNIT_CUR[m[4]];
+    let amount, currency;
+    if (m[1] && m[2]) { amount = parseAmount(m[2]); currency = CUR[m[1]]; }
+    else if (m[3] && m[4]) { amount = parseAmount(m[4]); currency = { USD: 'USD', EUR: 'EUR', GBP: 'GBP', CNY: 'CNY' }[m[3]]; }
+    else { amount = parseAmount(m[5]); currency = UNIT_CUR[(m[6] || '').toLowerCase()] || UNIT_CUR[m[6]]; }
     if (!Number.isFinite(amount) || !currency) continue;
     if (/\b(save|saving|off|discount)\b|节省|立省|省下|优惠\s*[$¥€£]/i.test(t)) continue; // 「Save $36/year」是省下的钱，不是套餐价
     const ctx = [t, L[i + 1] || ''].join(' ');

@@ -1,4 +1,4 @@
-# Deal Radar (全网优惠雷达) — User Guide · v2.10.0
+# Deal Radar (全网优惠雷达) — User Guide · v2.11.0
 
 [中文说明](README.md) · English
 
@@ -6,7 +6,7 @@ A Windows desktop app that **monitors offers from AI and software vendors in rea
 
 ## 1. Install / run
 
-The source tree is **2.10.0**. Download the current Windows installer from [GitHub Releases · v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0) (a newer installer will ship in a later release):
+The source tree is **2.11.0**. Download the current Windows installer from [GitHub Releases · v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0) (a newer installer will ship in a later release):
 
 - **Installer**: `DealRadar-Setup-2.9.0-x64.exe`
 - **Source zip**: `DealRadar-2.9.0-source.zip`
@@ -54,8 +54,9 @@ npm run dist:win     # Windows installer + portable build, when the environment 
 
 Preset vendor logos are bundled in `assets/logos/` (offline, HiDPI). Vendors you add get a favicon fetched once and cached in the data folder. If a logo cannot be loaded, a colored initials avatar is shown instead.
 
-## 5. What 2.6–2.10 added
+## 5. What 2.6–2.11 added
 
+- Soft-404 landing checks, more deadline formats, and broader price parsing (v2.11).
 - Official feed gaps closed for Mistral, Microsoft Copilot, and Meta Llama API; paste-URL protocol detection when adding a channel (v2.10).
 
 - Offer validity, “applies to me” profile (persisted), vendor lookup, claim guides, and coverage transparency (v2.6).

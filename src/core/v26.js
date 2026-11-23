@@ -7,7 +7,8 @@ const RECHECK_FRESH = 7 * DAY;
 const STALE_DAYS = 45; // 无截止日、也没复查过的优惠：发布超过 45 天仍视为「状态未知」
 
 // 落地页出现这些措辞 → 视为活动已结束
-const GONE_RE = /\b(?:(?:this |the )?(?:offer|promotion|promo|deal|campaign|program(?:me)?)\s+(?:has\s+)?(?:ended|expired|is\s+(?:no\s+longer\s+available|closed|over))|no longer (?:available|accepting (?:applications|sign-?ups))|applications (?:are )?(?:now )?closed|sign-?ups? (?:are|is) (?:now )?closed)\b|活动已(?:结束|截止|下线)|优惠已(?:结束|失效|过期)|已停止(?:报名|申请)|报名已截止|名额已满/i;
+const GONE_RE = /\b(?:(?:this |the )?(?:offer|promotion|promo|deal|campaign|program(?:me)?)\s+(?:has\s+)?(?:ended|expired|concluded|is\s+(?:no\s+longer\s+available|closed|over|no\s+longer\s+offered))|no longer (?:available|offered|accepting (?:applications|sign-?ups))|(?:this |the )?(?:deal|offer|promo)\s+has\s+expired|applications (?:are )?(?:now )?closed|sign-?ups? (?:are|is) (?:now )?closed)\b|活动已(?:结束|截止|下线|关闭)|本活动已结束|优惠已(?:结束|失效|过期)|已停止(?:报名|申请|领取)|(?:报名|领取)已截止|名额已满|报名通道已关闭/i;
+const NOT_FOUND_RE = /(?:page\s+(?:not\s+found|does(?:\s+not|n't)\s+exist)|404\s+not\s+found|we\s+can(?:\s+not|'t)\s+find\s+(?:this|that|the)\s+page|页面不存在|页面未找到|您访问的页面不存在|找不到(?:该|此)?页面)/i;
 
 /** 有效期状态：active 进行中 / ending 即将截止（3 天内） / expired 已过期 / unknown 状态未知 */
 function validity(d, now = Date.now()) {
@@ -29,7 +30,10 @@ function validity(d, now = Date.now()) {
 function judgeLanding(html, httpStatus) {
   if (httpStatus === 404 || httpStatus === 410) return { ok: false, gone: true, reason: 'http-' + httpStatus };
   if (httpStatus && httpStatus >= 400) return { ok: false, gone: false, reason: 'http-' + httpStatus };
-  const text = String(html || '').replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  const raw = String(html || '');
+  const title = ((raw.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const text = raw.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+  if (NOT_FOUND_RE.test(title) || (text.length < 400 && NOT_FOUND_RE.test(text))) return { ok: false, gone: true, reason: 'soft-404' };
   const m = text.match(GONE_RE);
   if (m) return { ok: false, gone: true, reason: 'text:' + m[0].slice(0, 60) };
   return { ok: true, gone: false, reason: 'ok' };

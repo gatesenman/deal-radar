@@ -29,6 +29,25 @@ function parseDeadline(text, ref) {
   if ((m = s.match(/(?:截至|截止(?:到|至)?|至|到)\s*(?:(20\d{2})\s*年\s*)?(\d{1,2})\s*月\s*(\d{1,2})\s*[日号]?/))) return mkDate(m[1] ? Number(m[1]) : 0, Number(m[2]) - 1, Number(m[3]), ref);
   // ISO：until 2026-10-31
   if ((m = s.match(/\b(?:until|by|before|through|截止|截至)\s*(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})/i))) return mkDate(Number(m[1]), Number(m[2]) - 1, Number(m[3]), ref);
+  // v2.11：截止日期：2026年11月30日 / 有效期至 2026-12-31
+  if ((m = s.match(/(?:截止(?:日期)?|有效期至?|到期(?:日)?|截止日期)\s*[:：]?\s*(20\d{2})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*[日号]?/))) return mkDate(Number(m[1]), Number(m[2]) - 1, Number(m[3]), ref);
+  if ((m = s.match(/(?:截止(?:日期)?|有效期至?|到期)\s*[:：]?\s*(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})/))) return mkDate(Number(m[1]), Number(m[2]) - 1, Number(m[3]), ref);
+  // v2.11：until 11/30/2026 或 30/11/2026（首位 > 12 则视为日/月/年）
+  if ((m = s.match(/\b(?:until|through|thru|by|before|ends?(?:\s+on)?|expires?(?:\s+on)?|valid\s+(?:until|till|through)|till|deadline:?)\s+(\d{1,2})[/-](\d{1,2})[/-](20\d{2})/i))) {
+    const a = Number(m[1]), b = Number(m[2]), y = Number(m[3]);
+    return a > 12 ? mkDate(y, b - 1, a, ref) : mkDate(y, a - 1, b, ref);
+  }
+  // v2.11：ends in 3 days / 还有 2 周
+  if ((m = s.match(/\b(?:ends?|expires?|closes?)\s+in\s+(\d{1,3})\s+(days?|weeks?)\b/i))) {
+    const n = Number(m[1]) * (/week/i.test(m[2]) ? 7 : 1);
+    const t0 = (ref || Date.now()) + n * 86400000;
+    const d = new Date(t0); d.setHours(23, 59, 59, 0); return d.getTime();
+  }
+  if ((m = s.match(/(?:还有|剩余|剩)\s*(\d{1,3})\s*(天|日|周|星期)/))) {
+    const n = Number(m[1]) * (/周|星期/.test(m[2]) ? 7 : 1);
+    const t0 = (ref || Date.now()) + n * 86400000;
+    const d = new Date(t0); d.setHours(23, 59, 59, 0); return d.getTime();
+  }
   return 0;
 }
 
