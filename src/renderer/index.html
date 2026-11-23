@@ -22,6 +22,7 @@
       </div>
     </div>
     <div class="tb-right">
+      <button class="icon-btn" id="btnKeys" title="键盘快捷键"><i data-ic="help"></i></button>
       <button class="icon-btn" id="btnTheme" title="切换深色/浅色主题"><i data-ic="moon"></i></button>
       <div class="win-ctrls">
         <button id="wMin" title="最小化"><i data-ic="minimize"></i></button>
@@ -293,7 +294,7 @@
             <div class="set-card">
               <h3>外观与窗口</h3>
               <div class="row"><label>界面语言</label><div><span id="sLangBox"></span><small class="hint">切换后界面立即刷新，无需重启；优惠标题按所选语言显示（另一种语言的条目需配置 AI 才会翻译）</small></div></div>
-              <div class="row"><label>主题</label><div><div class="seg" id="sTheme"><button data-v="dark">深色</button><button data-v="light">浅色</button></div></div></div>
+              <div class="row"><label>主题</label><div><div class="seg" id="sTheme"><button data-v="dark">深色</button><button data-v="light">浅色</button><button data-v="system">跟随系统</button></div></div></div>
               <div class="row"><label>关闭按钮</label><div><label class="switch"><input type="checkbox" id="sTray" /><span></span></label><p class="hint">开启后点 × 最小化到系统托盘，在后台继续监控</p></div></div>
               <div class="row"><label>开机自动启动</label><div><label class="switch"><input type="checkbox" id="sAutoStart" /><span></span></label><p class="hint">登录 Windows 后自动在托盘后台运行</p></div></div>
               <div class="row"><label>启动时最小化</label><div><label class="switch"><input type="checkbox" id="sStartMin" /><span></span></label><p class="hint">启动后只在托盘后台运行，不弹出主窗口</p></div></div>

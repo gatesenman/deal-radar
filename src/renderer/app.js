@@ -703,13 +703,47 @@ function renderSettings() {
   $('#sConc').value = String(s.concurrency || 6); $('#sGap').value = String(s.hostGap ?? 1500);
   $('#sBackoff').checked = s.backoff !== false; $('#sCache').checked = s.httpCache !== false; $('#sRender').checked = s.renderEnabled !== false; $('#sDedupe').checked = s.dedupe !== false;
   if (document.activeElement !== $('#sRsshub')) $('#sRsshub').value = s.rsshubBase || '';
-  $('#sCacheHits').textContent = S.state.cacheHits ? `${L('（本次运行已命中 {0} 次）', S.state.cacheHits)}` : '';
+  const cs = S.state.cacheStats || {}; $('#sCacheHits').textContent = (S.state.cacheHits || cs.hits) ? `${L('（本次运行已命中 {0} 次，缓存 {1} 条 / {2}）', S.state.cacheHits || cs.hits, cs.entries || 0, cs.bytes ? (cs.bytes < 1048576 ? (cs.bytes/1024).toFixed(1) + ' KB' : (cs.bytes/1048576).toFixed(1) + ' MB') : '0 B')}` : '';
 }
 function renderLogs() {
   $('#logList').innerHTML = S.state.logs.slice().reverse().map((l) => `<div class="${l.level}"><time>${new Date(l.t).toLocaleTimeString(LOC, { hour12: false })}</time><span>${esc(l.msg)}</span></div>`).join('') || ("<div>" + L('暂无日志') + "</div>");
 }
 
-function applyTheme() { const light = S.state.settings.theme === 'light'; document.documentElement.dataset.theme = light ? 'light' : 'dark'; const tb = $('#btnTheme'); if (tb) { tb.innerHTML = ic(light ? 'moon' : 'sun'); tb.title = light ? L('切换到深色主题') : L('切换到浅色主题'); } }
+
+function currentListFilters() { return { type: S.f.type || '', valid: S.f.valid || '', sort: S.f.sort || 'pub', region: S.f.region || '', platform: S.f.platform || '', news: !!S.f.news }; }
+function persistFilters() { const cur = currentListFilters(); const prev = (S.state.settings && S.state.settings.listFilters) || {}; if (JSON.stringify(cur) === JSON.stringify(prev)) return; call('settings:save', { listFilters: cur }).then((s) => { S.state.settings = s; }).catch(() => {}); }
+function restoreFilters() {
+  const f = (S.state.settings && S.state.settings.listFilters) || {};
+  S.f.type = f.type || ''; S.f.valid = f.valid || ''; S.f.sort = f.sort || S.f.sort || 'pub'; S.f.region = f.region || ''; S.f.platform = f.platform || ''; S.f.news = !!f.news;
+  if ($('#fType')) $('#fType').value = S.f.type;
+  if ($('#fNews')) $('#fNews').checked = S.f.news;
+  if ($('#fSort')) $('#fSort').value = S.f.sort;
+  if ($('#fValid')) $('#fValid').value = S.f.valid || '';
+  if ($('#fRegion')) $$('#fRegion button').forEach((x) => x.classList.toggle('on', (x.dataset.v || '') === (S.f.region || '')));
+}
+function keysModal() {
+  openModal(`<div class="mh"><h3>${L('键盘快捷键')}</h3></div><div class="mb"><table class="grid"><tbody>
+    <tr><td><kbd>Ctrl</kbd>+<kbd>F</kbd></td><td>${L('聚焦搜索框')}</td></tr>
+    <tr><td><kbd>Esc</kbd></td><td>${L('关闭弹窗 / 清空搜索')}</td></tr>
+    <tr><td><kbd>Ctrl</kbd>+<kbd>/</kbd> ${L('或')} <kbd>F1</kbd></td><td>${L('打开本说明')}</td></tr>
+    <tr><td><kbd>V</kbd></td><td>${L('切换列表视图（卡片 / 时间线 / 表格）')}</td></tr>
+  </tbody></table></div><div class="mf"><button class="btn primary" data-m="cancel">${L('知道了')}</button></div>`);
+}
+function whatsNewModal() {
+  const st = S.state; if (!st || (st.runtime && st.runtime.shot) || !st.settings.onboarded) return false;
+  const notes = ((st.v214 && st.v214.notes) || []).filter((n) => {
+    const last = st.settings.lastSeenVersion || (st.v214 && st.v214.lastSeen) || '';
+    const cmp = (a, b) => { const pa = String(a).replace(/^v/i,'').split('.').map((x)=>parseInt(x,10)||0); const pb = String(b).replace(/^v/i,'').split('.').map((x)=>parseInt(x,10)||0); for (let i=0;i<3;i++){ if((pa[i]||0)>(pb[i]||0)) return 1; if((pa[i]||0)<(pb[i]||0)) return -1;} return 0; };
+    return cmp(n.v, last) > 0 && cmp(n.v, st.version || '') <= 0;
+  });
+  if (!notes.length) return false;
+  const body = notes.map((n) => `<h4>v${esc(n.v)}</h4><ul>${n.items.map((x) => `<li>${esc(L(x))}</li>`).join('')}</ul>`).join('');
+  openModal(`<div class="mh"><h3>${L('本版更新')}</h3></div><div class="mb">${body}<p class="hint">${L('更新说明只会出现一次。安装包仍需到 GitHub Releases 手动下载，应用不会自动安装。')}</p></div><div class="mf"><button class="btn primary" data-m="whatsNewOk">${L('知道了')}</button></div>`);
+  return true;
+}
+
+function resolvedTheme() { const t = (S.state && S.state.settings && S.state.settings.theme) || 'dark'; if (t === 'system') return (S.state.runtime && S.state.runtime.dark === false) ? 'light' : 'dark'; return t === 'light' ? 'light' : 'dark'; }
+function applyTheme() { const light = resolvedTheme() === 'light'; document.documentElement.dataset.theme = light ? 'light' : 'dark'; const tb = $('#btnTheme'); if (tb) { tb.innerHTML = ic(light ? 'moon' : 'sun'); tb.title = (S.state.settings.theme === 'system') ? L('跟随系统外观') : (light ? L('切换到深色主题') : L('切换到浅色主题')); } }
 
 function renderAll() {
   applyTheme(); renderSide(); renderStatus(); fillFilters();
@@ -1271,7 +1305,7 @@ async function finishWelcome() {
   closeModal(); $('#modal').classList.remove('wide');
   await call('brand:enableOnly', chosen, 'ai');
   if (goods !== !!S.state.settings.goodsEnabled) await call('goods:set', goods);
-  await saveSetting({ onboarded: true, ...(proxyMode !== S.state.settings.proxyMode ? { proxyMode } : {}) });
+  await saveSetting({ onboarded: true, lastSeenVersion: S.state.version || '', ...(proxyMode !== S.state.settings.proxyMode ? { proxyMode } : {}) });
   if (before !== chosen.slice().sort().join()) refreshNow(true);
   toast(`${L('已开始监控 {0} 个厂商', chosen.length)}`, 'ok');
 }
@@ -1332,7 +1366,7 @@ function bind() {
   $('.titlebar').addEventListener('dblclick', (e) => { if (!e.target.closest('input,button,.search')) call('win:max'); });
   $('#wMax').onclick = () => call('win:max');
   $('#wClose').onclick = () => call('win:close');
-  $('#btnTheme').onclick = () => saveSetting({ theme: S.state.settings.theme === 'light' ? 'dark' : 'light' });
+  $('#btnTheme').onclick = () => saveSetting({ theme: resolvedTheme() === 'light' ? 'dark' : 'light' });
 
   $$('.nav-item').forEach((n) => n.addEventListener('click', () => go(n.dataset.view)));
   $('#sideBrands').addEventListener('click', (e) => {
@@ -1345,10 +1379,10 @@ function bind() {
   $('#q').addEventListener('input', onQ);
   $('#fBrand').onchange = (e) => { S.f.brand = e.target.value; S.page = 1; renderAll(); };
   $('#fPlatform').onchange = (e) => { S.f.platform = e.target.value; S.page = 1; renderAll(); };
-  $('#fType').onchange = (e) => { S.f.type = e.target.value; S.page = 1; renderAll(); };
-  $('#fNews').onchange = (e) => { S.f.news = e.target.checked; S.page = 1; renderAll(); };
+  $('#fType').onchange = (e) => { S.f.type = e.target.value; S.page = 1; persistFilters(); renderAll(); };
+  $('#fNews').onchange = (e) => { S.f.news = e.target.checked; S.page = 1; persistFilters(); renderAll(); };
   $('#fUnread').onchange = (e) => { S.f.unread = e.target.checked; S.page = 1; renderAll(); };
-  $('#fSort').onchange = (e) => { S.f.sort = e.target.value; S.page = 1; renderAll(); };
+  $('#fSort').onchange = (e) => { S.f.sort = e.target.value; S.page = 1; persistFilters(); renderAll(); };
   $('#fStatus').onchange = (e) => { S.f.status = e.target.value; S.page = 1; renderAll(); };
   // 今日要点
   $('#homeBody').addEventListener('click', homeAct);
@@ -1368,7 +1402,7 @@ function bind() {
   if ($('#sEnrichLimit')) $('#sEnrichLimit').onchange = (e) => saveSetting({ enrichLimit: Number(e.target.value) });
   $('#btnDigestNow').onclick = async () => { const dg = await call('digest:now'); toast(dg ? dg.title : L('已推送'), 'ok'); };
   $('#sNoise').addEventListener('click', async (e) => { const x = e.target.closest('[data-rmw]'); if (x) { await call('feedback:removeWord', x.dataset.rmw); toast(L('已移除屏蔽词')); } if (e.target.closest('[data-act=resetSrc]')) { await call('feedback:resetSources'); toast(L('已重置来源权重')); } });
-  $('#fRegion').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; S.f.region = b.dataset.v; $$('#fRegion button').forEach((x) => x.classList.toggle('on', x === b)); S.page = 1; renderAll(); });
+  $('#fRegion').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; S.f.region = b.dataset.v; $$('#fRegion button').forEach((x) => x.classList.toggle('on', x === b)); S.page = 1; persistFilters(); renderAll(); });
   $('#viewSeg').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) saveSetting({ view: b.dataset.v }); });
   $('#btnRefresh').onclick = () => refreshNow();
   $('#btnExport').onclick = exportCSV;
@@ -1387,7 +1421,7 @@ function bind() {
       if (a === 'more') { S.page++; renderDeals(); return; }
       if (a === 'refresh') return refreshNow();
       if (a === 'hideNet') { S.netBannerHidden = true; renderDeals(); return; }
-      if (a === 'clearFilters') { S.curView = null; S.f = { q: '', brand: '', platform: '', region: '', type: '', news: S.f.news, unread: false, sort: S.f.sort }; $('#q').value = ''; $('#fUnread').checked = false; if ($('#fValid')) { $('#fValid').value = ''; $('#fExpired').checked = false; $('#fMine').checked = false; } if (S.state.settings.filterMine) call('settings:save', { filterMine: false }).then((x) => { S.state.settings = x; }); $('#fType').value = ''; $$('#fRegion button').forEach((x, i) => x.classList.toggle('on', i === 0)); renderAll(); return; }
+      if (a === 'clearFilters') { S.curView = null; S.f = { q: '', brand: '', platform: '', region: '', type: '', news: S.f.news, unread: false, sort: S.f.sort }; $('#q').value = ''; $('#fUnread').checked = false; if ($('#fValid')) { $('#fValid').value = ''; $('#fExpired').checked = false; $('#fMine').checked = false; } if (S.state.settings.filterMine) call('settings:save', { filterMine: false }).then((x) => { S.state.settings = x; }); $('#fType').value = ''; $$('#fRegion button').forEach((x, i) => x.classList.toggle('on', i === 0)); persistFilters(); renderAll(); return; }
       if (item && a === 'fav') { e.stopPropagation(); return toggleFav(item.dataset.id); }
       if (item && a === 'open') { e.stopPropagation(); return openDeal(item.dataset.id); }
       if (item && a === 'claim') { e.stopPropagation(); return setStatus(item.dataset.id, 'claimed'); }
@@ -1507,6 +1541,7 @@ function bind() {
     if (act === 'dvCommit') await commitDiscover();
     if (act === 'saveRule') await submitRule();
     if (act === 'welcomeDone') await finishWelcome();
+    if (act === 'whatsNewOk') { closeModal(); await saveSetting({ lastSeenVersion: S.state.version || '' }); }
     if (act === 'notOfferGo') await submitNotOffer(e.target.closest('[data-m]').dataset.id);
   });
   $('#modal').addEventListener('keydown', (e) => {
@@ -1611,6 +1646,7 @@ function bind() {
       if (inList && k === 'n') { e.preventDefault(); S.f.news = !S.f.news; renderAll(); return; }
     }
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'f') { e.preventDefault(); $('#q').focus(); $('#q').select(); }
+    if (((e.ctrlKey || e.metaKey) && e.key === '/') || e.key === 'F1') { e.preventDefault(); keysModal(); }
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'r') { e.preventDefault(); refreshNow(); }
     if (e.key === 'F5') { e.preventDefault(); refreshNow(); }
     if (e.key === 'Escape') {
@@ -2027,10 +2063,12 @@ window.addEventListener('unhandledrejection', (e) => window.__errors.push(String
   bind();
   S.state = await window.api.call('state:get');
   bindV26(); bindV27(); bindV28();
+  restoreFilters();
   if (window.api.platform === 'darwin') $('.win-ctrls').style.display = 'none';
   renderAll();
+  setTimeout(() => { try { whatsNewModal(); } catch (e) { /* ignore */ } }, 400);
   window.api.on('state', (st) => { applyPending(st.deals); S.state = st; renderAll(); });
-  window.api.on('runtime', (rt) => { if (!S.state) return; S.state.runtime = rt; renderStatus(); if (S.view === 'sources') renderSources(); if ((S.view === 'deals') && !S.state.deals.length) renderDeals(); if (S.view === 'home' && !S.state.deals.length) renderHome(); });
+  window.api.on('runtime', (rt) => { if (!S.state) return; S.state.runtime = rt; if (S.state.settings.theme === 'system') applyTheme(); renderStatus(); if (S.view === 'sources') renderSources(); if ((S.view === 'deals') && !S.state.deals.length) renderDeals(); if (S.view === 'home' && !S.state.deals.length) renderHome(); });
   window.api.on('sound', () => beep());
   window.api.on('go', (v) => { if (S.state) go(v); });
   window.api.on('discover:progress', (p) => { if (!S.dv || p.jobId !== S.dv.jobId) return; S.dv.steps[p.id] = { state: p.state, text: p.text }; renderDvSteps(); });
@@ -2163,7 +2201,7 @@ function bindV26() {
   $('#sNotifyMine').onchange = (e) => saveSetting({ notifyMineOnly: e.target.checked });
   $('#sHideExpired').onchange = (e) => saveSetting({ hideExpired: e.target.checked });
   $('#sRecheck').onchange = (e) => saveSetting({ recheckHours: Number(e.target.value) });
-  $('#fValid').onchange = (e) => { S.f.valid = e.target.value; S.page = 1; renderAll(); };
+  $('#fValid').onchange = (e) => { S.f.valid = e.target.value; S.page = 1; persistFilters(); renderAll(); };
   $('#fExpired').onchange = (e) => { S.f.expired = e.target.checked; S.page = 1; renderAll(); };
   $('#fMine').onchange = (e) => { S.f.mine = e.target.checked; S.page = 1; renderAll(); saveSetting({ filterMine: e.target.checked }); };
   S.f.mine = !!S.state.settings.filterMine; $('#fMine').checked = S.f.mine;

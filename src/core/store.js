@@ -379,6 +379,15 @@ class Store {
   updateSettings(patch) {
     const p = { ...(patch || {}) };
     if ('lang' in p && !['auto', 'zh-CN', 'en'].includes(p.lang)) delete p.lang;
+    if ('theme' in p && !['dark', 'light', 'system'].includes(p.theme)) delete p.theme;
+    if ('lastSeenVersion' in p) {
+      const v = String(p.lastSeenVersion || '').trim().replace(/^v/i, '');
+      if (!/^\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(v)) delete p.lastSeenVersion; else p.lastSeenVersion = v;
+    }
+    if ('listFilters' in p) {
+      const V214 = require('./v214');
+      p.listFilters = V214.normalizeFilters({ ...(this.config.settings.listFilters || {}), ...(p.listFilters || {}) });
+    }
     if ('hideResellers' in p) p.hideResellers = !!p.hideResellers;
     for (const k of ['hideExpired', 'notifyMineOnly', 'filterMine', 'adaptivePolling', 'learnEnabled']) if (k in p) p[k] = !!p[k];
     if ('recheckHours' in p) p.recheckHours = Math.min(168, Math.max(2, Number(p.recheckHours) || 12));

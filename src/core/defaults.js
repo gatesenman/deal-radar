@@ -588,6 +588,8 @@ const DEFAULT_SETTINGS = {
   learnEnabled: true, // v2.7：根据你的反馈学习偏好
   priceAlertPct: 0, // v2.7：价格变化超过该百分比才提醒（0 = 任何变化）
   filterMine: false, // v2.6.1：列表「只看适用于我」勾选状态（重启后保留）
+  listFilters: { type: '', valid: '', sort: 'pub', region: '', platform: '', news: false }, // v2.14：列表筛选（不含搜索词）
+  lastSeenVersion: '', // v2.14：已看过更新说明的版本
   recheckHours: 12, // 落地页复查间隔（小时）
 };
 

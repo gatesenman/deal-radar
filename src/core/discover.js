@@ -1,4 +1,5 @@
 'use strict';
+const L = require('../renderer/i18n').t;
 // AI 辅助发现：输入厂商名 → 自己搜索（Bing 网页 / Wikidata / DuckDuckGo）→ 确定官网 → 自动发现 RSS、常见路径、sitemap、
 // 官方社交 / 论坛 / 应用商店 → （可选）LLM 归类、补全别名与排除词 → 逐个用现有协议实测 → 交给用户勾选确认。
 // 只产出标准协议（collectors.PROTOCOLS），不引入任何额外的抓取方式。
@@ -521,7 +522,7 @@ async function discoverChannel(input, opts = {}) {
     if (intent === 'status') { const u = `https://status.${regDomain(h)}/history.rss`; const b = await tryFetch(ft, u); if (b && looksFeed(b)) return { channel: { type: 'rss', url: u, sub: 'status', name: '服务状态' }, reason: '找到 Statuspage 状态 RSS', usedAI }; continue; }
     for (const p of paths) {
       const u = `https://${h}${p}`; const b = await tryFetch(ft, u);
-      if (b && !isBlocked(b)) { const r = await analyzeUrl(u, { ft, llm: null, signal, intent }); return { ...r, reason: `在官网 ${h} 找到 ${p}；${r.reason}`, usedAI }; }
+      if (b && !isBlocked(b)) { const r = await analyzeUrl(u, { ft, llm: null, signal, intent }); return { ...r, reason: L('在官网 {0} 找到 {1}；', h, p) + r.reason, usedAI }; }
     }
     if (intent === 'blog' || intent === 'changelog') {
       const home = await tryFetch(ft, `https://${h}/`);

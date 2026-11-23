@@ -163,6 +163,8 @@ const PRESETS = {
   dev: { name: '开发者 / API', desc: 'API 赠送额度、降价、编程工具', profile: {}, rule: { name: 'API 额度 / 降价', types: ['credits', 'pricing', 'discount', 'startup'], notify: true }, groups: ['llm', 'agent', 'cloud', 'software'] },
   cn: { name: '国内用户', desc: '国内可用、支付宝 / 微信支付、中文厂商', profile: { region: 'cn', pay: ['alipay', 'wechat'] }, rule: { name: '国内可用', keywords: ['国内', '免费', '限免', '新用户'], notify: true }, groups: null },
   saver: { name: '只要大额折扣', desc: '只提醒重要度高的折扣与免费', profile: {}, rule: { name: '高价值优惠', types: ['discount', 'free'], minScore: 70, notify: true }, groups: null },
+  team: { name: '团队采购', desc: '团队版、年付折扣、创业与企业计划优先', profile: { userType: 'existing' }, rule: { name: '团队 / 创业计划', types: ['startup', 'pricing', 'discount', 'plan'], notify: true }, groups: ['llm', 'agent', 'cloud', 'software'] },
+  blogger: { name: '博主全量', desc: '尽量收录公开优惠，便于整理和分享', profile: {}, rule: { name: '全部优惠（博主）', types: [], minScore: 0, notify: true }, groups: ['llm', 'agent', 'creative', 'cloud', 'software'] },
 };
 
 // —— 试用到期 ——

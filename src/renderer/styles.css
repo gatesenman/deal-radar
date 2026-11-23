@@ -398,7 +398,7 @@ kbd{font-family:inherit;font-size:12px}kbd b{display:inline-block;border:1px sol
 .smart-row{display:flex;gap:8px}.smart-row .input{flex:1}
 #cmSmartNote{margin-top:6px;line-height:1.6}#cmSmartNote a{color:var(--accent);margin-right:6px}
 .spin{display:inline-block;width:11px;height:11px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;vertical-align:-1px}
-@keyframes spin{to{transform:rotate(360deg)}}
+
 .modal.xl{width:1100px;max-width:95vw;display:flex;flex-direction:column;overflow:hidden}.modal.xl .mb{flex:1;min-height:0;overflow:auto}
 .dv-top{display:flex;gap:8px;margin-bottom:6px}.dv-top .input{flex:1;font-size:15px}
 .dv-steps{list-style:none;padding:0;margin:10px 0;display:grid;gap:4px}

@@ -1,5 +1,5 @@
 'use strict';
-const { app, BrowserWindow, ipcMain, Tray, Menu, Notification, shell, dialog, nativeImage, net, session, clipboard, powerMonitor, safeStorage } = require('electron');
+const { app, BrowserWindow, ipcMain, Tray, Menu, Notification, shell, dialog, nativeImage, nativeTheme, net, session, clipboard, powerMonitor, safeStorage } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const { Store } = require('./core/store');
@@ -21,6 +21,7 @@ const V28 = require('./core/v28');
 const V210 = require('./core/v210');
 const V212 = require('./core/v212');
 const V213 = require('./core/v213');
+const V214 = require('./core/v214');
 const I18N = require('./renderer/i18n');
 const L = I18N.t; const tx = I18N.tx;
 const { fetchLogo, dataUrl, NOT_VENDOR } = require('./core/logo');
@@ -171,8 +172,24 @@ function allSources() {
   const brands = store.config.brands.filter((b) => b.category !== 'goods' || goodsOn);
   return [...store.config.sources, ...channelSources(brands, chCtx())];
 }
-function publicState() {
-  return {
+let lastPublic = null;
+function publicState(opts = {}) {
+  const light = !!(opts && opts.light);
+  const live = {
+    runtime: runtime(),
+    cacheHits: httpCache.hits,
+    cacheStats: V214.cacheStats(httpCache),
+    sourceStatus: store.config.sourceStatus,
+    health: store.health,
+    logs,
+    settings: publicSettings(),
+    engine: engineState(),
+    update: { current: app.getVersion(), latest: (store.config.settings.latestUpdate || null), checkedAt: store.config.settings.lastUpdateCheck || 0 },
+    v214: { notes: V214.notes(), lastSeen: store.config.settings.lastSeenVersion || '' },
+  };
+  const reused = V214.refreshState(lastPublic, live, { light, hasNew: !!opts.hasNew });
+  if (reused) { lastPublic = reused; return reused; }
+  lastPublic = {
     brands: store.config.brands,
     logos: logosMap(),
     brandDesc: Object.fromEntries(Object.entries(BRAND_META).map(([k, v]) => [k, v.desc])),
@@ -184,7 +201,7 @@ function publicState() {
     cacheHits: httpCache.hits,
     pages: Object.fromEntries(Object.entries(store.pages).map(([k, v]) => [k, { at: v.at, changedAt: v.changedAt, lines: (v.lines || []).length, preview: (v.lines || []).slice(0, 40) }])),
     sourceStatus: store.config.sourceStatus,
-    settings: publicSettings(),
+    settings: live.settings,
     aiProviders: PROVIDERS,
     brandGroups: BRAND_GROUPS,
     home: digestOf(store.deals, { brandName: (id) => tx(brandName(id)), t: L, titleOf: noteTitle, locale: I18N.locale() }),
@@ -192,17 +209,16 @@ function publicState() {
     coverage: V26.coverage(store.config.brands.filter((b) => b.category !== 'goods' || store.config.settings.goodsEnabled), channelSources(store.config.brands, chCtx()), store.config.sourceStatus),
     vendorInfo: Object.fromEntries(store.config.brands.map((b) => [b.id, vendorInfo(b)])),
     lastRecheck,
-    engine: engineState(),
     v28: { channels: (store.config.settings.channels || []).map(V28.mask), views: store.config.settings.views || [], types: V28.CHANNEL_TYPES, presets: Object.fromEntries(Object.entries(V28.PRESETS).map(([k, v]) => [k, { name: v.name, desc: v.desc }])) },
     unavailable: KNOWN_UNAVAILABLE,
-    runtime: runtime(),
-    logs,
     version: app.getVersion(),
-    update: { current: app.getVersion(), latest: (store.config.settings.latestUpdate || null), checkedAt: store.config.settings.lastUpdateCheck || 0 },
     dataDir: app.getPath('userData'),
+    ...live,
   };
+  return lastPublic;
 }
-function runtime() { return { polling, paused, nextRunAt, lastRunAt }; }
+function systemDark() { try { return !!nativeTheme.shouldUseDarkColors; } catch { return true; } }
+function runtime() { return { polling, paused, nextRunAt, lastRunAt, shot: !!SHOT_DIR, dark: systemDark() }; }
 
 // —— AI 助手：API Key 用 Electron safeStorage（Windows DPAPI）加密后保存，渲染进程永远拿不到明文 ——
 let sessionKey = ''; // safeStorage 不可用时只在本次运行内保存在内存中，不落盘
@@ -385,8 +401,8 @@ async function poll(reason = L('定时'), onlyIds = null, force = false) {
   log(`${L('开始刷新（{0}）：{1} 个厂商/品牌，{2} 个数据源', reason, brands.length, sources.filter((x) => x.enabled).length)}`);
   const added = [];
   const hadDeals = store.deals.length > 0;
-  let pushTimer = null;
-  const pushSoon = () => { if (!pushTimer) pushTimer = setTimeout(() => { pushTimer = null; send('state', publicState()); }, 600); };
+  let pushTimer = null; let dirtyDeals = false;
+  const pushSoon = () => { if (!pushTimer) pushTimer = setTimeout(() => { pushTimer = null; const full = dirtyDeals; dirtyDeals = false; send('state', publicState(full ? {} : { light: true })); }, 600); };
   try {
     const s = store.config.settings;
     // 每个数据源完成后立即合并并推送到界面（边抓边显示）
@@ -398,7 +414,7 @@ async function poll(reason = L('定时'), onlyIds = null, force = false) {
       if (r.items.length) {
         for (const it of r.items) { it.status = 'new'; if ((it.offerTypes || []).length) it.facts = extractFacts(it); }
         const merged = mergeDeals(store.deals, r.items, { maxDeals: s.maxDeals, maxAgeDays: s.maxAgeDays, dedupe: s.dedupe !== false, onUpdate: (d) => { if ((d.offerTypes || []).length) d.facts = extractFacts(d); } });
-        store.deals = merged.all; added.push(...merged.added); newN = merged.added.length;
+        store.deals = merged.all; added.push(...merged.added); newN = merged.added.length; if (newN) dirtyDeals = true;
       }
       // v2.7：记录本次检查是否「有变化」，用于估计该渠道的变化频率
       if (r.status.ok) { const stt = store.config.sourceStatus[src.id]; if (stt) stt.chg = V27.recordCheck(stt.chg, newN > 0 || /检测到变化|发现 \d+ 个新页面/.test(r.status.note || ''), Date.now()); }
@@ -1330,6 +1346,7 @@ app.whenReady().then(async () => {
   registerIPC();
   if (SHOT_DIR && process.env.DEAL_RADAR_SHOT_SET !== 'onboarding') store.updateSettings({ onboarded: true });
   createWindow();
+  try { nativeTheme.on('updated', () => { if (store && store.config.settings.theme === 'system') { send('runtime', runtime()); send('state', publicState({ light: true })); } }); } catch { /* tests */ }
   createTray();
   applyAutoStart();
   ensurePortableShortcut();
