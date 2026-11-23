@@ -19,6 +19,7 @@ const V26 = require('./core/v26');
 const V27 = require('./core/v27');
 const V28 = require('./core/v28');
 const V210 = require('./core/v210');
+const V212 = require('./core/v212');
 const I18N = require('./renderer/i18n');
 const L = I18N.t; const tx = I18N.tx;
 const { fetchLogo, dataUrl, NOT_VENDOR } = require('./core/logo');
@@ -293,6 +294,7 @@ function decorateDeals(deals) {
   const now = Date.now(); const prof = store.config.settings.profile; const vi = {};
   const learnOn = store.config.settings.learnEnabled !== false; const rel = learnOn ? reliabilityMap() : {};
   for (const d of deals) {
+    d.evidence = V212.evidenceOf(d);
     if (learnOn && (d.offerTypes || []).length) { d.learnP = V27.predict(store.learn, d.title + ' ' + (d.summary || '').slice(0, 200)); const r = rel[d.sourceId]; d.rel = r ? r.score : undefined; const lb = store.learn.labels[d.id]; if (lb !== undefined) d.lab = lb ? 1 : 0; else delete d.lab; } else { delete d.learnP; delete d.rel; delete d.lab; }
     if (!d.facts || !(d.offerTypes || []).length) { delete d.vstat; delete d.mine; delete d.guide; continue; }
     d.vstat = V26.validity(d, now);
@@ -978,7 +980,48 @@ function registerIPC() {
     store.saveDealsSoon(); updateTray(); send('state', publicState());
     return { affected };
   });
-  handle('feedback:removeWord', (w) => { store.updateSettings({ noiseWords: (store.config.settings.noiseWords || []).filter((x) => x !== w) }); send('state', publicState()); });
+  handle('deal:feedback', (id, { reason = 'noise', word = '', penalize = false } = {}) => {
+    const d = store.deals.find((x) => x.id === id); if (!d) throw new Error(L('条目不存在'));
+    const r = V212.FEEDBACK_REASONS.includes(reason) ? reason : 'noise';
+    if (V212.learnsNegative(r)) learnFrom(d, false);
+    Object.assign(d, V212.applyFeedback(d, r));
+    const st = store.config.settings; const patch = {}; let affected = 1;
+    const w = String(word || '').trim();
+    if (V212.learnsWord(r) && w.length >= 2) {
+      patch.noiseWords = [...(st.noiseWords || []), w];
+      for (const x of store.deals) if (x !== d && (x.offerTypes || []).length && !x.offerTypes.includes('pricing') && !x.fav && x.status !== 'claimed' && x.title.toLowerCase().includes(w.toLowerCase())) { Object.assign(x, V212.applyFeedback(x, 'noise')); affected++; }
+    }
+    if (penalize && d.sourceId) patch.noiseSources = { ...(st.noiseSources || {}), [d.sourceId]: ((st.noiseSources || {})[d.sourceId] || 0) + 1 };
+    if (Object.keys(patch).length) store.updateSettings(patch);
+    store.saveDealsSoon(); updateTray(); send('state', publicState());
+    return { affected, reason: r };
+  });
+  handle('backup:export', async () => {
+    const data = JSON.stringify(V212.exportBackup({ config: store.config, deals: store.deals, views: store.config.settings.views, prices: store.prices }), null, 2);
+    const file = SHOT_DIR ? path.join(SHOT_DIR, 'export-backup.json') : (await dialog.showSaveDialog(win, { title: L('导出完整备份'), defaultPath: path.join(app.getPath('downloads'), (L('优惠雷达备份') + ".json")), filters: [{ name: 'JSON', extensions: ['json'] }] })).filePath;
+    if (!file) return null;
+    fs.writeFileSync(file, data);
+    return { path: file, deals: store.deals.length };
+  });
+  handle('backup:import', async (filePath) => {
+    const file = filePath || (SHOT_DIR ? null : (await dialog.showOpenDialog(win, { title: L('导入完整备份'), filters: [{ name: 'JSON', extensions: ['json'] }], properties: ['openFile'] })).filePaths[0]);
+    if (!file) return null;
+    const obj = JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\ufeff/, ''));
+    const err = V212.validateBackup(obj); if (err) throw new Error(L(err));
+    if (obj.format === 2 || !obj.deals) {
+      const r = store.importConfig(obj);
+      await applyProxy(); schedule(); send('state', publicState());
+      return { ...r, deals: 0, format: 2 };
+    }
+    const r = store.importConfig({ app: 'DealRadar', format: 2, brands: obj.brands, sources: obj.sources, settings: obj.settings });
+    if (Array.isArray(obj.views)) { store.config.settings.views = obj.views; store.saveConfig(); }
+    store.deals = V212.mergeDeals(store.deals, obj.deals);
+    if (obj.prices && typeof obj.prices === 'object') { store.prices = obj.prices; store.savePrices(); }
+    store.saveDealsSoon(); await applyProxy(); schedule(); send('state', publicState());
+    log(L('已导入备份：{0} 个厂商，{1} 条优惠（推送密钥未包含，需在本机重填）', r.brands, store.deals.length));
+    return { brands: r.brands, sources: r.sources, deals: store.deals.length, format: 3 };
+  });
+    handle('feedback:removeWord', (w) => { store.updateSettings({ noiseWords: (store.config.settings.noiseWords || []).filter((x) => x !== w) }); send('state', publicState()); });
   handle('feedback:resetSources', () => { store.updateSettings({ noiseSources: {} }); send('state', publicState()); });
   handle('digest:now', () => dailyDigest(true));
   handle('ai:enrich', async () => enrichDeals(30));

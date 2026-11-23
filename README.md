@@ -1,12 +1,12 @@
 # 全网优惠雷达（Deal Radar）
 
-**2.11.0** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
+**2.12.0** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
 
 中文 · [English](README.en.md)
 
 ## 下载
 
-当前源码版本是 **2.11.0**。已发布的 Windows 安装包仍是 [v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0)（后续版本会再附安装包）：
+当前源码版本是 **2.12.0**。已发布的 Windows 安装包仍是 [v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0)（后续版本会再附安装包）：
 
 - Windows 安装包：`DealRadar-Setup-2.9.0-x64.exe`
 - 源码包：`DealRadar-2.9.0-source.zip`
@@ -42,7 +42,7 @@ d7464de239301fd03b64af8350c5c4904b1f41b2b002f3be806873e66b7cbee4  DealRadar-Setu
 
 *设置 / Settings*
 
-## 功能特性（2.11.0）
+## 功能特性（2.12.0）
 
 - **复查更准**：落地页软 404 与更多「已结束」用语；截止日期支持数字日期和「还有 N 天」；价格识别 USD 20 / month 等写法。
 - **网址识别协议**：添加渠道时粘贴官方网址即可自动选好 RSS、GitHub、价格页等协议；点「识别」仍可发现页面上的官方订阅源。
@@ -95,13 +95,13 @@ Electron · JavaScript · HTML 解析与 RSS/XML（`fast-xml-parser`、`node-htm
 
 # Deal Radar
 
-**2.11.0** · A Windows desktop app that watches deals from AI and software vendors such as ChatGPT, Claude, Gemini, Cursor, and DeepSeek, with optional physical-brand discount monitoring.
+**2.12.0** · A Windows desktop app that watches deals from AI and software vendors such as ChatGPT, Claude, Gemini, Cursor, and DeepSeek, with optional physical-brand discount monitoring.
 
 Chinese above · [standalone English guide](README.en.md)
 
 ## Download
 
-The source tree is **2.11.0**. The published Windows installer is still [v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0); a newer installer will ship in a later release:
+The source tree is **2.12.0**. The published Windows installer is still [v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0); a newer installer will ship in a later release:
 
 - Windows installer: `DealRadar-Setup-2.9.0-x64.exe`
 - Source zip: `DealRadar-2.9.0-source.zip`
@@ -117,7 +117,7 @@ The app is not code-signed. If Windows SmartScreen shows “Windows protected yo
 
 You can also run from source, or package with `npm run dist:win`.
 
-## Features (2.11.0)
+## Features (2.12.0)
 
 - Paste an official URL when adding a channel to auto-detect RSS, GitHub, pricing pages, and other protocols.
 - Multi-channel intake from official blogs, pricing pages, changelogs, status pages, YouTube, GitHub, and forums, plus news / HN / Reddit aggregators. Mainstream official and regional sources only.

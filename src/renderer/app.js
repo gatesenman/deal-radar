@@ -340,22 +340,33 @@ function noiseCandidates(d) {
 function notOfferModal(id) {
   const d = S.state.deals.find((x) => x.id === id); if (!d) return;
   const cands = noiseCandidates(d);
-  openModal(`<div class="mh"><h3>${L('不是优惠')}</h3><button class="mini" data-m="close" title="${L('关闭')}">${ic('x')}</button></div>
-    <div class="mb"><p class="hint" style="margin-top:0">${L('「{0}」将降级为普通资讯并从优惠列表隐藏。还可以让雷达以后自动过滤类似内容：', esc(d.titleZh || d.title))}</p>
+  const reasons = [['noise', L('不是优惠')], ['expired', L('已失效')], ['not-for-me', L('不适用于我')], ['duplicate', L('重复')], ['too-small', L('力度太小')]];
+  openModal(`<div class="mh"><h3>${L('反馈这条优惠')}</h3><button class="mini" data-m="close" title="${L('关闭')}">${ic('x')}</button></div>
+    <div class="mb"><p class="hint" style="margin-top:0">${L('「{0}」将从优惠列表隐藏。选「不是优惠」时还可让雷达学习屏蔽词。', esc(d.titleZh || d.title))}</p>
+      <div class="field"><label>${L('反馈原因')}</label><div class="chips" id="fbReasons">${reasons.map(([k, lab], i) => `<button type="button" class="chip${i === 0 ? ' on' : ''}" data-reason="${k}">${lab}</button>`).join('')}</div></div>
+      <div id="noWordWrap">
       <div class="field"><label>${L('屏蔽词（可选）：标题包含该词的条目以后不算优惠')}</label><input class="input" id="noWord" placeholder="${L('例如 code on sale、IPO、教程')}" />
         <div class="chips sm" id="noChips" style="margin-top:8px">${cands.map((w) => `<button class="chip" data-w="${esc(w)}">${esc(w)}</button>`).join('')}</div></div>
       <label class="chk"><input type="checkbox" id="noPen" ${['reddit', 'forum'].includes(d.sub) || /V2EX|Reddit/.test(d.platform) ? 'checked' : ''}> ${L('降低来源「{0}」的权重（被标记 3 次后只保留带明确力度的条目）', esc(d.sourceName))}</label>
+      </div>
     </div>
     <div class="mf"><button class="btn" data-m="close">${L('取消')}</button><button class="btn primary" data-m="notOfferGo" data-id="${esc(id)}">${L('确定')}</button></div>`, (m) => {
     $('#noChips', m).addEventListener('click', (e) => { const c = e.target.closest('[data-w]'); if (c) $('#noWord', m).value = c.dataset.w; });
+    $('#fbReasons', m).addEventListener('click', (e) => {
+      const c = e.target.closest('[data-reason]'); if (!c) return;
+      $$('#fbReasons .chip', m).forEach((x) => x.classList.toggle('on', x === c));
+      const wrap = $('#noWordWrap', m); if (wrap) wrap.style.display = c.dataset.reason === 'noise' ? '' : 'none';
+    });
   });
 }
 async function submitNotOffer(id) {
-  const word = $('#noWord').value.trim(); const penalize = $('#noPen').checked;
+  const word = ($('#noWord') && $('#noWord').value || '').trim(); const penalize = !!( $('#noPen') && $('#noPen').checked );
+  const reasonBtn = $('#fbReasons .chip.on'); const reason = (reasonBtn && reasonBtn.dataset.reason) || 'noise';
   closeModal();
-  const r = await call('deal:notOffer', id, { word, penalize });
+  const r = await call('deal:feedback', id, { reason, word: reason === 'noise' ? word : '', penalize: reason === 'noise' && penalize });
   if (S.sel === id) S.sel = null;
-  toast(word ? `${L('已降级 {0} 条，并学习屏蔽词「{1}」', r.affected, word)}` : L('已标记为不是优惠'), 'ok');
+  const msg = { noise: word ? L('已降级 {0} 条，并学习屏蔽词「{1}」', r.affected, word) : L('已标记为不是优惠'), expired: L('已标记为已失效'), 'not-for-me': L('已标记为不适用于我'), duplicate: L('已标记为重复'), 'too-small': L('已标记为力度太小') };
+  toast(msg[r.reason] || msg.noise, 'ok');
 }
 async function setStatus(id, status) {
   const d = S.state.deals.find((x) => x.id === id); if (!d) return;
@@ -486,6 +497,7 @@ function renderDetail() {
       <b>${L('截止时间')}</b><span>${d.facts.deadline ? `${new Date(d.facts.deadline).toLocaleDateString(LOC)} ${deadlineChip(d.facts.deadline)}` : L('未提及')}</span>
       <b>${L('领取方式')}</b><span>${esc(d.facts.claim || L('打开原文查看'))}</span>
       <b>${L('来源可信度')}</b><span>${trustChip(d)} <small>${L('可信度分')} ${d.facts.confidence}</small></span>
+      ${d.evidence ? `<b>${L('证据')}</b><span>${d.evidence.official ? ("<span class=\"fc tr t3\">" + L('官方确认') + "</span> ") : ""}${L('已被 {0} 个来源证实', d.evidence.n)}</span>` : ''}
       ${typeof d.rel === 'number' ? `<b>${L('来源可靠度')}</b><span>${relChip(d.rel)}</span>` : ''}
       ${typeof d.learnP === 'number' ? `<b>${L('你可能感兴趣')}</b><span>${learnChip(d.learnP)}</span>` : ''}
       <b>${L('处理状态')}</b><span>${STATUS[d.status || 'new']}</span>
@@ -1559,6 +1571,8 @@ function bind() {
   $('#btnVendorOpml').onclick = async () => { const r = await call('opml:import', S.vendor); if (r) toast(`${L('已导入 {0} 个渠道到 {1}（跳过 {2}）', r.added, bname(S.vendor), r.dup)}`, 'ok'); };
   $('#btnCfgExport').onclick = async () => { const r = await call('config:export'); if (r) toast((L('配置已导出到') + " ") + r.path, 'ok'); };
   $('#btnCfgImport').onclick = async () => { if (!(await confirmModal(L('导入配置'), L('导入会替换当前的厂商、渠道、聚合源、规则和设置（已抓取的优惠保留），确定继续？'), L('选择文件并导入'), false))) return; const r = await call('config:import'); if (r) toast(`${L('已导入：{0} 个厂商、{1} 个聚合源', r.brands, r.sources)}`, 'ok'); };
+  $('#btnBackupExport').onclick = async () => { const r = await call('backup:export'); if (r) toast(L('备份已导出到') + ' ' + r.path + '（' + L('{0} 条优惠', r.deals) + '）', 'ok'); };
+  $('#btnBackupImport').onclick = async () => { if (!(await confirmModal(L('导入完整备份'), L('将合并备份中的优惠与配置。推送密钥不会被覆盖（备份里本来也没有）。确定继续？'), L('选择文件并导入'), false))) return; const r = await call('backup:import'); if (r) toast(L('已导入备份：{0} 个厂商，{1} 条优惠（推送密钥未包含，需在本机重填）', r.brands, r.deals), 'ok'); };
   $('#btnKeys').onclick = keysModal;
   $('#modal').addEventListener('click', async (e) => { const m = e.target.closest('[data-m=clearLog]'); if (m) { await call('health:reset', m.dataset.id); closeModal(); toast(L('已清除运行记录')); } });
 

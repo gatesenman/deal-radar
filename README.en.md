@@ -1,4 +1,4 @@
-# Deal Radar (全网优惠雷达) — User Guide · v2.11.0
+# Deal Radar (全网优惠雷达) — User Guide · v2.12.0
 
 [中文说明](README.md) · English
 
@@ -6,7 +6,7 @@ A Windows desktop app that **monitors offers from AI and software vendors in rea
 
 ## 1. Install / run
 
-The source tree is **2.11.0**. Download the current Windows installer from [GitHub Releases · v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0) (a newer installer will ship in a later release):
+The source tree is **2.12.0**. Download the current Windows installer from [GitHub Releases · v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0) (a newer installer will ship in a later release):
 
 - **Installer**: `DealRadar-Setup-2.9.0-x64.exe`
 - **Source zip**: `DealRadar-2.9.0-source.zip`
