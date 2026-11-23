@@ -1,21 +1,21 @@
 # 全网优惠雷达（Deal Radar）
 
-**2.14.0** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
+**2.15.0** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
 
 中文 · [English](README.en.md)
 
 ## 下载
 
-当前源码版本是 **2.14.0**。已发布的 Windows 安装包仍是 [v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0)（后续版本会再附安装包）：
+当前版本是 **2.15.0**。Windows 安装包和源码包在 [GitHub Releases · v2.15.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.15.0)：
 
-- Windows 安装包：`DealRadar-Setup-2.9.0-x64.exe`
-- 源码包：`DealRadar-2.9.0-source.zip`
+- Windows 安装包：`DealRadar-Setup-2.15.0-x64.exe`（未签名，Windows 可能提示 SmartScreen，属预期；升级不会清空已有数据）
+- 源码包：`DealRadar-2.15.0-source.zip`
 
 SHA256：
 
 ```
-d7464de239301fd03b64af8350c5c4904b1f41b2b002f3be806873e66b7cbee4  DealRadar-Setup-2.9.0-x64.exe
-9e8749b5b0538547ab8e1c36ddf363c998c396cdb2cc291045daea00f3ef8ff5  DealRadar-2.9.0-source.zip
+5072477d622df56384cb4ecfb6d7f5d621adff257ba726b96b2ce58eca1bdfcf  DealRadar-Setup-2.15.0-x64.exe
+（源码包 SHA256 见 Release 附件 `.sha256`）
 ```
 
 应用没有数字签名。Windows SmartScreen 可能提示「已保护你的电脑」，点「更多信息 → 仍要运行」即可。从旧版本升级会保留本机优惠数据和设置。
@@ -42,7 +42,7 @@ d7464de239301fd03b64af8350c5c4904b1f41b2b002f3be806873e66b7cbee4  DealRadar-Setu
 
 *设置 / Settings*
 
-## 功能特性（2.14.0）
+## 功能特性（2.15.0）
 
 - **复查更准**：落地页软 404 与更多「已结束」用语；截止日期支持数字日期和「还有 N 天」；价格识别 USD 20 / month 等写法。
 - **网址识别协议**：添加渠道时粘贴官方网址即可自动选好 RSS、GitHub、价格页等协议；点「识别」仍可发现页面上的官方订阅源。
@@ -95,29 +95,29 @@ Electron · JavaScript · HTML 解析与 RSS/XML（`fast-xml-parser`、`node-htm
 
 # Deal Radar
 
-**2.14.0** · A Windows desktop app that watches deals from AI and software vendors such as ChatGPT, Claude, Gemini, Cursor, and DeepSeek, with optional physical-brand discount monitoring.
+**2.15.0** · A Windows desktop app that watches deals from AI and software vendors such as ChatGPT, Claude, Gemini, Cursor, and DeepSeek, with optional physical-brand discount monitoring.
 
 Chinese above · [standalone English guide](README.en.md)
 
 ## Download
 
-The source tree is **2.14.0**. The published Windows installer is still [v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0); a newer installer will ship in a later release:
+The current version is **2.15.0**. The Windows installer and source zip are on [GitHub Releases · v2.15.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.15.0):
 
-- Windows installer: `DealRadar-Setup-2.9.0-x64.exe`
-- Source zip: `DealRadar-2.9.0-source.zip`
+- Windows installer: `DealRadar-Setup-2.15.0-x64.exe` (unsigned; Windows may show SmartScreen, which is expected. Upgrading keeps your existing data.)
+- Source zip: `DealRadar-2.15.0-source.zip`
 
 SHA256:
 
 ```
-d7464de239301fd03b64af8350c5c4904b1f41b2b002f3be806873e66b7cbee4  DealRadar-Setup-2.9.0-x64.exe
-9e8749b5b0538547ab8e1c36ddf363c998c396cdb2cc291045daea00f3ef8ff5  DealRadar-2.9.0-source.zip
+5072477d622df56384cb4ecfb6d7f5d621adff257ba726b96b2ce58eca1bdfcf  DealRadar-Setup-2.15.0-x64.exe
+（源码包 SHA256 见 Release 附件 `.sha256`）
 ```
 
 The app is not code-signed. If Windows SmartScreen shows “Windows protected your PC”, choose “More info → Run anyway”. Upgrades keep your local deals and settings.
 
 You can also run from source, or package with `npm run dist:win`.
 
-## Features (2.14.0)
+## Features (2.15.0)
 
 - Paste an official URL when adding a channel to auto-detect RSS, GitHub, pricing pages, and other protocols.
 - Multi-channel intake from official blogs, pricing pages, changelogs, status pages, YouTube, GitHub, and forums, plus news / HN / Reddit aggregators. Mainstream official and regional sources only.

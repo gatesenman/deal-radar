@@ -1,4 +1,4 @@
-# Deal Radar (全网优惠雷达) — User Guide · v2.14.0
+# Deal Radar (全网优惠雷达) — User Guide · v2.15.0
 
 [中文说明](README.md) · English
 
@@ -6,16 +6,16 @@ A Windows desktop app that **monitors offers from AI and software vendors in rea
 
 ## 1. Install / run
 
-The source tree is **2.14.0**. Download the current Windows installer from [GitHub Releases · v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0) (a newer installer will ship in a later release):
+The current version is **2.15.0**. Download the installer and source zip from [GitHub Releases · v2.15.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.15.0):
 
-- **Installer**: `DealRadar-Setup-2.9.0-x64.exe`
-- **Source zip**: `DealRadar-2.9.0-source.zip`
+- **Installer**: `DealRadar-Setup-2.15.0-x64.exe` (unsigned; Windows may show SmartScreen. Upgrading keeps your data.)
+- **Source zip**: `DealRadar-2.15.0-source.zip`
 
 SHA256:
 
 ```
-d7464de239301fd03b64af8350c5c4904b1f41b2b002f3be806873e66b7cbee4  DealRadar-Setup-2.9.0-x64.exe
-9e8749b5b0538547ab8e1c36ddf363c998c396cdb2cc291045daea00f3ef8ff5  DealRadar-2.9.0-source.zip
+5072477d622df56384cb4ecfb6d7f5d621adff257ba726b96b2ce58eca1bdfcf  DealRadar-Setup-2.15.0-x64.exe
+(source zip SHA256 is in the Release `.sha256` sidecar)
 ```
 
 The app is not code-signed. If Windows SmartScreen shows “Windows protected your PC”, click “More info → Run anyway”.
@@ -54,8 +54,9 @@ npm run dist:win     # Windows installer + portable build, when the environment 
 
 Preset vendor logos are bundled in `assets/logos/` (offline, HiDPI). Vendors you add get a favicon fetched once and cached in the data folder. If a logo cannot be loaded, a colored initials avatar is shown instead.
 
-## 5. What 2.6–2.14 added
+## 5. What 2.6–2.15 added
 
+- Windows installer and a clean source zip on GitHub Releases; upgrade-safe packaging tests (v2.15).
 - Persistent list filters, a What’s new note after upgrades, a system theme, and lighter mid-refresh UI updates (v2.14).
 - GitHub Releases update check (manual or daily) and push-channel retries (v2.13).
 - Offer feedback with reasons, evidence badges, and a secret-stripping backup (v2.12).
