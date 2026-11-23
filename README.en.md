@@ -6,11 +6,16 @@ A Windows desktop app that **monitors the latest offers from AI / software vendo
 
 ## 1. Install / run
 
-- **Installer**: run `DealRadar-Setup-2.5.0-x64.exe` and follow the prompts.
-- **Portable**: run `DealRadar-Portable-2.5.0-x64.exe` directly.
+There is **no** published installer on GitHub Releases at this time. `package.json` is **2.9.0**. Older docs that mention `DealRadar-Setup-2.5.0-x64.exe` or `DealRadar-Portable-2.5.0-x64.exe` do not match any current release asset. Build with `npm run dist:win` when disk/CI allow; this pass did not upload packages.
 
-> The app is not code-signed. If Windows SmartScreen shows "Windows protected your PC", click "More info → Run anyway".
-> Upgrades keep favorites, settings, custom vendors and channels. Data is migrated automatically.
+From source:
+
+```bash
+npm install
+npm start
+```
+
+If a future signed or unsigned installer is published, Windows SmartScreen may still warn about an unknown publisher until the build is signed.
 
 ## 2. Language
 

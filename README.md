@@ -2,7 +2,14 @@
 
 **2.9.0** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
 
+## 下载
+
+当前 GitHub 上**没有**已发布安装包（无 Release）。`package.json` 版本为 **2.9.0**，打包命令 `npm run dist:win`。请忽略旧文档中的 `DealRadar-Setup-2.5.0-x64.exe` 等文件名，发行页上并不存在这些资产。本轮因磁盘不足未打包上传。
+
 ## 界面截图
+
+以下为仓库 `screenshots/` 中已有的真实产品界面，不是生成图。
+
 
 ![欢迎页](screenshots/final2-16-00-welcome.png)
 
@@ -35,7 +42,7 @@
 
 ## 从源码运行
 
-源码在仓库根目录。本仓库不包含安装包。
+源码在仓库根目录。当前没有已发布安装包（见上方「下载」）。
 
 ```bash
 npm install
@@ -94,9 +101,13 @@ npm test
 - JavaScript
 - HTML 解析与 RSS/XML（fast-xml-parser、node-html-parser）
 
+## Download
+
+There is **no** published installer on GitHub Releases. The app version is **2.9.0**. Package with `npm run dist:win`. Ignore older filenames such as `DealRadar-Setup-2.5.0-x64.exe`; they are not release assets. This pass did not build or upload packages (disk).
+
 ## Getting started
 
-Source is at the repository root. This repository does not include installers.
+Source is at the repository root. There is no published installer yet (see Download above).
 
 ```bash
 npm install
