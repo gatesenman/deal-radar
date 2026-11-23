@@ -1,7 +1,34 @@
-node_modules
+# Dependencies and build output
+node_modules/
 dist/
+build/
+out/
+target/
 release/
+coverage/
+
+# Installers and packed sources (publish via GitHub Releases)
+/*.exe
+/*.zip
+DealRadar-Setup-*.exe
+DealRadar-Portable-*.exe
+DealRadar-*-source.zip
+
+# Secrets and local env
+.env
+.env.local
+.env.*.local
+!.env.example
+!.env.example.*
+
+# User data if copied into the tree
+userdata/
+data/
+*.local.json
+
+# Test / E2E artifacts
 test/live-result.json
+e2e-shots/
 screenshots/*.csv
 screenshots/[0-9]*.png
 screenshots/export-*
@@ -9,17 +36,12 @@ screenshots/en-*.png
 screenshots/e2e-*.png
 screenshots/h[0-9]*.png
 
-# Additional hygiene
-.DS_Store
-Thumbs.db
-.env
-.env.local
-.env.*.local
-target/
+# Logs and caches
 logs/
 *.log
+.cache/
+.DS_Store
+Thumbs.db
 .venv/
 __pycache__/
-coverage/
-!.env.example
-!.env.example.*
+*.pyc
