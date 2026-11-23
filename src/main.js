@@ -18,6 +18,7 @@ const { extractFacts } = require('./core/facts');
 const V26 = require('./core/v26');
 const V27 = require('./core/v27');
 const V28 = require('./core/v28');
+const V210 = require('./core/v210');
 const I18N = require('./renderer/i18n');
 const L = I18N.t; const tx = I18N.tx;
 const { fetchLogo, dataUrl, NOT_VENDOR } = require('./core/logo');
@@ -806,6 +807,7 @@ function registerIPC() {
     setTimeout(() => poll(L('新厂商'), channelSources([brand], chCtx()).map((x) => x.id), true), 300);
     return { brandId: brand.id, added, errors };
   });
+  handle('channel:detect', (url) => V210.detectFromUrl(url));
   handle('discover:channel', async (jobId, input, brandId) => {
     const ctrl = new AbortController(); jobs.set(jobId, ctrl);
     const key = aiKey();

@@ -1145,6 +1145,21 @@ function channelModal(b, c) {
       if (!isEdit) $('#cmSub', m).value = { page: 'pricing', render: 'pricing', search: 'news', appstore: 'app', gplay: 'app', bluesky: 'social', mastodon: 'social', telegram: 'social', rsshub: 'social', github: 'github', discourse: 'forum', hn: 'forum', reddit: 'reddit', youtube: 'youtube' }[t] || 'blog';
     };
     $('#cmProto', m).addEventListener('change', sync); sync();
+    const detectPaste = async (url, announce) => {
+      const d = await call('channel:detect', url).catch(() => null);
+      if (!d || !$('#cmProto')) return;
+      fillChannelForm(d);
+      if (announce && $('#cmSmartNote')) $('#cmSmartNote').innerHTML = ic('check') + ' ' + esc(L('已根据网址识别为 {0} · {1}。点「识别」可再抓取页面、发现订阅源。', protoLabel(d.type), L(d.reason)));
+    };
+    const onPasteUrl = (el, announce) => (e) => {
+      const clip = (e.clipboardData && e.clipboardData.getData('text')) || '';
+      setTimeout(() => { const v = (el.value || clip || '').trim(); if (v) detectPaste(v, announce); }, 0);
+    };
+    if ($('#cmSmart', m)) $('#cmSmart', m).addEventListener('paste', onPasteUrl($('#cmSmart', m), true));
+    if ($('#cf_url', m)) {
+      $('#cf_url', m).addEventListener('paste', onPasteUrl($('#cf_url', m), false));
+      $('#cf_url', m).addEventListener('blur', () => { const v = ($('#cf_url') && $('#cf_url').value || '').trim(); if (v) detectPaste(v, false); });
+    }
   });
   $('#modal').classList.add('wide');
 }

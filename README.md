@@ -1,12 +1,12 @@
 # 全网优惠雷达（Deal Radar）
 
-**2.9.0** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
+**2.10.0** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
 
 中文 · [English](README.en.md)
 
 ## 下载
 
-安装包和源码包发布在 [GitHub Releases · v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0)：
+当前源码版本是 **2.10.0**。已发布的 Windows 安装包仍是 [v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0)（后续版本会再附安装包）：
 
 - Windows 安装包：`DealRadar-Setup-2.9.0-x64.exe`
 - 源码包：`DealRadar-2.9.0-source.zip`
@@ -42,8 +42,9 @@ d7464de239301fd03b64af8350c5c4904b1f41b2b002f3be806873e66b7cbee4  DealRadar-Setu
 
 *设置 / Settings*
 
-## 功能特性（2.9.0）
+## 功能特性（2.10.0）
 
+- **网址识别协议**：添加渠道时粘贴官方网址即可自动选好 RSS、GitHub、价格页等协议；点「识别」仍可发现页面上的官方订阅源。
 - **多渠道采集**：每个厂商走官方博客、价格页、更新日志、状态页、YouTube、GitHub Releases、社区论坛等，再加上新闻 / Hacker News / Reddit 等聚合源。只使用主流官方或地区媒体渠道，不加小众源。
 - **默认证件**：AI 厂商默认开启，其它软件和实物品牌默认关闭，可在欢迎页或设置里改。
 - **识别与提醒**：自动识别试用、折扣、赠送额度、学生与创业计划、限时活动、价格页变动；发现新优惠时桌面通知，也可推到手机。
@@ -93,13 +94,13 @@ Electron · JavaScript · HTML 解析与 RSS/XML（`fast-xml-parser`、`node-htm
 
 # Deal Radar
 
-**2.9.0** · A Windows desktop app that watches deals from AI and software vendors such as ChatGPT, Claude, Gemini, Cursor, and DeepSeek, with optional physical-brand discount monitoring.
+**2.10.0** · A Windows desktop app that watches deals from AI and software vendors such as ChatGPT, Claude, Gemini, Cursor, and DeepSeek, with optional physical-brand discount monitoring.
 
 Chinese above · [standalone English guide](README.en.md)
 
 ## Download
 
-Installer and source archive are on [GitHub Releases · v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0):
+The source tree is **2.10.0**. The published Windows installer is still [v2.9.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.9.0); a newer installer will ship in a later release:
 
 - Windows installer: `DealRadar-Setup-2.9.0-x64.exe`
 - Source zip: `DealRadar-2.9.0-source.zip`
@@ -115,8 +116,9 @@ The app is not code-signed. If Windows SmartScreen shows “Windows protected yo
 
 You can also run from source, or package with `npm run dist:win`.
 
-## Features (2.9.0)
+## Features (2.10.0)
 
+- Paste an official URL when adding a channel to auto-detect RSS, GitHub, pricing pages, and other protocols.
 - Multi-channel intake from official blogs, pricing pages, changelogs, status pages, YouTube, GitHub, and forums, plus news / HN / Reddit aggregators. Mainstream official and regional sources only.
 - AI vendors are on by default; other software and physical brands are off until you enable them.
 - Classifies trials, discounts, credits, student and startup programs, limited-time offers, and pricing-page changes. Desktop notifications, with optional phone push.

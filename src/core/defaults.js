@@ -249,6 +249,7 @@ const VENDOR_CHANNELS = {
   ],
   'ms-copilot': [
     { id: 'm365-blog', sub: 'blog', type: 'rss', name: 'Microsoft 365 博客', url: 'https://www.microsoft.com/en-us/microsoft-365/blog/feed/' },
+    { id: 'ms-blog-copilot', sub: 'blog', type: 'rss', name: 'Microsoft 博客 · Copilot', url: 'https://blogs.microsoft.com/blog/tag/microsoft-copilot/feed/' },
     { id: 'pricing', sub: 'pricing', type: 'page', name: 'Microsoft 365 Copilot 价格页', url: 'https://www.microsoft.com/en-us/microsoft-365/copilot/pricing', keyword: PRICE_KW },
     { id: 'youtube', sub: 'youtube', ...yt('UCFtEEv80fQVKkD4h1PF-Xqw'), name: 'Microsoft YouTube' },
   ],
@@ -265,11 +266,13 @@ const VENDOR_CHANNELS = {
   meta: [
     { id: 'newsroom', sub: 'blog', type: 'rss', name: 'Meta 官方新闻', url: 'https://about.fb.com/news/feed/' },
     { id: 'ai-blog', sub: 'blog', type: 'render', name: 'Meta AI 博客（JS 渲染）', url: 'https://ai.meta.com/blog/' },
+    { id: 'llama-api', sub: 'pricing', type: 'page', name: 'Meta Llama API / 模型页', url: 'https://dev.meta.ai/', keyword: PRICE_KW },
     { id: 'llama-stack', sub: 'github', type: 'github', name: 'GitHub：Llama Stack 发布', opts: { repo: 'meta-llama/llama-stack', what: 'releases' }, on: false },
     { id: 'android', sub: 'app', type: 'gplay', name: 'Google Play：Meta AI', opts: { pkg: 'com.facebook.stella' } },
   ],
   mistral: [
     { id: 'news', sub: 'blog', type: 'sitemap', name: '新闻新页面（sitemap）', url: 'https://mistral.ai/sitemap.xml', opts: { filter: '/news/' } },
+    { id: 'news-rss', sub: 'blog', type: 'rss', name: 'Mistral 官方新闻 RSS', url: 'https://mistral.ai/news/rss' },
     { id: 'pricing', sub: 'pricing', type: 'page', name: 'Mistral 价格页', url: 'https://mistral.ai/pricing' },
     { id: 'changelog', sub: 'changelog', type: 'page', name: '文档更新日志', url: 'https://docs.mistral.ai/getting-started/changelog/' },
     { id: 'sdk', sub: 'github', type: 'github', name: 'GitHub：client-python 发布', opts: { repo: 'mistralai/client-python', what: 'releases' }, on: false },
@@ -486,7 +489,7 @@ const VENDOR_CHANNELS = {
 // 每个厂商自动追加：Google 新闻优惠搜索 + Hacker News（国际厂商）
 const CN_GLOBAL = new Set(['deepseek', 'kimi', 'zhipu', 'qwen', 'minimax']); // 有海外产品，英文新闻也开启
 const CN_VENDORS = new Set(['coze', 'deepseek', 'kimi', 'zhipu', 'qwen', 'doubao', 'ernie', 'hunyuan', 'spark', 'minimax']);
-const HN_QUERY = { openai: 'OpenAI', anthropic: 'Anthropic', gemini: 'Gemini', xai: 'xAI', meta: 'Llama', mistral: 'Mistral', perplexity: 'Perplexity', cursor: 'Cursor', 'github-copilot': 'Copilot', deepseek: 'DeepSeek', midjourney: 'Midjourney', devin: 'Devin', manus: 'Manus', dify: 'Dify', langchain: 'LangChain', n8n: 'n8n', genspark: 'Genspark' };
+const HN_QUERY = { openai: 'OpenAI', anthropic: 'Anthropic', gemini: 'Gemini', xai: 'xAI', meta: 'Llama', mistral: 'Mistral', perplexity: 'Perplexity', cursor: 'Cursor', 'github-copilot': 'Copilot', 'ms-copilot': 'Microsoft Copilot', deepseek: 'DeepSeek', midjourney: 'Midjourney', devin: 'Devin', manus: 'Manus', dify: 'Dify', langchain: 'LangChain', n8n: 'n8n', genspark: 'Genspark' };
 for (const list of Object.values(VENDOR_CHANNELS)) for (const c of list) if (c.type === 'reddit' && !c.interval) c.interval = 60;
 for (const b of AI_BRANDS) {
   const list = VENDOR_CHANNELS[b.id] = VENDOR_CHANNELS[b.id] || [];
