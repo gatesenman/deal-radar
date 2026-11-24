@@ -3,8 +3,8 @@
   "recordedAt": "2026-11-24 12:22:13 +08:00",
   "offlineSuite": {
     "command": "OFFLINE=1 npm test",
-    "total": 177,
-    "passed": 176,
+    "total": 178,
+    "passed": 177,
     "failed": 0,
     "skipped": 1,
     "skipReason": "LIVE: preset sources reachable & produce matched deals intentionally disabled in offline suite; replaced by separately recorded complete app-path audit.",
@@ -51,7 +51,8 @@
     "linuxCommand": "CSC_IDENTITY_AUTO_DISCOVERY=false npx electron-builder --linux dir --x64 --publish never --config.electronDist=node_modules/electron/dist --config.directories.output=<external-build-dir>",
     "packageValidation": "package-validation.json",
     "windowsAsarSHA256": "48601ae7902b6652749f4f9137ab6ad5f60b88a1131d8a6a87fd8f50cbdbf4d2",
-    "packageValidationCommand": "node scripts/validate-app-package.js <win-dir> <linux-dir> <extracted-installer-asar> source-audit/package-validation.json"
+    "packageValidationCommand": "node scripts/validate-app-package.js <win-dir> <linux-dir> <extracted-installer-asar> source-audit/package-validation.json",
+    "sourceArchivePolicy": "Tracked regular files only; no symlink traversal, installers, build/user data or historical E2E screenshot runs. Four README screenshots are retained."
   },
   "liveAudit": {
     "total": 367,

@@ -111,3 +111,8 @@ test('v222: final sanitized audit contains one outcome for every original source
  for(const r of audit.sources){assert.ok(r.checkedAt.endsWith('+08:00'));assert.ok(C.PROTOCOLS[r.protocol]);assert.ok(r.reason);assert.ok(r.checkedCodeSHA256);if(r.status==='parsed')assert.ok(r.parsedCount>0,r.id);if(!r.liveAttempted)assert.ok(r.suppressedBy,r.id);}
  assert.equal(require('../source-audit/protocols.json').count,Object.keys(C.PROTOCOLS).length);
 });
+
+test('v222: clean source manifest retains documented screenshots, not E2E history or binaries',()=>{
+ const include=require('../scripts/lib/source-manifest').sourcePolicy('![Welcome](screenshots/welcome.png)');
+ assert.equal(include('screenshots/welcome.png'),true);assert.equal(include('screenshots/old-e2e.png'),false);assert.equal(include('playwright-report/report.html'),false);assert.equal(include('artifacts/Setup.exe'),false);assert.equal(include('assets/icon.png'),true);assert.equal(include('src/core/monitor.js'),true);assert.equal(include('source-audit/results.json'),true);
+});

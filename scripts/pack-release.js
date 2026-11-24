@@ -6,6 +6,7 @@ const path = require('path');
 const crypto = require('crypto');
 const { spawnSync } = require('child_process');
 const V215 = require('../src/core/v215');
+const { sourcePolicy } = require('./lib/source-manifest');
 
 const root = path.join(__dirname, '..');
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
@@ -27,7 +28,8 @@ function walk(dir, out = []) {
 }
 const tracked = spawnSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8' });
 if (tracked.status !== 0) throw new Error('Source packaging requires a git checkout');
-const files = tracked.stdout.split('\0').filter(Boolean).filter((f) => V215.shouldPack(f) && fs.existsSync(path.join(root, f))).sort();
+const include = sourcePolicy(fs.readFileSync(path.join(root, 'README.md'), 'utf8'));
+const files = tracked.stdout.split('\0').filter(Boolean).filter((f) => include(f) && fs.existsSync(path.join(root, f)) && fs.lstatSync(path.join(root, f)).isFile()).sort();
 for (const f of files.filter((x) => /\.(js|json|md|html|css|ya?ml)$/.test(x) && !x.startsWith('test/'))) {
   if (!V215.scanText(fs.readFileSync(path.join(root, f), 'utf8')).ok) throw new Error('Secret pattern in ' + f);
 }
