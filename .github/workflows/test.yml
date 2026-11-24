@@ -15,3 +15,11 @@ jobs:
       - run: npm test
         env:
           OFFLINE: '1'
+      - run: npm run smoke
+        env:
+          SMOKE_OUTPUT: ${{ runner.temp }}/dealradar-smoke
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: electron-smoke
+          path: ${{ runner.temp }}/dealradar-smoke

@@ -18,7 +18,7 @@
     <div class="tb-center">
       <div class="search">
         <i data-ic="search"></i>
-        <input id="q" type="text" placeholder="搜索优惠标题、厂商、平台…  (Ctrl+F)" />
+        <input id="q" aria-label="搜索优惠" type="search" placeholder="搜索优惠标题、厂商、平台…  (Ctrl+F)" />
       </div>
     </div>
     <div class="tb-right">
@@ -353,7 +353,7 @@
   </footer>
 </div>
 
-<div class="modal-mask" id="modalMask"><div class="modal" id="modal"></div></div>
+<div class="modal-mask" id="modalMask" aria-hidden="true"><div class="modal" id="modal" role="dialog" aria-modal="true" tabindex="-1"></div></div>
 <div class="toasts" id="toasts"></div>
 <script src="i18n.js"></script>
 <script src="icons.js"></script>

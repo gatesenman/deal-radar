@@ -103,7 +103,7 @@ function fmtTime(ts) { return ts ? new Date(ts).toLocaleString(LOC, { hour12: fa
 function brandById(id) { return S.state.brands.find((b) => b.id === id); }
 function bname(id) { const b = brandById(id); return b ? b.name : id; }
 function toast(msg, type = '') {
-  const el = document.createElement('div'); el.className = 'toast ' + type; el.textContent = msg;
+  const el = document.createElement('div'); el.className = 'toast ' + type; el.setAttribute('role', type === 'err' ? 'alert' : 'status'); el.textContent = msg;
   $('#toasts').appendChild(el); setTimeout(() => el.remove(), 3600);
 }
 async function call(ch, ...a) {
@@ -1089,13 +1089,24 @@ function moveSel(delta) {
 }
 
 // —— 弹窗 ——
+let modalReturnFocus = null;
+const modalFocusable = () => $$('#modal button:not(:disabled), #modal input:not(:disabled), #modal select:not(:disabled), #modal textarea:not(:disabled), #modal a[href], #modal [tabindex="0"]').filter((e) => e.offsetParent !== null);
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Tab' || !$('#modalMask').classList.contains('show')) return;
+  const items = modalFocusable(); const i = items.indexOf(document.activeElement);
+  if (!items.length) { e.preventDefault(); $('#modal').focus(); return; }
+  if (e.shiftKey && i <= 0) { e.preventDefault(); items[items.length - 1].focus(); }
+  else if (!e.shiftKey && (i < 0 || i === items.length - 1)) { e.preventDefault(); items[0].focus(); }
+}, true);
 function openModal(html, onMount) {
-  $('#modal').classList.remove('wide', 'xl'); $('#modal').innerHTML = html; $('#modalMask').classList.add('show');
+  if (!$('#modalMask').classList.contains('show')) modalReturnFocus = document.activeElement;
+  $('#modal').classList.remove('wide', 'xl'); $('#modal').innerHTML = html; $('#modalMask').classList.add('show'); $('#modalMask').setAttribute('aria-hidden', 'false');
+  const heading = $('#modal h3'); if (heading) { heading.id = 'modalHeading'; $('#modal').setAttribute('aria-labelledby', 'modalHeading'); } else $('#modal').removeAttribute('aria-labelledby');
   onMount && onMount($('#modal'));
-  const first = $('#modal input:not([type=checkbox])'); first && setTimeout(() => first.focus(), 30);
+  const first = $('#modal input:not([type=checkbox])') || modalFocusable()[0] || $('#modal'); setTimeout(() => { if (first.isConnected) first.focus(); }, 30);
 }
 function openVendor(id) { S.vendor = id; go('vendor'); $('#view-vendor .page-scroll').scrollTop = 0; }
-function closeModal() { cancelDiscover(); if (S.cs && S.cs.running) window.api.call('discover:cancel', S.cs.jobId).catch(() => {}); S.cs = null; $('#modalMask').classList.remove('show'); $('#modal').innerHTML = ''; $('#modal').classList.remove('wide', 'xl'); }
+function closeModal() { cancelDiscover(); if (S.cs && S.cs.running) window.api.call('discover:cancel', S.cs.jobId).catch(() => {}); S.cs = null; $('#modalMask').classList.remove('show'); $('#modal').innerHTML = ''; $('#modal').classList.remove('wide', 'xl'); $('#modalMask').setAttribute('aria-hidden', 'true'); if (modalReturnFocus && modalReturnFocus.isConnected) modalReturnFocus.focus(); modalReturnFocus = null; }
 
 // 快速添加：名称 → 默认关键词（含中文名，方便中文资讯源匹配）
 const AI_IDEAS = { 'Grammarly': 'Grammarly', 'Zoom': 'Zoom AI Companion', 'Dropbox': 'Dropbox, Dropbox Dash', 'Slack': 'Slack AI', 'Atlassian': 'Atlassian, Jira, Confluence, Rovo', 'Salesforce': 'Salesforce, Agentforce', 'Apple Intelligence': 'Apple Intelligence', 'Samsung Galaxy AI': 'Galaxy AI', 'Stability AI': 'Stability AI, Stable Diffusion', 'NVIDIA': 'NVIDIA NIM, NVIDIA AI', 'Hugging Face': 'Hugging Face, HuggingFace', 'JetBrains': 'JetBrains, JetBrains AI, Junie', 'Vercel v0': 'v0.dev, v0 by Vercel', 'Replit': 'Replit', 'Windsurf': 'Windsurf, Codeium', 'Kling 可灵': ("Kling AI, " + L('可灵')), '百川智能': (L('百川智能') + ", Baichuan"), '零一万物': (L('零一万物') + ", Yi-Large"), '阶跃星辰': (L('阶跃星辰') + ", StepFun"), '昆仑天工': L('天工AI, 昆仑万维') };

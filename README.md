@@ -1,20 +1,20 @@
 # 全网优惠雷达（Deal Radar）
 
-**2.15.0** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
+**2.21.0** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
 
 中文 · [English](README.en.md)
 
 ## 下载
 
-当前版本是 **2.15.0**。Windows 安装包和源码包在 [GitHub Releases · v2.15.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.15.0)：
+当前版本是 **2.21.0**。Windows 安装包和源码包在 [GitHub Releases · v2.21.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.21.0)：
 
-- Windows 安装包：`DealRadar-Setup-2.15.0-x64.exe`（未签名，Windows 可能提示 SmartScreen，属预期；升级不会清空已有数据）
-- 源码包：`DealRadar-2.15.0-source.zip`
+- Windows 安装包：`DealRadar-Setup-2.21.0-x64.exe`（未签名，Windows 可能提示 SmartScreen，属预期；升级不会清空已有数据）
+- 源码包：`DealRadar-2.21.0-source.zip`
 
 SHA256：
 
 ```
-5072477d622df56384cb4ecfb6d7f5d621adff257ba726b96b2ce58eca1bdfcf  DealRadar-Setup-2.15.0-x64.exe
+See SHA256SUMS.txt on the v2.21.0 Release for installer and source checksums.
 （源码包 SHA256 见 Release 附件 `.sha256`）
 ```
 
@@ -42,7 +42,7 @@ SHA256：
 
 *设置 / Settings*
 
-## 功能特性（2.15.0）
+## 功能特性（2.21.0）
 
 - **复查更准**：落地页软 404 与更多「已结束」用语；截止日期支持数字日期和「还有 N 天」；价格识别 USD 20 / month 等写法。
 - **网址识别协议**：添加渠道时粘贴官方网址即可自动选好 RSS、GitHub、价格页等协议；点「识别」仍可发现页面上的官方订阅源。
@@ -95,21 +95,21 @@ Electron · JavaScript · HTML 解析与 RSS/XML（`fast-xml-parser`、`node-htm
 
 # Deal Radar
 
-**2.15.0** · A Windows desktop app that watches deals from AI and software vendors such as ChatGPT, Claude, Gemini, Cursor, and DeepSeek, with optional physical-brand discount monitoring.
+**2.21.0** · A Windows desktop app that watches deals from AI and software vendors such as ChatGPT, Claude, Gemini, Cursor, and DeepSeek, with optional physical-brand discount monitoring.
 
 Chinese above · [standalone English guide](README.en.md)
 
 ## Download
 
-The current version is **2.15.0**. The Windows installer and source zip are on [GitHub Releases · v2.15.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.15.0):
+The current version is **2.21.0**. The Windows installer and source zip are on [GitHub Releases · v2.21.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.21.0):
 
-- Windows installer: `DealRadar-Setup-2.15.0-x64.exe` (unsigned; Windows may show SmartScreen, which is expected. Upgrading keeps your existing data.)
-- Source zip: `DealRadar-2.15.0-source.zip`
+- Windows installer: `DealRadar-Setup-2.21.0-x64.exe` (unsigned; Windows may show SmartScreen, which is expected. Upgrading keeps your existing data.)
+- Source zip: `DealRadar-2.21.0-source.zip`
 
 SHA256:
 
 ```
-5072477d622df56384cb4ecfb6d7f5d621adff257ba726b96b2ce58eca1bdfcf  DealRadar-Setup-2.15.0-x64.exe
+See SHA256SUMS.txt on the v2.21.0 Release for installer and source checksums.
 （源码包 SHA256 见 Release 附件 `.sha256`）
 ```
 
@@ -117,7 +117,7 @@ The app is not code-signed. If Windows SmartScreen shows “Windows protected yo
 
 You can also run from source, or package with `npm run dist:win`.
 
-## Features (2.15.0)
+## Features (2.21.0)
 
 - Paste an official URL when adding a channel to auto-detect RSS, GitHub, pricing pages, and other protocols.
 - Multi-channel intake from official blogs, pricing pages, changelogs, status pages, YouTube, GitHub, and forums, plus news / HN / Reddit aggregators. Mainstream official and regional sources only.
@@ -144,3 +144,12 @@ Data lives in the local user directory (`%APPDATA%\全网优惠雷达\` on Windo
 ## License
 
 [MIT](LICENSE)
+
+## 2.16–2.21 更新 / New improvements
+
+- 公开源地址与重定向安全校验；备份校验及失败回滚；更保守的截止日期与币种解释。
+- 服务端限流冷却、故障恢复记录、持久推送去重；弹窗键盘导航与双语离线界面测试。
+- Public-source URL/redirect checks, validated backup restore with rollback, conservative deadlines and currency history.
+- Server cooldowns, recovery history, durable push reservations, keyboard modal navigation and bilingual offline UI smoke tests.
+
+**限制 / Limits:** DNS preflight is not IP-pinning. Private-network RSSHub sources are blocked. Push endpoints remain explicitly trusted and stored locally without encryption. Ambiguous push outcomes are suppressed (not exactly-once); no blind POST retries. Date-only deadlines use device-local end of day. No new coverage percentage is claimed. Installer is unsigned; native Windows install/upgrade and screen-reader testing remain unverified. See `VALIDATION_2.21.md`.

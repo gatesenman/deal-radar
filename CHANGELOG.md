@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.21.0 — Accessible modal navigation and reproducible release validation
+
+- Add labelled modal semantics, keyboard focus trapping/return, search labels, live toast roles, visible focus and reduced-motion support. Add a network-blocked Electron smoke runner for zh/en, upgrade fixtures, settings and backup IPC. Package tracked files only, scan text contents and remove random temporary directory prefixes from source archives.
+
+
 ## 2.20.0 — Persistent push delivery reservations
 
 - Reserve per-channel offer/digest/trial keys on disk before external POSTs; deduplicate overlapping saved views and process restarts. Separate daily/weekly scopes. Bound request timeout and stop blindly retrying ambiguous POST outcomes; mask legacy push error bodies.

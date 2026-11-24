@@ -634,3 +634,7 @@ span.tags{display:inline-flex;vertical-align:middle}
 [data-preset]{display:inline-flex;flex-direction:column;align-items:flex-start;text-align:left}
 [data-preset] svg{margin-bottom:2px}
 [data-preset].on{border-color:var(--accent);background:var(--accent-bg)}
+
+/* Keyboard focus and reduced motion are independent of the theme. */
+:focus-visible{outline:2px solid #38bdf8;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}

@@ -16,6 +16,7 @@ const zipPath = path.join(outDir, zipName);
 
 function walk(dir, out = []) {
   for (const name of fs.readdirSync(dir)) {
+    if (V215.EXCLUDE.includes(name)) continue;
     const p = path.join(dir, name);
     let st; try { st = fs.lstatSync(p); } catch { continue; }
     if (st.isSymbolicLink()) continue;
@@ -24,7 +25,12 @@ function walk(dir, out = []) {
   }
   return out;
 }
-const files = walk(root).filter((f) => V215.shouldPack(f)).sort();
+const tracked = spawnSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8' });
+if (tracked.status !== 0) throw new Error('Source packaging requires a git checkout');
+const files = tracked.stdout.split('\0').filter(Boolean).filter((f) => V215.shouldPack(f) && fs.existsSync(path.join(root, f))).sort();
+for (const f of files.filter((x) => /\.(js|json|md|html|css|ya?ml)$/.test(x) && !x.startsWith('test/'))) {
+  if (!V215.scanText(fs.readFileSync(path.join(root, f), 'utf8')).ok) throw new Error('Secret pattern in ' + f);
+}
 const listFile = path.join(outDir, 'source-files.txt');
 fs.writeFileSync(listFile, files.join('\n') + '\n');
 const staging = fs.mkdtempSync(path.join(require('os').tmpdir(), 'dr-src-'));
@@ -34,7 +40,7 @@ for (const f of files) {
   fs.copyFileSync(path.join(root, f), dest);
 }
 try { fs.unlinkSync(zipPath); } catch {}
-const py = 'import os,sys,zipfile\nroot=sys.argv[1]; out=sys.argv[2]\nwith zipfile.ZipFile(out,"w",zipfile.ZIP_DEFLATED) as z:\n  for dp, dns, fns in os.walk(root):\n    for fn in fns:\n      p=os.path.join(dp,fn); z.write(p, os.path.relpath(p, os.path.dirname(root)))\n'
+const py = 'import os,sys,zipfile\nroot=sys.argv[1]; out=sys.argv[2]\nwith zipfile.ZipFile(out,"w",zipfile.ZIP_DEFLATED) as z:\n  for dp, dns, fns in os.walk(root):\n    for fn in fns:\n      p=os.path.join(dp,fn); z.write(p, os.path.relpath(p, root))\n'
 const r = spawnSync('python3', ['-c', py, staging, zipPath], { stdio: 'inherit' });
 fs.rmSync(staging, { recursive: true, force: true });
 if (r.status !== 0) process.exit(r.status || 1);

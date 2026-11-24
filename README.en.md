@@ -1,4 +1,4 @@
-# Deal Radar (全网优惠雷达) — User Guide · v2.15.0
+# Deal Radar (全网优惠雷达) — User Guide · v2.21.0
 
 [中文说明](README.md) · English
 
@@ -6,15 +6,15 @@ A Windows desktop app that **monitors offers from AI and software vendors in rea
 
 ## 1. Install / run
 
-The current version is **2.15.0**. Download the installer and source zip from [GitHub Releases · v2.15.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.15.0):
+The current version is **2.21.0**. Download the installer and source zip from [GitHub Releases · v2.21.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.21.0):
 
-- **Installer**: `DealRadar-Setup-2.15.0-x64.exe` (unsigned; Windows may show SmartScreen. Upgrading keeps your data.)
-- **Source zip**: `DealRadar-2.15.0-source.zip`
+- **Installer**: `DealRadar-Setup-2.21.0-x64.exe` (unsigned; Windows may show SmartScreen. Upgrading keeps your data.)
+- **Source zip**: `DealRadar-2.21.0-source.zip`
 
 SHA256:
 
 ```
-5072477d622df56384cb4ecfb6d7f5d621adff257ba726b96b2ce58eca1bdfcf  DealRadar-Setup-2.15.0-x64.exe
+See SHA256SUMS.txt on the v2.21.0 Release for installer and source checksums.
 (source zip SHA256 is in the Release `.sha256` sidecar)
 ```
 
@@ -79,3 +79,9 @@ See [DESIGN.md](DESIGN.md) for technical notes and [RESEARCH.md](RESEARCH.md) fo
 ## License
 
 [MIT](LICENSE)
+
+## 2.16–2.21 reliability and security
+
+Public source URL/redirect guards; validated backup restore with rollback; conservative expiry and currency parsing; server Retry-After cooldowns and source recovery; persistent push reservations; accessible modal keyboard navigation.
+
+Push sends no longer blindly retry ambiguous POST outcomes. The installer is unsigned. DNS preflight is not IP-pinning, push endpoints are explicitly trusted, and native Windows install/upgrade remains untested. See `VALIDATION_2.21.md`.

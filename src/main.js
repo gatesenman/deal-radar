@@ -110,6 +110,7 @@ function getDirect() {
   return directSession;
 }
 const fetchText = makeFetchText((url, init, o = {}) => {
+  if (process.env.DEAL_RADAR_SHOT_SET === 'smoke') throw new Error('Network disabled in smoke');
   const useCache = store && store.config.settings.httpCache !== false;
   if (!useCache) { delete init.headers['If-None-Match']; delete init.headers['If-Modified-Since']; }
   return o.proxy === false ? getDirect().fetch(url, init) : net.fetch(url, init);
@@ -548,7 +549,7 @@ function dailyDigest(force) {
   return dg;
 }
 // —— v2.8：推送渠道 ——
-function channelFetch(url, opts) { return net.fetch(url, { signal: AbortSignal.timeout(15000), ...opts, bypassCustomProtocolHandlers: true }); }
+function channelFetch(url, opts) { if (process.env.DEAL_RADAR_SHOT_SET === 'smoke') throw new Error('Network disabled in smoke'); return net.fetch(url, { signal: AbortSignal.timeout(15000), ...opts, bypassCustomProtocolHandlers: true }); }
 async function sendTo(c, msg) {
   const ch = (store.config.settings.channels || []).find((x) => x.id === c.id) || c;
   try {
@@ -1118,6 +1119,35 @@ async function shotMode() {
   const wait = (ms) => new Promise((r) => setTimeout(r, ms));
   const shoot = async (name) => { await wait(1200); const img = await wc.capturePage(); fs.writeFileSync(path.join(SHOT_DIR, name), img.toPNG()); console.log('[shot]', name); };
   const js = (code) => wc.executeJavaScript(code);
+  if (process.env.DEAL_RADAR_SHOT_SET === 'smoke') {
+    for (let n = 0; n < 50; n++) { if (await js('!!(window.__test && document.querySelector("#sDataDir").textContent)')) break; await wait(100); }
+    const checks = await js(`(async () => {
+      const results = []; const check = (name, ok) => results.push({ name, ok: !!ok });
+      const wait = (ms) => new Promise(r => setTimeout(r, ms));
+      check('boot state and version', S.state.version === '2.21.0');
+      check('upgrade preserves favourite/claimed', S.state.deals.some(d => d.id === 'upgrade-fixture' && d.fav && d.status === 'claimed'));
+      go('deals'); await wait(100); check('fixture offer renders', document.querySelectorAll('#dealList .card, #dealList tbody tr').length > 0);
+      go('settings'); await wait(100); check('settings and system theme', !!document.querySelector('#sTheme [data-v=system]'));
+      check('zh/en search label', document.querySelector('#q').getAttribute('aria-label') === (EN ? 'Search offers' : ${JSON.stringify(L('搜索优惠'))}));
+      document.querySelector('#btnKeys').focus(); document.querySelector('#btnKeys').click(); await wait(100);
+      check('dialog semantics', document.querySelector('#modal').getAttribute('role') === 'dialog' && document.querySelector('#modal').getAttribute('aria-labelledby') === 'modalHeading');
+      const items = modalFocusable(); items[items.length - 1].focus(); document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true }));
+      check('Tab traps focus', document.activeElement === items[0]);
+      items[0].focus(); document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', shiftKey: true, bubbles: true, cancelable: true }));
+      check('Shift-Tab traps focus', document.activeElement === items[items.length - 1]);
+      closeModal(); check('focus returns to opener', document.activeElement.id === 'btnKeys');
+      const before = S.state.deals.length;
+      await window.api.call('settings:save', { listFilters: { type: 'free', sort: 'score' } });
+      const st = await window.api.call('state:get'); check('settings IPC persists', st.settings.listFilters.type === 'free' && st.settings.listFilters.sort === 'score');
+      const saved = await window.api.call('backup:export'); const restored = await window.api.call('backup:import', saved.path);
+      check('backup IPC restores', restored.format === 3 && restored.deals === before);
+      go('sources'); await wait(100); check('source health renders', !!document.querySelector('#srcTable tbody tr'));
+      return results;
+    })()`);
+    fs.writeFileSync(path.join(SHOT_DIR, 'smoke.json'), JSON.stringify(checks, null, 2));
+    for (const c of checks) console.log('[smoke]', c.ok ? 'PASS' : 'FAIL', c.name);
+    await shoot('smoke-final.png'); quitting = true; app.exit(checks.every(c => c.ok) ? 0 : 1); return;
+  }
   // 本地模拟 OpenAI 兼容接口：自动化测试 AI 辅助添加（无需真实 Key）
   if (process.env.DEAL_RADAR_MOCK_LLM) {
     const { startMockLLM } = require('./mock-llm');
@@ -1342,6 +1372,7 @@ async function shotMode() {
 
 app.on('second-instance', showWindow);
 app.whenReady().then(async () => {
+  if (process.env.DEAL_RADAR_SHOT_SET === 'smoke') session.defaultSession.webRequest.onBeforeRequest({ urls: ['http://*/*', 'https://*/*'] }, (_, cb) => cb({ cancel: true }));
   store = new Store(app.getPath('userData'));
   loadHttpCache();
   applyLang();
