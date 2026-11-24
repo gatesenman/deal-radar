@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.16.0 — Public source network boundary
+
+- Block private source URLs, URL credentials and mixed public/private DNS answers. Revalidate redirects, strip cross-origin auth/cookie headers; hidden renderer guards HTTP/file subrequests. Mask push endpoint URLs and raw settings channels before IPC.
+
+
 ## 2.15.0（2026-11-24）— 打包、升级与发布
 
 - 源码包脚本 `npm run pack:source`：排除 node_modules、构建产物、用户数据和疑似密钥文件，并生成 SHA256。

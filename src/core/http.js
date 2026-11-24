@@ -1,5 +1,6 @@
 'use strict';
 // HTTP 层：统一 UA/自定义请求头/超时、ETag + If-Modified-Since 条件请求缓存（内存）
+const { assertPublicURL } = require('./network-policy');
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36';
 
 class HttpCache {
@@ -22,7 +23,7 @@ class HttpCache {
  * rawFetch(url, init, opts) 返回 WHATWG Response（Node fetch / Electron net.fetch / session.fetch）
  * opts: { ua, headers, timeout, cache(bool), proxy, meta(对象，回写 status/cached/ms/bytes) }
  */
-function makeFetchText(rawFetch, { cache = new HttpCache(), friendly = (m) => m } = {}) {
+function makeFetchText(rawFetch, { cache = new HttpCache(), friendly = (m) => m, validateUrl = assertPublicURL } = {}) {
   async function fetchText(url, opts = {}) {
     const { ua, headers = {}, timeout = 20000, meta } = opts;
     const ctrl = new AbortController();
@@ -32,7 +33,21 @@ function makeFetchText(rawFetch, { cache = new HttpCache(), friendly = (m) => m 
     if (c) { if (c.etag) h['If-None-Match'] = c.etag; if (c.lm) h['If-Modified-Since'] = c.lm; }
     const t0 = Date.now();
     try {
-      const res = await rawFetch(url, { signal: ctrl.signal, headers: h, redirect: 'follow' }, opts);
+      let target = url; let res;
+      for (let redirects = 0; ; redirects++) {
+        await validateUrl(target);
+        res = await rawFetch(target, { signal: ctrl.signal, headers: h, redirect: 'manual' }, opts);
+        if (![301, 302, 303, 307, 308].includes(res.status)) break;
+        if (redirects >= 5) throw new Error('Too many redirects');
+        const location = res.headers.get('location');
+        if (!location) throw new Error('Redirect missing location');
+        const next = new URL(location, target).href;
+        if (new URL(next).origin !== new URL(target).origin) {
+          for (const k of Object.keys(h)) if (/^(authorization|cookie|proxy-authorization|if-none-match|if-modified-since)$/i.test(k)) delete h[k];
+        }
+        if (res.body && res.body.cancel) await res.body.cancel();
+        target = next;
+      }
       if (res.status === 304 && c) { cache.hits++; cache.savedBytes = (cache.savedBytes || 0) + c.body.length; if (meta) Object.assign(meta, { status: 304, cached: true, ms: Date.now() - t0, bytes: c.body.length }); return c.body; }
       if (!res.ok) { const e = new Error('HTTP ' + res.status); e.status = res.status; e.retryAfter = Number(res.headers.get('retry-after')) || 0; throw e; }
       const body = await res.text();

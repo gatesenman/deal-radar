@@ -2,6 +2,9 @@
 // JS 渲染采集：用隐藏（离屏）BrowserWindow 打开页面，等待脚本执行与人机验证自动通过，再取渲染后的 HTML
 const { BrowserWindow, session } = require('electron');
 
+const { assertPublicURL } = require('./core/network-policy');
+const guard = (u) => assertPublicURL(u, { lookup: require('node:dns').promises.lookup });
+const guarded = new WeakSet();
 let active = 0; const queue = [];
 const MAX = 2;
 function acquire() { return new Promise((res) => { if (active < MAX) { active++; res(); } else queue.push(res); }); }
@@ -10,8 +13,13 @@ function release() { active--; const n = queue.shift(); if (n) { active++; n(); 
 const CHALLENGE = /just a moment|checking your browser|cf-browser-verification|challenge-platform|verify you are human|请稍候|安全验证/i;
 
 async function renderHTML(url, { timeout = 45000, wait = 2500, ua, partition = 'persist:render' } = {}) {
+  await guard(url);
   await acquire();
   const ses = session.fromPartition(partition);
+  if (!guarded.has(ses)) {
+    ses.webRequest.onBeforeRequest({ urls: ['http://*/*', 'https://*/*', 'file://*/*'] }, (details, cb) => { guard(details.url).then(() => cb({ cancel: false }), () => cb({ cancel: true })); });
+    guarded.add(ses);
+  }
   const w = new BrowserWindow({ show: false, width: 1366, height: 900, webPreferences: { offscreen: true, sandbox: true, contextIsolation: true, javascript: true, images: false, session: ses } });
   w.webContents.setAudioMuted(true);
   w.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));

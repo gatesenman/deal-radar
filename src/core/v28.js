@@ -36,7 +36,7 @@ function validateChannel(c) {
 }
 function mask(c) { // 给界面看的：不回传完整密钥
   const m = (v) => (v ? v.slice(0, 4) + '…' + v.slice(-3) : '');
-  return { ...c, secret: c.secret ? '••••' : '', token: m(c.token), key: m(c.key), hasSecret: !!c.secret, hasToken: !!c.token, hasKey: !!c.key };
+  return { ...c, url: c.url ? '••••' : '', hasUrl: !!c.url, secret: c.secret ? '••••' : '', token: m(c.token), key: m(c.key), hasSecret: !!c.secret, hasToken: !!c.token, hasKey: !!c.key };
 }
 
 // 统一消息 → {title, text(markdown), plain, link}

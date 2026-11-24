@@ -21,6 +21,8 @@ const V28 = require('./core/v28');
 const V210 = require('./core/v210');
 const V212 = require('./core/v212');
 const V213 = require('./core/v213');
+const { assertPublicURL } = require('./core/network-policy');
+const sourceURL = (u) => assertPublicURL(u, { lookup: require('node:dns').promises.lookup });
 const V214 = require('./core/v214');
 const I18N = require('./renderer/i18n');
 const L = I18N.t; const tx = I18N.tx;
@@ -109,7 +111,7 @@ const fetchText = makeFetchText((url, init, o = {}) => {
   const useCache = store && store.config.settings.httpCache !== false;
   if (!useCache) { delete init.headers['If-None-Match']; delete init.headers['If-Modified-Since']; }
   return o.proxy === false ? getDirect().fetch(url, init) : net.fetch(url, init);
-}, { cache: httpCache, friendly: (m) => friendlyNetError(m) });
+}, { validateUrl: sourceURL, cache: httpCache, friendly: (m) => friendlyNetError(m) });
 function renderText(url, o = {}) {
   if (!renderHTML) return Promise.reject(new Error(L('当前环境不支持 JS 渲染')));
   if (store.config.settings.renderEnabled === false) return Promise.reject(new Error(("JS " + L('渲染已在设置中关闭'))));
@@ -336,7 +338,7 @@ async function recheckLanding(force = false) {
 function publicSettings() {
   const { ai, ...rest } = store.config.settings;
   const a = ai || {};
-  return { ...rest, ai: { provider: a.provider || '', baseUrl: a.baseUrl || '', model: a.model || '', hasKey: !!(a.keyEnc || sessionKey), keyHint: a.keyHint || '', encrypted: !!a.keyEnc, encAvailable: encAvailable() } };
+  return { ...rest, channels: (rest.channels || []).map(V28.mask), ai: { provider: a.provider || '', baseUrl: a.baseUrl || '', model: a.model || '', hasKey: !!(a.keyEnc || sessionKey), keyHint: a.keyHint || '', encrypted: !!a.keyEnc, encAvailable: encAvailable() } };
 }
 function encAvailable() { try { return safeStorage.isEncryptionAvailable(); } catch { return false; } }
 function aiKey() {
@@ -961,7 +963,7 @@ function registerIPC() {
   handle('push:save', (c) => {
     const list = chList(); const old = list.find((x) => x.id === c.id);
     // 界面只拿到打码后的密钥：没改动就沿用旧值
-    const merged = { ...(old || {}), ...c }; for (const k of ['secret', 'token', 'key']) if (old && (c[k] === undefined || /••••|…/.test(c[k] || ''))) merged[k] = old[k];
+    const merged = { ...(old || {}), ...c }; for (const k of ['url', 'secret', 'token', 'key']) if (old && (c[k] === undefined || /••••|…/.test(c[k] || ''))) merged[k] = old[k];
     const n = V28.normalizeChannel(merged); const err = V28.validateChannel(n); if (err) throw new Error(L(err));
     if (old) Object.assign(old, n); else list.push(n);
     store.saveConfig(); send('state', publicState()); return V28.mask(n);
