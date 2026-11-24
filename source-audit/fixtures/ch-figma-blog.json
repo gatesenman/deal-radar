@@ -1,0 +1,7 @@
+{
+  "id": "ch-figma-blog",
+  "url": "https://www.figma.com/blog/feed/atom.xml",
+  "at": "2026-11-24T11:40:17.173+08:00",
+  "format": "rss",
+  "body": "<feed xmlns=\"http://www.w3.org/2005/Atom\"><entry>\n        <title type=\"html\"><![CDATA[Workflow lab: Turning context into a plan with Specs and the Figma agent]]></title>\n        <id>https://www.figma.com/blog/workflow-lab-specs-and-the-figma-agent/</id>\n        <link href=\"https://www.figma.com/blog/workflow-lab-specs-and-the-figma-agent/\"/>\n        <updated>2026-11-20T22:17:00.000Z</updated>\n        <content type=\"html\"><![CDATA[Bringing scattered context onto the canvas helps teams connect the diagrams, designs, and technical decisions they need to build, all in one place. This workflow shows how Specs and the Figma agent provide a container for that context so implementation is easy.]]></content>\n    </entry></feed>"
+}

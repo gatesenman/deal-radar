@@ -1,0 +1,7 @@
+{
+  "id": "gnews-en",
+  "url": "https://news.google.com/rss/search?q={q}+when:7d&hl=en-US&gl=US&ceid=US:en",
+  "at": "2026-11-24T11:44:26.207+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item><title>Best Black Friday Apple deals 2026: Best deals on AirPods, MacBooks - Mashable</title><link>https://news.google.com/rss/articles/CBMie0FVX3lxTE5waGV2ZmxadHRfcDVpcFZNeVViUWpFV0R3UkRPNEkzTlllaXdiNDV0emEtdjdlOGhmQlZiLWg2Nlp6OVZGWHhuQ0ZPUU93amVrNXEtT2p4TlJ0Q3d0V1RUZnVmTHZHbnZhUnlsWlA1Y3BXZ18xOWZQbjJxbw?oc=5</link><guid isPermaLink=\"false\">CBMie0FVX3lxTE5waGV2ZmxadHRfcDVpcFZNeVViUWpFV0R3UkRPNEkzTlllaXdiNDV0emEtdjdlOGhmQlZiLWg2Nlp6OVZGWHhuQ0ZPUU93amVrNXEtT2p4TlJ0Q3d0V1RUZnVmTHZHbnZhUnlsWlA1Y3BXZ18xOWZQbjJxbw</guid><pubDate>Sat, 21 Nov 2026 08:34:04 GMT</pubDate><description>&lt;a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE5waGV2ZmxadHRfcDVpcFZNeVViUWpFV0R3UkRPNEkzTlllaXdiNDV0emEtdjdlOGhmQlZiLWg2Nlp6OVZGWHhuQ0ZPUU93amVrNXEtT2p4TlJ0Q3d0V1RUZnVmTHZHbnZhUnlsWlA1Y3BXZ18xOWZQbjJxbw?oc=5\" target=\"_blank\"&gt;Best Black Friday Apple deals 2026: Best deals on AirPods, MacBooks&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=\"#6f6f6f\"&gt;Mashable&lt;/font&gt;</description><source url=\"https://mashable.com\">Mashable</source></item></channel></rss>"
+}

@@ -166,7 +166,7 @@ class Store {
   }
 
   _presetChannels(id) {
-    return (VENDOR_CHANNELS[id] || []).map(({ on, ...c }) => ({ ...c, enabled: on !== false, preset: true }));
+    return (VENDOR_CHANNELS[id] || []).map(({ on, ...c }) => ({ ...c, enabled: on !== false, preset: true, _presetDefaults: require('./preset-merge').snapshot(c) }));
   }
 
   _presetBrand(b) {
@@ -182,7 +182,7 @@ class Store {
     return {
       version: 5,
       brands: PRESET_BRANDS.map((b) => this._presetBrand(b)),
-      sources: PRESET_SOURCES.map((s) => { const { defaultOn, ...rest } = s; return { ...rest, enabled: !!defaultOn, preset: true }; }),
+      sources: PRESET_SOURCES.map((s) => { const { defaultOn, ...rest } = s; return { ...rest, enabled: !!defaultOn, preset: true, _presetDefaults: require('./preset-merge').snapshot(rest) }; }),
       sourceStatus: {},
       settings: { ...DEFAULT_SETTINGS },
     };
@@ -200,7 +200,7 @@ class Store {
     for (const s of d.sources) {
       const cur = cfg.sources.find((x) => x.id === s.id);
       if (!cur) cfg.sources.push(s);
-      else Object.assign(cur, { ...s, enabled: cur.enabled }); // 预设源随版本更新地址/名称，保留启用状态
+      else Object.assign(cur, require('./preset-merge').mergePreset(cur, s)); // 预设源随版本更新地址/名称，保留启用状态
     }
     cfg.sourceStatus = cfg.sourceStatus && typeof cfg.sourceStatus === 'object' ? cfg.sourceStatus : {};
     cfg.brands = cfg.brands.filter((b) => b && b.id && b.name).map((b) => ({ ...b, aliases: Array.isArray(b.aliases) ? b.aliases : [], exclude: Array.isArray(b.exclude) ? b.exclude : [], notify: b.notify !== false }));
@@ -214,7 +214,7 @@ class Store {
         const chs = Array.isArray(cur.channels) ? cur.channels : [];
         const ids = new Set(pb.channels.map((c) => c.id));
         cur.channels = chs.filter((c) => !c.preset || ids.has(c.id));
-        for (const pc of pb.channels) { const cc = cur.channels.find((c) => c.id === pc.id); if (!cc) cur.channels.push(pc); else if (cc.preset) Object.assign(cc, { ...pc, enabled: cc.enabled }); }
+        for (const pc of pb.channels) { const cc = cur.channels.find((c) => c.id === pc.id); if (!cc) cur.channels.push(pc); else if (cc.preset) Object.assign(cc, require('./preset-merge').mergePreset(cc, pc, { brandId: pb.id })); }
       }
     }
     for (const b of cfg.brands) { if (!b.category) b.category = 'ai'; if (!b.group) b.group = b.category === 'goods' ? 'goods' : 'custom'; if (!Array.isArray(b.channels)) b.channels = []; }

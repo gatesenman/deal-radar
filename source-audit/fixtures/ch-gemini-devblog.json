@@ -1,0 +1,7 @@
+{
+  "id": "ch-gemini-devblog",
+  "url": "https://developers.googleblog.com/feeds/posts/default",
+  "at": "2026-11-24T11:45:00.140+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item><title>Did the user ask for this? Securing AI agents against intent hijacking with Semantic governance policies</title><link>https://developers.googleblog.com/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/</link><description>Semantic governance policies protect AI agents from indirect prompt injection and intent hijacking by validating every proposed tool call against user intent and natural language constraints before execution. As demonstrated on the AgentDojo benchmark using a Gemini 2.5 Flash agent, this mechanism reduced attack success rates from 48.7% to 0.9% while maintaining high task utility. Developers can leverage these policies in preview within the Gemini platform via Agent Gateway to secure tool-use workflows.</description><guid>https://developers.googleblog.com/did-the-user-ask-for-this-securing-ai-agents-against-intent-hijacking-with-semantic-governance-policies/</guid></item></channel></rss>"
+}

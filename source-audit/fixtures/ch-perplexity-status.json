@@ -1,0 +1,7 @@
+{
+  "id": "ch-perplexity-status",
+  "url": "https://status.perplexity.com/history.rss",
+  "at": "2026-11-24T11:45:35.928+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item>\n            <title><![CDATA[Maintenance: Scheduled Computer Maintenance]]></title>\n            <link>https://status.perplexity.com//incidents/01M4VBQY9921W0JWATY7NGPZ0A</link>\n            <guid>https://status.perplexity.com//incidents/01M4VBQY9921W0JWATY7NGPZ0A</guid>\n            <pubDate>Tue, 13 Oct 2026 21:56:37 GMT</pubDate>\n            <description><![CDATA[<b>Status: Complete (Tue, 13 Oct 2026 21:30:00 GMT - Tue, 13 Oct 2026 21:56:37 GMT)</b><br/><br/>Scheduled maintenance is complete, and Computer is operating normally. Thank you for your patience.<br/><br/><b>Affected components</b>\n          <ul>\n          <li>Computer (Operational)</li>\n          </ul>]]></description>\n            <content:encoded><![CDATA[<b>Status: Complete (Tue, 13 Oct 2026 21:30:00 GMT - Tue, 13 Oct 2026 21:56:37 GMT)</b><br/><br/>Scheduled maintenance is complete, and Computer is operating normally. Thank you for your patience.<br/><br/><b>Affected components</b>\n          <ul>\n          <li>Computer (Operational)</li>\n          </ul>]]></content:encoded>\n        </item></channel></rss>"
+}

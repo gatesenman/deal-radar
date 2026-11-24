@@ -1,0 +1,7 @@
+{
+  "id": "v2ex-deals",
+  "url": "https://www.v2ex.com/feed/tab/deals.xml",
+  "at": "2026-11-24T11:44:24.983+08:00",
+  "format": "rss",
+  "body": "<feed xmlns=\"http://www.w3.org/2005/Atom\"><entry>\n\t<title>咸鱼的智普老帐号真能卖那么多吗</title>\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://www.v2ex.com/t/1259315#reply13\" />\n\t<id>tag:www.v2ex.com,2026-11-24:/t/1259315</id>\n\t<published>2026-11-24T01:18:24Z</published>\n\t<updated>2026-11-24T03:39:25Z</updated>\n\t<author>\n\t\t<name>p1aywind</name>\n\t\t<uri>https://www.v2ex.com/member/p1aywind</uri>\n\t</author>\n\t<content type=\"html\" xml:base=\"https://www.v2ex.com/\" xml:lang=\"en\"><![CDATA[\n\t<p>咸鱼看都卖好几千，帮我看看我的能卖多少。</p>\n<p><img alt=\"sample\" class=\"embedded_image\" loading=\"lazy\" referrerpolicy=\"no-referrer\" rel=\"noreferrer\" src=\"https://imgur.com/a/38l0nvl\"/></p>\n\n\t]]></content>\n</entry></feed>"
+}

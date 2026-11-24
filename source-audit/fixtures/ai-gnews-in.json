@@ -1,0 +1,7 @@
+{
+  "id": "ai-gnews-in",
+  "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=en-IN&gl=IN&ceid=IN:en",
+  "at": "2026-11-24T11:43:42.121+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item><title>Introducing Businesses in ChatGPT - OpenAI</title><link>https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1QWl94aW1pbWMtLVFmMnN6d3NRdk5zOGFhNUNYVUJ4dkZtaG14dnpwQ1F3blgzN2hvTm5DeHV4cXV3dVdfS3JxbDVVb21MMG9sWG0tS2NYNUJTREIyYTVGNmFFdTZEdzQ?oc=5</link><guid isPermaLink=\"false\">CBMiZ0FVX3lxTE1QWl94aW1pbWMtLVFmMnN6d3NRdk5zOGFhNUNYVUJ4dkZtaG14dnpwQ1F3blgzN2hvTm5DeHV4cXV3dVdfS3JxbDVVb21MMG9sWG0tS2NYNUJTREIyYTVGNmFFdTZEdzQ</guid><pubDate>Tue, 10 Nov 2026 08:00:00 GMT</pubDate><description>&lt;a href=\"https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1QWl94aW1pbWMtLVFmMnN6d3NRdk5zOGFhNUNYVUJ4dkZtaG14dnpwQ1F3blgzN2hvTm5DeHV4cXV3dVdfS3JxbDVVb21MMG9sWG0tS2NYNUJTREIyYTVGNmFFdTZEdzQ?oc=5\" target=\"_blank\"&gt;Introducing Businesses in ChatGPT&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=\"#6f6f6f\"&gt;OpenAI&lt;/font&gt;</description><source url=\"https://openai.com\">OpenAI</source></item></channel></rss>"
+}

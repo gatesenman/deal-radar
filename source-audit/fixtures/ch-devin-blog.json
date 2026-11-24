@@ -1,0 +1,7 @@
+{
+  "id": "ch-devin-blog",
+  "url": "https://devin.ai/rss.xml",
+  "at": "2026-11-24T11:45:55.504+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item><title>Devin for Databricks Migrations: Less time migrating, more time building</title><link>https://devin.ai/blog/devin-for-databricks-migrations</link><guid isPermaLink=\"true\">https://devin.ai/blog/devin-for-databricks-migrations</guid><description>We&apos;re partnering with Databricks to help enterprises move off legacy data platforms faster, so engineering teams can spend more time building with their data.</description><pubDate>Thu, 19 Nov 2026 15:00:00 GMT</pubDate><category>partners</category><category>devin</category><category>enterprise</category></item></channel></rss>"
+}

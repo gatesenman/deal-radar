@@ -578,13 +578,29 @@ function renderBrands() {
 }
 
 // —— 渲染：厂商详情（渠道） ——
+function sourceActionHint(source, ss) {
+  const cap=source && source.capability;
+  if(cap && cap.state==='config-required')return L('需要配置：{0}',(cap.missing||[]).join(', '));
+  if(!ss)return L('尚未验证；启用状态不代表来源可用');
+  if(ss.ok)return ss.validEmpty ? L('有效空结果：已识别格式，当前无条目') : ss.total>0 && !ss.matched ? L('已解析内容，暂无匹配优惠；官方资讯不是抓取失败') : '';
+  const e=ss.error||'';
+  if(/SOURCE_BLOCKED|HTTP 403|challenge|人机验证/i.test(e))return L('网站阻止公开访问；已停止，不绕过验证。可手动访问官方链接');
+  if(/HTTP 429|Retry-After/i.test(e))return L('来源限流；遵守服务器等待时间后再试');
+  if(/HTTP 401|login-required/i.test(e))return L('需要登录；应用不会请求或复用第三方登录');
+  if(/RSSHub|config-required|请填写|未设置/i.test(e))return L('请编辑渠道补齐配置；RSSHub 仅使用你明确设置的实例');
+  if(/HTTP 404|HTTP 410/i.test(e))return L('官方地址不存在；检查地址或等待内置源更新');
+  if(/JS 渲染|需要 JS/i.test(e))return L('未提取到所需内容；检查选择器或渲染设置，验证页不能绕过');
+  return L('未验证为可用；查看原始错误并检查网络、格式和渠道设置');
+}
 function chStatus(id, testing) {
   const ss = S.state.sourceStatus[id];
+  const source=(S.state.channelSources||[]).concat(S.state.sources||[]).find(s=>s.id===id);
+  const hint=sourceActionHint(source,ss);
   if (testing) return ("<span class=\"status\"><i class=\"dot run\"></i>" + L('检测中') + "…</span>");
   if (!ss) return ("<span class=\"status\"><i class=\"dot\"></i>" + L('未检测') + "</span>");
-  if (!ss.ok) return `<span class="status" style="color:var(--err)"><i class="dot err"></i>${L('失败')}</span><span class="err-text" title="${esc(ss.error)}">${esc(ss.error)}</span>`;
+  if (!ss.ok) return `<span class="status" style="color:var(--err)"><i class="dot err"></i>${L('失败')}</span><span class="err-text" title="${esc(ss.error)}">${esc(ss.error)}${hint ? '<br>'+esc(hint):''}</span>`;
   if (ss.error) return `<span class="status" style="color:var(--warn)"><i class="dot warn"></i>${L('部分可用')}</span><span class="err-text" title="${esc(ss.error)}">${esc(ss.error)}</span>`;
-  return `<span class="status" style="color:var(--ok)"><i class="dot ok"></i>${L('正常')}</span>${ss.note ? `<span class="err-text ok-note" title="${esc(ss.note)}">${esc(ss.note)}</span>` : ''}`;
+  return `<span class="status" style="color:var(--ok)"><i class="dot ok"></i>${L('正常')}</span>${ss.note || hint ? `<span class="err-text ok-note" title="${esc([ss.note,hint].filter(Boolean).join(' · '))}">${esc([ss.note,hint].filter(Boolean).join(' · '))}</span>` : ''}`;
 }
 function renderVendor() {
   const st = S.state; const b = brandById(S.vendor);
@@ -978,7 +994,8 @@ function renderHealth() {
     const testing = S.testing.has(s.id);
     const state = testing ? ("<span class=\"status\"><i class=\"dot run\"></i>" + L('检测中') + "</span>") : !ss ? ("<span class=\"status\"><i class=\"dot\"></i>" + L('未运行') + "</span>") : ss.ok ? `<span class="status" style="color:var(--ok)"><i class="dot ok"></i>${L('正常')}</span>` : `<span class="status" style="color:var(--err)"><i class="dot err"></i>${L('失败')}${ss.failStreak > 1 ? ' ×' + ss.failStreak : ''}</span>`;
     const lastErr = (hh.runs.slice().reverse().find((x) => !x.ok) || {}).e || '';
-    const note = ss && !ss.ok ? ss.error : ss && ss.note ? ss.note : lastErr ? L('最近错误：') + lastErr : '';
+    const rawNote = ss && !ss.ok ? ss.error : ss && ss.note ? ss.note : lastErr ? L('最近错误：') + lastErr : '';
+    const note=[rawNote,sourceActionHint(s,ss)].filter(Boolean).join(' · ');
     return `<tr data-id="${esc(s.id)}"><td class="src-name"><b title="${esc(s.name)}">${esc(s.name)}</b>${s.flaky ? ("<span class=\"tag flaky\" title=\"" + L('实测偶发限流/5xx，已自动重试与退避') + "\">" + L('不稳定') + "</span>") : ''}<small title="${esc(s.url)}">${esc(s.url)}</small></td>
       <td class="nw"><span class="tag">${esc(protoLabel(s.type))}</span></td><td class="nw">${state}</td><td class="num">${rateTag(hh)}</td>
       <td class="num nw">${hh.avg != null ? (hh.avg / 1000).toFixed(1) + 's' : '—'}</td><td>${spark(hh.runs)}</td>

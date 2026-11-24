@@ -1,0 +1,7 @@
+{
+  "id": "ch-deepseek-status",
+  "url": "https://status.deepseek.com/history.rss",
+  "at": "2026-11-24T11:39:15.853+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item>\n      <title>DeepSeek 网页/Chat 性能下降（DeepSeek Web/Chat Degraded Performance）</title>\n      <link>https://status.deepseek.com/incidents/7252143961119</link>\n      <description>&lt;p&gt;&lt;strong&gt;Status:&lt;/strong&gt; resolved&lt;/p&gt;&lt;p&gt;本次问题已解决，服务已恢复。&#xA;&#xA;The incident has been resolved and service has been restored.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Affected components:&lt;/strong&gt; 对话服务(Chatservice)&lt;/p&gt;</description>\n      <guid>urn:flashduty:change:7252143961119</guid>\n      <pubDate>Sun, 15 Nov 2026 00:53:58 +0800</pubDate>\n    </item></channel></rss>"
+}

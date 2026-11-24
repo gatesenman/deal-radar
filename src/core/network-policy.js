@@ -22,4 +22,5 @@ async function assertPublicURL(value, { lookup } = {}) {
   }
   return u.href;
 }
-module.exports = { privateIP, assertPublicURL };
+function isLoginURL(value) { try {const u=new URL(value);return /^(accounts\.google\.com|login\.microsoftonline\.com|login\.live\.com|auth\.openai\.com)$/.test(u.hostname) || /\/(?:oauth2?authorize|oauth2?\/authorize|sign[ -]?in|login)(?:\/|$)/i.test(u.pathname);}catch{return false;} }
+module.exports = { isLoginURL, privateIP, assertPublicURL };

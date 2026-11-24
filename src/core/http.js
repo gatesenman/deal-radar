@@ -37,6 +37,7 @@ function makeFetchText(rawFetch, { cache = new HttpCache(), friendly = (m) => m,
     try {
       let target = url; let res;
       for (let redirects = 0; ; redirects++) {
+        if(require('./network-policy').isLoginURL(target))throw new Error('login-required: Authentication redirect; no sign-in attempted');
         await validateUrl(target);
         res = await rawFetch(target, { signal: ctrl.signal, headers: h, redirect: 'manual' }, opts);
         if (![301, 302, 303, 307, 308].includes(res.status)) break;
@@ -53,6 +54,7 @@ function makeFetchText(rawFetch, { cache = new HttpCache(), friendly = (m) => m,
       if (res.status === 304 && c) { cache.hits++; cache.savedBytes = (cache.savedBytes || 0) + c.body.length; if (meta) Object.assign(meta, { status: 304, cached: true, ms: Date.now() - t0, bytes: c.body.length }); return c.body; }
       if (!res.ok) { const e = new Error('HTTP ' + res.status); e.status = res.status; e.retryAfter = retryAfter(res.headers.get('retry-after')) || (res.status === 429 ? 60 : 0); if (meta) Object.assign(meta, { httpStatus: res.status, retryAt: e.retryAfter ? Date.now() + e.retryAfter * 1000 : 0 }); throw e; }
       const body = await res.text();
+      if (meta) meta.finalURL = target;
       const etag = res.headers.get('etag'); const lm = res.headers.get('last-modified');
       if (cacheAllowed && (etag || lm)) cache.set(url, { etag, lm, body });
       if (meta) Object.assign(meta, { status: res.status, cached: false, ms: Date.now() - t0, bytes: body.length });

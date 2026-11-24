@@ -1,3 +1,10 @@
+## 2.22.0 — per-source adapter audit / 逐源适配核验
+
+- Full built-in inventory and production-path audit, including disabled sources; distinguish blocks, empty parsing, configuration, and public news without matching deals.
+- Fix Electron manual redirects while validating every hop; bounded credential-free public requests, encoding, links, same-origin feed autodiscovery and challenge stop.
+- Preserve custom built-in URLs, headers, options and source preferences during upgrades; expose actionable zh/en source-health hints.
+- See source-audit/README.md for measured outcomes, limitations, protocol fixtures and exact remaining source IDs. Native Windows installation is not asserted by Linux packaging.
+
 # Changelog
 
 ## 2.21.1 — Final-round validation correction

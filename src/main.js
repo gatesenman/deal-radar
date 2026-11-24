@@ -113,7 +113,7 @@ const fetchText = makeFetchText((url, init, o = {}) => {
   if (process.env.DEAL_RADAR_SHOT_SET === 'smoke') throw new Error('Network disabled in smoke');
   const useCache = store && store.config.settings.httpCache !== false;
   if (!useCache) { delete init.headers['If-None-Match']; delete init.headers['If-Modified-Since']; }
-  return o.proxy === false ? getDirect().fetch(url, init) : net.fetch(url, init);
+  return require('./core/electron-transport').electronTransport(url, init, { net, session: o.proxy === false ? getDirect() : session.defaultSession, maxBytes: Math.min(32*1024*1024,Math.max(32768,Number(o.maxBytes)||8*1024*1024)) });
 }, { validateUrl: sourceURL, cache: httpCache, friendly: (m) => friendlyNetError(m) });
 function renderText(url, o = {}) {
   if (!renderHTML) return Promise.reject(new Error(L('当前环境不支持 JS 渲染')));

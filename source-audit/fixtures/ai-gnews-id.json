@@ -1,0 +1,7 @@
+{
+  "id": "ai-gnews-id",
+  "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=id&gl=ID&ceid=ID:id",
+  "at": "2026-11-24T11:43:43.245+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item><title>OpenAI meluncurkan Businesses di ChatGPT, perusahaan bisa mengklaim profilnya - Pasquale Pillitteri</title><link>https://news.google.com/rss/articles/CBMiiwFBVV95cUxONHpNT3Exb3VlcGZKVlpWR1VpVDNGVDZvVHA1ME12ZjZVbzVCMVktQXJPNTJ0cEc3U3NLd25iS0tPNEVidXNyM0xJMGltWExtdk5EblEzU0p2TDZ5ZDloejJGUXUzUUJ2U091dENoRkc1VGRTMmwtTlN3SXhLc2VLNFdYX0pSMThWc19J?oc=5</link><guid isPermaLink=\"false\">CBMiiwFBVV95cUxONHpNT3Exb3VlcGZKVlpWR1VpVDNGVDZvVHA1ME12ZjZVbzVCMVktQXJPNTJ0cEc3U3NLd25iS0tPNEVidXNyM0xJMGltWExtdk5EblEzU0p2TDZ5ZDloejJGUXUzUUJ2U091dENoRkc1VGRTMmwtTlN3SXhLc2VLNFdYX0pSMThWc19J</guid><pubDate>Wed, 11 Nov 2026 08:00:00 GMT</pubDate><description>&lt;a href=\"https://news.google.com/rss/articles/CBMiiwFBVV95cUxONHpNT3Exb3VlcGZKVlpWR1VpVDNGVDZvVHA1ME12ZjZVbzVCMVktQXJPNTJ0cEc3U3NLd25iS0tPNEVidXNyM0xJMGltWExtdk5EblEzU0p2TDZ5ZDloejJGUXUzUUJ2U091dENoRkc1VGRTMmwtTlN3SXhLc2VLNFdYX0pSMThWc19J?oc=5\" target=\"_blank\"&gt;OpenAI meluncurkan Businesses di ChatGPT, perusahaan bisa mengklaim profilnya&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=\"#6f6f6f\"&gt;Pasquale Pillitteri&lt;/font&gt;</description><source url=\"https://pasqualepillitteri.it\">Pasquale Pillitteri</source></item></channel></rss>"
+}

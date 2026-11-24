@@ -1,0 +1,7 @@
+{
+  "id": "ai-gnews-br",
+  "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+  "at": "2026-11-24T11:43:43.264+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item><title>ChatGPT fica melhor em ler fotos e comparar preços com GPT-6.2 Sol - Exame</title><link>https://news.google.com/rss/articles/CBMie0FVX3lxTE1sYWpvWmVQcUhwUmtoMkJheExUNndTbjQ1dDhGQW5TZ0tGekdFejZYZWJyRUVwdU0ydThWMVM2OEpPNExTdC10Sl9yMTBxQkYwV0ZqM1Q1eUNpU3FWVngxczJDV3NZME1jcU02N0hBTXFaSXhlMDFSTkE1UQ?oc=5</link><guid isPermaLink=\"false\">CBMie0FVX3lxTE1sYWpvWmVQcUhwUmtoMkJheExUNndTbjQ1dDhGQW5TZ0tGekdFejZYZWJyRUVwdU0ydThWMVM2OEpPNExTdC10Sl9yMTBxQkYwV0ZqM1Q1eUNpU3FWVngxczJDV3NZME1jcU02N0hBTXFaSXhlMDFSTkE1UQ</guid><pubDate>Mon, 23 Nov 2026 19:32:02 GMT</pubDate><description>&lt;a href=\"https://news.google.com/rss/articles/CBMie0FVX3lxTE1sYWpvWmVQcUhwUmtoMkJheExUNndTbjQ1dDhGQW5TZ0tGekdFejZYZWJyRUVwdU0ydThWMVM2OEpPNExTdC10Sl9yMTBxQkYwV0ZqM1Q1eUNpU3FWVngxczJDV3NZME1jcU02N0hBTXFaSXhlMDFSTkE1UQ?oc=5\" target=\"_blank\"&gt;ChatGPT fica melhor em ler fotos e comparar preços com GPT-6.2 Sol&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;font color=\"#6f6f6f\"&gt;Exame&lt;/font&gt;</description><source url=\"https://exame.com\">Exame</source></item></channel></rss>"
+}

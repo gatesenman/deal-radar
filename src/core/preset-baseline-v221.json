@@ -1,0 +1,3398 @@
+{
+  "sources": [
+    {
+      "id": "google-ai-blog",
+      "name": "Google AI 官方博客",
+      "platform": "厂商官方",
+      "region": "intl",
+      "country": "美国",
+      "kind": "vendor",
+      "url": "https://blog.google/technology/ai/rss/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "microsoft-blog",
+      "name": "Microsoft 官方博客",
+      "platform": "厂商官方",
+      "region": "intl",
+      "country": "美国",
+      "kind": "vendor",
+      "url": "https://blogs.microsoft.com/feed/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "github-blog",
+      "name": "GitHub 官方博客",
+      "platform": "厂商官方",
+      "region": "intl",
+      "country": "美国",
+      "kind": "vendor",
+      "url": "https://github.blog/feed/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-gnews-zh",
+      "name": "Google 新闻（中文）厂商优惠搜索",
+      "platform": "Google News",
+      "region": "cn",
+      "country": "中国",
+      "kind": "search",
+      "interval": 60,
+      "searchSuffix": "(免费 OR 优惠 OR 降价 OR 折扣 OR 限时 OR 学生 OR 额度 OR 限免)",
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-bing-en",
+      "interval": 120,
+      "name": "Bing 资讯（英文）厂商优惠搜索",
+      "platform": "Bing News",
+      "region": "intl",
+      "country": "全球",
+      "kind": "search",
+      "searchSuffix": "free discount credits trial",
+      "url": "https://www.bing.com/news/search?q={q}&format=rss&setlang=en-us",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-bing-zh",
+      "interval": 120,
+      "name": "必应资讯（中文）厂商优惠搜索",
+      "platform": "Bing News",
+      "region": "cn",
+      "country": "中国",
+      "kind": "search",
+      "searchSuffix": "免费 优惠",
+      "url": "https://www.bing.com/news/search?q={q}&format=rss&setlang=zh-cn",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-gnews-ja",
+      "name": "Google 新闻（日本）厂商优惠搜索",
+      "platform": "Google News",
+      "region": "intl",
+      "country": "日本",
+      "kind": "search",
+      "interval": 120,
+      "searchSuffix": "(無料 OR 割引 OR 学割 OR 値下げ OR キャンペーン OR クレジット)",
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=ja&gl=JP&ceid=JP:ja",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-gnews-ko",
+      "name": "Google 新闻（韩国）厂商优惠搜索",
+      "platform": "Google News",
+      "region": "intl",
+      "country": "韩国",
+      "kind": "search",
+      "interval": 120,
+      "searchSuffix": "(무료 OR 할인 OR 학생 OR 인하 OR 프로모션 OR 크레딧)",
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=ko&gl=KR&ceid=KR:ko",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-gnews-tw",
+      "name": "Google 新闻（台湾/香港繁体）厂商优惠搜索",
+      "platform": "Google News",
+      "region": "intl",
+      "country": "中国台湾",
+      "kind": "search",
+      "interval": 240,
+      "searchSuffix": "(免費 OR 優惠 OR 降價 OR 學生 OR 折扣)",
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-gnews-in",
+      "name": "Google 新闻（印度）厂商优惠搜索",
+      "platform": "Google News",
+      "region": "intl",
+      "country": "印度",
+      "kind": "search",
+      "interval": 120,
+      "searchSuffix": "(free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=en-IN&gl=IN&ceid=IN:en",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-gnews-id",
+      "name": "Google 新闻（印尼/东南亚）厂商优惠搜索",
+      "platform": "Google News",
+      "region": "intl",
+      "country": "印度尼西亚",
+      "kind": "search",
+      "interval": 120,
+      "searchSuffix": "(gratis OR diskon OR promo OR mahasiswa OR kredit OR free)",
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=id&gl=ID&ceid=ID:id",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-gnews-br",
+      "name": "Google 新闻（巴西）厂商优惠搜索",
+      "platform": "Google News",
+      "region": "intl",
+      "country": "巴西",
+      "kind": "search",
+      "interval": 120,
+      "searchSuffix": "(grátis OR desconto OR promoção OR estudantes OR créditos OR \"de graça\")",
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-gnews-latam",
+      "name": "Google 新闻（拉美西语）厂商优惠搜索",
+      "platform": "Google News",
+      "region": "intl",
+      "country": "墨西哥",
+      "kind": "search",
+      "interval": 240,
+      "searchSuffix": "(gratis OR descuento OR promoción OR estudiantes OR créditos)",
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=es-419&gl=MX&ceid=MX:es-419",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-gnews-de",
+      "name": "Google 新闻（德国）厂商优惠搜索",
+      "platform": "Google News",
+      "region": "intl",
+      "country": "德国",
+      "kind": "search",
+      "interval": 240,
+      "searchSuffix": "(kostenlos OR Rabatt OR Studenten OR günstiger OR Aktion)",
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=de&gl=DE&ceid=DE:de",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-gnews-fr",
+      "name": "Google 新闻（法国）厂商优惠搜索",
+      "platform": "Google News",
+      "region": "intl",
+      "country": "法国",
+      "kind": "search",
+      "interval": 240,
+      "searchSuffix": "(gratuit OR réduction OR étudiants OR promo OR crédits)",
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=fr&gl=FR&ceid=FR:fr",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-gnews-ar",
+      "name": "Google 新闻（中东阿语）厂商优惠搜索",
+      "platform": "Google News",
+      "region": "intl",
+      "country": "沙特阿拉伯",
+      "kind": "search",
+      "interval": 240,
+      "searchSuffix": "(مجانا OR مجاني OR خصم OR عرض OR طلاب)",
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=ar&gl=SA&ceid=SA:ar",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "hn-search",
+      "name": "Hacker News 厂商搜索",
+      "platform": "Hacker News",
+      "region": "intl",
+      "country": "全球",
+      "kind": "search",
+      "format": "hn",
+      "url": "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=40&query={q}",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "slickdeals-ai",
+      "name": "Slickdeals 厂商搜索（软件/订阅优惠）",
+      "platform": "Slickdeals",
+      "region": "intl",
+      "country": "美国",
+      "kind": "search",
+      "url": "https://slickdeals.net/newsearch.php?q={q}&searcharea=deals&searchin=first&rss=1",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "slickdeals-software",
+      "name": "Slickdeals 软件订阅优惠",
+      "platform": "Slickdeals",
+      "region": "intl",
+      "country": "美国",
+      "kind": "community",
+      "url": "https://slickdeals.net/newsearch.php?q=software+subscription&searcharea=deals&searchin=first&rss=1",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "hukd-software",
+      "name": "HotUKDeals 软件",
+      "platform": "HotUKDeals",
+      "region": "intl",
+      "country": "英国",
+      "kind": "community",
+      "url": "https://www.hotukdeals.com/rss/tag/software",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "reddit-ai",
+      "name": "Reddit AI 社区（r/ChatGPT、r/OpenAI、r/ClaudeAI、r/GeminiAI、r/cursor、r/SaaS、r/AppSumo）",
+      "platform": "Reddit",
+      "region": "intl",
+      "country": "全球",
+      "kind": "community",
+      "flaky": true,
+      "url": "https://www.reddit.com/r/ChatGPT+OpenAI+ClaudeAI+GeminiAI+cursor+SaaS+AppSumo/search.rss?q=free+OR+discount+OR+promo+OR+trial+OR+credits+OR+offer&restrict_sr=on&sort=new&limit=100",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "producthunt",
+      "name": "Product Hunt 新品",
+      "platform": "Product Hunt",
+      "region": "intl",
+      "country": "全球",
+      "kind": "community",
+      "type": "producthunt",
+      "url": "https://www.producthunt.com/feed",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "producthunt-ai",
+      "name": "Product Hunt · AI 分类",
+      "platform": "Product Hunt",
+      "region": "intl",
+      "country": "全球",
+      "kind": "community",
+      "type": "producthunt",
+      "url": "https://www.producthunt.com/feed?category=artificial-intelligence",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "v2ex-openai",
+      "name": "V2EX OpenAI 节点",
+      "platform": "V2EX",
+      "region": "cn",
+      "country": "中国",
+      "kind": "community",
+      "url": "https://www.v2ex.com/feed/openai.xml",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "v2ex-promotions",
+      "name": "V2EX 推广区",
+      "platform": "V2EX",
+      "region": "cn",
+      "country": "中国",
+      "kind": "community",
+      "url": "https://www.v2ex.com/feed/promotions.xml",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "v2ex-create",
+      "name": "V2EX 分享创造",
+      "platform": "V2EX",
+      "region": "cn",
+      "country": "中国",
+      "kind": "community",
+      "url": "https://www.v2ex.com/feed/create.xml",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "techcrunch-ai",
+      "name": "TechCrunch AI",
+      "platform": "TechCrunch",
+      "region": "intl",
+      "country": "美国",
+      "kind": "news",
+      "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "verge-ai",
+      "name": "The Verge AI",
+      "platform": "The Verge",
+      "region": "intl",
+      "country": "美国",
+      "kind": "news",
+      "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ars-ai",
+      "name": "Ars Technica AI",
+      "platform": "Ars Technica",
+      "region": "intl",
+      "country": "美国",
+      "kind": "news",
+      "url": "https://arstechnica.com/ai/feed/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "techradar-software",
+      "name": "TechRadar 软件",
+      "platform": "TechRadar",
+      "region": "intl",
+      "country": "英国",
+      "kind": "news",
+      "url": "https://www.techradar.com/feeds/tag/software",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "geeknews",
+      "name": "GeekNews（韩国 news.hada.io）",
+      "platform": "GeekNews",
+      "region": "intl",
+      "country": "韩国",
+      "kind": "community",
+      "url": "https://news.hada.io/rss/news",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "itmedia-aiplus",
+      "name": "ITmedia AI+",
+      "platform": "ITmedia",
+      "region": "intl",
+      "country": "日本",
+      "kind": "news",
+      "url": "https://rss.itmedia.co.jp/rss/2.0/aiplus.xml",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "gigazine",
+      "name": "GIGAZINE",
+      "platform": "GIGAZINE",
+      "region": "intl",
+      "country": "日本",
+      "kind": "news",
+      "url": "https://gigazine.net/news/rss_2.0/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "zenn-ai",
+      "name": "Zenn · AI 话题",
+      "platform": "Zenn",
+      "region": "intl",
+      "country": "日本",
+      "kind": "community",
+      "url": "https://zenn.dev/topics/ai/feed",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "qiita-popular",
+      "name": "Qiita 热门文章",
+      "platform": "Qiita",
+      "region": "intl",
+      "country": "日本",
+      "kind": "community",
+      "url": "https://qiita.com/popular-items/feed",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "techinasia",
+      "name": "Tech in Asia",
+      "platform": "Tech in Asia",
+      "region": "intl",
+      "country": "新加坡",
+      "kind": "news",
+      "url": "https://www.techinasia.com/feed",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "inc42",
+      "name": "Inc42（印度）",
+      "platform": "Inc42",
+      "region": "intl",
+      "country": "印度",
+      "kind": "news",
+      "url": "https://www.inc42.com/feed/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "yourstory",
+      "name": "YourStory（印度）",
+      "platform": "YourStory",
+      "region": "intl",
+      "country": "印度",
+      "kind": "news",
+      "url": "https://yourstory.com/feed",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "xataka",
+      "name": "Xataka（西语）",
+      "platform": "Xataka",
+      "region": "intl",
+      "country": "西班牙",
+      "kind": "news",
+      "url": "https://www.xataka.com/feedburner.xml",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "genbeta",
+      "name": "Genbeta（西语软件）",
+      "platform": "Genbeta",
+      "region": "intl",
+      "country": "西班牙",
+      "kind": "news",
+      "url": "https://www.genbeta.com/feedburner.xml",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "tecmundo",
+      "name": "TecMundo（巴西）",
+      "platform": "TecMundo",
+      "region": "intl",
+      "country": "巴西",
+      "kind": "news",
+      "url": "https://rss.tecmundo.com.br/feed",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "tecnoblog",
+      "name": "Tecnoblog（巴西）",
+      "platform": "Tecnoblog",
+      "region": "intl",
+      "country": "巴西",
+      "kind": "news",
+      "url": "https://tecnoblog.net/feed/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "heise",
+      "name": "heise online（德国）",
+      "platform": "heise",
+      "region": "intl",
+      "country": "德国",
+      "kind": "news",
+      "url": "https://www.heise.de/rss/heise-atom.xml",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "01net",
+      "name": "01net（法国）",
+      "platform": "01net",
+      "region": "intl",
+      "country": "法国",
+      "kind": "news",
+      "url": "https://www.01net.com/actualites/feed/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "aitnews",
+      "name": "AITNews 阿拉伯科技新闻（中东）",
+      "platform": "AITNews",
+      "region": "intl",
+      "country": "沙特阿拉伯",
+      "kind": "news",
+      "url": "https://aitnews.com/feed/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "skt-news",
+      "name": "SK Telecom 官方新闻（韩国运营商）",
+      "platform": "运营商官方",
+      "region": "intl",
+      "country": "韩国",
+      "kind": "news",
+      "interval": 240,
+      "url": "https://news.sktelecom.com/feed",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "docomo-news",
+      "name": "NTT docomo 新闻稿（日本运营商）",
+      "platform": "运营商官方",
+      "region": "intl",
+      "country": "日本",
+      "kind": "news",
+      "interval": 240,
+      "url": "https://www.docomo.ne.jp/info/rss/news_release.rdf",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "vodafone-de",
+      "name": "Vodafone Deutschland 新闻（德国运营商）",
+      "platform": "运营商官方",
+      "region": "intl",
+      "country": "德国",
+      "kind": "news",
+      "interval": 240,
+      "url": "https://www.vodafone.de/newsroom/feed/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ithome-tw",
+      "name": "iThome 台湾",
+      "platform": "iThome TW",
+      "region": "intl",
+      "country": "中国台湾",
+      "kind": "news",
+      "url": "https://www.ithome.com.tw/rss",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-ithome",
+      "name": "IT之家",
+      "platform": "IT之家",
+      "region": "cn",
+      "country": "中国",
+      "kind": "news",
+      "url": "https://www.ithome.com/rss/",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ai-smzdm",
+      "name": "什么值得买 原创/好文",
+      "platform": "什么值得买",
+      "region": "cn",
+      "country": "中国",
+      "kind": "news",
+      "url": "https://post.smzdm.com/feed",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "sspai",
+      "name": "少数派",
+      "platform": "少数派",
+      "region": "cn",
+      "country": "中国",
+      "kind": "news",
+      "url": "https://sspai.com/feed",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "qbitai",
+      "name": "量子位",
+      "platform": "量子位",
+      "region": "cn",
+      "country": "中国",
+      "kind": "news",
+      "url": "https://www.qbitai.com/feed",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "36kr",
+      "name": "36氪 快讯",
+      "platform": "36氪",
+      "region": "cn",
+      "country": "中国",
+      "kind": "news",
+      "url": "https://www.36kr.com/feed-newsflash",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "ifanr",
+      "name": "爱范儿",
+      "platform": "爱范儿",
+      "region": "cn",
+      "country": "中国",
+      "kind": "news",
+      "url": "https://www.ifanr.com/feed",
+      "category": "ai",
+      "defaultOn": true
+    },
+    {
+      "id": "slickdeals",
+      "name": "Slickdeals 首页精选",
+      "platform": "Slickdeals",
+      "region": "intl",
+      "country": "美国",
+      "kind": "deal",
+      "url": "https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "dealnews",
+      "name": "DealNews",
+      "platform": "DealNews",
+      "region": "intl",
+      "country": "美国",
+      "kind": "deal",
+      "url": "https://www.dealnews.com/?rss=1",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "bensbargains",
+      "name": "Ben's Bargains",
+      "platform": "Ben's Bargains",
+      "region": "intl",
+      "country": "美国",
+      "kind": "deal",
+      "url": "https://bensbargains.com/rss/",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "techbargains",
+      "name": "TechBargains",
+      "platform": "TechBargains",
+      "region": "intl",
+      "country": "美国",
+      "kind": "deal",
+      "ua": "Mozilla/5.0",
+      "url": "https://www.techbargains.com/rss.xml",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "9to5toys",
+      "name": "9to5Toys",
+      "platform": "9to5Toys",
+      "region": "intl",
+      "country": "美国",
+      "kind": "deal",
+      "url": "https://9to5toys.com/feed/",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "reddit-multi",
+      "name": "Reddit 优惠合集（r/deals、r/buildapcsales、r/GameDeals、r/frugalmalefashion）",
+      "platform": "Reddit",
+      "region": "intl",
+      "country": "全球",
+      "kind": "deal",
+      "url": "https://www.reddit.com/r/deals+buildapcsales+GameDeals+frugalmalefashion/new/.rss?limit=100",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "hukd-hot",
+      "name": "HotUKDeals 热门",
+      "platform": "HotUKDeals",
+      "region": "intl",
+      "country": "英国",
+      "kind": "deal",
+      "url": "https://www.hotukdeals.com/rss/hot",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "hukd-new",
+      "name": "HotUKDeals 最新",
+      "platform": "HotUKDeals",
+      "region": "intl",
+      "country": "英国",
+      "kind": "deal",
+      "url": "https://www.hotukdeals.com/rss/new",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "mydealz-hot",
+      "name": "mydealz 热门",
+      "platform": "mydealz",
+      "region": "intl",
+      "country": "德国",
+      "kind": "deal",
+      "url": "https://www.mydealz.de/rss/hot",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "dealabs-hot",
+      "name": "Dealabs 热门",
+      "platform": "Dealabs",
+      "region": "intl",
+      "country": "法国",
+      "kind": "deal",
+      "url": "https://www.dealabs.com/rss/hot",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "pepper-nl",
+      "name": "Pepper.com NL 最新",
+      "platform": "Pepper NL",
+      "region": "intl",
+      "country": "荷兰",
+      "kind": "deal",
+      "url": "https://nl.pepper.com/rss/nieuw",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "chollometro",
+      "name": "Chollometro 最新",
+      "platform": "Chollometro",
+      "region": "intl",
+      "country": "西班牙",
+      "kind": "deal",
+      "url": "https://www.chollometro.com/rss/nuevos",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "preisjaeger",
+      "name": "Preisjäger",
+      "platform": "Preisjäger",
+      "region": "intl",
+      "country": "奥地利",
+      "kind": "deal",
+      "url": "https://www.preisjaeger.at/rss/alle",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "pepper-pl",
+      "name": "Pepper.pl",
+      "platform": "Pepper.pl",
+      "region": "intl",
+      "country": "波兰",
+      "kind": "deal",
+      "url": "https://www.pepper.pl/rss/wszystkie",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "ozbargain",
+      "name": "OzBargain",
+      "platform": "OzBargain",
+      "region": "intl",
+      "country": "澳大利亚",
+      "kind": "deal",
+      "url": "https://www.ozbargain.com.au/deals/feed",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "rfd",
+      "name": "RedFlagDeals 热门优惠",
+      "platform": "RedFlagDeals",
+      "region": "intl",
+      "country": "加拿大",
+      "kind": "deal",
+      "url": "https://forums.redflagdeals.com/feed/forum/9",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "androidpolice-deals",
+      "name": "Android Police 优惠",
+      "platform": "Android Police",
+      "region": "intl",
+      "country": "美国",
+      "kind": "deal",
+      "url": "https://www.androidpolice.com/feed/deals/",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "cheapshark",
+      "name": "CheapShark 游戏折扣",
+      "platform": "CheapShark",
+      "region": "intl",
+      "country": "全球",
+      "kind": "deal",
+      "format": "cheapshark",
+      "ua": "DealRadar/1.0 (desktop deal monitor; +https://github.com)",
+      "url": "https://www.cheapshark.com/api/1.0/deals?pageSize=60&sortBy=recent",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "apple-newsroom",
+      "name": "Apple Newsroom 官方",
+      "platform": "品牌官方",
+      "region": "intl",
+      "country": "全球",
+      "kind": "news",
+      "url": "https://www.apple.com/newsroom/rss-feed.rss",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "samsung-newsroom",
+      "name": "Samsung Newsroom 官方",
+      "platform": "品牌官方",
+      "region": "intl",
+      "country": "全球",
+      "kind": "news",
+      "url": "https://news.samsung.com/global/feed",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "smzdm-post",
+      "name": "什么值得买 原创/好文",
+      "platform": "什么值得买",
+      "region": "cn",
+      "country": "中国",
+      "kind": "news",
+      "url": "https://post.smzdm.com/feed",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "ithome",
+      "name": "IT之家",
+      "platform": "IT之家",
+      "region": "cn",
+      "country": "中国",
+      "kind": "news",
+      "url": "https://www.ithome.com/rss/",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "mydrivers",
+      "name": "快科技（驱动之家）",
+      "platform": "快科技",
+      "region": "cn",
+      "country": "中国",
+      "kind": "news",
+      "url": "https://rss.mydrivers.com/rss.aspx?Tid=1",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "cnbeta",
+      "name": "cnBeta",
+      "platform": "cnBeta",
+      "region": "cn",
+      "country": "中国",
+      "kind": "news",
+      "url": "https://www.cnbeta.com.tw/backend.php",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "v2ex-deals",
+      "name": "V2EX 交易",
+      "platform": "V2EX",
+      "region": "cn",
+      "country": "中国",
+      "kind": "deal",
+      "skip": "^\\s*[【\\[(（]?\\s*(收|求|求购|回收)|拼车|合租",
+      "url": "https://www.v2ex.com/feed/tab/deals.xml",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "gnews-en",
+      "name": "Google 新闻（英文）品牌优惠搜索",
+      "platform": "Google News",
+      "region": "intl",
+      "country": "全球",
+      "kind": "search",
+      "searchSuffix": "(sale OR deal OR discount OR \"% off\")",
+      "url": "https://news.google.com/rss/search?q={q}+when:7d&hl=en-US&gl=US&ceid=US:en",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "gnews-zh",
+      "name": "Google 新闻（中文）品牌优惠搜索",
+      "platform": "Google News",
+      "region": "cn",
+      "country": "中国",
+      "kind": "search",
+      "searchSuffix": "(优惠 OR 降价 OR 促销 OR 折扣 OR 国补)",
+      "url": "https://news.google.com/rss/search?q={q}+when:7d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "bing-en",
+      "name": "Bing 资讯（英文）品牌优惠搜索",
+      "platform": "Bing News",
+      "region": "intl",
+      "country": "全球",
+      "kind": "search",
+      "searchSuffix": "sale deal discount",
+      "url": "https://www.bing.com/news/search?q={q}&format=rss&setlang=en-us",
+      "category": "goods",
+      "defaultOn": false
+    },
+    {
+      "id": "bing-zh",
+      "name": "必应资讯（中文）品牌优惠搜索",
+      "platform": "Bing News",
+      "region": "cn",
+      "country": "中国",
+      "kind": "search",
+      "searchSuffix": "优惠 降价",
+      "url": "https://www.bing.com/news/search?q={q}&format=rss&setlang=zh-cn",
+      "category": "goods",
+      "defaultOn": false
+    }
+  ],
+  "channels": {
+    "openai": [
+      {
+        "id": "news",
+        "sub": "blog",
+        "type": "rss",
+        "name": "官方新闻",
+        "url": "https://openai.com/news/rss.xml",
+        "maxItems": 120
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "ChatGPT 价格页",
+        "url": "https://chatgpt.com/pricing",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "api-pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "API 价格（开发者文档）",
+        "url": "https://platform.openai.com/docs/pricing",
+        "keyword": "$"
+      },
+      {
+        "id": "biz-pricing",
+        "sub": "pricing",
+        "type": "render",
+        "name": "openai.com 价格页（JS 渲染）",
+        "url": "https://openai.com/api/pricing/",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "students",
+        "sub": "pricing",
+        "type": "page",
+        "name": "ChatGPT 学生优惠页",
+        "url": "https://chatgpt.com/students",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "release-notes",
+        "sub": "changelog",
+        "type": "page",
+        "name": "ChatGPT 发布说明",
+        "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+      },
+      {
+        "id": "help-chatgpt",
+        "sub": "changelog",
+        "type": "render",
+        "name": "帮助中心 · ChatGPT 文章目录（新优惠/活动说明，JS 渲染）",
+        "url": "https://help.openai.com/en/collections/3742473-chatgpt",
+        "interval": 120
+      },
+      {
+        "id": "students-page",
+        "sub": "pricing",
+        "type": "render",
+        "name": "ChatGPT 学生页（JS 渲染）",
+        "url": "https://chatgpt.com/use-cases/students",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费",
+        "interval": 240
+      },
+      {
+        "id": "sitemap",
+        "sub": "blog",
+        "type": "sitemap",
+        "name": "官网新页面（sitemap）",
+        "url": "https://openai.com/sitemap.xml"
+      },
+      {
+        "id": "status",
+        "sub": "status",
+        "type": "rss",
+        "name": "服务状态",
+        "url": "https://status.openai.com/history.rss",
+        "maxItems": 15
+      },
+      {
+        "id": "community",
+        "sub": "forum",
+        "type": "discourse",
+        "name": "开发者社区（Discourse）",
+        "url": "https://community.openai.com"
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/OpenAI",
+        "opts": {
+          "sub": "OpenAI"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "reddit-chatgpt",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/ChatGPT 优惠讨论",
+        "opts": {
+          "sub": "ChatGPT",
+          "query": "free OR discount OR promo OR trial"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "youtube",
+        "sub": "youtube",
+        "type": "youtube",
+        "opts": {
+          "channelId": "UCXZCJLdBC09xxGZ6gcdrc6A"
+        },
+        "name": "YouTube 官方频道"
+      },
+      {
+        "id": "codex",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：Codex 发布",
+        "opts": {
+          "repo": "openai/codex",
+          "what": "releases"
+        },
+        "on": false,
+        "flaky": true
+      },
+      {
+        "id": "sdk",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：openai-python 发布",
+        "opts": {
+          "repo": "openai/openai-python",
+          "what": "releases"
+        },
+        "on": false,
+        "flaky": true
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：ChatGPT",
+        "opts": {
+          "appId": "6448311069"
+        }
+      },
+      {
+        "id": "android",
+        "sub": "app",
+        "type": "gplay",
+        "name": "Google Play：ChatGPT",
+        "opts": {
+          "pkg": "com.openai.chatgpt"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "ChatGPT OR OpenAI (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "OpenAI",
+          "minPoints": 20
+        }
+      }
+    ],
+    "anthropic": [
+      {
+        "id": "news",
+        "sub": "blog",
+        "type": "page",
+        "name": "官方新闻页",
+        "url": "https://www.anthropic.com/news"
+      },
+      {
+        "id": "sitemap",
+        "sub": "blog",
+        "type": "sitemap",
+        "name": "新闻新页面（sitemap）",
+        "url": "https://www.anthropic.com/sitemap.xml",
+        "opts": {
+          "filter": "/news/"
+        }
+      },
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "page",
+        "name": "Claude 博客",
+        "url": "https://claude.com/blog"
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Claude 价格页",
+        "url": "https://claude.com/pricing"
+      },
+      {
+        "id": "api-pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Claude API 价格",
+        "url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
+        "keyword": "$,free,discount,batch,credit"
+      },
+      {
+        "id": "education",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Claude 教育计划",
+        "url": "https://www.anthropic.com/education"
+      },
+      {
+        "id": "release-notes",
+        "sub": "changelog",
+        "type": "page",
+        "name": "平台发布说明",
+        "url": "https://docs.anthropic.com/en/release-notes/overview"
+      },
+      {
+        "id": "status",
+        "sub": "status",
+        "type": "rss",
+        "name": "服务状态",
+        "url": "https://status.claude.com/history.rss",
+        "maxItems": 15
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/ClaudeAI",
+        "opts": {
+          "sub": "ClaudeAI"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "youtube",
+        "sub": "youtube",
+        "type": "youtube",
+        "opts": {
+          "channelId": "UCrDwWp7EBBv4NwvScIpBDOA"
+        },
+        "name": "YouTube 官方频道"
+      },
+      {
+        "id": "claude-code",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：Claude Code 发布",
+        "opts": {
+          "repo": "anthropics/claude-code",
+          "what": "releases"
+        },
+        "on": false
+      },
+      {
+        "id": "sdk",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：Python SDK 发布",
+        "opts": {
+          "repo": "anthropics/anthropic-sdk-python",
+          "what": "releases"
+        },
+        "on": false
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：Claude",
+        "opts": {
+          "appId": "6473753684"
+        }
+      },
+      {
+        "id": "android",
+        "sub": "app",
+        "type": "gplay",
+        "name": "Google Play：Claude",
+        "opts": {
+          "pkg": "com.anthropic.claude"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Claude OR Anthropic (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Anthropic",
+          "minPoints": 20
+        }
+      }
+    ],
+    "gemini": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Gemini 官方博客",
+        "url": "https://blog.google/products/gemini/rss/"
+      },
+      {
+        "id": "deepmind",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Google DeepMind 博客",
+        "url": "https://deepmind.google/blog/rss.xml",
+        "maxItems": 40
+      },
+      {
+        "id": "devblog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Google 开发者博客",
+        "url": "https://developers.googleblog.com/feeds/posts/default"
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Gemini 订阅价格页",
+        "url": "https://gemini.google/subscriptions/"
+      },
+      {
+        "id": "ai-plans",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Google AI 套餐（Google One）",
+        "url": "https://one.google.com/about/google-ai-plans/"
+      },
+      {
+        "id": "students",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Gemini 学生免费计划",
+        "url": "https://gemini.google/students/"
+      },
+      {
+        "id": "api-pricing",
+        "sub": "pricing",
+        "type": "render",
+        "name": "Gemini API 价格（JS 渲染）",
+        "url": "https://ai.google.dev/gemini-api/docs/pricing",
+        "keyword": "$,free,Free"
+      },
+      {
+        "id": "forum",
+        "sub": "forum",
+        "type": "discourse",
+        "name": "Gemini API 开发者论坛",
+        "url": "https://discuss.ai.google.dev"
+      },
+      {
+        "id": "jio",
+        "sub": "pricing",
+        "type": "page",
+        "name": "运营商官方：Jio × Google AI Pro 活动页（印度）",
+        "url": "https://www.jio.com/google-gemini-offer/",
+        "interval": 360
+      },
+      {
+        "id": "telkomsel",
+        "sub": "news",
+        "type": "page",
+        "name": "运营商官方：Telkomsel 新闻（印尼）",
+        "url": "https://www.telkomsel.com/en/about-us/news",
+        "keyword": "Gemini,Google,ChatGPT,Perplexity,AI",
+        "interval": 360
+      },
+      {
+        "id": "xlsmart",
+        "sub": "news",
+        "type": "page",
+        "name": "运营商官方：XLSMART 新闻（印尼）",
+        "url": "https://www.xlsmart.co.id/en/about-xlsmart/news",
+        "keyword": "Gemini,Google,ChatGPT,Perplexity,AI",
+        "interval": 360
+      },
+      {
+        "id": "airtel",
+        "sub": "news",
+        "type": "page",
+        "name": "运营商官方：Airtel 新闻稿（印度）",
+        "url": "https://www.airtel.in/press-release",
+        "keyword": "Gemini,Google,ChatGPT,Perplexity,Adobe,AI",
+        "interval": 360
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/GeminiAI",
+        "opts": {
+          "sub": "GeminiAI"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "youtube",
+        "sub": "youtube",
+        "type": "youtube",
+        "opts": {
+          "channelId": "UCP7jMXSY2xbc3KCAE0MHQ-A"
+        },
+        "name": "Google DeepMind YouTube"
+      },
+      {
+        "id": "gemini-cli",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：Gemini CLI 发布",
+        "opts": {
+          "repo": "google-gemini/gemini-cli",
+          "what": "releases"
+        },
+        "on": false
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：Google Gemini",
+        "opts": {
+          "appId": "6477489729"
+        }
+      },
+      {
+        "id": "android",
+        "sub": "app",
+        "type": "gplay",
+        "name": "Google Play：Gemini",
+        "opts": {
+          "pkg": "com.google.android.apps.bard"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"Google Gemini\" OR \"Google AI Pro\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Gemini",
+          "minPoints": 20
+        }
+      }
+    ],
+    "ms-copilot": [
+      {
+        "id": "m365-blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Microsoft 365 博客",
+        "url": "https://www.microsoft.com/en-us/microsoft-365/blog/feed/"
+      },
+      {
+        "id": "ms-blog-copilot",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Microsoft 博客 · Copilot",
+        "url": "https://blogs.microsoft.com/blog/tag/microsoft-copilot/feed/"
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Microsoft 365 Copilot 价格页",
+        "url": "https://www.microsoft.com/en-us/microsoft-365/copilot/pricing",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "youtube",
+        "sub": "youtube",
+        "type": "youtube",
+        "opts": {
+          "channelId": "UCFtEEv80fQVKkD4h1PF-Xqw"
+        },
+        "name": "Microsoft YouTube"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"Microsoft Copilot\" OR \"Microsoft 365\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Microsoft Copilot",
+          "minPoints": 20
+        }
+      }
+    ],
+    "xai": [
+      {
+        "id": "news",
+        "sub": "blog",
+        "type": "render",
+        "name": "x.ai 新闻（JS 渲染）",
+        "url": "https://x.ai/news"
+      },
+      {
+        "id": "api",
+        "sub": "pricing",
+        "type": "render",
+        "name": "x.ai API 页（JS 渲染）",
+        "url": "https://x.ai/api",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "models",
+        "sub": "pricing",
+        "type": "page",
+        "name": "API 模型与价格（文档）",
+        "url": "https://docs.x.ai/docs/models",
+        "keyword": "$"
+      },
+      {
+        "id": "status",
+        "sub": "status",
+        "type": "rss",
+        "name": "服务状态",
+        "url": "https://status.x.ai/feed.xml",
+        "maxItems": 15
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/grok",
+        "opts": {
+          "sub": "grok"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "sdk",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：xai-sdk-python 发布",
+        "opts": {
+          "repo": "xai-org/xai-sdk-python",
+          "what": "releases"
+        },
+        "on": false
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：Grok",
+        "opts": {
+          "appId": "6670324846"
+        }
+      },
+      {
+        "id": "android",
+        "sub": "app",
+        "type": "gplay",
+        "name": "Google Play：Grok",
+        "opts": {
+          "pkg": "ai.x.grok"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Grok OR xAI (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "xAI",
+          "minPoints": 20
+        }
+      }
+    ],
+    "meta": [
+      {
+        "id": "newsroom",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Meta 官方新闻",
+        "url": "https://about.fb.com/news/feed/"
+      },
+      {
+        "id": "ai-blog",
+        "sub": "blog",
+        "type": "render",
+        "name": "Meta AI 博客（JS 渲染）",
+        "url": "https://ai.meta.com/blog/"
+      },
+      {
+        "id": "llama-api",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Meta Llama API / 模型页",
+        "url": "https://dev.meta.ai/",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "llama-stack",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：Llama Stack 发布",
+        "opts": {
+          "repo": "meta-llama/llama-stack",
+          "what": "releases"
+        },
+        "on": false
+      },
+      {
+        "id": "android",
+        "sub": "app",
+        "type": "gplay",
+        "name": "Google Play：Meta AI",
+        "opts": {
+          "pkg": "com.facebook.stella"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"Meta AI\" OR Llama OR \"Muse Spark\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Llama",
+          "minPoints": 20
+        }
+      }
+    ],
+    "mistral": [
+      {
+        "id": "news",
+        "sub": "blog",
+        "type": "sitemap",
+        "name": "新闻新页面（sitemap）",
+        "url": "https://mistral.ai/sitemap.xml",
+        "opts": {
+          "filter": "/news/"
+        }
+      },
+      {
+        "id": "news-rss",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Mistral 官方新闻 RSS",
+        "url": "https://mistral.ai/news/rss"
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Mistral 价格页",
+        "url": "https://mistral.ai/pricing"
+      },
+      {
+        "id": "changelog",
+        "sub": "changelog",
+        "type": "page",
+        "name": "文档更新日志",
+        "url": "https://docs.mistral.ai/getting-started/changelog/"
+      },
+      {
+        "id": "sdk",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：client-python 发布",
+        "opts": {
+          "repo": "mistralai/client-python",
+          "what": "releases"
+        },
+        "on": false
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/MistralAI",
+        "opts": {
+          "sub": "MistralAI"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：Le Chat",
+        "opts": {
+          "appId": "6740410176"
+        }
+      },
+      {
+        "id": "android",
+        "sub": "app",
+        "type": "gplay",
+        "name": "Google Play：Le Chat",
+        "opts": {
+          "pkg": "ai.mistral.chat"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"Mistral AI\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Mistral",
+          "minPoints": 20
+        }
+      }
+    ],
+    "perplexity": [
+      {
+        "id": "hub",
+        "sub": "blog",
+        "type": "render",
+        "name": "Perplexity 博客 Hub（JS 渲染）",
+        "url": "https://www.perplexity.ai/hub"
+      },
+      {
+        "id": "pro",
+        "sub": "pricing",
+        "type": "render",
+        "name": "Perplexity Pro 价格页（JS 渲染）",
+        "url": "https://www.perplexity.ai/pro",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "api-pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "API 价格（文档）",
+        "url": "https://docs.perplexity.ai/getting-started/pricing",
+        "keyword": "$"
+      },
+      {
+        "id": "changelog",
+        "sub": "changelog",
+        "type": "page",
+        "name": "API 更新日志",
+        "url": "https://docs.perplexity.ai/changelog/changelog"
+      },
+      {
+        "id": "status",
+        "sub": "status",
+        "type": "rss",
+        "name": "服务状态",
+        "url": "https://status.perplexity.com/history.rss",
+        "maxItems": 15
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/perplexity_ai",
+        "opts": {
+          "sub": "perplexity_ai"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：Perplexity",
+        "opts": {
+          "appId": "1668000334"
+        }
+      },
+      {
+        "id": "android",
+        "sub": "app",
+        "type": "gplay",
+        "name": "Google Play：Perplexity",
+        "opts": {
+          "pkg": "ai.perplexity.app.android"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Perplexity (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Perplexity",
+          "minPoints": 20
+        }
+      }
+    ],
+    "cursor": [
+      {
+        "id": "changelog",
+        "sub": "changelog",
+        "type": "rss",
+        "name": "更新日志",
+        "url": "https://cursor.com/changelog/rss.xml"
+      },
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "sitemap",
+        "name": "博客新文章（sitemap）",
+        "url": "https://cursor.com/sitemap.xml",
+        "opts": {
+          "filter": "/blog/"
+        }
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Cursor 价格页",
+        "url": "https://cursor.com/pricing"
+      },
+      {
+        "id": "students",
+        "sub": "pricing",
+        "type": "page",
+        "name": "学生优惠页",
+        "url": "https://www.cursor.com/students"
+      },
+      {
+        "id": "forum",
+        "sub": "forum",
+        "type": "discourse",
+        "name": "官方论坛（Discourse）",
+        "url": "https://forum.cursor.com"
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/cursor",
+        "opts": {
+          "sub": "cursor"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "status",
+        "sub": "status",
+        "type": "rss",
+        "name": "服务状态",
+        "url": "https://status.cursor.com/history.rss",
+        "maxItems": 15,
+        "on": false
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"Cursor AI\" OR \"Cursor Pro\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Cursor",
+          "minPoints": 20
+        }
+      }
+    ],
+    "github-copilot": [
+      {
+        "id": "changelog",
+        "sub": "changelog",
+        "type": "rss",
+        "name": "Copilot 更新日志",
+        "url": "https://github.blog/changelog/label/copilot/feed/"
+      },
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "GitHub 博客 · Copilot",
+        "url": "https://github.blog/ai-and-ml/github-copilot/feed/"
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Copilot 套餐价格页",
+        "url": "https://github.com/features/copilot/plans",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "plans-docs",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Copilot 套餐说明（文档）",
+        "url": "https://docs.github.com/en/copilot/get-started/plans"
+      },
+      {
+        "id": "vscode",
+        "sub": "changelog",
+        "type": "rss",
+        "name": "VS Code 发布说明",
+        "url": "https://code.visualstudio.com/feed.xml",
+        "on": false
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/GithubCopilot",
+        "opts": {
+          "sub": "GithubCopilot"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "bluesky",
+        "sub": "social",
+        "type": "bluesky",
+        "name": "Bluesky：@github.com",
+        "opts": {
+          "handle": "github.com"
+        }
+      },
+      {
+        "id": "youtube",
+        "sub": "youtube",
+        "type": "youtube",
+        "opts": {
+          "channelId": "UC7c3Kb6jYCRj4JOHHZTxKsQ"
+        },
+        "name": "GitHub YouTube"
+      },
+      {
+        "id": "status",
+        "sub": "status",
+        "type": "rss",
+        "name": "GitHub 服务状态",
+        "url": "https://www.githubstatus.com/history.rss",
+        "maxItems": 15,
+        "on": false
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"GitHub Copilot\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Copilot",
+          "minPoints": 20
+        }
+      }
+    ],
+    "midjourney": [
+      {
+        "id": "updates",
+        "sub": "changelog",
+        "type": "render",
+        "name": "官方更新页（JS 渲染）",
+        "url": "https://www.midjourney.com/updates"
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/midjourney",
+        "opts": {
+          "sub": "midjourney"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Midjourney (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Midjourney",
+          "minPoints": 20
+        }
+      }
+    ],
+    "notion": [
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Notion 价格页",
+        "url": "https://www.notion.com/pricing"
+      },
+      {
+        "id": "releases",
+        "sub": "changelog",
+        "type": "page",
+        "name": "版本发布页",
+        "url": "https://www.notion.com/releases"
+      },
+      {
+        "id": "bluesky",
+        "sub": "social",
+        "type": "bluesky",
+        "name": "Bluesky：@notion.com",
+        "opts": {
+          "handle": "notion.com"
+        }
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/Notion",
+        "opts": {
+          "sub": "Notion"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：Notion",
+        "opts": {
+          "appId": "1232780281"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"Notion AI\" OR Notion (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "adobe": [
+      {
+        "id": "firefly",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Firefly 套餐页",
+        "url": "https://www.adobe.com/products/firefly/plans.html"
+      },
+      {
+        "id": "cc",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Creative Cloud 套餐页",
+        "url": "https://www.adobe.com/creativecloud/plans.html"
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/Adobe",
+        "opts": {
+          "sub": "Adobe"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Adobe Creative Cloud OR Firefly (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "canva": [
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "render",
+        "name": "Canva 价格页（JS 渲染）",
+        "url": "https://www.canva.com/pricing/",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：Canva",
+        "opts": {
+          "appId": "897446215"
+        }
+      },
+      {
+        "id": "android",
+        "sub": "app",
+        "type": "gplay",
+        "name": "Google Play：Canva",
+        "opts": {
+          "pkg": "com.canva.editor"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Canva Pro (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "figma": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Figma 博客",
+        "url": "https://www.figma.com/blog/feed/atom.xml",
+        "maxItems": 60
+      },
+      {
+        "id": "release-notes",
+        "sub": "changelog",
+        "type": "page",
+        "name": "发布说明",
+        "url": "https://www.figma.com/release-notes/"
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Figma 价格页",
+        "url": "https://www.figma.com/pricing/",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "education",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Figma 教育版",
+        "url": "https://www.figma.com/education/"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Figma (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "elevenlabs": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "ElevenLabs 博客",
+        "url": "https://elevenlabs.io/blog/rss.xml"
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "ElevenLabs 价格页",
+        "url": "https://elevenlabs.io/pricing",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "changelog",
+        "sub": "changelog",
+        "type": "page",
+        "name": "更新日志",
+        "url": "https://elevenlabs.io/docs/changelog"
+      },
+      {
+        "id": "bluesky",
+        "sub": "social",
+        "type": "bluesky",
+        "name": "Bluesky：@elevenlabs.io",
+        "opts": {
+          "handle": "elevenlabs.io"
+        }
+      },
+      {
+        "id": "sdk",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：elevenlabs-python 发布",
+        "opts": {
+          "repo": "elevenlabs/elevenlabs-python",
+          "what": "releases"
+        },
+        "on": false
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "ElevenLabs (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "runway": [
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Runway 价格页",
+        "url": "https://runwayml.com/pricing"
+      },
+      {
+        "id": "news",
+        "sub": "blog",
+        "type": "render",
+        "name": "Runway 新闻（JS 渲染）",
+        "url": "https://runway.com/news"
+      },
+      {
+        "id": "sitemap",
+        "sub": "blog",
+        "type": "sitemap",
+        "name": "Runway 新文章（sitemap）",
+        "url": "https://runway.com/sitemap.xml",
+        "opts": {
+          "filter": "/news/"
+        }
+      },
+      {
+        "id": "educators",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Runway 教育/学生优惠页",
+        "url": "https://runway.com/educators",
+        "interval": 240
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：Runway",
+        "opts": {
+          "appId": "1665024375"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"Runway AI\" OR RunwayML OR \"Runway ML\" OR \"Runway Gen\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "suno": [
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Suno 价格页",
+        "url": "https://suno.com/pricing"
+      },
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "page",
+        "name": "Suno 博客",
+        "url": "https://suno.com/blog"
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：Suno",
+        "opts": {
+          "appId": "6480136315"
+        }
+      },
+      {
+        "id": "android",
+        "sub": "app",
+        "type": "gplay",
+        "name": "Google Play：Suno",
+        "opts": {
+          "pkg": "com.suno.android"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"Suno AI\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "aws": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "AWS 官方博客",
+        "url": "https://aws.amazon.com/blogs/aws/feed/"
+      },
+      {
+        "id": "whats-new",
+        "sub": "changelog",
+        "type": "rss",
+        "name": "AWS What's New",
+        "url": "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
+        "maxItems": 60
+      },
+      {
+        "id": "ml-blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "AWS 机器学习博客",
+        "url": "https://aws.amazon.com/blogs/machine-learning/feed/"
+      },
+      {
+        "id": "free",
+        "sub": "pricing",
+        "type": "page",
+        "name": "AWS 免费套餐页",
+        "url": "https://aws.amazon.com/free/"
+      },
+      {
+        "id": "bedrock",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Amazon Bedrock 价格",
+        "url": "https://aws.amazon.com/bedrock/pricing/",
+        "keyword": "free,discount,promo,credit,%"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "AWS credits OR \"Amazon Bedrock\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "gcp": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Google Cloud 博客",
+        "url": "https://cloudblog.withgoogle.com/rss/"
+      },
+      {
+        "id": "release-notes",
+        "sub": "changelog",
+        "type": "rss",
+        "name": "Google Cloud 发布说明",
+        "url": "https://cloud.google.com/feeds/gcp-release-notes.xml"
+      },
+      {
+        "id": "vertex-pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Vertex AI 生成式 AI 价格",
+        "url": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+        "keyword": "free,discount,promo,credit,%"
+      },
+      {
+        "id": "free",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Google Cloud 免费计划",
+        "url": "https://cloud.google.com/free",
+        "keyword": "free,credit,$"
+      },
+      {
+        "id": "startup",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Google for Startups 云计划",
+        "url": "https://cloud.google.com/startup",
+        "keyword": "credit,$,free"
+      },
+      {
+        "id": "status",
+        "sub": "status",
+        "type": "rss",
+        "name": "服务状态",
+        "url": "https://status.cloud.google.com/en/feed.atom",
+        "on": false
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"Google Cloud\" credits OR \"Vertex AI\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "azure": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Azure 博客",
+        "url": "https://azure.microsoft.com/en-us/blog/feed/"
+      },
+      {
+        "id": "updates",
+        "sub": "changelog",
+        "type": "rss",
+        "name": "Azure 更新",
+        "url": "https://www.microsoft.com/releasecommunications/api/v2/azure/rss",
+        "maxItems": 60
+      },
+      {
+        "id": "foundry-blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Microsoft Foundry 官方博客",
+        "url": "https://devblogs.microsoft.com/foundry/feed/"
+      },
+      {
+        "id": "openai-pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Azure OpenAI 价格",
+        "url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+        "keyword": "free,discount,promo,credit,%"
+      },
+      {
+        "id": "free",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Azure 免费服务",
+        "url": "https://azure.microsoft.com/en-us/pricing/free-services"
+      },
+      {
+        "id": "students",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Azure for Students",
+        "url": "https://azure.microsoft.com/en-us/free/students",
+        "keyword": "free,credit,$"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Azure OpenAI OR \"Azure credits\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "cloudflare": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "Cloudflare 博客",
+        "url": "https://blog.cloudflare.com/rss/"
+      },
+      {
+        "id": "changelog",
+        "sub": "changelog",
+        "type": "rss",
+        "name": "开发者更新日志",
+        "url": "https://developers.cloudflare.com/changelog/rss/index.xml",
+        "maxItems": 60
+      },
+      {
+        "id": "workers-ai",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Workers AI 价格",
+        "url": "https://developers.cloudflare.com/workers-ai/platform/pricing/"
+      },
+      {
+        "id": "plans",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Cloudflare 套餐页",
+        "url": "https://www.cloudflare.com/plans/",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "bluesky",
+        "sub": "social",
+        "type": "bluesky",
+        "name": "Bluesky：@cloudflare.social",
+        "opts": {
+          "handle": "cloudflare.social"
+        }
+      },
+      {
+        "id": "status",
+        "sub": "status",
+        "type": "rss",
+        "name": "服务状态",
+        "url": "https://www.cloudflarestatus.com/history.rss",
+        "on": false
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Cloudflare Workers AI (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "deepseek": [
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "API 价格页",
+        "url": "https://api-docs.deepseek.com/quick_start/pricing"
+      },
+      {
+        "id": "pricing-zh",
+        "sub": "pricing",
+        "type": "page",
+        "name": "API 价格页（中文）",
+        "url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing"
+      },
+      {
+        "id": "updates",
+        "sub": "changelog",
+        "type": "page",
+        "name": "API 更新日志",
+        "url": "https://api-docs.deepseek.com/updates"
+      },
+      {
+        "id": "news",
+        "sub": "blog",
+        "type": "sitemap",
+        "name": "官方公告（sitemap）",
+        "url": "https://api-docs.deepseek.com/sitemap.xml",
+        "opts": {
+          "filter": "/news/"
+        }
+      },
+      {
+        "id": "status",
+        "sub": "status",
+        "type": "rss",
+        "name": "服务状态",
+        "url": "https://status.deepseek.com/history.rss",
+        "maxItems": 15
+      },
+      {
+        "id": "reddit",
+        "sub": "reddit",
+        "type": "reddit",
+        "name": "r/DeepSeek",
+        "opts": {
+          "sub": "DeepSeek"
+        },
+        "flaky": true,
+        "interval": 60
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：DeepSeek",
+        "opts": {
+          "appId": "6737597349"
+        }
+      },
+      {
+        "id": "android",
+        "sub": "app",
+        "type": "gplay",
+        "name": "Google Play：DeepSeek",
+        "opts": {
+          "pkg": "com.deepseek.chat"
+        }
+      },
+      {
+        "id": "news-zh",
+        "sub": "news",
+        "type": "search",
+        "name": "中文新闻 · 优惠搜索",
+        "keyword": "DeepSeek (免费 OR 优惠 OR 降价 OR 折扣 OR 限时 OR 学生 OR 额度 OR 限免)",
+        "region": "cn"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "DeepSeek (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "DeepSeek",
+          "minPoints": 20
+        }
+      }
+    ],
+    "kimi": [
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Kimi API 价格页",
+        "url": "https://platform.moonshot.cn/docs/pricing/chat"
+      },
+      {
+        "id": "pricing-intl",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Kimi API 价格页（国际）",
+        "url": "https://platform.moonshot.ai/docs/pricing/chat"
+      },
+      {
+        "id": "status",
+        "sub": "status",
+        "type": "page",
+        "name": "服务状态页（history.rss 已 404，改为网页监控）",
+        "url": "https://status.moonshot.cn/"
+      },
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：Kimi",
+        "opts": {
+          "appId": "6474233312"
+        }
+      },
+      {
+        "id": "news-zh",
+        "sub": "news",
+        "type": "search",
+        "name": "中文新闻 · 优惠搜索",
+        "keyword": "Kimi OR 月之暗面 (免费 OR 优惠 OR 降价 OR 折扣 OR 限时 OR 学生 OR 额度 OR 限免)",
+        "region": "cn"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Kimi OR 月之暗面 (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "zhipu": [
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Z.ai API 价格",
+        "url": "https://docs.z.ai/guides/overview/pricing"
+      },
+      {
+        "id": "releases",
+        "sub": "changelog",
+        "type": "page",
+        "name": "智谱开放平台 新品发布",
+        "url": "https://docs.bigmodel.cn/cn/update/new-releases"
+      },
+      {
+        "id": "autoclaw-blog",
+        "sub": "blog",
+        "type": "page",
+        "name": "AutoClaw 官方博客（活动公告）",
+        "url": "https://autoclaw.z.ai/blog"
+      },
+      {
+        "id": "news-zh",
+        "sub": "news",
+        "type": "search",
+        "name": "中文新闻 · 优惠搜索",
+        "keyword": "智谱 OR GLM OR AutoClaw (免费 OR 优惠 OR 降价 OR 折扣 OR 限时 OR 学生 OR 额度 OR 限免)",
+        "region": "cn"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "智谱 OR GLM OR AutoClaw (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "qwen": [
+      {
+        "id": "models",
+        "sub": "pricing",
+        "type": "page",
+        "name": "百炼 模型列表与价格",
+        "url": "https://help.aliyun.com/zh/model-studio/models"
+      },
+      {
+        "id": "free-quota",
+        "sub": "pricing",
+        "type": "page",
+        "name": "百炼 新人免费额度",
+        "url": "https://help.aliyun.com/zh/model-studio/new-free-quota"
+      },
+      {
+        "id": "new-models",
+        "sub": "changelog",
+        "type": "page",
+        "name": "百炼 新发布模型",
+        "url": "https://help.aliyun.com/zh/model-studio/newly-released-models",
+        "keyword": "免费,元,折,额度,优惠,限时,赠,价格"
+      },
+      {
+        "id": "bailian",
+        "sub": "pricing",
+        "type": "page",
+        "name": "阿里云百炼 产品页",
+        "url": "https://www.aliyun.com/product/bailian"
+      },
+      {
+        "id": "coding-plan",
+        "sub": "pricing",
+        "type": "page",
+        "name": "百炼 Coding Plan 套餐与优惠",
+        "url": "https://help.aliyun.com/zh/model-studio/coding-plan",
+        "keyword": "免费,元,折,额度,优惠,限时,赠,价格"
+      },
+      {
+        "id": "news-zh",
+        "sub": "news",
+        "type": "search",
+        "name": "中文新闻 · 优惠搜索",
+        "keyword": "通义千问 OR 千问 OR Qwen OR 阿里云百炼 (免费 OR 优惠 OR 降价 OR 折扣 OR 限时 OR 学生 OR 额度 OR 限免)",
+        "region": "cn"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "通义千问 OR 千问 OR Qwen OR 阿里云百炼 (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ],
+    "doubao": [
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "render",
+        "on": false,
+        "name": "火山方舟 模型价格（2026-10 实测 403，默认关闭）",
+        "url": "https://www.volcengine.com/docs/82379/1544106",
+        "keyword": "元,免费,折,token"
+      },
+      {
+        "id": "activity",
+        "sub": "pricing",
+        "type": "page",
+        "name": "火山方舟 优惠活动页",
+        "url": "https://www.volcengine.com/activity/ark"
+      },
+      {
+        "id": "product",
+        "sub": "pricing",
+        "type": "render",
+        "name": "火山方舟 产品页（JS 渲染）",
+        "url": "https://www.volcengine.com/product/ark",
+        "keyword": "免费,元,折,额度,优惠,限时,赠,价格"
+      },
+      {
+        "id": "releases",
+        "sub": "changelog",
+        "type": "render",
+        "name": "火山方舟 产品动态",
+        "url": "https://www.volcengine.com/docs/82379/1159176"
+      },
+      {
+        "id": "news-zh",
+        "sub": "news",
+        "type": "search",
+        "name": "中文新闻 · 优惠搜索",
+        "keyword": "豆包 OR 火山方舟 (免费 OR 优惠 OR 降价 OR 折扣 OR 限时 OR 学生 OR 额度 OR 限免)",
+        "region": "cn"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "豆包 OR 火山方舟 (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": false
+      }
+    ],
+    "ernie": [
+      {
+        "id": "qianfan",
+        "sub": "pricing",
+        "type": "page",
+        "name": "百度千帆 产品页",
+        "url": "https://cloud.baidu.com/product/wenxinworkshop"
+      },
+      {
+        "id": "cloud-news",
+        "sub": "news",
+        "type": "page",
+        "name": "百度智能云 官方动态",
+        "url": "https://cloud.baidu.com/news/index.html",
+        "keyword": "千帆,文心,ERNIE,免费,限免,降价",
+        "interval": 120
+      },
+      {
+        "id": "docs",
+        "sub": "changelog",
+        "type": "page",
+        "name": "千帆 开发者文档",
+        "url": "https://cloud.baidu.com/doc/qianfan-docs/s/Mm8r1mejk"
+      },
+      {
+        "id": "news-zh",
+        "sub": "news",
+        "type": "search",
+        "name": "中文新闻 · 优惠搜索",
+        "keyword": "文心 OR ERNIE OR 百度千帆 (免费 OR 优惠 OR 降价 OR 折扣 OR 限时 OR 学生 OR 额度 OR 限免)",
+        "region": "cn"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "文心 OR ERNIE OR 百度千帆 (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": false
+      }
+    ],
+    "hunyuan": [
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "腾讯混元 计费说明",
+        "url": "https://cloud.tencent.com/document/product/1729/97731"
+      },
+      {
+        "id": "releases",
+        "sub": "changelog",
+        "type": "page",
+        "name": "腾讯混元 产品动态",
+        "url": "https://cloud.tencent.com/document/product/1729/104753"
+      },
+      {
+        "id": "github",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：HunyuanVideo",
+        "opts": {
+          "repo": "Tencent-Hunyuan/HunyuanVideo",
+          "what": "commits"
+        },
+        "on": false
+      },
+      {
+        "id": "news-zh",
+        "sub": "news",
+        "type": "search",
+        "name": "中文新闻 · 优惠搜索",
+        "keyword": "腾讯元宝 OR 腾讯混元 (免费 OR 优惠 OR 降价 OR 折扣 OR 限时 OR 学生 OR 额度 OR 限免)",
+        "region": "cn"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "腾讯元宝 OR 腾讯混元 (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": false
+      }
+    ],
+    "spark": [
+      {
+        "id": "api",
+        "sub": "pricing",
+        "type": "render",
+        "name": "星火 API 页（JS 渲染）",
+        "url": "https://xinghuo.xfyun.cn/sparkapi"
+      },
+      {
+        "id": "docs",
+        "sub": "changelog",
+        "type": "page",
+        "name": "星火 Web API 文档",
+        "url": "https://www.xfyun.cn/doc/spark/Web.html"
+      },
+      {
+        "id": "news-zh",
+        "sub": "news",
+        "type": "search",
+        "name": "中文新闻 · 优惠搜索",
+        "keyword": "讯飞星火 OR \"讯飞 Spark\" OR \"iFlytek Spark\" (免费 OR 优惠 OR 降价 OR 折扣 OR 限时 OR 学生 OR 额度 OR 限免)",
+        "region": "cn"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "讯飞星火 OR \"讯飞 Spark\" OR \"iFlytek Spark\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": false
+      }
+    ],
+    "devin": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "官方博客 RSS",
+        "url": "https://devin.ai/rss.xml"
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Devin 价格页",
+        "url": "https://devin.ai/pricing",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "sitemap",
+        "sub": "blog",
+        "type": "sitemap",
+        "name": "官网新页面（sitemap）",
+        "url": "https://devin.ai/sitemap.xml"
+      },
+      {
+        "id": "youtube",
+        "sub": "youtube",
+        "type": "youtube",
+        "opts": {
+          "channelId": "UCk_Il3HoK3qTz1tvzyphozg"
+        },
+        "name": "YouTube 官方频道"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"Devin AI\" OR \"Cognition AI\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Devin",
+          "minPoints": 20
+        }
+      }
+    ],
+    "manus": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "page",
+        "name": "Manus 博客",
+        "url": "https://manus.im/blog"
+      },
+      {
+        "id": "updates",
+        "sub": "changelog",
+        "type": "page",
+        "name": "Manus 更新",
+        "url": "https://manus.im/updates"
+      },
+      {
+        "id": "help-sitemap",
+        "sub": "changelog",
+        "type": "sitemap",
+        "name": "帮助中心新文章（sitemap，含活动/补偿说明）",
+        "url": "https://help.manus.im/sitemap.xml",
+        "opts": {
+          "filter": "/en/articles/"
+        },
+        "interval": 240
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "render",
+        "name": "Manus 价格页（JS 渲染）",
+        "url": "https://manus.im/pricing",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "sitemap",
+        "sub": "blog",
+        "type": "sitemap",
+        "name": "官网新页面（sitemap）",
+        "url": "https://manus.im/sitemap.xml"
+      },
+      {
+        "id": "youtube",
+        "sub": "youtube",
+        "type": "youtube",
+        "opts": {
+          "channelId": "UCQgFQdqiFQ_LfFBGP6z9dqQ"
+        },
+        "name": "YouTube 官方频道"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "\"Manus AI\" (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Manus",
+          "minPoints": 20
+        }
+      }
+    ],
+    "coze": [
+      {
+        "id": "docs-sitemap",
+        "sub": "changelog",
+        "type": "sitemap",
+        "name": "扣子文档新页面（sitemap，含套餐活动调整）",
+        "url": "https://docs.coze.cn/sitemap.xml",
+        "interval": 240
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "扣子 订阅套餐",
+        "url": "https://docs.coze.cn/guides_edition",
+        "keyword": "免费,元,折,额度,优惠,限时,赠,价格"
+      },
+      {
+        "id": "github",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：Coze Studio 发布",
+        "opts": {
+          "repo": "coze-dev/coze-studio",
+          "what": "releases"
+        }
+      },
+      {
+        "id": "news-zh",
+        "sub": "news",
+        "type": "search",
+        "name": "中文新闻 · 优惠搜索",
+        "keyword": "Coze OR 扣子AI (免费 OR 优惠 OR 降价 OR 折扣 OR 限时 OR 学生 OR 额度 OR 限免)",
+        "region": "cn"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Coze OR 扣子AI (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": false
+      }
+    ],
+    "dify": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "page",
+        "name": "Dify 博客",
+        "url": "https://dify.ai/blog"
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Dify 价格页",
+        "url": "https://dify.ai/pricing",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "education",
+        "sub": "pricing",
+        "type": "page",
+        "name": "Dify 教育计划",
+        "url": "https://dify.ai/education"
+      },
+      {
+        "id": "github",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：Dify 发布",
+        "opts": {
+          "repo": "langgenius/dify",
+          "what": "releases"
+        }
+      },
+      {
+        "id": "youtube",
+        "sub": "youtube",
+        "type": "youtube",
+        "opts": {
+          "channelId": "UC2JZCsZSOudXA08cMMRCL9g"
+        },
+        "name": "YouTube 官方频道"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Dify (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Dify",
+          "minPoints": 20
+        }
+      }
+    ],
+    "langchain": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "官方博客 RSS",
+        "url": "https://www.langchain.com/blog/rss.xml"
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "LangSmith 价格页",
+        "url": "https://www.langchain.com/pricing",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "startups",
+        "sub": "pricing",
+        "type": "page",
+        "name": "创业公司计划",
+        "url": "https://www.langchain.com/startups"
+      },
+      {
+        "id": "status",
+        "sub": "status",
+        "type": "rss",
+        "name": "LangSmith 服务状态",
+        "url": "https://status.smith.langchain.com/history.rss",
+        "maxItems": 15
+      },
+      {
+        "id": "github",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：LangChain 发布",
+        "opts": {
+          "repo": "langchain-ai/langchain",
+          "what": "releases"
+        },
+        "on": false
+      },
+      {
+        "id": "youtube",
+        "sub": "youtube",
+        "type": "youtube",
+        "opts": {
+          "channelId": "UCC-lyoTfSrcJzA1ab3APAgw"
+        },
+        "name": "YouTube 官方频道"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "LangChain (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "LangChain",
+          "minPoints": 20
+        }
+      }
+    ],
+    "n8n": [
+      {
+        "id": "blog",
+        "sub": "blog",
+        "type": "rss",
+        "name": "官方博客 RSS",
+        "url": "https://n8n.io/blog/feed"
+      },
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "n8n 价格页",
+        "url": "https://n8n.io/pricing",
+        "keyword": "$,free,month,trial,student,% off,credit,discount,免费"
+      },
+      {
+        "id": "changelog",
+        "sub": "changelog",
+        "type": "page",
+        "name": "n8n 更新日志",
+        "url": "https://docs.n8n.io/changelog"
+      },
+      {
+        "id": "community",
+        "sub": "forum",
+        "type": "discourse",
+        "name": "社区论坛（Discourse）",
+        "url": "https://community.n8n.io",
+        "on": false
+      },
+      {
+        "id": "github",
+        "sub": "github",
+        "type": "github",
+        "name": "GitHub：n8n 发布",
+        "opts": {
+          "repo": "n8n-io/n8n",
+          "what": "releases"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "n8n (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "n8n",
+          "minPoints": 20
+        }
+      }
+    ],
+    "genspark": [
+      {
+        "id": "ios",
+        "sub": "app",
+        "type": "appstore",
+        "name": "App Store：Genspark",
+        "opts": {
+          "appId": "6739554054",
+          "country": "us"
+        }
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "Genspark (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      },
+      {
+        "id": "hn",
+        "sub": "forum",
+        "type": "hn",
+        "name": "Hacker News 讨论",
+        "opts": {
+          "query": "Genspark",
+          "minPoints": 20
+        }
+      }
+    ],
+    "minimax": [
+      {
+        "id": "pricing",
+        "sub": "pricing",
+        "type": "page",
+        "name": "MiniMax API 价格（国际）",
+        "url": "https://platform.minimax.io/docs/guides/pricing"
+      },
+      {
+        "id": "news",
+        "sub": "blog",
+        "type": "page",
+        "name": "MiniMax 新闻（国际）",
+        "url": "https://www.minimax.io/news"
+      },
+      {
+        "id": "news-cn",
+        "sub": "blog",
+        "type": "page",
+        "name": "MiniMax 新闻（中国）",
+        "url": "https://www.minimaxi.com/news"
+      },
+      {
+        "id": "news-zh",
+        "sub": "news",
+        "type": "search",
+        "name": "中文新闻 · 优惠搜索",
+        "keyword": "MiniMax OR 海螺AI (免费 OR 优惠 OR 降价 OR 折扣 OR 限时 OR 学生 OR 额度 OR 限免)",
+        "region": "cn"
+      },
+      {
+        "id": "news-en",
+        "sub": "news",
+        "type": "search",
+        "name": "英文新闻 · 优惠搜索",
+        "keyword": "MiniMax OR 海螺AI (free OR discount OR \"% off\" OR credits OR \"free trial\" OR students OR promo OR cheaper)",
+        "on": true
+      }
+    ]
+  }
+}

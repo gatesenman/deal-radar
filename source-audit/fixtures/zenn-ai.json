@@ -1,0 +1,7 @@
+{
+  "id": "zenn-ai",
+  "url": "https://zenn.dev/topics/ai/feed",
+  "at": "2026-11-24T11:44:01.365+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item><title><![CDATA[Claude Codeで業務システムを保守する ― 調査5時間が30分になった仕組みづくり]]></title><description><![CDATA[機能もテーブルも多い業務システムを、Claude Code と一緒に保守するための仕組みを、体験談の口調でまとめました。ルールは自分で書かず、AIに話して書いてもらう。設計書・コード・SQLから「地図」を作り、差分を承認してから直し、記録を残す。導入1週間で調査が5時間以上から30分ほどになったやり方です。第1・2章は無料で読めます。]]></description><link>https://zenn.dev/ao_workshop/books/legacy-system-ai-agent-guide</link><guid isPermaLink=\"true\">https://zenn.dev/ao_workshop/books/legacy-system-ai-agent-guide</guid><pubDate>Mon, 23 Nov 2026 23:01:23 GMT</pubDate><enclosure url=\"https://res.cloudinary.com/zenn/image/upload/s--FSYd24Ut--/g_center%2Ch_280%2Cl_fetch:aHR0cHM6Ly9zdGF0aWMuemVubi5zdHVkaW8vdXNlci11cGxvYWQvYm9va19jb3Zlci9mOWVjN2ZmMzQ0LnBuZw==%2Cw_200/v1627283836/default/og-base-book_yz4z02.jpg?_a=BACMTiAE\" length=\"0\" type=\"false\"/><dc:creator>あお工房</dc:creator></item></channel></rss>"
+}

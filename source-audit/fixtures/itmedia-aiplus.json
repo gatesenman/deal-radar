@@ -1,0 +1,7 @@
+{
+  "id": "itmedia-aiplus",
+  "url": "https://rss.itmedia.co.jp/rss/2.0/aiplus.xml",
+  "at": "2026-11-24T11:44:00.030+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item>\n<title>Anthropic、PRのレビューから修正、承認までをAIで支援する「Claude Ship」公開</title>\n<link>https://www.itmedia.co.jp/aiplus/article/2611/24/2000003404/</link>\n<description>Anthropicは、GitHub上のプルリクエスト（PR）のレビューから修正、ポリシーに基づく承認判断までをAIで支援する「Claude Ship」をβ版として発表した。既存の「Code Review」に新エージェント「PR Steward」「Claude Approvals」を組み合わせ、Team／Enterpriseプラン向けに提供する。</description>\n<pubDate>Tue, 24 Nov 2026 10:21:04 +0900</pubDate>\n</item></channel></rss>"
+}

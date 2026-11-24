@@ -46,9 +46,9 @@ function toTs(v) {
   if (typeof v === 'number' || /^\d{9,13}$/.test(String(v))) { const n = Number(v); return n < 1e12 ? n * 1000 : n; }
   const t = Date.parse(v); return Number.isFinite(t) ? t : null;
 }
-function absUrl(u, base) { try { return new URL(u, base).toString(); } catch { return u || ''; } }
+function absUrl(u, base) { if (!u) return ''; try { const p = new URL(u, /^https?:\/\//i.test(u)?undefined:base); return /^https?:$/.test(p.protocol) ? p.toString() : ''; } catch { return ''; } }
 function firstLine(s, n = 140) { const t = String(s || '').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n) + '…' : t; }
-function parseJSON(body) { try { return typeof body === 'string' ? JSON.parse(body) : body; } catch { throw new Error('返回的不是 JSON（可能被反爬拦截）'); } }
+function parseJSON(body) { try { return typeof body === 'string' ? JSON.parse(body) : body; } catch { throw new Error('Invalid JSON / 返回的不是有效 JSON'); } }
 function parseHeaders(h) {
   if (!h) return {};
   if (typeof h === 'object') return h;
@@ -68,13 +68,13 @@ function requestUrl(ch, ctx = {}) {
       if (!/^[\w.-]+\/[\w.-]+$/.test(repo)) throw new Error('GitHub 仓库格式应为 owner/repo');
       const what = o.what || 'releases';
       if (o.api) return what === 'commits' ? `https://api.github.com/repos/${repo}/commits?per_page=20${o.branch ? '&sha=' + encodeURIComponent(o.branch) : ''}` : `https://api.github.com/repos/${repo}/${what}?per_page=20`;
-      return what === 'commits' ? `https://github.com/${repo}/commits/${o.branch || 'main'}.atom` : `https://github.com/${repo}/${what}.atom`;
+      return what === 'commits' ? `https://github.com/${repo}/commits/${encodeURIComponent(o.branch || 'main')}.atom` : `https://github.com/${repo}/${what}.atom`;
     }
     case 'hn': return `https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=40&query=${encodeURIComponent(o.query || ch.keyword || '')}${o.minPoints ? '&numericFilters=points>=' + Number(o.minPoints) : ''}`;
     case 'reddit': {
       const sub = String(o.sub || '').replace(/^\/?r\//, '');
       if (!sub) throw new Error('请填写版块名，如 OpenAI');
-      return o.query ? `https://www.reddit.com/r/${sub}/search.rss?q=${encodeURIComponent(o.query)}&restrict_sr=on&sort=new&limit=50` : `https://www.reddit.com/r/${sub}/new/.rss?limit=50`;
+      return o.query ? `https://www.reddit.com/r/${encodeURIComponent(sub)}/search.rss?q=${encodeURIComponent(o.query)}&restrict_sr=on&sort=new&limit=50` : `https://www.reddit.com/r/${encodeURIComponent(sub)}/new/.rss?limit=50`;
     }
     case 'discourse': { const base = String(ch.url || '').replace(/\/(latest(\.json|\.rss)?)?$/, ''); return o.category ? `${base}/c/${o.category}.json` : `${base}/latest.json`; }
     case 'telegram': { const c = String(o.channel || '').replace(/^@|^https?:\/\/t\.me\/(s\/)?/g, ''); if (!c) throw new Error('请填写频道名'); return `https://t.me/s/${c}`; }
@@ -85,7 +85,7 @@ function requestUrl(ch, ctx = {}) {
       if (!o.acct) throw new Error('请填写账号或话题');
       return `https://${inst}/api/v1/accounts/lookup?acct=${encodeURIComponent(String(o.acct).replace(/^@/, ''))}`;
     }
-    case 'youtube': return o.channelId ? 'https://www.youtube.com/feeds/videos.xml?channel_id=' + o.channelId : ch.url;
+    case 'youtube': return o.channelId ? 'https://www.youtube.com/feeds/videos.xml?channel_id=' + encodeURIComponent(o.channelId) : ch.url;
     case 'appstore': return `https://itunes.apple.com/lookup?id=${encodeURIComponent(o.appId)}&country=${o.country || 'us'}`;
     case 'gplay': return `https://play.google.com/store/apps/details?id=${encodeURIComponent(o.pkg)}&hl=en_US&gl=US`;
     case 'rsshub': {
@@ -171,7 +171,7 @@ function parseDiscourse(body, base) {
   const o = parseJSON(body);
   const topics = o && o.topic_list && o.topic_list.topics;
   if (!Array.isArray(topics)) throw new Error('不是 Discourse 论坛 JSON');
-  return topics.filter((t) => !t.pinned_globally && t.visible !== false).map((t) => ({ guid: 'dc:' + t.id, title: decodeEntities(t.title || t.fancy_title || ''), link: `${base}/t/${t.slug}/${t.id}`, summary: t.excerpt ? stripHtml(t.excerpt).slice(0, 300) : `回复 ${t.posts_count - 1 || 0} · 浏览 ${t.views || 0}`, image: t.image_url || '', published: toTs(t.created_at) }));
+  return topics.filter((t) => !t.pinned_globally && t.visible !== false).map((t) => ({ guid: 'dc:' + t.id, title: decodeEntities(t.title || t.fancy_title || ''), link: new URL(`/t/${encodeURIComponent(t.slug || 'topic')}/${t.id}`, base).href, summary: t.excerpt ? stripHtml(t.excerpt).slice(0, 300) : `回复 ${t.posts_count - 1 || 0} · 浏览 ${t.views || 0}`, image: t.image_url || '', published: toTs(t.created_at) }));
 }
 function parseHNJson(body) {
   const o = parseJSON(body);
@@ -183,19 +183,22 @@ function parseGithubApi(body, ch) {
   if (!Array.isArray(arr)) throw new Error((arr && arr.message) || 'GitHub API 返回异常');
   const repo = (ch.opts || {}).repo; const what = (ch.opts || {}).what || 'releases';
   if (what === 'commits') return arr.map((c) => ({ guid: c.sha, title: firstLine(c.commit.message.split('\n')[0], 160), link: c.html_url, summary: firstLine(c.commit.message, 400), image: '', published: toTs(c.commit.author && c.commit.author.date) }));
-  if (what === 'tags') return arr.map((t) => ({ guid: 'tag:' + t.name, title: `${repo} ${t.name}`, link: `https://github.com/${repo}/releases/tag/${t.name}`, summary: '', image: '', published: null }));
+  if (what === 'tags') return arr.map((t) => ({ guid: 'tag:' + t.name, title: `${repo} ${encodeURIComponent(t.name)}`, link: `https://github.com/${repo}/releases/tag/${encodeURIComponent(t.name)}`, summary: '', image: '', published: null }));
   return arr.map((r) => ({ guid: 'rel:' + r.id, title: `${repo} ${r.name || r.tag_name}`, link: r.html_url, summary: firstLine(r.body || '', 400), image: '', published: toTs(r.published_at || r.created_at) }));
 }
 function parseAppStore(body) {
   const o = parseJSON(body);
   const a = o.results && o.results[0];
   if (!a) throw new Error('App Store 未找到该应用 ID');
-  return [{ guid: `as:${a.trackId}:${a.version}`, title: `${a.trackName} iOS 版更新 ${a.version}`, link: a.trackViewUrl.replace(/\?.*$/, '') + '#v' + a.version, summary: firstLine((a.releaseNotes || '') + `（价格 ${a.formattedPrice || '免费'}，评分 ${Number(a.averageUserRating || 0).toFixed(1)}）`, 400), image: a.artworkUrl100 || '', published: toTs(a.currentVersionReleaseDate) }];
+  if(!a.trackId || !a.trackName || !a.trackViewUrl || !a.version)throw new Error('App Store response missing required application fields');
+  const price=a.formattedPrice || (Number.isFinite(a.price) && a.currency ? new Intl.NumberFormat('en',{style:'currency',currency:a.currency}).format(a.price) : 'unknown / 价格未知');
+  return [{ guid: `as:${a.trackId}:${a.version}`, title: `${a.trackName} iOS 版更新 ${a.version}`, link: a.trackViewUrl.replace(/\?.*$/, '') + '#v' + a.version, summary: firstLine((a.releaseNotes || '') + `（价格 ${price}，评分 ${Number(a.averageUserRating || 0).toFixed(1)}）`, 400), image: a.artworkUrl100 || '', published: toTs(a.currentVersionReleaseDate) }];
 }
 function parseGplay(body, ch, url) {
   const name = (body.match(/<h1[^>]*>(?:<span[^>]*>)?([^<]+)/) || [])[1] || (ch.opts || {}).pkg;
-  const upd = (body.match(/Updated on<\/div><div[^>]*>([^<]+)</) || [])[1];
-  if (!upd) throw new Error('未能识别 Google Play 更新时间（页面结构变化或需要 JS）');
+  let upd = (body.match(/Updated on<\/div><div[^>]*>([^<]+)</) || [])[1];
+  if(!upd){const root=parseHtml(body);const el=root.querySelector('[itemprop=dateModified]');upd=el?.getAttribute('content') || '';if(!upd)for(const n of root.querySelectorAll('div,span')){if(n.text.trim()==='Updated on'){upd=n.nextElementSibling?.text?.trim() || '';if(toTs(upd))break;}}}
+  if (!upd || !toTs(upd)) throw new Error('未能识别 Google Play 更新时间（页面结构变化或需要 JS）');
   return [{ guid: 'gp:' + (ch.opts || {}).pkg + ':' + upd, title: `${decodeEntities(name)} Android 版更新（${upd}）`, link: url + '#' + encodeURIComponent(upd), summary: '', image: '', published: toTs(upd) }];
 }
 
@@ -217,11 +220,14 @@ function filterItems(items, ch) {
  * fetchText(url, { ua, headers, timeout, proxy, render }) 由调用方提供
  */
 async function collect(ch, { fetchText, ctx = {} } = {}) {
+  const cap = require('./source-capabilities').capability(ch,ctx);
+  if (['config-required','unsupported'].includes(cap.state)) throw new Error(cap.state+': '+cap.hint);
   const url = requestUrl(ch, ctx);
   const o = ch.opts || {};
-  const req = { ua: ch.ua, headers: parseHeaders(ch.headers), timeout: (Number(ch.timeout) || 20) * 1000, proxy: ch.proxy, render: !!(ch.render || o.render), wait: o.wait };
+  const req = { maxBytes: o.maxBytes, meta: {}, ua: ch.ua, headers: parseHeaders(ch.headers), timeout: (Number(ch.timeout) || 20) * 1000, proxy: ch.proxy, render: !!(ch.render || o.render), wait: o.wait };
   let items;
   const body = await fetchText(url, req);
+  if (require('./page').isBlocked(body)) throw new Error('SOURCE_BLOCKED: challenge page');
   switch (ch.type) {
     case 'jsonfeed': items = parseJsonFeed(body); break;
     case 'json': items = parseJsonApi(body, ch, url); break;
@@ -240,35 +246,43 @@ async function collect(ch, { fetchText, ctx = {} } = {}) {
     }
     case 'discourse': items = parseDiscourse(body, String(ch.url).replace(/\/(latest(\.json|\.rss)?)?$/, '')); break;
     case 'hn': items = parseHNJson(body); break;
-    case 'github': items = o.api ? parseGithubApi(body, ch) : parseFeed(body).items.map((it) => ({ ...it, title: (o.what === 'commits' ? '' : String(o.repo).split('/')[1] + ' ') + it.title })); break;
+    case 'github': items = o.api ? parseGithubApi(body, ch) : parseFeed(body,{baseURL:req.meta.finalURL || url}).items.map((it) => ({ ...it, title: (o.what === 'commits' ? '' : String(o.repo).split('/')[1] + ' ') + it.title })); break;
     case 'appstore': items = parseAppStore(body); break;
     case 'gplay': items = parseGplay(body, ch, url); break;
     default: { // rss / youtube / reddit / producthunt / rsshub / search
       const t = String(body).trimStart();
-      if (t.startsWith('{')) { const j = parseJSON(t); items = j.version && /jsonfeed/.test(j.version) ? parseJsonFeed(j) : (() => { throw new Error('返回了 JSON 而不是 RSS'); })(); } else items = parseFeed(body).items;
+      if (t.startsWith('{')) { const j = parseJSON(t); items = j.version && /jsonfeed/.test(j.version) ? parseJsonFeed(j) : (() => { throw new Error('返回了 JSON 而不是 RSS'); })(); } else { const feed=await require('./feed').parseOrDiscoverFeed(body,req.meta.finalURL||url,fetchText,req); items=feed.items; if(!items.length&&!feed.validEmpty)throw new Error('Feed has no meaningful parsed data'); }
     }
   }
+  const rawCount = items.length;
+  items = items.map(it => ({ ...it, link: absUrl(it.link,req.meta.finalURL||url), image: absUrl(it.image,req.meta.finalURL||url) })).filter(it=>it.title && it.link);
+  if (rawCount && !items.length) throw new Error('Source records have no valid title/link');
   items = filterItems(items, ch);
   if (ch.maxItems && items.length > ch.maxItems) items = items.slice(0, ch.maxItems);
-  return { items, url };
+  return { items, url, rawCount, validEmpty: rawCount === 0 && ch.type !== 'html' && ch.type !== 'gplay' && ch.type !== 'telegram' };
 }
 
 // Sitemap：返回 URL 列表（sitemapindex 自动展开前若干个子 sitemap）
 async function sitemapUrls(ch, fetchText) {
-  const o = ch.opts || {};
-  const req = { ua: ch.ua, headers: parseHeaders(ch.headers), timeout: (Number(ch.timeout) || 20) * 1000, proxy: ch.proxy };
-  const locs = (xml) => [...String(xml).matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)].map((m) => decodeEntities(m[1]));
-  const body = await fetchText(ch.url, req);
-  if (!/<(urlset|sitemapindex)/.test(body.slice(0, 2000))) throw new Error('不是 sitemap.xml');
-  let urls;
-  if (/<sitemapindex/.test(body.slice(0, 2000))) {
-    const subs = locs(body); const f = o.filter ? subs.filter((u) => u.includes(o.filter)) : subs;
-    urls = [];
-    for (const s of (f.length ? f : subs).slice(-4)) { try { urls.push(...locs(await fetchText(s, req))); } catch { /* 子 sitemap 失败忽略 */ } }
-  } else urls = locs(body);
-  if (o.filter) urls = urls.filter((u) => u.includes(o.filter));
-  return [...new Set(urls)];
+ const o=ch.opts||{};const req={ua:ch.ua,headers:parseHeaders(ch.headers),timeout:(Number(ch.timeout)||20)*1000,proxy:ch.proxy};
+ const maxMaps=Math.min(12,Math.max(1,Number(o.maxSitemaps)||8)), maxURLs=Math.min(10000,Math.max(1,Number(o.maxURLs)||3000));
+ const visited=new Set(),urls=new Set(),warnings=[];let sampled=false;
+ async function walk(url,depth=0){
+  if(visited.has(url))return;
+  if(visited.size>=maxMaps || depth>3){sampled=true;return;}
+  visited.add(url);const body=await fetchText(url,req);
+  if(require('./page').isBlocked(body))throw new Error('SOURCE_BLOCKED: sitemap challenge');
+  const index=/<(?:\w+:)?sitemapindex[\s>]/i.test(body.slice(0,3000));
+  if(!index&&!/<(?:\w+:)?urlset[\s>]/i.test(body.slice(0,3000)))throw new Error('Not a sitemap / 不是 sitemap.xml');
+  const locs=[...String(body).matchAll(/<(?:\w+:)?loc>\s*(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?\s*<\/(?:\w+:)?loc>/gi)].map(m=>{try{return new URL(decodeEntities(m[1].trim()),url).href;}catch{return '';}}).filter(u=>/^https?:/.test(u));
+  if(index){let subs=locs;const relevant=o.filter?subs.filter(u=>u.includes(o.filter)):[];if(relevant.length)subs=relevant;
+   for(const sub of subs.slice().reverse()){if(visited.size>=maxMaps){sampled=true;break;}try{await walk(sub,depth+1);}catch(e){warnings.push(e.message);if(/SOURCE_BLOCKED|HTTP (401|403|429)/i.test(e.message))break;}}
+  }else for(const u of locs){if(!o.filter||u.includes(o.filter)){if(urls.size<maxURLs)urls.add(u);else sampled=true;}}
+ }
+ await walk(ch.url);if(!urls.size&&warnings.length)throw new Error(warnings.join('; '));
+ const result=[...urls];Object.defineProperties(result,{warnings:{value:warnings},stats:{value:{fetchedMaps:visited.size,maxMaps,maxURLs,sampled}}});return result;
 }
+
 function titleFromUrl(u) {
   try { const p = new URL(u).pathname.split('/').filter(Boolean).pop() || u; return decodeURIComponent(p).replace(/\.(html?|php)$/, '').replace(/[-_]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()); } catch { return u; }
 }

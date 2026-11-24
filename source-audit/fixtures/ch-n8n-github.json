@@ -1,0 +1,7 @@
+{
+  "id": "ch-n8n-github",
+  "url": "https://github.com/n8n-io/n8n/releases.atom",
+  "at": "2026-11-24T11:39:03.516+08:00",
+  "format": "rss",
+  "body": "<feed xmlns=\"http://www.w3.org/2005/Atom\"><entry>\n    <id>tag:github.com,2008:Repository/193215554/v1</id>\n    <updated>2026-11-23T08:18:39Z</updated>\n    <link rel=\"alternate\" type=\"text/html\" href=\"https://github.com/n8n-io/n8n/releases/tag/v1\"/>\n    <title>v1: :rocket: Release 1.123.101 (#44796)</title>\n    <content type=\"html\">&lt;p&gt;Co-authored-by: n8n-release-helper[bot] &amp;lt;265227495+n8n-release-helper[bot]@users.noreply.github.com&amp;gt;&lt;/p&gt;</content>\n    <author>\n      <name>n8n-assistant[bot]</name>\n    </author>\n    <media:thumbnail height=\"30\" width=\"30\" url=\"https://avatars.githubusercontent.com/in/177217?s=60&amp;v=4\"/>\n  </entry></feed>"
+}

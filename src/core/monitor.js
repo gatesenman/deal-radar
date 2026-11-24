@@ -4,6 +4,7 @@ const { parseFeed, parseCheapShark, parseHN } = require('./feed');
 const { classifyOffer, isOffer, refineOffer, applyFeedback, OFFER_LABELS } = require('./offers');
 const { extractLines, hashLines, diffLines, diffSnippet, isBlocked } = require('./page');
 const V29 = require('./v29');
+const V27 = require('./v27');
 const { compileBrand, matchBrands, isDealText, extractPrice, extractDiscount, searchTerm } = require('./matcher');
 const { collect, sitemapUrls, titleFromUrl, requestUrl, parseHeaders, STATEFUL } = require('./collectors');
 const { UA, nodeFetchText } = require('./http');
@@ -23,12 +24,13 @@ const defaultFetchText = nodeFetchText;
 
 // 请求选项：渠道级 UA / 请求头 / 超时 / 代理开关
 function reqOpts(source, meta) {
-  return { ua: source.ua, headers: parseHeaders(source.headers), timeout: (Number(source.timeout) || 20) * 1000, proxy: source.proxy, meta };
+  return { maxBytes: source.opts?.maxBytes, ua: source.ua, headers: parseHeaders(source.headers), timeout: (Number(source.timeout) || 20) * 1000, proxy: source.proxy, meta };
 }
 // 带重试与退避：429 / 5xx / 连接重置 → 等待（遵守 Retry-After，最长 20 秒）后重试一次
 async function withRetry(fn, retryDelay) {
   try { return await fn(); } catch (e) {
-    if (!/HTTP (429|5\d\d)|ECONNRESET|反爬|fetch failed/.test(e.message)) throw e;
+    if (/HTTP (401|403)|反爬|challenge|captcha/i.test(e.message)) throw e;
+    if (!/HTTP (429|5\d\d)|ECONNRESET|fetch failed/.test(e.message)) throw e;
     if (e.retryAfter > 20) throw e; // persist the cooldown instead of retrying before the server allows
     await sleep(Math.min(20000, e.retryAfter ? e.retryAfter * 1000 : retryDelay));
     return fn();
@@ -59,7 +61,7 @@ async function pLimit(tasks, n) {
 async function fetchPage(source, allBrands, { fetchText = defaultFetchText, renderText = null, now = Date.now(), retryDelay = 3000, pages = {} } = {}) {
   const t0 = Date.now();
   const meta = {};
-  const st = (ok, extra) => ({ ok, lastRun: now, ms: Date.now() - t0, total: 0, matched: 0, requests: 1, error: '', cached: !!meta.cached, retryAt: meta.retryAt || 0, httpStatus: meta.httpStatus || 0, ...extra });
+  const st = (ok, extra) => ({ outcome: ok ? 'baseline' : require('./source-health').diagnoseError(extra?.error), ok, lastRun: now, ms: Date.now() - t0, total: 0, matched: 0, requests: 1, error: '', cached: !!meta.cached, retryAt: meta.retryAt || 0, httpStatus: meta.httpStatus || 0, ...extra });
   const isRender = source.type === 'render' || (source.render && source.type !== 'sitemap');
   const vendor = source.vendor;
   const mkItem = (title, link, summary, types, extra = {}) => ({
@@ -86,21 +88,25 @@ async function fetchPage(source, allBrands, { fetchText = defaultFetchText, rend
       }
       note = added.length ? `发现 ${added.length} 个新页面` : '无新页面';
     }
-    return { items, status: st(true, { total: urls.length, matched: items.length, note }) };
+    return { items, status: st(true, { total: urls.length, matched: items.length, note, sitemapStats: urls.stats, error: (urls.warnings||[]).join('; ') }) };
   }
   // —— 网页变化监控（普通 / JS 渲染）——
   let body;
   try {
     if (isRender) {
       if (!renderText) return { items: [], status: st(false, { error: 'JS 渲染仅在桌面应用中可用（或已在设置中关闭）' }) };
-      body = await renderText(source.url, { timeout: Math.max(30000, (Number(source.timeout) || 45) * 1000), wait: (source.opts || {}).wait, ua: source.ua });
+      body = await renderText(source.url, { timeout: Math.max(30000, (Number(source.timeout) || 45) * 1000), wait: (source.opts || {}).wait, ua: source.ua, observe: r => {meta.finalURL=r.url;meta.httpStatus=r.status;} });
     } else body = await withRetry(() => fetchText(source.url, reqOpts(source, meta)), retryDelay);
   } catch (e) { return { items: [], status: st(false, { error: e.message || String(e) }) }; }
-  if (isBlocked(body)) return { items: [], status: st(false, { error: isRender ? '网站人机验证未能自动通过' : '网站启用了人机验证（反爬）——可改用「JS 渲染」协议' }) };
+  if (/<title[^>]*>[^<]*unavailable in region|only available in certain regions/i.test(body.slice(0,400000))) return {items:[],status:st(false,{error:'SOURCE_BLOCKED: Regional restriction; unavailable at this location; no bypass attempted'})};
+  if (isBlocked(body)) return { items: [], status: st(false, { error: 'SOURCE_BLOCKED: 网站人机验证；已停止，不尝试绕过 / Site challenge; stopped without bypass' }) };
+  if (/<input[^>]+type=["']password["']/i.test(body) && /<title[^>]*>[^<]*(sign[ -]?in|log[ -]?in)/i.test(body)) return {items:[],status:st(false,{error:'login-required: Public data unavailable; no sign-in attempted'})};
+  if(source.sub==='pricing' && meta.finalURL && /pricing|subscriptions/.test(new URL(source.url).pathname) && /^\/(?:[a-z]{2}\/)?$/.test(new URL(meta.finalURL).pathname) && !/pricing|subscriptions/.test(new URL(meta.finalURL).pathname))return {items:[],status:st(false,{error:'coverage-mismatch: Regional redirect to a generic homepage, not equivalent pricing coverage'})};
   let lines;
   // v2.9：无选择器 / 关键词时用正文抽取（去掉 Cookie 横幅、对话框、导航页眉页脚），并把相对时间等易变内容归一化
   try { lines = source.selector || source.keyword ? V29.cleanLines(extractLines(body, { selector: source.selector, keyword: source.keyword })) : V29.extractMain(body, extractLines); } catch (e) { return { items: [], status: st(false, { error: e.message }) }; }
   if (!lines.length) return { items: [], status: st(false, { error: '未从页面提取到文字（可能需要 JS 渲染，或关键词/选择器不匹配）' }) };
+  if (source.sub==='pricing' && !V27.extractPrices(lines).length && !/contact (?:us|sales)|talk to (?:us|sales)|request (?:a )?(?:quote|demo)|custom pricing|pay.as.you.go|free (?:plan|tier|forever)|联系我们|联系销售|按量付费|免费(?:版|套餐)/i.test(lines.join(' '))) return {items:[],status:st(false,{error:'No pricing evidence / 未提取到价格或明确的联系销售、免费套餐信息；请检查选择器或 JS 渲染'})};
   const key = 'm29|' + (source.selector || '') + '|' + (source.keyword || '') + '|' + source.url; // v2.9 抽取方式变化：升级后静默重建基线
   const prev = pages[source.id];
   const hash = hashLines(lines);
@@ -144,17 +150,20 @@ function channelSource(brand, ch, ctx = {}) {
     selector: ch.selector || '', keyword: STATEFUL.has(type) ? (ch.keyword || '') : (ch.keyword || ''), sub: ch.sub || 'other', channel: true, brandId: brand.id, chId: ch.id,
     opts: ch.opts || {}, headers: ch.headers || '', ua: ch.ua || '', proxy: ch.proxy, timeout: ch.timeout || 0, include: ch.include || '', exclude: ch.exclude || '', regex: ch.regex || '',
     render: !!ch.render, interval: Number(ch.interval) || 0, flaky: !!ch.flaky,
+    configuredEnabled: ch.enabled !== false, capability: require('./source-capabilities').capability({...ch,keyword:ch.keyword || (type==='search'?brand.name:'')},ctx),
     enabled: !!brand.enabled && ch.enabled !== false, preset: !!ch.preset,
   };
 }
 function channelSources(brands, ctx) { return brands.flatMap((b) => (b.channels || []).map((c) => channelSource(b, c, ctx))); }
 
 async function fetchSource(source, allBrands, opts = {}) {
+  const cap=require('./source-capabilities').capability(source,opts.ctx||{});
+  if(['config-required','unsupported'].includes(cap.state))return {items:[],status:{ok:false,outcome:cap.state,error:cap.state+': '+cap.hint,lastRun:Date.now(),total:0,matched:0,requests:0,ms:0}};
   if (source.kind === 'page') return fetchPage(source, allBrands, opts);
   const { fetchText: ft0 = defaultFetchText, renderText = null, now = Date.now(), retryDelay = 3000, searchGap = 250, ctx = {} } = opts;
   const meta = {};
   // 渠道开启「JS 渲染」时，HTML 列表等协议改走隐藏浏览器
-  const fetchText = (url, o = {}) => (o.render ? (renderText ? renderText(url, o) : Promise.reject(new Error('JS 渲染仅在桌面应用中可用'))) : ft0(url, { ...reqOpts(source, meta), ...o, meta }));
+  const fetchText = async (url,o={}) => { const body=await (o.render ? (renderText ? renderText(url,o) : Promise.reject(new Error('JS 渲染仅在桌面应用中可用'))) : ft0(url,{...reqOpts(source,meta),...o,meta})); if(o.meta)Object.assign(o.meta,meta);return body; };
   // 品牌/厂商只和同分类的数据源匹配（AI 厂商 ↔ AI 源，实物品牌 ↔ 实物源）；未标分类的视为通用
   const cat = source.category || 'goods';
   const brands = allBrands.filter((b) => !b.category || !source.category || b.category === cat);
@@ -162,17 +171,18 @@ async function fetchSource(source, allBrands, opts = {}) {
   let skipRe = null; try { skipRe = source.skip ? new RegExp(source.skip, 'i') : null; } catch { /* 忽略无效正则 */ }
   const reqs = expandRequests(source, brands);
   const t0 = Date.now();
-  let total = 0; const errors = []; const results = [];
+  let total = 0; let validEmpty = false; const errors = []; const results = [];
   for (const r of reqs) {
     try {
       const load = async () => {
         // 多协议渠道（JSON / HTML / Discourse / Bluesky / Telegram / App Store …）走采集适配器
         if (source.type && source.type !== 'rss' && !(source.kind === 'search' && !source.channel)) {
           const c = await collect({ ...source, url: source.type === 'search' || source.type === 'youtube' || source.type === 'producthunt' ? r.url : source.url }, { fetchText, ctx });
-          return { items: c.items };
+          return { items: c.items, rawCount: c.rawCount, validEmpty: c.validEmpty };
         }
         const body = await fetchText(r.url);
-        const f = source.format === 'cheapshark' ? parseCheapShark(body) : source.format === 'hn' ? parseHN(body) : parseFeed(body);
+        const f = source.format === 'cheapshark' ? parseCheapShark(body) : source.format === 'hn' ? parseHN(body) : await require('./feed').parseOrDiscoverFeed(body,meta.finalURL || r.url,fetchText);
+        f.items = f.items.map(it => { try { return { ...it, link: new URL(it.link, /^https?:\/\//i.test(it.link)?undefined:(meta.finalURL || r.url)).href }; } catch { return { ...it, link: '' }; } }).filter(it => /^https?:/.test(it.link));
         if (source.include || source.exclude || source.regex) f.items = require('./collectors').filterItems(f.items, source);
         if (source.maxItems && f.items.length > source.maxItems) f.items = f.items.slice(0, source.maxItems);
         return f;
@@ -180,7 +190,8 @@ async function fetchSource(source, allBrands, opts = {}) {
       // 429 限流 / 5xx / 连接重置 / 偶发反爬页：等待后重试一次（超时不重试，避免拖慢整轮）
       const feed = await withRetry(load, retryDelay);
       if (reqs.length > 1) await sleep(searchGap);
-      total += feed.items.length;
+      if(opts.onParsed)opts.onParsed(feed.items);
+      total += feed.rawCount ?? feed.items.length; validEmpty = validEmpty || !!feed.validEmpty;
       for (const it of feed.items) {
         if (skipRe && skipRe.test(it.title)) continue; // 数据源级过滤（如 V2EX 的求购帖）
         // 只用标题 + 分类匹配品牌（摘要噪声太大，容易误报）
@@ -251,11 +262,14 @@ async function fetchSource(source, allBrands, opts = {}) {
       errors.push(e.message || String(e));
     }
   }
-  const ok = errors.length < reqs.length;
+  const ok = errors.length < reqs.length && (total > 0 || validEmpty);
+  if (!total && !validEmpty && !errors.length) errors.push('No meaningful parsed data / 未解析到有效内容');
   return {
     items: results,
     status: {
       ok,
+      validEmpty: ok && total === 0 && validEmpty,
+      outcome: ok ? (total > 0 ? (results.length ? 'parsed' : 'no-matching-deals') : validEmpty ? 'valid-empty' : 'empty-parse') : require('./source-health').diagnoseError(errors.join('; ')),
       lastRun: now,
       ms: Date.now() - t0,
       total,

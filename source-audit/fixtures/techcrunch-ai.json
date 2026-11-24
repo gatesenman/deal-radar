@@ -1,0 +1,7 @@
+{
+  "id": "techcrunch-ai",
+  "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+  "at": "2026-11-24T11:43:55.415+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item>\n\t\t<title>Anthropic launches Claude Ship, letting AI agents review, fix, and approve code changes</title>\n\t\t<link>https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/</link>\n\t\t\n\t\t<dc:creator><![CDATA[Sarah Perez]]></dc:creator>\n\t\t<pubDate>Mon, 23 Nov 2026 22:05:50 +0000</pubDate>\n\t\t\t\t<category><![CDATA[AI]]></category>\n\t\t<category><![CDATA[Anthropic]]></category>\n\t\t<category><![CDATA[Claude]]></category>\n\t\t<category><![CDATA[code]]></category>\n\t\t<category><![CDATA[coding]]></category>\n\t\t<guid isPermaLink=\"false\">https://techcrunch.com/?p=3191583</guid>\n\n\t\t\t\t\t<description><![CDATA[As AI-generated code piles up, Anthropic's new developer tools aim to eliminate another bottleneck by letting agents handle routine approvals.]]></description>\n\t\t\n\t\t\n\t\t\n\t\t\t</item></channel></rss>"
+}

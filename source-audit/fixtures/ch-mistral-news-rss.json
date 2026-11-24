@@ -1,0 +1,7 @@
+{
+  "id": "ch-mistral-news-rss",
+  "url": "https://mistral.ai/news/rss",
+  "at": "2026-11-24T11:45:28.218+08:00",
+  "format": "rss",
+  "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item><title>Le Chonk brings the brains. Studio puts it to work.</title><link>https://mistral.ai/news/build-with-studio/</link><guid isPermaLink=\"true\">https://mistral.ai/news/build-with-studio/</guid><description>Build and deploy enterprise agents, workflows and apps faster with Mistral Studio and Le Chonk full control over your models, data and infrastructure.</description><pubDate>Thu, 05 Nov 2026 12:00:14 GMT</pubDate></item></channel></rss>"
+}

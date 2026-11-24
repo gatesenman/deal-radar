@@ -1,0 +1,7 @@
+{
+  "id": "ch-openai-youtube",
+  "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCXZCJLdBC09xxGZ6gcdrc6A",
+  "at": "2026-11-24T11:44:36.173+08:00",
+  "format": "rss",
+  "body": "<feed xmlns=\"http://www.w3.org/2005/Atom\"><entry>\n  <id>yt:video:asUuxCqj0GE</id>\n  <yt:videoId>asUuxCqj0GE</yt:videoId>\n  <yt:channelId>UCXZCJLdBC09xxGZ6gcdrc6A</yt:channelId>\n  <title>Waiting for a better price on that gift? Use ChatGPT.</title>\n  <link rel=\"alternate\" href=\"https://www.youtube.com/shorts/asUuxCqj0GE\"/>\n  <author>\n   <name>OpenAI</name>\n   <uri>https://www.youtube.com/channel/UCXZCJLdBC09xxGZ6gcdrc6A</uri>\n  </author>\n  <published>2026-11-24T01:36:38+00:00</published>\n  <updated>2026-11-24T02:42:24+00:00</updated>\n  <media:group>\n   <media:title>Waiting for a better price on that gift? Use ChatGPT.</media:title>\n   <media:content url=\"https://www.youtube.com/v/asUuxCqj0GE?version=3\" type=\"application/x-shockwave-flash\" width=\"640\" height=\"390\"/>\n   <media:thumbnail url=\"https://i2.ytimg.com/vi/asUuxCqj0GE/hqdefault.jpg\" width=\"480\" height=\"360\"/>\n   <media:description>Try it yourself 👉 Check the price of this item every day and let me know when it drops. Include the old price, new price, and a link to the offer.</media:description>\n   <media:community>\n    <media:starRating count=\"26\" average=\"5.00\" min=\"1\" max=\"5\"/>\n    <media:statistics views=\"386\"/>\n   </media:community>\n  </media:group>\n </entry></feed>"
+}

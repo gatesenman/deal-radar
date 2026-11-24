@@ -189,7 +189,7 @@ const AI_SOURCES = [
 // sub: 渠道类别；flaky: 实测偶发失败（限流/5xx），保留但标注
 // 以下渠道均于 2026-10-12 实测可免登录抓取
 const yt = (id) => ({ type: 'youtube', opts: { channelId: id } });
-const PRICE_KW = '$,free,month,trial,student,% off,credit,discount,免费';
+const PRICE_KW = '$,free,month,trial,student,% off,credit,discount,contact sales,contact us,custom pricing,pay as you go,免费,联系销售';
 const ZH_KW = '免费,元,折,额度,优惠,限时,赠,价格';
 const VENDOR_CHANNELS = {
   openai: [
@@ -382,7 +382,7 @@ const VENDOR_CHANNELS = {
   ],
   cloudflare: [
     { id: 'blog', sub: 'blog', type: 'rss', name: 'Cloudflare 博客', url: 'https://blog.cloudflare.com/rss/' },
-    { id: 'changelog', sub: 'changelog', type: 'rss', name: '开发者更新日志', url: 'https://developers.cloudflare.com/changelog/rss/index.xml', maxItems: 60 },
+    { id: 'changelog', sub: 'changelog', type: 'rss', name: '开发者更新日志', url: 'https://developers.cloudflare.com/changelog/rss/index.xml', maxItems: 60, opts: { maxBytes: 32*1024*1024 } },
     { id: 'workers-ai', sub: 'pricing', type: 'page', name: 'Workers AI 价格', url: 'https://developers.cloudflare.com/workers-ai/platform/pricing/' },
     { id: 'plans', sub: 'pricing', type: 'page', name: 'Cloudflare 套餐页', url: 'https://www.cloudflare.com/plans/', keyword: PRICE_KW },
     { id: 'bluesky', sub: 'social', type: 'bluesky', name: 'Bluesky：@cloudflare.social', opts: { handle: 'cloudflare.social' } },

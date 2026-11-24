@@ -13,7 +13,7 @@ function decode(s) {
 }
 
 function isBlocked(html) {
-  return /<title>\s*(Just a moment|Attention Required|Access denied|请稍候)/i.test(html) || /cf-browser-verification|challenge-platform\/h\/b|captcha-delivery/i.test(html.slice(0, 20000));
+  return /<title>\s*(Just a moment|Attention Required|Access denied|403 Forbidden|Robot Check|Vercel Security Checkpoint|DDoS-Guard|Security verification|请稍候)/i.test(html) || /cf-browser-verification|challenge-platform\/h\/b|captcha-delivery|id=["']challenge-(?:form|running)["']/i.test(html.slice(0, 20000));
 }
 
 // 返回规范化后的文本行

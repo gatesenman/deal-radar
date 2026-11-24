@@ -1,5 +1,5 @@
 'use strict';
-const { XMLParser } = require('fast-xml-parser');
+const { XMLParser, XMLValidator } = require('fast-xml-parser');
 
 const parser = new XMLParser({
   ignoreAttributes: false,
@@ -79,12 +79,12 @@ function pickImage(item, descHtml) {
 }
 
 // 解析 RSS 2.0 / Atom / RDF(RSS 1.0)，返回统一结构
-function parseFeed(xml) {
+function parseFeed(xml, { baseURL = '' } = {}) {
   if (typeof xml !== 'string') throw new Error('响应不是文本');
   const head = xml.slice(0, 600).toLowerCase();
   if (!/<(rss|feed|rdf:rdf)[\s>]/.test(xml.slice(0, 3000).toLowerCase())) {
     if (head.includes('<script') || /captcha|challenge|just a moment/i.test(head)) throw new Error('被网站反爬验证拦截（返回了验证页面）');
-    if (head.includes('<html')) throw new Error('返回的是网页而不是 RSS（可能被反爬拦截）');
+    if (head.includes('<html')) throw new Error('返回的是网页而不是 RSS / HTML is not a feed');
     throw new Error('无法识别的订阅格式');
   }
   const doc = parser.parse(xml);
@@ -103,10 +103,13 @@ function parseFeed(xml) {
     raw = r.item || [];
   }
   if (!Array.isArray(raw)) raw = [raw];
+  const base = attr((doc.feed || {})['@_xml:base']) || baseURL;
+  const resolve = (u, itemBase = base) => { if (!u) return ''; try { const v=new URL(u,/^https?:\/\//i.test(u)?undefined:(itemBase || undefined)); return /^https?:$/.test(v.protocol)?v.href:''; } catch { return baseURL ? '' : u; } };
   const items = raw.map((it) => {
     const descHtml = txt(it['content:encoded']) || txt(it.description) || txt(it.content) || txt(it.summary);
     const title = stripHtml(txt(it.title));
-    const link = (pickLink(it) || '').trim();
+    const itemBase = attr(it['@_xml:base']) ? resolve(attr(it['@_xml:base'])) : base;
+    const link = resolve((pickLink(it) || '').trim(), itemBase);
     const date = txt(it.pubDate) || txt(it.published) || txt(it.updated) || txt(it['dc:date']);
     const ts = Date.parse(date);
     const cats = (it.category || []).map((c) => (typeof c === 'object' ? attr(c['@_term']) || txt(c) : txt(c))).filter(Boolean);
@@ -115,19 +118,21 @@ function parseFeed(xml) {
       title,
       link,
       summary: stripHtml(descHtml).slice(0, 400),
-      image: pickImage(it, descHtml),
+      image: resolve(pickImage(it, descHtml), itemBase),
       published: Number.isFinite(ts) ? ts : null,
       categories: cats.slice(0, 6),
       source: txt(it.source) || '', // Google News 原始来源
     };
   }).filter((x) => x.title && x.link);
-  return { title: feedTitle, items };
+  if (raw.length && !items.length) throw new Error('Feed entries have no usable title/link');
+  return { title: feedTitle, items, rawCount: raw.length, validEmpty: raw.length === 0 && !!feedTitle && XMLValidator.validate(xml) === true };
 }
 
 function parseCheapShark(json) {
   const arr = typeof json === 'string' ? JSON.parse(json) : json;
   if (!Array.isArray(arr)) throw new Error('CheapShark 返回格式异常');
   return {
+    rawCount: arr.length, validEmpty: arr.length === 0,
     title: 'CheapShark',
     items: arr.map((d) => ({
       guid: 'cs:' + d.dealID,
@@ -149,6 +154,7 @@ function parseHN(json) {
   const o = typeof json === 'string' ? JSON.parse(json) : json;
   if (!o || !Array.isArray(o.hits)) throw new Error('Hacker News 返回格式异常');
   return {
+    rawCount: o.hits.length, validEmpty: o.hits.length === 0,
     title: 'Hacker News',
     items: o.hits.filter((h) => h.title).map((h) => ({
       guid: 'hn:' + h.objectID,
@@ -164,3 +170,17 @@ function parseHN(json) {
 }
 
 module.exports = { parseHN, parseFeed, parseCheapShark, stripHtml, decodeEntities };
+
+// Only same-origin advertised public feeds. Never guess a route after a challenge/block.
+async function parseOrDiscoverFeed(body, baseURL, fetchText, req={}) {
+ if(require('./page').isBlocked(body))throw new Error('SOURCE_BLOCKED: challenge page');
+ if (/<html[\s>]/i.test(body.slice(0,3000)) && !/<(rss|feed)[\s>]/i.test(body.slice(0,3000))) {
+   const root=require('node-html-parser').parse(body);
+   const candidates=root.querySelectorAll('link[rel][href]').filter(n=>/alternate/i.test(n.getAttribute('rel')) && /application\/(rss\+xml|atom\+xml|feed\+json)/i.test(n.getAttribute('type')||''));
+   for(const n of candidates.slice(0,2)){let u;try{u=new URL(n.getAttribute('href'),baseURL);if(u.origin!==new URL(baseURL).origin)continue;}catch{continue;}
+     const text=await fetchText(u.href,req);const feed=/application\/feed\+json/i.test(n.getAttribute('type'))?{items:require('./collectors').parseJsonFeed(text)}:parseFeed(text,{baseURL:u.href});return {...feed,discoveredURL:u.href};
+   }
+ }
+ return parseFeed(body,{baseURL});
+}
+module.exports.parseOrDiscoverFeed=parseOrDiscoverFeed;
