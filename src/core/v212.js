@@ -28,12 +28,16 @@ function evidenceOf(d) {
 const SECRET_KEYS = new Set(['secret', 'token', 'key', 'keyEnc', 'apiKey', 'api_key', 'password']);
 
 function stripSecrets(obj, depth = 0) {
-  if (obj == null || depth > 8) return obj;
+  if (depth > 12) return undefined;
+  if (obj == null) return obj;
   if (Array.isArray(obj)) return obj.map((x) => stripSecrets(x, depth + 1));
   if (typeof obj !== 'object') return obj;
   const out = {};
   for (const [k, v] of Object.entries(obj)) {
-    if (SECRET_KEYS.has(k)) continue;
+    if ([...SECRET_KEYS].some((key) => key.toLowerCase() === k.toLowerCase()) || /^(authorization|cookie|proxy-authorization|clientsecret|access[_-]?token|refresh[_-]?token)$/i.test(k) || ['__proto__', 'constructor', 'prototype'].includes(k)) continue;
+    if (typeof v === 'string' && /^https?:/.test(v)) {
+      try { const u = new URL(v); if (u.username || u.password || [...u.searchParams.keys()].some((q) => /token|secret|key|auth|password/i.test(q))) { out[k] = ''; out.redacted = true; continue; } } catch {}
+    }
     if ((k === 'url' || k === 'hook') && typeof v === 'string' && /(?:hooks\.slack|qyapi\.weixin|open\.feishu|oapi\.dingtalk|sctapi\.ftqq|api\.telegram)/i.test(v)) {
       out[k] = '';
       out.redacted = true;
@@ -48,15 +52,16 @@ function exportBackup({ config, deals, views, prices } = {}) {
   const settings = { ...((config && config.settings) || {}) };
   delete settings.ai;
   delete settings.windowBounds;
-  const push = stripSecrets(settings.channels || []);
+  delete settings.proxyUrl;
+  const push = stripSecrets((settings.channels || []).map((c) => ({ ...c, url: '', enabled: false, last: null })));
   const { channels, ...rest } = settings;
   return {
     app: 'DealRadar',
     format: 3,
     exportedAt: new Date().toISOString(),
-    brands: (config && config.brands) || [],
-    sources: (config && config.sources) || [],
-    settings: rest,
+    brands: stripSecrets((config && config.brands) || []),
+    sources: stripSecrets((config && config.sources) || []),
+    settings: stripSecrets(rest),
     views: views || settings.views || [],
     channels: push, // 推送渠道（密钥已去掉）
     deals: Array.isArray(deals) ? deals.map((d) => ({
@@ -65,7 +70,7 @@ function exportBackup({ config, deals, views, prices } = {}) {
       sourceId: d.sourceId, sourceName: d.sourceName, platform: d.platform, region: d.region,
       published: d.published, fetchedAt: d.fetchedAt, summary: d.summary, facts: d.facts,
       sources: d.sources, origin: d.origin, score: d.score, vstat: d.vstat, recheck: d.recheck,
-      trialUntil: d.trialUntil, tr: d.tr,
+      trialUntil: d.trialUntil, trialEnd: d.trialEnd, trialDone: d.trialDone, trialNotified: d.trialNotified, tr: d.tr,
     })) : [],
     prices: prices && typeof prices === 'object' ? prices : undefined,
   };

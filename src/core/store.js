@@ -339,19 +339,26 @@ class Store {
 
   // —— 配置导入 / 导出 ——
   exportConfig() {
-    const { windowBounds, ai, ...settings } = this.config.settings;
-    if (ai) settings.ai = { provider: ai.provider, baseUrl: ai.baseUrl, model: ai.model }; // 导出不含 API Key
-    return { app: 'DealRadar', format: 2, exportedAt: new Date().toISOString(), brands: this.config.brands, sources: this.config.sources, settings };
+    const all = require('./v212').exportBackup({ config: this.config });
+    return { ...all, format: 2, deals: undefined, prices: undefined };
   }
-  importConfig(obj) {
-    if (!obj || obj.app !== 'DealRadar' || !Array.isArray(obj.brands)) throw new Error('不是全网优惠雷达的配置文件');
-    const keep = { windowBounds: this.config.settings.windowBounds, onboarded: true };
-    const curAi = this.config.settings.ai;
-    if (obj.settings && obj.settings.ai) keep.ai = { provider: obj.settings.ai.provider, baseUrl: obj.settings.ai.baseUrl, model: obj.settings.ai.model, keyEnc: curAi && curAi.baseUrl === obj.settings.ai.baseUrl ? curAi.keyEnc : undefined };
-    else if (curAi) keep.ai = curAi;
-    const cfg = this._migrate({ version: 5, brands: obj.brands, sources: Array.isArray(obj.sources) ? obj.sources : [], settings: { ...(obj.settings || {}), ...keep }, sourceStatus: {} });
-    this.config = cfg; if (!Array.isArray(cfg.settings.rules)) cfg.settings.rules = DEFAULT_RULES.map((r) => ({ ...r }));
-    this.saveConfig(); return { brands: cfg.brands.length, sources: cfg.sources.length };
+  importConfig(obj) { return this.restoreBackup({ ...obj, format: obj.format || 2 }); }
+  restoreBackup(obj, options = {}) {
+    const B = require('./backup'); const V = require('./v212');
+    B.validate(obj); // Nothing changes on validation failure.
+    const copy = JSON.parse(JSON.stringify(obj));
+    const cfg = this._migrate({ version: 5, brands: copy.brands, sources: copy.sources || [], settings: B.settingsForImport(copy.settings || {}, this.config.settings), sourceStatus: {} });
+    // Run normal setting clamps without saving/mutating the live store.
+    const sandbox = Object.create(Store.prototype); sandbox.config = cfg; sandbox.saveConfig = () => {};
+    sandbox.updateSettings({ ...cfg.settings });
+    cfg.settings.views = B.viewsForImport(copy.views || this.config.settings.views);
+    if (!Array.isArray(cfg.settings.rules)) cfg.settings.rules = DEFAULT_RULES.map((r) => ({ ...r }));
+    const deals = copy.format === 3 ? V.mergeDeals(this.deals, copy.deals || []) : this.deals;
+    const prices = copy.prices ? { ...this.prices, ...copy.prices } : this.prices;
+    clearTimeout(this._timer);
+    B.commitFiles(this.dir, { 'config.json': cfg, 'deals.json': deals, 'prices.json': prices }, options);
+    this.config = cfg; this.deals = deals; this.prices = prices;
+    return { brands: cfg.brands.length, sources: cfg.sources.length, deals: deals.length, format: copy.format };
   }
 
   // —— 数据源 ——

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.17.0 — Validated rollback-safe backup restore
+
+- Validate backup shape and dangerous keys before mutation; stage config/deals/prices and roll back on replacement failure. Preserve device push/AI endpoints and credentials; merge price books; preserve trial lifecycle fields; strip nested auth fields and all portable push URLs.
+
+
 ## 2.16.0 — Public source network boundary
 
 - Block private source URLs, URL credentials and mixed public/private DNS answers. Revalidate redirects, strip cross-origin auth/cookie headers; hidden renderer guards HTTP/file subrequests. Mask push endpoint URLs and raw settings channels before IPC.

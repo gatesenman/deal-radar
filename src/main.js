@@ -1065,20 +1065,11 @@ function registerIPC() {
   handle('backup:import', async (filePath) => {
     const file = filePath || (SHOT_DIR ? null : (await dialog.showOpenDialog(win, { title: L('导入完整备份'), filters: [{ name: 'JSON', extensions: ['json'] }], properties: ['openFile'] })).filePaths[0]);
     if (!file) return null;
+    if (fs.statSync(file).size > 25 * 1024 * 1024) throw new Error('Backup exceeds 25 MB');
     const obj = JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\ufeff/, ''));
-    const err = V212.validateBackup(obj); if (err) throw new Error(L(err));
-    if (obj.format === 2 || !obj.deals) {
-      const r = store.importConfig(obj);
-      await applyProxy(); schedule(); send('state', publicState());
-      return { ...r, deals: 0, format: 2 };
-    }
-    const r = store.importConfig({ app: 'DealRadar', format: 2, brands: obj.brands, sources: obj.sources, settings: obj.settings });
-    if (Array.isArray(obj.views)) { store.config.settings.views = obj.views; store.saveConfig(); }
-    store.deals = V212.mergeDeals(store.deals, obj.deals);
-    if (obj.prices && typeof obj.prices === 'object') { store.prices = obj.prices; store.savePrices(); }
-    store.saveDealsSoon(); await applyProxy(); schedule(); send('state', publicState());
-    log(L('已导入备份：{0} 个厂商，{1} 条优惠（推送密钥未包含，需在本机重填）', r.brands, store.deals.length));
-    return { brands: r.brands, sources: r.sources, deals: store.deals.length, format: 3 };
+    const r = store.restoreBackup(obj);
+    await applyProxy(); schedule(); send('state', publicState());
+    return r;
   });
     handle('feedback:removeWord', (w) => { store.updateSettings({ noiseWords: (store.config.settings.noiseWords || []).filter((x) => x !== w) }); send('state', publicState()); });
   handle('feedback:resetSources', () => { store.updateSettings({ noiseSources: {} }); send('state', publicState()); });
