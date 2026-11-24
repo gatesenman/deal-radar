@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.19.0 — Rate-limit-aware source recovery
+
+- Honour seconds and HTTP-date Retry-After (max 24h), persist cooldowns through collector status and do not bypass server cooldown on manual refresh. Keep last successful check across outages; reset streaks on recovery. Authenticated HTTP responses no longer populate the public URL cache.
+
+
 ## 2.18.0 — Conservative expiry and currency interpretation
 
 - Reject impossible calendar dates and ambiguous numeric dates; honour explicit zoned ISO deadline instants. Parse grouped/European price amounts and explicit JPY/regional currency. Start fresh price history on currency switches; soft-404 requires confirmation.

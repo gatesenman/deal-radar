@@ -137,9 +137,9 @@ function coverage(brands, chSources, status = {}, now = Date.now()) {
   return brands.filter((b) => b.enabled).map((b) => {
     const chs = chSources.filter((s) => s.brandId === b.id);
     const on = chs.filter((s) => s.enabled !== false);
-    const rows = on.map((s) => { const st = status[s.id] || null; return { id: s.id, name: s.name, type: s.type, sub: s.sub, ok: st ? !!st.ok : null, at: st ? st.lastRun || 0 : 0, error: st && !st.ok ? String(st.error || '').slice(0, 120) : '' }; });
+    const rows = on.map((s) => { const st = status[s.id] || null; return { id: s.id, name: s.name, type: s.type, sub: s.sub, ok: st ? !!st.ok : null, at: st ? st.lastRun || 0 : 0, lastSuccess: st ? st.lastSuccess || (st.ok ? st.lastRun : 0) || 0 : 0, error: st && !st.ok ? String(st.error || '').slice(0, 120) : '' }; });
     const okRows = rows.filter((r) => r.ok === true);
-    const lastOk = okRows.reduce((m, r) => Math.max(m, r.at), 0);
+    const lastOk = rows.reduce((m, r) => Math.max(m, r.lastSuccess), 0);
     const lastCheck = rows.reduce((m, r) => Math.max(m, r.at), 0);
     const failing = rows.filter((r) => r.ok === false);
     const pending = rows.filter((r) => r.ok === null);

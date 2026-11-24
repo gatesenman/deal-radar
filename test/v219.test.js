@@ -1,0 +1,21 @@
+'use strict';
+const {test}=require('node:test');const A=require('node:assert/strict');const H=require('../src/core/source-health');const {makeFetchText,HttpCache}=require('../src/core/http');const M=require('../src/core/monitor');
+test('v219 Retry-After supports seconds/date and bounded malformed input',()=>{const n=Date.parse('2026-11-24T00:00:00Z');
+ A.equal(H.retryAfter('120',n),120); A.equal(H.retryAfter('Tue, 24 Nov 2026 00:05:00 GMT',n),300);A.equal(H.retryAfter('yesterday',n),0);A.equal(H.retryAfter('9999999',n),86400);A.equal(H.retryAfter('-12',n),0);
+});
+test('v219 429 cooldown survives collection and even manual force respects it',async()=>{let calls=0;
+ const ft=makeFetchText(async()=>{calls++;return new Response('',{status:429,headers:{'retry-after':'120'}});});
+ const out=await M.fetchSource({id:'official',url:'https://example.com/feed',kind:'vendor',enabled:true},[],{fetchText:ft,retryDelay:0});
+ A.equal(calls,1);A.equal(out.status.ok,false);A.equal(out.status.httpStatus,429);A.ok(out.status.retryAt>Date.now()+110000);
+ A.match(M.skipReason({id:'official'},out.status,{force:true}),/Retry-After/);
+ A.equal(M.skipReason({id:'official'},out.status,{force:true,now:out.status.retryAt+1}),'');
+});
+test('v219 recovery resets streak but preserves last successful history',()=>{
+ let s=H.nextStatus(null,{ok:true,lastRun:100});s=H.nextStatus(s,{ok:false,lastRun:200,retryAt:400});A.equal(s.lastSuccess,100);A.equal(s.failStreak,1);
+ s=H.nextStatus(s,{ok:true,lastRun:500});A.equal(s.lastSuccess,500);A.equal(s.retryAt,0);A.equal(s.failStreak,0);A.equal(s.recoveredAt,500);
+});
+test('v219 authenticated response does not populate public URL cache',async()=>{const cache=new HttpCache();let n=0;
+ const ft=makeFetchText(async()=>new Response(++n===1?'private':'public',{headers:{etag:'v1'}}),{cache});
+ A.equal(await ft('https://example.com/',{headers:{Authorization:'secret'}}),'private');A.equal(cache.map.size,0);
+ A.equal(await ft('https://example.com/'),'public');A.equal(cache.map.size,1);
+});

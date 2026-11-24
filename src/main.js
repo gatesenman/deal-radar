@@ -158,7 +158,7 @@ async function applyProxy() {
 // 记录连续失败次数：界面只在「连续失败 ≥2 次」时提示代理问题，避免开机网络未就绪等偶发超时引起误报
 function setStatus(id, st) {
   const prev = store.config.sourceStatus[id];
-  st.failStreak = st.ok ? 0 : ((prev && !prev.ok && prev.failStreak) || 0) + 1;
+  st = require('./core/source-health').nextStatus(prev, st);
   if (prev && prev.chg) st.chg = prev.chg; // v2.7：保留变化历史（自适应轮询）
   store.config.sourceStatus[id] = st;
   store.recordHealth(id, st);

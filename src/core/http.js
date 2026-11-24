@@ -1,6 +1,7 @@
 'use strict';
 // HTTP 层：统一 UA/自定义请求头/超时、ETag + If-Modified-Since 条件请求缓存（内存）
 const { assertPublicURL } = require('./network-policy');
+const { retryAfter } = require('./source-health');
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36';
 
 class HttpCache {
@@ -29,7 +30,8 @@ function makeFetchText(rawFetch, { cache = new HttpCache(), friendly = (m) => m,
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), timeout);
     const h = { 'User-Agent': ua || UA, Accept: '*/*', 'Accept-Language': 'en-US,en;q=0.9,zh-CN;q=0.8', ...headers };
-    const c = opts.cache !== false ? cache.get(url) : null;
+    const cacheAllowed = opts.cache !== false && !Object.keys(headers).some((k) => /^(authorization|cookie|proxy-authorization)$/i.test(k));
+    const c = cacheAllowed ? cache.get(url) : null;
     if (c) { if (c.etag) h['If-None-Match'] = c.etag; if (c.lm) h['If-Modified-Since'] = c.lm; }
     const t0 = Date.now();
     try {
@@ -49,10 +51,10 @@ function makeFetchText(rawFetch, { cache = new HttpCache(), friendly = (m) => m,
         target = next;
       }
       if (res.status === 304 && c) { cache.hits++; cache.savedBytes = (cache.savedBytes || 0) + c.body.length; if (meta) Object.assign(meta, { status: 304, cached: true, ms: Date.now() - t0, bytes: c.body.length }); return c.body; }
-      if (!res.ok) { const e = new Error('HTTP ' + res.status); e.status = res.status; e.retryAfter = Number(res.headers.get('retry-after')) || 0; throw e; }
+      if (!res.ok) { const e = new Error('HTTP ' + res.status); e.status = res.status; e.retryAfter = retryAfter(res.headers.get('retry-after')) || (res.status === 429 ? 60 : 0); if (meta) Object.assign(meta, { httpStatus: res.status, retryAt: e.retryAfter ? Date.now() + e.retryAfter * 1000 : 0 }); throw e; }
       const body = await res.text();
       const etag = res.headers.get('etag'); const lm = res.headers.get('last-modified');
-      if (opts.cache !== false && (etag || lm)) cache.set(url, { etag, lm, body });
+      if (cacheAllowed && (etag || lm)) cache.set(url, { etag, lm, body });
       if (meta) Object.assign(meta, { status: res.status, cached: false, ms: Date.now() - t0, bytes: body.length });
       return body;
     } catch (e) {

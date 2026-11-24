@@ -1,11 +1,11 @@
 {
   "name": "deal-radar",
-  "version": "2.18.0",
+  "version": "2.19.0",
   "description": "全网国际品牌优惠实时监控桌面应用",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
-    "test": "node --test test/core.test.js test/v2.test.js test/ai.test.js test/v22.test.js test/v23.test.js test/v24.test.js test/v25.test.js test/v26.test.js test/v27.test.js test/v28.test.js test/v29.test.js test/v210.test.js test/v211.test.js test/v212.test.js test/v213.test.js test/v214.test.js test/v215.test.js test/v216.test.js test/v217.test.js test/v218.test.js",
+    "test": "node --test test/core.test.js test/v2.test.js test/ai.test.js test/v22.test.js test/v23.test.js test/v24.test.js test/v25.test.js test/v26.test.js test/v27.test.js test/v28.test.js test/v29.test.js test/v210.test.js test/v211.test.js test/v212.test.js test/v213.test.js test/v214.test.js test/v215.test.js test/v216.test.js test/v217.test.js test/v218.test.js test/v219.test.js",
     "live": "node scripts/live-check.js",
     "shots": "xvfb-run -a -s \"-screen 0 1440x900x24\" electron . --no-sandbox",
     "dist:win": "electron-builder --win portable nsis --x64",

@@ -29,6 +29,7 @@ function reqOpts(source, meta) {
 async function withRetry(fn, retryDelay) {
   try { return await fn(); } catch (e) {
     if (!/HTTP (429|5\d\d)|ECONNRESET|反爬|fetch failed/.test(e.message)) throw e;
+    if (e.retryAfter > 20) throw e; // persist the cooldown instead of retrying before the server allows
     await sleep(Math.min(20000, e.retryAfter ? e.retryAfter * 1000 : retryDelay));
     return fn();
   }
@@ -58,7 +59,7 @@ async function pLimit(tasks, n) {
 async function fetchPage(source, allBrands, { fetchText = defaultFetchText, renderText = null, now = Date.now(), retryDelay = 3000, pages = {} } = {}) {
   const t0 = Date.now();
   const meta = {};
-  const st = (ok, extra) => ({ ok, lastRun: now, ms: Date.now() - t0, total: 0, matched: 0, requests: 1, error: '', cached: !!meta.cached, ...extra });
+  const st = (ok, extra) => ({ ok, lastRun: now, ms: Date.now() - t0, total: 0, matched: 0, requests: 1, error: '', cached: !!meta.cached, retryAt: meta.retryAt || 0, httpStatus: meta.httpStatus || 0, ...extra });
   const isRender = source.type === 'render' || (source.render && source.type !== 'sitemap');
   const vendor = source.vendor;
   const mkItem = (title, link, summary, types, extra = {}) => ({
@@ -261,6 +262,7 @@ async function fetchSource(source, allBrands, opts = {}) {
       matched: results.length,
       requests: reqs.length,
       error: errors.length ? (reqs.length > 1 ? `${errors.length}/${reqs.length} 个请求失败：` : '') + [...new Set(errors)].slice(0, 2).join('；') : '',
+      retryAt: meta.retryAt || 0, httpStatus: meta.httpStatus || 0,
       cached: !!meta.cached, note: meta.cached ? '304 未修改（条件请求缓存命中）' : '',
     },
   };
@@ -327,7 +329,9 @@ function backoffUntil(status, baseMin = 15) {
 }
 // 是否应在本轮跳过：渠道自定义周期未到，或处于失败退避期
 function skipReason(s, status, { now = Date.now(), force = false, backoff = true, baseMin = 15, adaptive = false, adaptiveMax = 360 } = {}) {
-  if (force || !status) return '';
+  if (!status) return '';
+  if (status.retryAt > now) return 'Server Retry-After: ' + new Date(status.retryAt).toISOString();
+  if (force) return '';
   // v2.7：自适应轮询——按该渠道的历史变化频率（Cho & Garcia-Molina 估计）拉长检查间隔
   if (adaptive && !s.interval) { const iv = require('./v27').adaptiveSkip(status, { now, base: baseMin, max: adaptiveMax, id: s.id }); if (iv) return `按变化频率（约每 ${iv} 分钟检查一次）跳过`; }
   if (s.interval && status.ok && now - (status.lastRun || 0) < s.interval * 60000 - 30000) return `按渠道周期（${s.interval} 分钟）跳过`;
