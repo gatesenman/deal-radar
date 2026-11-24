@@ -10,3 +10,8 @@ test('v221 source archive is tracked-only, scans contents and has a stable root'
 test('v221 offline smoke uses isolated fixture data and no external push',()=>{
  const script=read('scripts/smoke-electron.js');A.match(script,/DEAL_RADAR_DATA:data/);A.match(script,/\['zh-CN','en'\]/);A.match(read('src/main.js'),/Network disabled in smoke/);
 });
+
+test('v221 delivery ledger rejects structurally corrupt JSON rather than forgetting reservations',()=>{
+ const os=require('node:os');const {DeliveryLedger}=require('../src/core/delivery-ledger');const dir=fs.mkdtempSync(path.join(os.tmpdir(),'dr221-schema-'));const file=path.join(dir,'ledger.json');
+ try {for(const entries of ['string',[],{bad:{at:Date.now(),state:'delivered'}},{['a'.repeat(64)]:{at:'yesterday',state:'delivered'}},{['a'.repeat(64)]:{at:Date.now(),state:'unexpected'}}]) {fs.writeFileSync(file,JSON.stringify({v:1,entries})); A.throws(()=>new DeliveryLedger(file),/refusing to resend/);}}finally{fs.rmSync(dir,{recursive:true,force:true});}
+});

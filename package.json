@@ -1,6 +1,6 @@
 {
   "name": "deal-radar",
-  "version": "2.21.0",
+  "version": "2.21.1",
   "description": "全网国际品牌优惠实时监控桌面应用",
   "main": "src/main.js",
   "scripts": {

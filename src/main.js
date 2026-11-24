@@ -1124,7 +1124,7 @@ async function shotMode() {
     const checks = await js(`(async () => {
       const results = []; const check = (name, ok) => results.push({ name, ok: !!ok });
       const wait = (ms) => new Promise(r => setTimeout(r, ms));
-      check('boot state and version', S.state.version === '2.21.0');
+      check('boot state and version', S.state.version === ${JSON.stringify(app.getVersion())});
       check('upgrade preserves favourite/claimed', S.state.deals.some(d => d.id === 'upgrade-fixture' && d.fav && d.status === 'claimed'));
       go('deals'); await wait(100); check('fixture offer renders', document.querySelectorAll('#dealList .card, #dealList tbody tr').length > 0);
       go('settings'); await wait(100); check('settings and system theme', !!document.querySelector('#sTheme [data-v=system]'));

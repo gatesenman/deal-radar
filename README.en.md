@@ -1,4 +1,4 @@
-# Deal Radar (全网优惠雷达) — User Guide · v2.21.0
+# Deal Radar (全网优惠雷达) — User Guide · v2.21.1
 
 [中文说明](README.md) · English
 
@@ -6,15 +6,15 @@ A Windows desktop app that **monitors offers from AI and software vendors in rea
 
 ## 1. Install / run
 
-The current version is **2.21.0**. Download the installer and source zip from [GitHub Releases · v2.21.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.21.0):
+The current version is **2.21.1**. Download the installer and source zip from [GitHub Releases · v2.21.1](https://github.com/gatesenman/deal-radar/releases/tag/v2.21.1):
 
-- **Installer**: `DealRadar-Setup-2.21.0-x64.exe` (unsigned; Windows may show SmartScreen. Upgrading keeps your data.)
-- **Source zip**: `DealRadar-2.21.0-source.zip`
+- **Installer**: `DealRadar-Setup-2.21.1-x64.exe` (unsigned; Windows may show SmartScreen. Upgrading keeps your data.)
+- **Source zip**: `DealRadar-2.21.1-source.zip`
 
 SHA256:
 
 ```
-See SHA256SUMS.txt on the v2.21.0 Release for installer and source checksums.
+See SHA256SUMS.txt on the v2.21.1 Release for installer and source checksums.
 (source zip SHA256 is in the Release `.sha256` sidecar)
 ```
 

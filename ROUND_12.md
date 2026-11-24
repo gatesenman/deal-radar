@@ -1,4 +1,4 @@
-# Round 12 — v2.21.0
+# Round 12 — v2.21.1
 
 Accessible modal navigation and reproducible release validation
 
@@ -29,8 +29,8 @@ Accessible modal navigation and reproducible release validation
 ## Validation
 `OFFLINE=1 npm test` (unit/integration, not UI E2E)
 ```
-ℹ tests 158
-ℹ pass 157
+ℹ tests 159
+ℹ pass 158
 ℹ fail 0
 ℹ skipped 1
 ```
@@ -42,4 +42,8 @@ Native Windows installer/upgrade, screen readers and full UI E2E were not tested
 - Source Electron/Xvfb smoke: 12/12 checks per language (zh-CN, en).
 - Packaged Linux executable smoke: 12/12 per language.
 - Windows NSIS x64 build and ASAR/PE structural checks passed; native Windows install/upgrade not executed.
-- See `VALIDATION_2.21.md`; final checksums are attached to the Release.
+- See `VALIDATION_2.21.md`; final checksums are attached to the Release. Both source and packaged UI smoke were repeated successfully on v2.21.1 after the correction.
+
+Final validation found that syntactically valid but structurally corrupt delivery-ledger JSON needed stricter validation. Fixed and regression-tested in the same sixth new round, patch tag `v2.21.1` (the earlier `v2.21.0` source tag is retained, not moved).
+
+Additional corrected file: `src/core/delivery-ledger.js`; added schema-corruption regression in `test/v221.test.js`.

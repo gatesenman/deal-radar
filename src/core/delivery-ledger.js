@@ -5,7 +5,7 @@ function deliveryKey(channel,kind,id,scope='') { return crypto.createHash('sha25
 class DeliveryLedger {
   constructor(file, {now=()=>Date.now()}={}) {
     this.file=file;this.now=now;this.entries={};
-    try { const j=JSON.parse(fs.readFileSync(file,'utf8')); if(!j||j.v!==1||!j.entries||Array.isArray(j.entries))throw new Error('Invalid delivery ledger');this.entries=j.entries; }
+    try { const j=JSON.parse(fs.readFileSync(file,'utf8')); if(!j||j.v!==1||!j.entries||typeof j.entries!=='object'||Array.isArray(j.entries)||Object.keys(j.entries).length>20000)throw new Error('Invalid delivery ledger'); for(const [k,e] of Object.entries(j.entries)) if(!/^[a-f0-9]{64}$/.test(k)||!e||typeof e!=='object'||!Number.isFinite(e.at)||e.at<0||e.at>this.now()+300000||!['pending','delivered','unknown'].includes(e.state))throw new Error('Invalid delivery record');this.entries=j.entries; }
     catch(e) { if(e.code!=='ENOENT') throw new Error('Delivery ledger unreadable; refusing to resend'); }
   }
   blocked(key) {const e=this.entries[key];return !!e&&this.now()-e.at<TTL;}

@@ -1,10 +1,10 @@
-# Validation — v2.21.0
+# Validation — v2.21.1
 
 Date: 2026-11-24, Asia/Shanghai (UTC+8)
 
 ## Automated tests
 
-`OFFLINE=1 npm test`: **157 passed, 0 failed, 1 skipped** (158 total).
+`OFFLINE=1 npm test`: **158 passed, 0 failed, 1 skipped** (159 total).
 The skipped case is the existing LIVE vendor/source reachability test. These are unit/integration tests, not full E2E.
 
 ## Real Electron smoke (isolated Linux/Xvfb)
@@ -27,7 +27,7 @@ HTTP(S) network requests are blocked during this smoke. There are no push creden
 Windows NSIS x64 installer built with Electron 33.4.11 / electron-builder 25.1.8. Unsigned.
 ASAR inspected for the correct package version, LICENSE, both locale catalogs and new security/backup/health/delivery modules. Source text scanned for known token/private-key patterns; `.env`, `.git`, test directories and user-data JSON excluded. Installer PE header checked. This is **not** proof of native Windows installer execution.
 
-Clean source ZIP uses tracked files only, excludes node_modules and rebuildable output, scans source text, and has a single `DealRadar-2.21.0/` root. SHA256 values are in the Release `SHA256SUMS.txt`; no self-referential checksum in this document.
+Clean source ZIP uses tracked files only, excludes node_modules and rebuildable output, scans source text, and has a single `DealRadar-2.21.1/` root. SHA256 values are in the Release `SHA256SUMS.txt`; no self-referential checksum in this document.
 
 ## Not tested / remaining limitations
 
@@ -37,3 +37,5 @@ Clean source ZIP uses tracked files only, excludes node_modules and rebuildable 
 - AI and push endpoints are explicitly user-trusted and separate from public-source restrictions. Push secrets remain device-local but are not encrypted at rest; masking and portable-export redaction do not change that.
 - Push dedup prefers avoiding duplicates: pending/unknown acknowledgements suppress retries for up to 30 days. A crash after reservation can lose a notification. Exactly-once delivery is not promised. Manual push-test requests are intentionally separate and not part of automatic dedup.
 - Date-only expiry uses the device timezone; ambiguous bare currency symbols retain legacy defaults. No claim of 99% or new measured coverage.
+
+Final validation correction: a well-formed JSON ledger with invalid entry schema is rejected, not silently reset. Both original v2.21.0 and corrected v2.21.1 source tags remain immutable.

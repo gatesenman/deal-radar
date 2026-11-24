@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.21.1 — Final-round validation correction
+
+- Reject structurally corrupt delivery-ledger JSON (invalid records, timestamps or states) instead of treating it as an empty ledger; smoke version assertion follows the actual package version. This is a patch within round 12.
+
+
 ## 2.21.0 — Accessible modal navigation and reproducible release validation
 
 - Add labelled modal semantics, keyboard focus trapping/return, search labels, live toast roles, visible focus and reduced-motion support. Add a network-blocked Electron smoke runner for zh/en, upgrade fixtures, settings and backup IPC. Package tracked files only, scan text contents and remove random temporary directory prefixes from source archives.
