@@ -1,0 +1,11 @@
+
+> deal-radar@2.22.0 test:transport
+> xvfb-run -a electron scripts/test-electron-transport.js --no-sandbox
+
+[2561092:1124/121926.317373:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2561092:1124/121926.476032:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2561092:1124/121926.476065:ERROR:bus.cc(407)] Failed to connect to the bus: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory
+[2561135:1124/121926.565155:ERROR:viz_main_impl.cc(181)] Exiting GPU process due to errors during initialization
+PASS real Electron manual redirect + UTF-8 + each-hop validation
+PASS non-GET rejected before network request
+PASS rejected redirect never requested

@@ -50,7 +50,8 @@
     "windowsCommand": "CSC_IDENTITY_AUTO_DISCOVERY=false npx electron-builder --win nsis --x64 --publish never --config.win.signAndEditExecutable=false --config.directories.output=<external-build-dir>",
     "linuxCommand": "CSC_IDENTITY_AUTO_DISCOVERY=false npx electron-builder --linux dir --x64 --publish never --config.electronDist=node_modules/electron/dist --config.directories.output=<external-build-dir>",
     "packageValidation": "package-validation.json",
-    "windowsAsarSHA256": "707d1de5f3ceb7406328014e3188a65f2cbf702181afb412d9093bf392864845"
+    "windowsAsarSHA256": "48601ae7902b6652749f4f9137ab6ad5f60b88a1131d8a6a87fd8f50cbdbf4d2",
+    "packageValidationCommand": "node scripts/validate-app-package.js <win-dir> <linux-dir> <extracted-installer-asar> source-audit/package-validation.json"
   },
   "liveAudit": {
     "total": 367,
@@ -89,7 +90,19 @@
     "knownSecretPatternMatches": 0,
     "packageTextFilesScannedEach": 213,
     "credentialsRequestedOrUsed": false,
-    "realPushSends": false
+    "realPushSends": false,
+    "additionalBroadScan": {
+      "scannedTextFiles": 302,
+      "matches": 0,
+      "patterns": [
+        "OpenAI/Anthropic API keys",
+        "AWS access keys",
+        "Google API keys",
+        "Stripe live keys",
+        "private keys",
+        "non-redacted sensitive URL query parameters in audit JSON"
+      ]
+    }
   },
   "limitations": [
     "137 sources are not established healthy; exact original IDs/URLs/reasons and setup actions are retained in REMAINING.md/remaining.json.",
@@ -99,7 +112,6 @@
     "Native Windows installation/upgrade, SmartScreen, signing, signed updates, screen readers and real notification delivery are untested. Linux smoke uses synthetic legacy data, not a real Windows upgrade.",
     "DNS preflight is not IP pinning/rebinding-proof. LAN/private RSSHub is deliberately rejected; optional account-dependent protocols remain configuration-required/not live-tested.",
     "Push endpoint credentials remain locally stored without encryption; no new credentials were collected.",
-    "No deal-recall percentage or all-sources-work claim. Public access varies by time/region; no block or login was bypassed.",
-    "README documentation changed after binary build, but every runtime source file matches both ASARs exactly."
+    "No deal-recall percentage or all-sources-work claim. Public access varies by time/region; no block or login was bypassed."
   ]
 }

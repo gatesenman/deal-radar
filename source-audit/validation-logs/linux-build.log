@@ -1,0 +1,7 @@
+  • electron-builder  version=25.1.8 os=6.12.113+
+  • loaded configuration  file=package.json ("build" field)
+  • executing @electron/rebuild  electronVersion=33.4.11 arch=x64 buildFromSource=false appDir=./
+  • installing native dependencies  arch=x64
+  • completed installing native dependencies
+  • packaging       platform=linux arch=x64 electron=33.4.11 appOutDir=/workspace/dealradar-backups/v222-linux/linux-unpacked
+  • copying Electron  source=/workspace/deal-radar/node_modules/electron/dist destination=/workspace/dealradar-backups/v222-linux/linux-unpacked

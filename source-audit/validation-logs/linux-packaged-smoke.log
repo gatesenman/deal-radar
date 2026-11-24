@@ -1,0 +1,41 @@
+
+> deal-radar@2.22.0 smoke
+> node scripts/smoke-electron.js
+
+zh-CN [smoke] PASS boot state and version
+[smoke] PASS upgrade preserves favourite/claimed
+[smoke] PASS upgrade preserves custom source URL and disabled preference
+[smoke] PASS upgrade preserves custom source options
+[smoke] PASS fixture offer renders
+[smoke] PASS settings and system theme
+[smoke] PASS zh/en search label
+[smoke] PASS dialog semantics
+[smoke] PASS Tab traps focus
+[smoke] PASS Shift-Tab traps focus
+[smoke] PASS focus returns to opener
+[smoke] PASS settings IPC persists
+[smoke] PASS backup IPC restores
+[smoke] PASS source health renders
+[smoke] PASS honest localized valid-empty explanation
+[smoke] PASS honest localized blocked explanation
+[shot] smoke-final.png
+ 
+en [smoke] PASS boot state and version
+[smoke] PASS upgrade preserves favourite/claimed
+[smoke] PASS upgrade preserves custom source URL and disabled preference
+[smoke] PASS upgrade preserves custom source options
+[smoke] PASS fixture offer renders
+[smoke] PASS settings and system theme
+[smoke] PASS zh/en search label
+[smoke] PASS dialog semantics
+[smoke] PASS Tab traps focus
+[smoke] PASS Shift-Tab traps focus
+[smoke] PASS focus returns to opener
+[smoke] PASS settings IPC persists
+[smoke] PASS backup IPC restores
+[smoke] PASS source health renders
+[smoke] PASS honest localized valid-empty explanation
+[smoke] PASS honest localized blocked explanation
+[shot] smoke-final.png
+ 
+Smoke output: /workspace/dealradar-backups/source-audit-packaged-smoke

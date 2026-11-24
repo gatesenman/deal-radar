@@ -4,8 +4,9 @@
     {
       "platform": "win",
       "version": "2.22.0",
+      "trackedRuntimeAssetsAndDocsMatched": 115,
       "runtimeFilesMatched": 49,
-      "asarSHA256": "707d1de5f3ceb7406328014e3188a65f2cbf702181afb412d9093bf392864845",
+      "asarSHA256": "48601ae7902b6652749f4f9137ab6ad5f60b88a1131d8a6a87fd8f50cbdbf4d2",
       "memberCount": 497,
       "secretScannedTextFiles": 213,
       "forbiddenPaths": [],
@@ -17,8 +18,9 @@
     {
       "platform": "linux",
       "version": "2.22.0",
+      "trackedRuntimeAssetsAndDocsMatched": 115,
       "runtimeFilesMatched": 49,
-      "asarSHA256": "707d1de5f3ceb7406328014e3188a65f2cbf702181afb412d9093bf392864845",
+      "asarSHA256": "48601ae7902b6652749f4f9137ab6ad5f60b88a1131d8a6a87fd8f50cbdbf4d2",
       "memberCount": 497,
       "secretScannedTextFiles": 213,
       "forbiddenPaths": [],
@@ -36,8 +38,7 @@
     "nativeExecutionTested": false
   },
   "limitations": [
-    "README docs were updated after binary builds; all runtime source files match exactly.",
     "Production dependency node-html-parser/dist is required runtime code, not project build output.",
-    "Native Windows installer execution/upgrade and SmartScreen are untested."
+    "Native Windows installer execution/upgrade, signing and SmartScreen are not tested."
   ]
 }
