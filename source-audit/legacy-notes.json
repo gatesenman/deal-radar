@@ -1,0 +1,61 @@
+{
+  "note": "Historical product notes, not validated source instances and not included in the 367-source denominator.",
+  "notes": [
+    {
+      "name": "X / Twitter 官方账号",
+      "reason": "需要登录；nitter/xcancel 等镜像均已失效。可在设置中填写自建 RSSHub 实例后用「RSSHub 路由」协议添加（如 /twitter/user/OpenAI）"
+    },
+    {
+      "name": "微博 / 微信公众号 / B 站",
+      "reason": "需要登录或公共 RSSHub 403；支持填写自建 RSSHub 实例后添加（/weibo/user/…、/bilibili/user/video/…）"
+    },
+    {
+      "name": "Discord 服务器",
+      "reason": "需要登录，无公开接口（已用官方 Discourse 论坛 / Reddit 代替）"
+    },
+    {
+      "name": "Telegram 厂商官方频道",
+      "reason": "主流 AI 厂商没有官方 Telegram 频道；协议已支持 t.me/s 公开频道，可自行添加"
+    },
+    {
+      "name": "多数厂商的官方 Bluesky / Mastodon",
+      "reason": "OpenAI、Anthropic（无内容）、Perplexity、Mistral、Adobe、Canva、AWS、Meta 无可用官方账号或长期不更新；已预置 GitHub、Notion、ElevenLabs、Cloudflare 官方 Bluesky"
+    },
+    {
+      "name": "Reddit",
+      "reason": "可用，但匿名访问频繁会 429 限流（已标记为「不稳定」，自动退避重试）；JSON API 403，改用 RSS"
+    },
+    {
+      "name": "GitHub Releases",
+      "reason": "可用，github.com 偶发 502/504（自动重试）；GitHub REST API 匿名 60 次/小时，预置渠道使用 Atom 订阅，API 模式供填 Token 后使用"
+    },
+    {
+      "name": "bigmodel.cn 价格页、文心一言 yiyan.baidu.com、腾讯混元产品页",
+      "reason": "即使 JS 渲染也无可提取的价格文本（需登录），改用 Z.ai 文档 / 千帆 / 腾讯云文档"
+    },
+    {
+      "name": "Microsoft Copilot 消费者版价格页 / Copilot App（App Store/Google Play）",
+      "reason": "404 或应用 ID 区域不可查"
+    },
+    {
+      "name": "机器之心",
+      "reason": "无 RSS，首页需要 JS 且列表结构为动态加载"
+    },
+    {
+      "name": "36氪 主站 RSS",
+      "reason": "连接超时；已改用 36氪快讯 RSS"
+    },
+    {
+      "name": "Adobe / Notion / Canva 博客 RSS、Canva 新闻页",
+      "reason": "官方未提供 RSS（404）或 403；价格页已改用网页监控 / JS 渲染"
+    },
+    {
+      "name": "Linux.do / NodeSeek 等小众社区、Telegram 优惠频道",
+      "reason": "按要求不预置小众来源（Linux.do 也启用了 Cloudflare 403）"
+    },
+    {
+      "name": "Dealmoon、什么值得买 优惠 RSS、Amazon Best Sellers RSS",
+      "reason": "403 反爬 / 已下线"
+    }
+  ]
+}

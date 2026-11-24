@@ -1,7 +1,7 @@
 {
   "id": "techinasia",
   "url": "https://www.techinasia.com/feed",
-  "at": "2026-11-24T11:44:02.045+08:00",
+  "at": "2026-11-24T11:48:49.641+08:00",
   "format": "rss",
   "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item>\n\t\t<title>Huang’s back, but neoclouds want options</title>\n\t\t<link>https://www.techinasia.com/huangs-back-but-neoclouds-want-options</link>\n\t\t\n\t\t<dc:creator><![CDATA[Pranav Balakrishnan]]></dc:creator>\n\t\t<pubDate>Tue, 24 Nov 2026 03:13:45 +0000</pubDate>\n\t\t\t\t<category><![CDATA[Artificial Intelligence]]></category>\n\t\t<category><![CDATA[Newsletters]]></category>\n\t\t<category><![CDATA[Ant Group]]></category>\n\t\t<category><![CDATA[artificial intelligence]]></category>\n\t\t<category><![CDATA[Asia]]></category>\n\t\t<category><![CDATA[daily newsletter]]></category>\n\t\t<category><![CDATA[Donald Trump]]></category>\n\t\t<category><![CDATA[NVIDIA]]></category>\n\t\t<guid isPermaLink=\"false\">https://www.techinasia.com/?p=1033710</guid>\n\n\t\t\t\t\t<description><![CDATA[Nvidia reinstates its founder-CEO, but Asia's neoclouds will likely keep shopping around. Plus, how AI firms from before genAI are holding up.]]></description>\n\t\t\n\t\t\n\t\t\n\t\t<media:content url=\"https://cdn.techinasia.com/wp-content/uploads/2026/06/1782127569_GPU_shortage_Ilustration.png\" medium=\"image\" />\n<enclosure url=\"https://cdn.techinasia.com/wp-content/uploads/2026/06/1782127569_GPU_shortage_Ilustration.png\" length=\"0\" type=\"image/png\" />\n\t</item></channel></rss>"
 }

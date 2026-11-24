@@ -15,6 +15,7 @@ jobs:
       - run: npm test
         env:
           OFFLINE: '1'
+      - run: npm run test:transport
       - run: npm run smoke
         env:
           SMOKE_OUTPUT: ${{ runner.temp }}/dealradar-smoke

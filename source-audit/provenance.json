@@ -1,0 +1,43 @@
+[
+  {
+    "id": "cnbeta",
+    "oldURL": "https://www.cnbeta.com.tw/backend.php",
+    "newURL": "https://rss.cnbeta.com.tw/",
+    "reason": "Legacy backend.php redirects to an MSN publisher landing shell with no RSS. The same publisher's dedicated RSS subdomain is a documented equivalent, not an unrelated outlet or a third-party feed mirror.",
+    "discoveryEvidence": "https://feeder.co/discover/39ccfd537c/cnbeta-com",
+    "validation": "Actual application fetch/parse/normalization is recorded in results.json; discovery alone does not establish live success."
+  },
+  {
+    "id": "ch-meta-llama-api",
+    "url": "https://dev.meta.ai/",
+    "reason": "Public Model API page contains Contact sales, but the old pricing keyword list dropped it. Added explicit contact-sales/usage-pricing vocabulary. No numeric price is invented and no unrelated source substituted."
+  },
+  {
+    "id": "ch-cloudflare-changelog",
+    "url": "https://developers.cloudflare.com/changelog/rss/index.xml",
+    "reason": "The official complete feed exceeds the default 8 MiB transport limit. This built-in source explicitly allows at most 32 MiB; all other sources keep the 8 MiB default. maxItems remains 60. No unbounded response accepted."
+  },
+  {
+    "id": "ch-qwen-models",
+    "oldURL": "https://help.aliyun.com/zh/model-studio/models",
+    "newURL": "https://help.aliyun.com/zh/model-studio/model-pricing",
+    "reason": "Old page now contains model selection without prices. Equivalent official pricing document discovered and read on the same vendor domain; no unrelated replacement.",
+    "discoveryEvidence": "https://help.aliyun.com/zh/model-studio/model-pricing"
+  },
+  {
+    "id": "ch-qwen-coding-plan",
+    "url": "https://help.aliyun.com/zh/model-studio/coding-plan",
+    "reason": "Actual public HTML uses ¥ 200 /月 and 首月特惠 rather than 元 or 优惠; expand Chinese currency/offer keywords so real prices are not filtered out."
+  },
+  {
+    "ids": [
+      "ch-adobe-firefly",
+      "ch-adobe-cc"
+    ],
+    "reason": "Static public Adobe pages contain fragment placeholders, not prices. Switch to the supported desktop renderer under GET-only/no-login policy, retaining exact official URLs. User-customized protocol choices are preserved by baseline-aware migration."
+  },
+  {
+    "id": "ch-perplexity-api-pricing",
+    "reason": "Actual public tool-price tables bill $0.0025 per invocation, not monthly plans. Extract explicit table units and retain micro-prices in UI instead of rounding to $0.00."
+  }
+]

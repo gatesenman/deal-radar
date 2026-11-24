@@ -2263,5 +2263,11 @@
   "未提取到价格或明确的联系销售、免费套餐信息；请检查选择器或 JS 渲染": "No price or explicit sales/free-plan evidence; check selectors or JS rendering",
   "未解析到有效内容": "No meaningful parsed content",
   "网站人机验证；已停止，不尝试绕过": "Site verification challenge; stopped without bypass",
-  "返回的不是有效": "Response is not valid"
+  "返回的不是有效": "Response is not valid",
+  "/次调用": "/invocation",
+  "/次请求": "/request",
+  "不绕过": "without bypass",
+  "免费,元": "Free,CNY",
+  "折,额度,优惠,特惠,首月,套餐,限时,赠,价格": "discount,credits,offer,promotion,first month,plan,limited time,bonus,price",
+  "百炼 模型调用价格": "Model Studio model invocation pricing"
 }

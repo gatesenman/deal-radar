@@ -1,20 +1,20 @@
 # 全网优惠雷达（Deal Radar）
 
-**2.21.1** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
+**2.22.0** · 实时监控 ChatGPT、Claude、Gemini、Cursor、DeepSeek 等 AI / 软件厂商优惠的 Windows 桌面应用，也可选监控实物品牌折扣。
 
 中文 · [English](README.en.md)
 
 ## 下载
 
-当前版本是 **2.21.1**。Windows 安装包和源码包在 [GitHub Releases · v2.21.1](https://github.com/gatesenman/deal-radar/releases/tag/v2.21.1)：
+当前版本是 **2.22.0**。Windows 安装包和源码包在 [GitHub Releases · v2.22.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.22.0)：
 
-- Windows 安装包：`DealRadar-Setup-2.21.1-x64.exe`（未签名，Windows 可能提示 SmartScreen，属预期；升级不会清空已有数据）
-- 源码包：`DealRadar-2.21.1-source.zip`
+- Windows 安装包：`DealRadar-Setup-2.22.0-x64.exe`（未签名，Windows 可能提示 SmartScreen，属预期；升级不会清空已有数据）
+- 源码包：`DealRadar-2.22.0-source.zip`
 
 SHA256：
 
 ```
-See SHA256SUMS.txt on the v2.21.1 Release for installer and source checksums.
+See SHA256SUMS.txt on the v2.22.0 Release for installer and source checksums.
 （源码包 SHA256 见 Release 附件 `.sha256`）
 ```
 
@@ -42,7 +42,9 @@ See SHA256SUMS.txt on the v2.21.1 Release for installer and source checksums.
 
 *设置 / Settings*
 
-## 功能特性（2.21.1）
+逐源实测与限制：[source-audit/README.md](source-audit/README.md)。源启用不等于可访问；官方资讯无优惠不代表失败，验证页/空解析不计为正常。未承诺 99% 覆盖率。
+
+## 功能特性（2.22.0）
 
 - **复查更准**：落地页软 404 与更多「已结束」用语；截止日期支持数字日期和「还有 N 天」；价格识别 USD 20 / month 等写法。
 - **网址识别协议**：添加渠道时粘贴官方网址即可自动选好 RSS、GitHub、价格页等协议；点「识别」仍可发现页面上的官方订阅源。
@@ -60,7 +62,7 @@ See SHA256SUMS.txt on the v2.21.1 Release for installer and source checksums.
 - **推送渠道**：企业微信、飞书、钉钉、Telegram、Server酱、ntfy、通用 Webhook。密钥只存在本机。支持每日 / 每周摘要、保存的视图提醒、试用到期提醒。
 - **其它**：上手预设（学生 / 开发者 / 国内用户等）、分享卡片（Markdown / 图片）、筛选与搜索、卡片/表格视图、收藏与 CSV 导出、自定义厂商和渠道。
 
-覆盖率：在「只用主流、免登录来源」的约束下，实测大约 85%（详见 [SOURCE_COVERAGE.md](SOURCE_COVERAGE.md)）。登录墙、运营商活动页和部分帮助中心无法在不登录的前提下覆盖到 99%。
+可用性与限制以 [逐源实测清单](source-audit/README.md) 为准。历史 85% 估计不是当前优惠召回率；本次仅核验来源适配与公开访问，不宣称 85% 或 99% 的优惠覆盖率。
 
 ## 从源码运行
 
@@ -95,21 +97,21 @@ Electron · JavaScript · HTML 解析与 RSS/XML（`fast-xml-parser`、`node-htm
 
 # Deal Radar
 
-**2.21.1** · A Windows desktop app that watches deals from AI and software vendors such as ChatGPT, Claude, Gemini, Cursor, and DeepSeek, with optional physical-brand discount monitoring.
+**2.22.0** · A Windows desktop app that watches deals from AI and software vendors such as ChatGPT, Claude, Gemini, Cursor, and DeepSeek, with optional physical-brand discount monitoring.
 
 Chinese above · [standalone English guide](README.en.md)
 
 ## Download
 
-The current version is **2.21.1**. The Windows installer and source zip are on [GitHub Releases · v2.21.1](https://github.com/gatesenman/deal-radar/releases/tag/v2.21.1):
+The current version is **2.22.0**. The Windows installer and source zip are on [GitHub Releases · v2.22.0](https://github.com/gatesenman/deal-radar/releases/tag/v2.22.0):
 
-- Windows installer: `DealRadar-Setup-2.21.1-x64.exe` (unsigned; Windows may show SmartScreen, which is expected. Upgrading keeps your existing data.)
-- Source zip: `DealRadar-2.21.1-source.zip`
+- Windows installer: `DealRadar-Setup-2.22.0-x64.exe` (unsigned; Windows may show SmartScreen, which is expected. Upgrading keeps your existing data.)
+- Source zip: `DealRadar-2.22.0-source.zip`
 
 SHA256:
 
 ```
-See SHA256SUMS.txt on the v2.21.1 Release for installer and source checksums.
+See SHA256SUMS.txt on the v2.22.0 Release for installer and source checksums.
 （源码包 SHA256 见 Release 附件 `.sha256`）
 ```
 
@@ -117,7 +119,9 @@ The app is not code-signed. If Windows SmartScreen shows “Windows protected yo
 
 You can also run from source, or package with `npm run dist:win`.
 
-## Features (2.21.1)
+Per-source evidence and limitations: [source-audit/README.md](source-audit/README.md). Enabled is not the same as available. Parsed news with no matching deals is valid; challenges and empty parses are not healthy. No 99% coverage claim.
+
+## Features (2.22.0)
 
 - Paste an official URL when adding a channel to auto-detect RSS, GitHub, pricing pages, and other protocols.
 - Multi-channel intake from official blogs, pricing pages, changelogs, status pages, YouTube, GitHub, and forums, plus news / HN / Reddit aggregators. Mainstream official and regional sources only.
@@ -129,7 +133,7 @@ You can also run from source, or package with `npm run dist:win`.
 - MinHash dedup, corroboration-based confidence, persistent HTTP cache, and adaptive polling with jitter.
 - Push channels: WeCom, Feishu, DingTalk, Telegram, Server酱, ntfy, and generic webhooks. Keys stay on the device. Daily / weekly digests, saved-view alerts, trial reminders, share cards, and onboarding presets.
 
-Measured coverage is about 85% of real mainstream deals without logged-in sources. See [SOURCE_COVERAGE.md](SOURCE_COVERAGE.md). 99% is not reachable without logins or in-app sources.
+Use the [per-source audit](source-audit/README.md) for measured availability and limitations. The historical 85% estimate is not current deal recall. This audit validates adapters/public access, not an 85% or 99% deal-coverage claim.
 
 ## Getting started
 

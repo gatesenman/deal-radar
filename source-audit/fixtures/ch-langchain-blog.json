@@ -1,7 +1,7 @@
 {
   "id": "ch-langchain-blog",
   "url": "https://www.langchain.com/blog/rss.xml",
-  "at": "2026-11-24T11:38:57.084+08:00",
+  "at": "2026-11-24T11:59:09.515+08:00",
   "format": "rss",
   "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item><title>How to build a knowledge factory for AI agents</title><link>https://www.langchain.com/blog/knowledge-factory</link><guid>https://www.langchain.com/blog/knowledge-factory</guid><description>The knowledge factory is how LangChain keeps its agents&#39; company knowledge current: agents flag what&#39;s missing, and a curator agent fixes it in the background.</description><pubDate>Mon, 23 Nov 2026 11:15:09 GMT</pubDate><media:content url=\"https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/6b01ca8aa227073b426bacc3_6b01ca11b67276120ea47ed9_knowledge-factory-cover.png\" medium=\"image\"/><media:thumbnail url=\"https://cdn.prod.website-files.com/65c81e88c254bb0f97633a71/6b01ca8aa227073b426bacc3_6b01ca11b67276120ea47ed9_knowledge-factory-cover.png\"/></item></channel></rss>"
 }

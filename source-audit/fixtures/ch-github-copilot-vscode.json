@@ -1,7 +1,7 @@
 {
   "id": "ch-github-copilot-vscode",
   "url": "https://code.visualstudio.com/feed.xml",
-  "at": "2026-11-24T11:45:50.675+08:00",
+  "at": "2026-11-24T11:58:45.922+08:00",
   "format": "rss",
   "body": "<feed xmlns=\"http://www.w3.org/2005/Atom\"><entry>\n    <title>Visual Studio Code 1.148 (Insiders)</title>\n    <link href=\"https://code.visualstudio.com/updates/v1_148\"/>\n    <link rel=\"related\" href=\"https://code.visualstudio.com/assets/updates/1_148/release-highlights.webp\"/>\n    <updated>2026-11-25T17:00:00.000Z</updated>\n    <id>https://code.visualstudio.com/updates/v1_148</id>\n    <category term=\"release\" />\n    <content type=\"html\">\n      &lt;p&gt;Learn what is new in the latest Visual Studio Code Insiders build, including agent session management and editor tab improvements.&lt;/p&gt;\n      &lt;p&gt;&lt;a href=\"https://code.visualstudio.com/updates/v1_148\"&gt;Read the full article&lt;/a&gt;&lt;/p&gt;\n    </content>\n    <author>\n        <name>Visual Studio Code Team</name>\n        <uri>https://code.visualstudio.com/branding/code-stable.png</uri>\n    </author>\n  </entry></feed>"
 }

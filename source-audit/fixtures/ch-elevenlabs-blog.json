@@ -1,7 +1,7 @@
 {
   "id": "ch-elevenlabs-blog",
   "url": "https://elevenlabs.io/blog/rss.xml",
-  "at": "2026-11-24T11:40:22.002+08:00",
+  "at": "2026-11-24T12:00:18.614+08:00",
   "format": "rss",
   "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item>\n      <title>How to choose the best speech to text API for your use case</title>\n      <link>https://elevenlabs.io/blog/choose-the-best-speech-to-text-api</link>\n      <guid isPermaLink=\"true\">https://elevenlabs.io/blog/choose-the-best-speech-to-text-api</guid>\n      <pubDate>Mon, 23 Nov 2026 12:00:00 GMT</pubDate>\n      <description>How to choose the best speech to text API for your business? Compare accuracy, latency, pricing, and more to find the best fit for your use case.</description>\n      <category>Resources</category>\n      <dc:creator>Jack Limebear</dc:creator>\n    </item></channel></rss>"
 }

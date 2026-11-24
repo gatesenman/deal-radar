@@ -1,0 +1,7 @@
+{
+  "id": "perplexity-pricing-table",
+  "format": "html-price-fragment",
+  "url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+  "body": "<table><tr><td>web_search</td><td style=\"text-align:center\">$0.0025 per invocation</td><td>Standard web search with <code>search_type: &quot;web&quot;</code>. $2.50 per 1,000 invocations</td></tr></table>",
+  "note": "Price/description cells are actual public response fragments; row key is an explicit fixture label, not a live model-coverage claim."
+}

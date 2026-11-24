@@ -1,7 +1,7 @@
 {
   "id": "ch-gemini-deepmind",
   "url": "https://deepmind.google/blog/rss.xml",
-  "at": "2026-11-24T11:44:58.973+08:00",
+  "at": "2026-11-24T11:49:44.205+08:00",
   "format": "rss",
   "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item><title>Finding faster quantum algorithms with agents and formal verification</title><link>https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/</link><description>Using agent teams and formal verification to improve quantum algorithms for fusion and chemistry.</description><pubDate>Mon, 23 Nov 2026 16:59:40 +0000</pubDate><guid>https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/</guid><media:thumbnail url=\"https://lh3.googleusercontent.com/jIoM2lo98EDqLMQjIaXBlXPmXgPbUPpM2GgtXcDsGekZBOPUY41IjBsnuZIhLac7MSOuRkklNBsp20a5M25oDz-xTIY0BIqoBxUqmmXvEHwlM3MJJw=w528-h297-n-nu-rw-lo\"/><media:content medium=\"image\" url=\"https://lh3.googleusercontent.com/jIoM2lo98EDqLMQjIaXBlXPmXgPbUPpM2GgtXcDsGekZBOPUY41IjBsnuZIhLac7MSOuRkklNBsp20a5M25oDz-xTIY0BIqoBxUqmmXvEHwlM3MJJw=w528-h297-n-nu-rw-lo\"/></item></channel></rss>"
 }

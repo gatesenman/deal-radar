@@ -1,0 +1,2562 @@
+{
+  "version": "2.22.0",
+  "count": 137,
+  "sources": [
+    {
+      "id": "ai-gnews-zh",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:48:37.134+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ai-bing-en",
+      "vendor": null,
+      "url": "https://www.bing.com/news/search?q={q}&format=rss&setlang=en-us",
+      "status": "blocked",
+      "reason": "host blocked: HTTP 403",
+      "checkedAt": "2026-11-24T11:48:37.150+08:00",
+      "liveAttempted": true,
+      "suppressedBy": {
+        "reason": "HTTP 403",
+        "sourceId": "ai-bing-zh",
+        "at": "2026-11-24T11:43:39.836+08:00",
+        "evidence": {
+          "url": "https://cn.bing.com/news/search?q=%22OpenAI+%2F+ChatGPT%22+%E5%85%8D%E8%B4%B9+%E4%BC%98%E6%83%A0&format=rss&setlang=zh-cn",
+          "status": 403,
+          "headers": {
+            "content-type": "text/html"
+          },
+          "finalURL": "https://cn.bing.com/news/search?q=%22OpenAI+%2F+ChatGPT%22+%E5%85%8D%E8%B4%B9+%E4%BC%98%E6%83%A0&format=rss&setlang=zh-cn",
+          "at": "2026-11-24T11:43:43.244+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ai-bing-zh",
+      "vendor": null,
+      "url": "https://www.bing.com/news/search?q={q}&format=rss&setlang=zh-cn",
+      "status": "blocked",
+      "reason": "host blocked: SOURCE_BLOCKED: host blocked: HTTP 403",
+      "checkedAt": "2026-11-24T11:48:38.369+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "SOURCE_BLOCKED: host blocked: HTTP 403",
+        "sourceId": "ai-bing-en",
+        "at": "2026-11-24T11:48:38.339+08:00",
+        "evidence": {
+          "url": "https://www.bing.com/news/search?q=%22OpenAI+%2F+ChatGPT%22+free+discount+credits+trial&format=rss&setlang=en-us",
+          "status": 302,
+          "headers": {
+            "content-type": "text/html; charset=utf-8",
+            "location": "https://cn.bing.com/news/search?q=%22OpenAI+%2F+ChatGPT%22+free+discount+credits+trial&format=rss&setlang=en-us"
+          },
+          "finalURL": "https://www.bing.com/news/search?q=%22OpenAI+%2F+ChatGPT%22+free+discount+credits+trial&format=rss&setlang=en-us",
+          "at": "2026-11-24T11:48:38.339+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ai-gnews-ja",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=ja&gl=JP&ceid=JP:ja",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:48:38.371+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ai-gnews-ko",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=ko&gl=KR&ceid=KR:ko",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:48:38.376+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ai-gnews-tw",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:48:38.380+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ai-gnews-in",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=en-IN&gl=IN&ceid=IN:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:48:38.385+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ai-gnews-id",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=id&gl=ID&ceid=ID:id",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:48:38.389+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ai-gnews-br",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=pt-BR&gl=BR&ceid=BR:pt-419",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:48:38.392+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ai-gnews-latam",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=es-419&gl=MX&ceid=MX:es-419",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:48:38.396+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ai-gnews-de",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=de&gl=DE&ceid=DE:de",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:48:38.399+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ai-gnews-fr",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=fr&gl=FR&ceid=FR:fr",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:48:38.403+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ai-gnews-ar",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:14d&hl=ar&gl=SA&ceid=SA:ar",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:48:38.407+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "hukd-software",
+      "vendor": null,
+      "url": "https://www.hotukdeals.com/rss/tag/software",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T11:48:39.512+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "reddit-ai",
+      "vendor": null,
+      "url": "https://www.reddit.com/r/ChatGPT+OpenAI+ClaudeAI+GeminiAI+cursor+SaaS+AppSumo/search.rss?q=free+OR+discount+OR+promo+OR+trial+OR+credits+OR+offer&restrict_sr=on&sort=new&limit=100",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:48:40.045+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "tecmundo",
+      "vendor": null,
+      "url": "https://rss.tecmundo.com.br/feed",
+      "status": "unreachable",
+      "reason": "net::ERR_HTTP2_PROTOCOL_ERROR",
+      "checkedAt": "2026-11-24T11:48:52.020+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "01net",
+      "vendor": null,
+      "url": "https://www.01net.com/actualites/feed/",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T11:48:54.177+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "bensbargains",
+      "vendor": null,
+      "url": "https://bensbargains.com/rss/",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T11:49:04.244+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "reddit-multi",
+      "vendor": null,
+      "url": "https://www.reddit.com/r/deals+buildapcsales+GameDeals+frugalmalefashion/new/.rss?limit=100",
+      "status": "unreachable",
+      "reason": "net::ERR_TIMED_OUT",
+      "checkedAt": "2026-11-24T11:49:05.699+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "hukd-hot",
+      "vendor": null,
+      "url": "https://www.hotukdeals.com/rss/hot",
+      "status": "blocked",
+      "reason": "host blocked: SOURCE_BLOCKED: HTTP 403",
+      "checkedAt": "2026-11-24T11:49:06.663+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "SOURCE_BLOCKED: HTTP 403",
+        "sourceId": "hukd-software",
+        "at": "2026-11-24T11:48:40.672+08:00",
+        "evidence": {
+          "url": "https://www.hotukdeals.com/rss/tag/software",
+          "status": 403,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://www.hotukdeals.com/rss/tag/software",
+          "at": "2026-11-24T11:48:40.672+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "hukd-new",
+      "vendor": null,
+      "url": "https://www.hotukdeals.com/rss/new",
+      "status": "blocked",
+      "reason": "host blocked: SOURCE_BLOCKED: HTTP 403",
+      "checkedAt": "2026-11-24T11:49:06.668+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "SOURCE_BLOCKED: HTTP 403",
+        "sourceId": "hukd-software",
+        "at": "2026-11-24T11:48:40.672+08:00",
+        "evidence": {
+          "url": "https://www.hotukdeals.com/rss/tag/software",
+          "status": 403,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://www.hotukdeals.com/rss/tag/software",
+          "at": "2026-11-24T11:48:40.672+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "mydealz-hot",
+      "vendor": null,
+      "url": "https://www.mydealz.de/rss/hot",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T11:49:06.672+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "dealabs-hot",
+      "vendor": null,
+      "url": "https://www.dealabs.com/rss/hot",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T11:49:07.247+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "pepper-nl",
+      "vendor": null,
+      "url": "https://nl.pepper.com/rss/nieuw",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T11:49:07.418+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "chollometro",
+      "vendor": null,
+      "url": "https://www.chollometro.com/rss/nuevos",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T11:49:07.861+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "preisjaeger",
+      "vendor": null,
+      "url": "https://www.preisjaeger.at/rss/alle",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T11:49:08.416+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "pepper-pl",
+      "vendor": null,
+      "url": "https://www.pepper.pl/rss/wszystkie",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T11:49:08.645+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "rfd",
+      "vendor": null,
+      "url": "https://forums.redflagdeals.com/feed/forum/9",
+      "status": "unreachable",
+      "reason": "HTTP 406",
+      "checkedAt": "2026-11-24T11:49:09.791+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "androidpolice-deals",
+      "vendor": null,
+      "url": "https://www.androidpolice.com/feed/deals/",
+      "status": "unreachable",
+      "reason": "net::ERR_HTTP2_PROTOCOL_ERROR",
+      "checkedAt": "2026-11-24T11:49:09.826+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "apple-newsroom",
+      "vendor": null,
+      "url": "https://www.apple.com/newsroom/rss-feed.rss",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:49:11.155+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "samsung-newsroom",
+      "vendor": null,
+      "url": "https://news.samsung.com/global/feed",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:49:11.822+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "gnews-en",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:7d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:49:16.760+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "gnews-zh",
+      "vendor": null,
+      "url": "https://news.google.com/rss/search?q={q}+when:7d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:49:16.770+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "bing-en",
+      "vendor": null,
+      "url": "https://www.bing.com/news/search?q={q}&format=rss&setlang=en-us",
+      "status": "blocked",
+      "reason": "host blocked: SOURCE_BLOCKED: host blocked: HTTP 403",
+      "checkedAt": "2026-11-24T11:49:16.775+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "SOURCE_BLOCKED: host blocked: HTTP 403",
+        "sourceId": "ai-bing-en",
+        "at": "2026-11-24T11:48:38.339+08:00",
+        "evidence": {
+          "url": "https://www.bing.com/news/search?q=%22OpenAI+%2F+ChatGPT%22+free+discount+credits+trial&format=rss&setlang=en-us",
+          "status": 302,
+          "headers": {
+            "content-type": "text/html; charset=utf-8",
+            "location": "https://cn.bing.com/news/search?q=%22OpenAI+%2F+ChatGPT%22+free+discount+credits+trial&format=rss&setlang=en-us"
+          },
+          "finalURL": "https://www.bing.com/news/search?q=%22OpenAI+%2F+ChatGPT%22+free+discount+credits+trial&format=rss&setlang=en-us",
+          "at": "2026-11-24T11:48:38.339+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "bing-zh",
+      "vendor": null,
+      "url": "https://www.bing.com/news/search?q={q}&format=rss&setlang=zh-cn",
+      "status": "blocked",
+      "reason": "host blocked: SOURCE_BLOCKED: host blocked: HTTP 403",
+      "checkedAt": "2026-11-24T11:49:16.778+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "SOURCE_BLOCKED: host blocked: HTTP 403",
+        "sourceId": "ai-bing-en",
+        "at": "2026-11-24T11:48:38.339+08:00",
+        "evidence": {
+          "url": "https://www.bing.com/news/search?q=%22OpenAI+%2F+ChatGPT%22+free+discount+credits+trial&format=rss&setlang=en-us",
+          "status": 302,
+          "headers": {
+            "content-type": "text/html; charset=utf-8",
+            "location": "https://cn.bing.com/news/search?q=%22OpenAI+%2F+ChatGPT%22+free+discount+credits+trial&format=rss&setlang=en-us"
+          },
+          "finalURL": "https://www.bing.com/news/search?q=%22OpenAI+%2F+ChatGPT%22+free+discount+credits+trial&format=rss&setlang=en-us",
+          "at": "2026-11-24T11:48:38.339+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-openai-pricing",
+      "vendor": "openai",
+      "url": "https://chatgpt.com/pricing",
+      "status": "blocked",
+      "reason": "host blocked: HTTP 403",
+      "checkedAt": "2026-11-24T12:02:48.780+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 403",
+        "sourceId": "ch-openai-pricing",
+        "at": "2026-11-24T11:49:17.618+08:00",
+        "evidence": {
+          "url": "https://chatgpt.com/pricing",
+          "status": 403,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://chatgpt.com/pricing",
+          "at": "2026-11-24T11:49:18.768+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-openai-api-pricing",
+      "vendor": "openai",
+      "url": "https://platform.openai.com/docs/pricing",
+      "status": "blocked",
+      "reason": "host blocked: HTTP 403",
+      "checkedAt": "2026-11-24T12:02:48.787+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 403",
+        "sourceId": "ch-openai-api-pricing",
+        "at": "2026-11-24T11:49:18.003+08:00",
+        "evidence": {
+          "url": "https://platform.openai.com/docs/pricing",
+          "status": 403,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://platform.openai.com/docs/pricing",
+          "at": "2026-11-24T11:49:19.117+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-openai-biz-pricing",
+      "vendor": "openai",
+      "url": "https://openai.com/api/pricing/",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T12:04:53.166+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-openai-students",
+      "vendor": "openai",
+      "url": "https://chatgpt.com/students",
+      "status": "blocked",
+      "reason": "host blocked: HTTP 403",
+      "checkedAt": "2026-11-24T12:02:48.788+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 403",
+        "sourceId": "ch-openai-pricing",
+        "at": "2026-11-24T11:49:17.618+08:00",
+        "evidence": {
+          "url": "https://chatgpt.com/pricing",
+          "status": 403,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://chatgpt.com/pricing",
+          "at": "2026-11-24T11:49:18.768+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-openai-release-notes",
+      "vendor": "openai",
+      "url": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes",
+      "status": "blocked",
+      "reason": "host blocked: HTTP 403",
+      "checkedAt": "2026-11-24T12:02:48.809+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 403",
+        "sourceId": "ch-openai-help-chatgpt",
+        "at": "2026-11-24T11:49:20.858+08:00",
+        "evidence": {
+          "url": "https://help.openai.com/en/collections/3742473-chatgpt",
+          "status": 403,
+          "headers": {
+            "content-type": [
+              "text/html; charset=UTF-8"
+            ]
+          },
+          "render": true,
+          "at": "2026-11-24T11:49:22.170+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-openai-help-chatgpt",
+      "vendor": "openai",
+      "url": "https://help.openai.com/en/collections/3742473-chatgpt",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T12:04:53.182+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-openai-students-page",
+      "vendor": "openai",
+      "url": "https://chatgpt.com/use-cases/students",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T12:04:53.182+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-openai-status",
+      "vendor": "openai",
+      "url": "https://status.openai.com/history.rss",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T11:49:23.161+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-openai-community",
+      "vendor": "openai",
+      "url": "https://community.openai.com/latest.json",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T11:49:23.370+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-openai-reddit",
+      "vendor": "openai",
+      "url": "https://www.reddit.com/r/OpenAI/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:49:23.827+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-openai-reddit-chatgpt",
+      "vendor": "openai",
+      "url": "https://www.reddit.com/r/ChatGPT/search.rss?q=free%20OR%20discount%20OR%20promo%20OR%20trial&restrict_sr=on&sort=new&limit=50",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:49:24.281+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-openai-news-en",
+      "vendor": "openai",
+      "url": "https://news.google.com/rss/search?q=ChatGPT%20OR%20OpenAI%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:49:32.866+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-anthropic-news",
+      "vendor": "anthropic",
+      "url": "https://www.anthropic.com/news",
+      "status": "blocked",
+      "reason": "host blocked: host blocked: SOURCE_BLOCKED: Regional restriction; unavailable at this location; no bypass attempted",
+      "checkedAt": "2026-11-24T12:02:48.850+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "host blocked: SOURCE_BLOCKED: Regional restriction; unavailable at this location; no bypass attempted",
+        "sourceId": "ch-anthropic-education",
+        "at": "2026-11-24T11:49:35.997+08:00",
+        "evidence": {
+          "url": "https://www.anthropic.com/solutions/education",
+          "status": 301,
+          "headers": {
+            "content-type": "text/html",
+            "location": "https://claude.com/solutions/education"
+          },
+          "finalURL": "https://www.anthropic.com/solutions/education",
+          "at": "2026-11-24T11:49:39.557+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-anthropic-api-pricing",
+      "vendor": "anthropic",
+      "url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
+      "status": "blocked",
+      "reason": "host blocked: SOURCE_BLOCKED: Regional restriction; no bypass",
+      "checkedAt": "2026-11-24T12:02:48.898+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "SOURCE_BLOCKED: Regional restriction; no bypass",
+        "sourceId": "ch-anthropic-api-pricing",
+        "at": "2026-11-24T12:00:55.792+08:00",
+        "evidence": {
+          "url": "https://claude.com/app-unavailable-in-region#_",
+          "status": 200,
+          "title": "App unavailable in region | Claude by Anthropic"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-anthropic-education",
+      "vendor": "anthropic",
+      "url": "https://www.anthropic.com/education",
+      "status": "blocked",
+      "reason": "host blocked: host blocked: SOURCE_BLOCKED: Regional restriction; unavailable at this location; no bypass attempted",
+      "checkedAt": "2026-11-24T12:02:48.909+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "host blocked: SOURCE_BLOCKED: Regional restriction; unavailable at this location; no bypass attempted",
+        "sourceId": "ch-anthropic-education",
+        "at": "2026-11-24T11:49:35.997+08:00",
+        "evidence": {
+          "url": "https://www.anthropic.com/solutions/education",
+          "status": 301,
+          "headers": {
+            "content-type": "text/html",
+            "location": "https://claude.com/solutions/education"
+          },
+          "finalURL": "https://www.anthropic.com/solutions/education",
+          "at": "2026-11-24T11:49:39.557+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-anthropic-release-notes",
+      "vendor": "anthropic",
+      "url": "https://docs.anthropic.com/en/release-notes/overview",
+      "status": "blocked",
+      "reason": "host blocked: host blocked: SOURCE_BLOCKED: host blocked: SOURCE_BLOCKED: Regional restriction; unavailable at this location; no bypass attempted",
+      "checkedAt": "2026-11-24T12:02:48.921+08:00",
+      "liveAttempted": true,
+      "suppressedBy": {
+        "reason": "host blocked: SOURCE_BLOCKED: host blocked: SOURCE_BLOCKED: Regional restriction; unavailable at this location; no bypass attempted",
+        "sourceId": "ch-anthropic-release-notes",
+        "at": "2026-11-24T11:49:36.949+08:00",
+        "evidence": {
+          "url": "https://platform.claude.com/docs/en/release-notes/overview",
+          "status": 307,
+          "headers": {
+            "content-type": "text/html",
+            "location": "https://www.anthropic.com/app-unavailable-in-region?utm_source=country#_"
+          },
+          "finalURL": "https://platform.claude.com/docs/en/release-notes/overview",
+          "at": "2026-11-24T11:49:39.309+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-anthropic-reddit",
+      "vendor": "anthropic",
+      "url": "https://www.reddit.com/r/ClaudeAI/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:49:39.564+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-anthropic-news-en",
+      "vendor": "anthropic",
+      "url": "https://news.google.com/rss/search?q=Claude%20OR%20Anthropic%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:49:43.719+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-gemini-pricing",
+      "vendor": "gemini",
+      "url": "https://gemini.google/subscriptions/",
+      "status": "login-required",
+      "reason": "Authentication required; not attempted",
+      "checkedAt": "2026-11-24T12:02:50.087+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No login used. Open the official site manually; no account credentials requested."
+    },
+    {
+      "id": "ch-gemini-students",
+      "vendor": "gemini",
+      "url": "https://gemini.google/students/",
+      "status": "login-required",
+      "reason": "Authentication required; not attempted",
+      "checkedAt": "2026-11-24T12:02:52.865+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No login used. Open the official site manually; no account credentials requested."
+    },
+    {
+      "id": "ch-gemini-api-pricing",
+      "vendor": "gemini",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "status": "login-required",
+      "reason": "Authentication required; not attempted",
+      "checkedAt": "2026-11-24T12:04:53.182+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No login used. Open the official site manually; no account credentials requested."
+    },
+    {
+      "id": "ch-gemini-telkomsel",
+      "vendor": "gemini",
+      "url": "https://www.telkomsel.com/en/about-us/news",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T12:02:53.716+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-gemini-reddit",
+      "vendor": "gemini",
+      "url": "https://www.reddit.com/r/GeminiAI/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:51:29.981+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-gemini-gemini-cli",
+      "vendor": "gemini",
+      "url": "https://github.com/google-gemini/gemini-cli/releases.atom",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:51:30.092+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-gemini-ios",
+      "vendor": "gemini",
+      "url": "https://itunes.apple.com/lookup?id=6477489729&country=us",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:51:30.113+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-gemini-android",
+      "vendor": "gemini",
+      "url": "https://play.google.com/store/apps/details?id=com.google.android.apps.bard&hl=en_US&gl=US",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:51:31.399+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-gemini-news-en",
+      "vendor": "gemini",
+      "url": "https://news.google.com/rss/search?q=%22Google%20Gemini%22%20OR%20%22Google%20AI%20Pro%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:51:53.795+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-ms-copilot-m365-blog",
+      "vendor": "ms-copilot",
+      "url": "https://www.microsoft.com/en-us/microsoft-365/blog/feed/",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:51:55.696+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-ms-copilot-news-en",
+      "vendor": "ms-copilot",
+      "url": "https://news.google.com/rss/search?q=%22Microsoft%20Copilot%22%20OR%20%22Microsoft%20365%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:52:07.277+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-xai-status",
+      "vendor": "xai",
+      "url": "https://status.x.ai/feed.xml",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:52:12.371+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-xai-reddit",
+      "vendor": "xai",
+      "url": "https://www.reddit.com/r/grok/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:52:37.805+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-xai-sdk",
+      "vendor": "xai",
+      "url": "https://github.com/xai-org/xai-sdk-python/releases.atom",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:52:37.897+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-xai-ios",
+      "vendor": "xai",
+      "url": "https://itunes.apple.com/lookup?id=6670324846&country=us",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:52:38.196+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-xai-news-en",
+      "vendor": "xai",
+      "url": "https://news.google.com/rss/search?q=Grok%20OR%20xAI%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:54:11.730+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-meta-llama-stack",
+      "vendor": "meta",
+      "url": "https://github.com/meta-llama/llama-stack/releases.atom",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:54:13.795+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-meta-news-en",
+      "vendor": "meta",
+      "url": "https://news.google.com/rss/search?q=%22Meta%20AI%22%20OR%20Llama%20OR%20%22Muse%20Spark%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:58:05.208+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-mistral-reddit",
+      "vendor": "mistral",
+      "url": "https://www.reddit.com/r/MistralAI/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:58:10.312+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-mistral-ios",
+      "vendor": "mistral",
+      "url": "https://itunes.apple.com/lookup?id=6740410176&country=us",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:58:10.927+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-mistral-news-en",
+      "vendor": "mistral",
+      "url": "https://news.google.com/rss/search?q=%22Mistral%20AI%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:58:12.422+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-mistral-hn",
+      "vendor": "mistral",
+      "url": "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=40&query=Mistral&numericFilters=points%3E=20",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:58:12.445+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-perplexity-hub",
+      "vendor": "perplexity",
+      "url": "https://www.perplexity.ai/hub",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T12:04:56.093+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-perplexity-pro",
+      "vendor": "perplexity",
+      "url": "https://www.perplexity.ai/pro",
+      "status": "blocked",
+      "reason": "host blocked: SOURCE_BLOCKED: HTTP 403",
+      "checkedAt": "2026-11-24T12:04:57.334+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "SOURCE_BLOCKED: HTTP 403",
+        "sourceId": "ch-perplexity-hub",
+        "at": "2026-11-24T12:04:57.292+08:00",
+        "evidence": {
+          "url": "https://www.perplexity.ai/hub",
+          "status": 403,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://www.perplexity.ai/hub",
+          "at": "2026-11-24T12:04:57.292+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-perplexity-reddit",
+      "vendor": "perplexity",
+      "url": "https://www.reddit.com/r/perplexity_ai/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "net::ERR_TIMED_OUT",
+      "checkedAt": "2026-11-24T11:58:30.671+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-perplexity-news-en",
+      "vendor": "perplexity",
+      "url": "https://news.google.com/rss/search?q=Perplexity%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:58:36.309+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-cursor-reddit",
+      "vendor": "cursor",
+      "url": "https://www.reddit.com/r/cursor/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:58:41.118+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-cursor-news-en",
+      "vendor": "cursor",
+      "url": "https://news.google.com/rss/search?q=%22Cursor%20AI%22%20OR%20%22Cursor%20Pro%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:58:41.431+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-github-copilot-reddit",
+      "vendor": "github-copilot",
+      "url": "https://www.reddit.com/r/GithubCopilot/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:58:46.625+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-github-copilot-news-en",
+      "vendor": "github-copilot",
+      "url": "https://news.google.com/rss/search?q=%22GitHub%20Copilot%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:58:49.552+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-devin-news-en",
+      "vendor": "devin",
+      "url": "https://news.google.com/rss/search?q=%22Devin%20AI%22%20OR%20%22Cognition%20AI%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:58:54.907+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-manus-pricing",
+      "vendor": "manus",
+      "url": "https://manus.im/pricing",
+      "status": "js-only",
+      "reason": "未从页面提取到文字（可能需要 JS 渲染，或关键词/选择器不匹配）",
+      "checkedAt": "2026-11-24T12:04:57.366+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Desktop rendering was attempted where configured; no meaningful public content was extracted."
+    },
+    {
+      "id": "ch-manus-news-en",
+      "vendor": "manus",
+      "url": "https://news.google.com/rss/search?q=%22Manus%20AI%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:01.244+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-coze-news-zh",
+      "vendor": "coze",
+      "url": "https://news.google.com/rss/search?q=Coze%20OR%20%E6%89%A3%E5%AD%90AI%20(%E5%85%8D%E8%B4%B9%20OR%20%E4%BC%98%E6%83%A0%20OR%20%E9%99%8D%E4%BB%B7%20OR%20%E6%8A%98%E6%89%A3%20OR%20%E9%99%90%E6%97%B6%20OR%20%E5%AD%A6%E7%94%9F%20OR%20%E9%A2%9D%E5%BA%A6%20OR%20%E9%99%90%E5%85%8D)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:05.931+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-coze-news-en",
+      "vendor": "coze",
+      "url": "https://news.google.com/rss/search?q=Coze%20OR%20%E6%89%A3%E5%AD%90AI%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:05.943+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-dify-news-en",
+      "vendor": "dify",
+      "url": "https://news.google.com/rss/search?q=Dify%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:09.457+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-langchain-news-en",
+      "vendor": "langchain",
+      "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:13.621+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-n8n-news-en",
+      "vendor": "n8n",
+      "url": "https://news.google.com/rss/search?q=n8n%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:17.688+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-genspark-news-en",
+      "vendor": "genspark",
+      "url": "https://news.google.com/rss/search?q=Genspark%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:18.688+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-midjourney-updates",
+      "vendor": "midjourney",
+      "url": "https://www.midjourney.com/updates",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T12:04:57.949+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-midjourney-reddit",
+      "vendor": "midjourney",
+      "url": "https://www.reddit.com/r/midjourney/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "net::ERR_TIMED_OUT",
+      "checkedAt": "2026-11-24T11:59:19.587+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-midjourney-news-en",
+      "vendor": "midjourney",
+      "url": "https://news.google.com/rss/search?q=Midjourney%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:20.479+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-deepseek-reddit",
+      "vendor": "deepseek",
+      "url": "https://www.reddit.com/r/DeepSeek/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T11:59:30.186+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-deepseek-news-zh",
+      "vendor": "deepseek",
+      "url": "https://news.google.com/rss/search?q=DeepSeek%20(%E5%85%8D%E8%B4%B9%20OR%20%E4%BC%98%E6%83%A0%20OR%20%E9%99%8D%E4%BB%B7%20OR%20%E6%8A%98%E6%89%A3%20OR%20%E9%99%90%E6%97%B6%20OR%20%E5%AD%A6%E7%94%9F%20OR%20%E9%A2%9D%E5%BA%A6%20OR%20%E9%99%90%E5%85%8D)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:32.863+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-deepseek-news-en",
+      "vendor": "deepseek",
+      "url": "https://news.google.com/rss/search?q=DeepSeek%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:32.877+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-kimi-status",
+      "vendor": "kimi",
+      "url": "https://status.moonshot.cn/",
+      "status": "not-found",
+      "reason": "HTTP 404",
+      "checkedAt": "2026-11-24T12:03:28.933+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Official URL returned 404/410 in this pass. Do not infer permanent removal from a transient failure."
+    },
+    {
+      "id": "ch-kimi-news-zh",
+      "vendor": "kimi",
+      "url": "https://news.google.com/rss/search?q=Kimi%20OR%20%E6%9C%88%E4%B9%8B%E6%9A%97%E9%9D%A2%20(%E5%85%8D%E8%B4%B9%20OR%20%E4%BC%98%E6%83%A0%20OR%20%E9%99%8D%E4%BB%B7%20OR%20%E6%8A%98%E6%89%A3%20OR%20%E9%99%90%E6%97%B6%20OR%20%E5%AD%A6%E7%94%9F%20OR%20%E9%A2%9D%E5%BA%A6%20OR%20%E9%99%90%E5%85%8D)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:38.387+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-kimi-news-en",
+      "vendor": "kimi",
+      "url": "https://news.google.com/rss/search?q=Kimi%20OR%20%E6%9C%88%E4%B9%8B%E6%9A%97%E9%9D%A2%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:38.401+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-zhipu-news-zh",
+      "vendor": "zhipu",
+      "url": "https://news.google.com/rss/search?q=%E6%99%BA%E8%B0%B1%20OR%20GLM%20OR%20AutoClaw%20(%E5%85%8D%E8%B4%B9%20OR%20%E4%BC%98%E6%83%A0%20OR%20%E9%99%8D%E4%BB%B7%20OR%20%E6%8A%98%E6%89%A3%20OR%20%E9%99%90%E6%97%B6%20OR%20%E5%AD%A6%E7%94%9F%20OR%20%E9%A2%9D%E5%BA%A6%20OR%20%E9%99%90%E5%85%8D)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:40.332+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-zhipu-news-en",
+      "vendor": "zhipu",
+      "url": "https://news.google.com/rss/search?q=%E6%99%BA%E8%B0%B1%20OR%20GLM%20OR%20AutoClaw%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:40.350+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-qwen-news-zh",
+      "vendor": "qwen",
+      "url": "https://news.google.com/rss/search?q=%E9%80%9A%E4%B9%89%E5%8D%83%E9%97%AE%20OR%20%E5%8D%83%E9%97%AE%20OR%20Qwen%20OR%20%E9%98%BF%E9%87%8C%E4%BA%91%E7%99%BE%E7%82%BC%20(%E5%85%8D%E8%B4%B9%20OR%20%E4%BC%98%E6%83%A0%20OR%20%E9%99%8D%E4%BB%B7%20OR%20%E6%8A%98%E6%89%A3%20OR%20%E9%99%90%E6%97%B6%20OR%20%E5%AD%A6%E7%94%9F%20OR%20%E9%A2%9D%E5%BA%A6%20OR%20%E9%99%90%E5%85%8D)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:45.924+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-qwen-news-en",
+      "vendor": "qwen",
+      "url": "https://news.google.com/rss/search?q=%E9%80%9A%E4%B9%89%E5%8D%83%E9%97%AE%20OR%20%E5%8D%83%E9%97%AE%20OR%20Qwen%20OR%20%E9%98%BF%E9%87%8C%E4%BA%91%E7%99%BE%E7%82%BC%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:45.937+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-doubao-pricing",
+      "vendor": "doubao",
+      "url": "https://www.volcengine.com/docs/82379/1544106",
+      "status": "blocked",
+      "reason": "host blocked: host blocked: HTTP 403",
+      "checkedAt": "2026-11-24T12:04:58.634+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "host blocked: HTTP 403",
+        "sourceId": "ch-doubao-pricing",
+        "at": "2026-11-24T12:03:37.127+08:00",
+        "evidence": {
+          "url": "https://www.volcengine.com/docs/82379/1544106",
+          "status": 301,
+          "headers": {
+            "content-type": "text/html",
+            "location": "https://docs.volcengine.com/docs/82379/1544106"
+          },
+          "finalURL": "https://www.volcengine.com/docs/82379/1544106",
+          "at": "2026-11-24T12:03:40.750+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-doubao-activity",
+      "vendor": "doubao",
+      "url": "https://www.volcengine.com/activity/ark",
+      "status": "blocked",
+      "reason": "host blocked: SOURCE_BLOCKED: host blocked: HTTP 403",
+      "checkedAt": "2026-11-24T12:03:38.639+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "SOURCE_BLOCKED: host blocked: HTTP 403",
+        "sourceId": "ch-doubao-pricing",
+        "at": "2026-11-24T12:03:40.750+08:00",
+        "evidence": {
+          "url": "https://www.volcengine.com/docs/82379/1544106",
+          "status": 301,
+          "headers": {
+            "content-type": "text/html",
+            "location": "https://docs.volcengine.com/docs/82379/1544106"
+          },
+          "finalURL": "https://www.volcengine.com/docs/82379/1544106",
+          "at": "2026-11-24T12:03:40.750+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-doubao-releases",
+      "vendor": "doubao",
+      "url": "https://www.volcengine.com/docs/82379/1159176",
+      "status": "blocked",
+      "reason": "host blocked: host blocked: HTTP 403",
+      "checkedAt": "2026-11-24T12:04:58.674+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "host blocked: HTTP 403",
+        "sourceId": "ch-doubao-pricing",
+        "at": "2026-11-24T12:03:37.127+08:00",
+        "evidence": {
+          "url": "https://www.volcengine.com/docs/82379/1544106",
+          "status": 301,
+          "headers": {
+            "content-type": "text/html",
+            "location": "https://docs.volcengine.com/docs/82379/1544106"
+          },
+          "finalURL": "https://www.volcengine.com/docs/82379/1544106",
+          "at": "2026-11-24T12:03:40.750+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-doubao-news-zh",
+      "vendor": "doubao",
+      "url": "https://news.google.com/rss/search?q=%E8%B1%86%E5%8C%85%20OR%20%E7%81%AB%E5%B1%B1%E6%96%B9%E8%88%9F%20(%E5%85%8D%E8%B4%B9%20OR%20%E4%BC%98%E6%83%A0%20OR%20%E9%99%8D%E4%BB%B7%20OR%20%E6%8A%98%E6%89%A3%20OR%20%E9%99%90%E6%97%B6%20OR%20%E5%AD%A6%E7%94%9F%20OR%20%E9%A2%9D%E5%BA%A6%20OR%20%E9%99%90%E5%85%8D)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:51.393+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-doubao-news-en",
+      "vendor": "doubao",
+      "url": "https://news.google.com/rss/search?q=%E8%B1%86%E5%8C%85%20OR%20%E7%81%AB%E5%B1%B1%E6%96%B9%E8%88%9F%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:51.406+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-ernie-news-zh",
+      "vendor": "ernie",
+      "url": "https://news.google.com/rss/search?q=%E6%96%87%E5%BF%83%20OR%20ERNIE%20OR%20%E7%99%BE%E5%BA%A6%E5%8D%83%E5%B8%86%20(%E5%85%8D%E8%B4%B9%20OR%20%E4%BC%98%E6%83%A0%20OR%20%E9%99%8D%E4%BB%B7%20OR%20%E6%8A%98%E6%89%A3%20OR%20%E9%99%90%E6%97%B6%20OR%20%E5%AD%A6%E7%94%9F%20OR%20%E9%A2%9D%E5%BA%A6%20OR%20%E9%99%90%E5%85%8D)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:54.212+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-ernie-news-en",
+      "vendor": "ernie",
+      "url": "https://news.google.com/rss/search?q=%E6%96%87%E5%BF%83%20OR%20ERNIE%20OR%20%E7%99%BE%E5%BA%A6%E5%8D%83%E5%B8%86%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:54.227+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-hunyuan-github",
+      "vendor": "hunyuan",
+      "url": "https://github.com/Tencent-Hunyuan/HunyuanVideo/commits/main.atom",
+      "status": "unreachable",
+      "reason": "HTTP 500",
+      "checkedAt": "2026-11-24T11:59:56.816+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-hunyuan-news-zh",
+      "vendor": "hunyuan",
+      "url": "https://news.google.com/rss/search?q=%E8%85%BE%E8%AE%AF%E5%85%83%E5%AE%9D%20OR%20%E8%85%BE%E8%AE%AF%E6%B7%B7%E5%85%83%20(%E5%85%8D%E8%B4%B9%20OR%20%E4%BC%98%E6%83%A0%20OR%20%E9%99%8D%E4%BB%B7%20OR%20%E6%8A%98%E6%89%A3%20OR%20%E9%99%90%E6%97%B6%20OR%20%E5%AD%A6%E7%94%9F%20OR%20%E9%A2%9D%E5%BA%A6%20OR%20%E9%99%90%E5%85%8D)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:57.814+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-hunyuan-news-en",
+      "vendor": "hunyuan",
+      "url": "https://news.google.com/rss/search?q=%E8%85%BE%E8%AE%AF%E5%85%83%E5%AE%9D%20OR%20%E8%85%BE%E8%AE%AF%E6%B7%B7%E5%85%83%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:57.838+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-spark-api",
+      "vendor": "spark",
+      "url": "https://xinghuo.xfyun.cn/sparkapi",
+      "status": "unreachable",
+      "reason": "渲染超时（18s）",
+      "checkedAt": "2026-11-24T12:04:58.691+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-spark-news-zh",
+      "vendor": "spark",
+      "url": "https://news.google.com/rss/search?q=%E8%AE%AF%E9%A3%9E%E6%98%9F%E7%81%AB%20OR%20%22%E8%AE%AF%E9%A3%9E%20Spark%22%20OR%20%22iFlytek%20Spark%22%20(%E5%85%8D%E8%B4%B9%20OR%20%E4%BC%98%E6%83%A0%20OR%20%E9%99%8D%E4%BB%B7%20OR%20%E6%8A%98%E6%89%A3%20OR%20%E9%99%90%E6%97%B6%20OR%20%E5%AD%A6%E7%94%9F%20OR%20%E9%A2%9D%E5%BA%A6%20OR%20%E9%99%90%E5%85%8D)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:59.049+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-spark-news-en",
+      "vendor": "spark",
+      "url": "https://news.google.com/rss/search?q=%E8%AE%AF%E9%A3%9E%E6%98%9F%E7%81%AB%20OR%20%22%E8%AE%AF%E9%A3%9E%20Spark%22%20OR%20%22iFlytek%20Spark%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T11:59:59.064+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-minimax-news-zh",
+      "vendor": "minimax",
+      "url": "https://news.google.com/rss/search?q=MiniMax%20OR%20%E6%B5%B7%E8%9E%BAAI%20(%E5%85%8D%E8%B4%B9%20OR%20%E4%BC%98%E6%83%A0%20OR%20%E9%99%8D%E4%BB%B7%20OR%20%E6%8A%98%E6%89%A3%20OR%20%E9%99%90%E6%97%B6%20OR%20%E5%AD%A6%E7%94%9F%20OR%20%E9%A2%9D%E5%BA%A6%20OR%20%E9%99%90%E5%85%8D)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:02.124+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-minimax-news-en",
+      "vendor": "minimax",
+      "url": "https://news.google.com/rss/search?q=MiniMax%20OR%20%E6%B5%B7%E8%9E%BAAI%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=zh-CN&gl=CN&ceid=CN:zh-Hans",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:02.138+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-notion-reddit",
+      "vendor": "notion",
+      "url": "https://www.reddit.com/r/Notion/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T12:00:05.134+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-notion-news-en",
+      "vendor": "notion",
+      "url": "https://news.google.com/rss/search?q=%22Notion%20AI%22%20OR%20Notion%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:07.692+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-adobe-firefly",
+      "vendor": "adobe",
+      "url": "https://www.adobe.com/products/firefly/plans.html",
+      "status": "blocked",
+      "reason": "HTTP 403",
+      "checkedAt": "2026-11-24T12:12:58.482+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-adobe-cc",
+      "vendor": "adobe",
+      "url": "https://www.adobe.com/creativecloud/plans.html",
+      "status": "blocked",
+      "reason": "host blocked: SOURCE_BLOCKED: HTTP 403",
+      "checkedAt": "2026-11-24T12:12:58.729+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "SOURCE_BLOCKED: HTTP 403",
+        "sourceId": "ch-adobe-firefly",
+        "at": "2026-11-24T12:12:59.711+08:00",
+        "evidence": {
+          "url": "https://www.adobe.com/products/firefly/plans.html",
+          "status": 403,
+          "headers": {
+            "content-type": [
+              "text/html"
+            ]
+          },
+          "render": true,
+          "at": "2026-11-24T12:12:59.711+08:00"
+        }
+      },
+      "requiredSetup": "No bypass. Review the original block/region evidence; availability may differ by route/region."
+    },
+    {
+      "id": "ch-adobe-reddit",
+      "vendor": "adobe",
+      "url": "https://www.reddit.com/r/Adobe/new/.rss?limit=50",
+      "status": "unreachable",
+      "reason": "请求超时（12s）",
+      "checkedAt": "2026-11-24T12:00:09.427+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-adobe-news-en",
+      "vendor": "adobe",
+      "url": "https://news.google.com/rss/search?q=Adobe%20Creative%20Cloud%20OR%20Firefly%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:09.696+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-canva-pricing",
+      "vendor": "canva",
+      "url": "https://www.canva.com/pricing/",
+      "status": "coverage-mismatch",
+      "reason": "coverage-mismatch: Regional redirect to a generic homepage, not equivalent pricing coverage",
+      "checkedAt": "2026-11-24T12:05:03.211+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Official redirect leads to non-equivalent content. Original source retained, not counted healthy."
+    },
+    {
+      "id": "ch-canva-news-en",
+      "vendor": "canva",
+      "url": "https://news.google.com/rss/search?q=Canva%20Pro%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:13.637+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-figma-news-en",
+      "vendor": "figma",
+      "url": "https://news.google.com/rss/search?q=Figma%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:18.595+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-elevenlabs-sdk",
+      "vendor": "elevenlabs",
+      "url": "https://github.com/elevenlabs/elevenlabs-python/releases.atom",
+      "status": "unreachable",
+      "reason": "HTTP 500",
+      "checkedAt": "2026-11-24T12:00:21.952+08:00",
+      "liveAttempted": true,
+      "suppressedBy": null,
+      "requiredSetup": "Check public DNS/network later; no source was replaced."
+    },
+    {
+      "id": "ch-elevenlabs-news-en",
+      "vendor": "elevenlabs",
+      "url": "https://news.google.com/rss/search?q=ElevenLabs%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:22.192+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-runway-news-en",
+      "vendor": "runway",
+      "url": "https://news.google.com/rss/search?q=%22Runway%20AI%22%20OR%20RunwayML%20OR%20%22Runway%20ML%22%20OR%20%22Runway%20Gen%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:27.892+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-suno-news-en",
+      "vendor": "suno",
+      "url": "https://news.google.com/rss/search?q=%22Suno%20AI%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:30.376+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-aws-news-en",
+      "vendor": "aws",
+      "url": "https://news.google.com/rss/search?q=AWS%20credits%20OR%20%22Amazon%20Bedrock%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:36.894+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-gcp-news-en",
+      "vendor": "gcp",
+      "url": "https://news.google.com/rss/search?q=%22Google%20Cloud%22%20credits%20OR%20%22Vertex%20AI%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:43.316+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-azure-news-en",
+      "vendor": "azure",
+      "url": "https://news.google.com/rss/search?q=Azure%20OpenAI%20OR%20%22Azure%20credits%22%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:47.107+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    },
+    {
+      "id": "ch-cloudflare-news-en",
+      "vendor": "cloudflare",
+      "url": "https://news.google.com/rss/search?q=Cloudflare%20Workers%20AI%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+      "status": "rate-limited",
+      "reason": "host blocked: HTTP 429",
+      "checkedAt": "2026-11-24T12:00:50.092+08:00",
+      "liveAttempted": false,
+      "suppressedBy": {
+        "reason": "HTTP 429",
+        "sourceId": "ch-langchain-news-en",
+        "at": "2026-11-24T11:46:17.489+08:00",
+        "evidence": {
+          "url": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "status": 429,
+          "headers": {
+            "content-type": "text/html; charset=UTF-8"
+          },
+          "finalURL": "https://news.google.com/rss/search?q=LangChain%20(free%20OR%20discount%20OR%20%22%25%20off%22%20OR%20credits%20OR%20%22free%20trial%22%20OR%20students%20OR%20promo%20OR%20cheaper)%20when%3A30d&hl=en-US&gl=US&ceid=US:en",
+          "at": "2026-11-24T11:46:19.098+08:00"
+        }
+      },
+      "requiredSetup": "Respect Retry-After. No early retry; this pass conservatively stops the host."
+    }
+  ]
+}

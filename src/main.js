@@ -263,7 +263,7 @@ async function updatePrices(sources) {
     if (src.sub !== 'pricing' || !store.pages[src.id] || !(store.pages[src.id].lines || []).length) continue;
     const pg = store.pages[src.id];
     const prev = store.prices[src.id]; if (prev && prev.pageAt === pg.at) continue; // 页面没重新抓就不重复解析
-    const list = V27.extractPrices(pg.lines);
+    const list = [...V27.extractPrices(pg.lines), ...(Array.isArray(pg.quotes) ? pg.quotes : [])];
     if (!list.length) { if (prev) prev.pageAt = pg.at; continue; }
     const changes = V27.updatePriceBook(store.prices, src.id, { name: src.name, brandId: src.vendor || src.brandId, url: src.url }, list, now);
     store.prices[src.id].pageAt = pg.at;
@@ -1126,6 +1126,9 @@ async function shotMode() {
       const wait = (ms) => new Promise(r => setTimeout(r, ms));
       check('boot state and version', S.state.version === ${JSON.stringify(app.getVersion())});
       check('upgrade preserves favourite/claimed', S.state.deals.some(d => d.id === 'upgrade-fixture' && d.fav && d.status === 'claimed'));
+      const legacyChannel=S.state.brands.find(b=>b.id==='openai')?.channels.find(c=>c.url==='https://custom.example.invalid/feed');
+      check('upgrade preserves custom source URL and disabled preference', !!legacyChannel && legacyChannel.enabled===false);
+      check('upgrade preserves custom source options', legacyChannel?.opts?.fixture==='preserved');
       go('deals'); await wait(100); check('fixture offer renders', document.querySelectorAll('#dealList .card, #dealList tbody tr').length > 0);
       go('settings'); await wait(100); check('settings and system theme', !!document.querySelector('#sTheme [data-v=system]'));
       check('zh/en search label', document.querySelector('#q').getAttribute('aria-label') === (EN ? 'Search offers' : ${JSON.stringify(L('搜索优惠'))}));
@@ -1142,6 +1145,8 @@ async function shotMode() {
       const saved = await window.api.call('backup:export'); const restored = await window.api.call('backup:import', saved.path);
       check('backup IPC restores', restored.format === 3 && restored.deals === before);
       go('sources'); await wait(100); check('source health renders', !!document.querySelector('#srcTable tbody tr'));
+      check('honest localized valid-empty explanation', sourceActionHint(null,{ok:true,total:0,matched:0,validEmpty:true}).includes(EN?'Valid empty':${JSON.stringify(L('有效空结果：已识别格式，当前无条目'))}));
+      check('honest localized blocked explanation', sourceActionHint(null,{ok:false,error:'SOURCE_BLOCKED: challenge'}).includes(EN?'without bypass':${JSON.stringify(L('不绕过'))}));
       return results;
     })()`);
     fs.writeFileSync(path.join(SHOT_DIR, 'smoke.json'), JSON.stringify(checks, null, 2));

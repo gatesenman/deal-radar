@@ -10,6 +10,7 @@ const {sanitize}=require('./lib/audit-sanitize');
 const sourceStops=new Map();
 const root=path.join(__dirname,'..');const dir=path.join(root,'source-audit');fs.mkdirSync(dir,{recursive:true});
 app.on('window-all-closed',()=>{});
+const auditedCodeSHA256=crypto.createHash('sha256').update(['core/monitor.js','core/collectors.js','core/feed.js','core/http.js','core/network-policy.js','core/source-capabilities.js','core/electron-transport.js','core/defaults.js','core/pricing-quotes.js','render.js'].map(f=>fs.readFileSync(path.join(root,'src',f))).join('\n')).digest('hex');
 const data=fs.mkdtempSync(path.join(os.tmpdir(),'dr-live-audit-'));app.setPath('userData',data);app.commandLine.appendSwitch('no-sandbox');app.commandLine.appendSwitch('disable-gpu');
 const localTime=()=>new Date(Date.now()+8*36e5).toISOString().replace('Z','+08:00');
 const safeHeaders=h=>Object.fromEntries([...h.entries()].filter(([k])=>/^(content-type|location|retry-after|etag|last-modified)$/i.test(k)));
@@ -38,6 +39,7 @@ async function audit(source,cfg,pages){
   const host=new URL(url).hostname;const stop=sourceStops.get(source.id)||stops.get(host);if(stop){suppressed=typeof stop==='string'?{reason:stop}:stop;throw new Error('host blocked: '+suppressed.reason);}
   const unlock=await hostWait(url);
   try{
+   const newlyBlocked=sourceStops.get(source.id)||stops.get(host);if(newlyBlocked){suppressed=typeof newlyBlocked==='string'?{reason:newlyBlocked}:newlyBlocked;throw new Error('host blocked: '+suppressed.reason);}
    const res=await require('../src/core/electron-transport').electronTransport(url,init,{net,session:session.defaultSession,maxBytes:Math.min(32*1024*1024,Math.max(32768,Number(o.maxBytes)||8*1024*1024))});
    const entry={url,status:res.status,headers:safeHeaders(res.headers),finalURL:res.url||url,at:localTime()};records.push(entry);
    if([401,403,429].includes(res.status))stops.set(host,{reason:'HTTP '+res.status,sourceId:source.id,at:entry.at,evidence:entry});
@@ -55,7 +57,7 @@ async function audit(source,cfg,pages){
  if(source.kind==='search'&&!source.channel){brands=brands.filter(b=>b.id===(source.category==='goods'?'apple':'openai'));}
  let result;
  try{result=await M.fetchSource({...source,timeout:12},brands,{fetchText:ft,renderText:render,pages,retryDelay:0,searchGap:1100,ctx:{},onParsed:items=>{for(const it of items.slice(0,2))if(parsedSamples.length<2)parsedSamples.push({title:it.title,link:it.link,published:it.published,summary:(it.summary||'').slice(0,160)});}});}catch(e){result={items:[],status:{ok:false,total:0,error:e.message}};}
- const prices=source.sub==='pricing'&&pages[source.id]?V27.extractPrices(pages[source.id].lines):[];
+ const prices=source.sub==='pricing'&&pages[source.id]?[...V27.extractPrices(pages[source.id].lines),...(pages[source.id].quotes||[])]:[];
  let status=classify(result,records,pages[source.id],prices);
  if(!records.length&&/host blocked/.test(result.status.error||''))status=[/401/.test(result.status.error)?'login-required':/429/.test(result.status.error)?'rate-limited':'blocked',result.status.error];
  if(status[0]==='blocked')for(const rec of records)stops.set(new URL(rec.url).hostname,{reason:'SOURCE_BLOCKED: '+status[1],sourceId:source.id,at:rec.at,evidence:rec});
@@ -65,7 +67,7 @@ async function audit(source,cfg,pages){
   const match=lastBody.match(/<(item|entry)\b[\s\S]*?<\/\1>/i);
   if(match&&match[0].length<18000){const kind=match[1].toLowerCase();const text=kind==='item'?'<rss version="2.0"><channel><title>Public audit fixture</title>'+match[0]+'</channel></rss>':'<feed xmlns="http://www.w3.org/2005/Atom">'+match[0]+'</feed>';fixture.push({id:source.id,url:source.url,at:started,format:'rss',body:text});}
  }
- const row={id:source.id,vendor:source.vendor||null,name:source.name,url:schemaURL(source),protocol:source.type||'rss',adapter:source.type||source.format||'rss',category:source.category,enabled:!!source.enabled,configuredEnabled:source.configuredEnabled??!!source.enabled,brandEnabled:source.brandEnabled??null,requires:cap.missing,capability:cap,liveAttempted:records.length>0,checkedAt:started,finishedAt:localTime(),status:status[0],reason:status[1],parsedCount:result.status.total||0,matchedCount:result.items.length,dealCount:result.items.filter(d=>(d.offerTypes||[]).length).length,priceCount:prices.length,sitemapStats:result.status.sitemapStats||null,suppressedBy:suppressed,parsedSamples,samples:result.items.slice(0,2).map(d=>({title:d.title,link:d.link,published:d.published,offerTypes:d.offerTypes,facts:extractFacts(d)})),prices:prices.slice(0,3),baseline:(pages[source.id]?.lines||[]).slice(0,3),http:records,requestScope:source.kind==='search'&&!source.channel?'One representative vendor (OpenAI or Apple), not every vendor/query combination':'Built-in source configuration'};
+ const row={checkedCodeSHA256:auditedCodeSHA256,id:source.id,vendor:source.vendor||null,name:source.name,url:schemaURL(source),protocol:source.type||'rss',adapter:source.type||source.format||'rss',category:source.category,enabled:!!source.enabled,configuredEnabled:source.configuredEnabled??!!source.enabled,brandEnabled:source.brandEnabled??null,requires:cap.missing,capability:cap,responseCaptured:records.length>0,liveAttempted:records.length>0 || (!suppressed&&!['config-required','unsupported'].includes(status[0])),checkedAt:started,finishedAt:localTime(),status:status[0],reason:status[1],parsedCount:result.status.total||0,matchedCount:result.items.length,dealCount:result.items.filter(d=>(d.offerTypes||[]).length).length,priceCount:prices.length,sitemapStats:result.status.sitemapStats||null,suppressedBy:suppressed,parsedSamples,samples:result.items.slice(0,2).map(d=>({title:d.title,link:d.link,published:d.published,offerTypes:d.offerTypes,facts:extractFacts(d)})),prices:prices.slice(0,3),baseline:(pages[source.id]?.lines||[]).slice(0,3),http:records,requestScope:source.kind==='search'&&!source.channel?'One representative vendor (OpenAI or Apple), not every vendor/query combination':'Built-in source configuration'};
  if(fixture.length){fs.mkdirSync(path.join(dir,'fixtures'),{recursive:true});fs.writeFileSync(path.join(dir,'fixtures',source.id+'.json'),JSON.stringify(fixture[0],null,2));row.fixture='fixtures/'+source.id+'.json';}
  return sanitize(row);
 }
@@ -74,12 +76,13 @@ app.whenReady().then(async()=>{
  const original=JSON.parse(fs.readFileSync(path.join(dir,'original-v2.21.1.json')));
  const brandsBy=new Map(cfg.brands.map(b=>[b.id,b]));for(const s of sources)s.brandEnabled=s.vendor?brandsBy.get(s.vendor)?.enabled:null;
  let rows=[];const out=process.env.AUDIT_OUTPUT||'results.json';
+ if(process.env.AUDIT_BASE){const base=JSON.parse(fs.readFileSync(path.join(dir,process.env.AUDIT_BASE)));rows=base.sources.map(r=>({...r,checkedCodeSHA256:r.checkedCodeSHA256||base.auditedCodeSHA256}));const types=(process.env.AUDIT_TYPES||'').split(',');const ids=(process.env.AUDIT_IDS||'').split(',');rows=rows.filter(r=>!types.includes(r.protocol)&&!ids.includes(r.id));}
  if(process.env.AUDIT_RESUME&&fs.existsSync(path.join(dir,out)))rows=JSON.parse(fs.readFileSync(path.join(dir,out))).sources;
  if(process.env.AUDIT_PRIOR){const prior=JSON.parse(fs.readFileSync(path.join(dir,process.env.AUDIT_PRIOR)));for(const r of prior.sources){if(!['blocked','login-required','rate-limited'].includes(r.status))continue;const evidence=(r.http||[]).find(h=>[401,403,429].includes(h.status)) || (r.http||[]).at(-1);if(evidence)stops.set(new URL(evidence.url).hostname,{reason:r.reason,sourceId:r.id,at:r.checkedAt,evidence});}
   const gaps=JSON.parse(fs.readFileSync(path.join(dir,'gap-inspection.json')));for(const g of gaps)if(/unavailable in region/i.test(g.title||''))sourceStops.set(g.id,{reason:'SOURCE_BLOCKED: Regional restriction; no bypass',sourceId:g.id,at:prior.at,evidence:{url:g.url,status:200,title:g.title}});
  }
  const pending=sources.filter(s=>!rows.some(r=>r.id===s.id));const pages={};
- function save(){const counts=rows.reduce((a,r)=>(a[r.status]=(a[r.status]||0)+1,a),{});fs.writeFileSync(path.join(dir,out),JSON.stringify(sanitize({version:require('../package.json').version,at:localTime(),transport:'Electron ClientRequest + production makeFetchText/fetchSource/renderHTML/extractPrices/extractFacts',concurrency:4,minHostGapMs:1100,originalCount:original.sources.length,total:sources.length,completed:rows.length,counts,sources:rows}),null,2));}
+ function save(){const counts=rows.reduce((a,r)=>(a[r.status]=(a[r.status]||0)+1,a),{});fs.writeFileSync(path.join(dir,out),JSON.stringify(sanitize({version:require('../package.json').version,auditedCodeSHA256,at:localTime(),transport:'Electron ClientRequest + production makeFetchText/fetchSource/renderHTML/extractPrices/extractFacts',concurrency:4,minHostGapMs:1100,followUpBase:process.env.AUDIT_BASE||null,followUpTypes:process.env.AUDIT_TYPES||null,followUpIDs:process.env.AUDIT_IDS||null,originalCount:original.sources.length,total:sources.length,completed:rows.length,counts,sources:rows}),null,2));}
  save();
  await Promise.all(Array.from({length:4},async()=>{for(;;){const i=next++;if(i>=pending.length)break;const s=pending[i];const row=await audit(s,cfg,pages);rows.push(row);completed++;save();console.log('['+rows.length+'/'+sources.length+']',row.status,row.id,row.parsedCount,row.reason.slice(0,120));}}));
  save();fs.rmSync(data,{recursive:true,force:true});app.exit(0);

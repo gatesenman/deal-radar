@@ -1,7 +1,7 @@
 {
   "id": "ithome-tw",
   "url": "https://www.ithome.com.tw/rss",
-  "at": "2026-11-24T11:44:08.605+08:00",
+  "at": "2026-11-24T11:48:56.544+08:00",
   "format": "rss",
   "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item>\n    <title>韓國三星證券客戶申訴系統遭駭，逾8,200名客戶個資外洩</title>\n    <link>https://www.ithome.com.tw/news/180744</link>\n    <description>韓國三星集團旗下金融服務企業三星證券於11月23日證實，官網「客戶之聲」（Voice of Customer，VOC）系統遭外部入侵，調查發現共有8,241名客戶個資外洩。三星證券於21日發現異常，確認部分客戶上傳的附件檔案遭竊，外洩資訊包括姓名、帳戶號碼、地址、聯絡方式及駕照號碼等13類資料，各客戶實際外洩項目不盡相同，該公司已採取阻擋措施封鎖攻擊來源IP位址，並通報韓國金融監督院及韓國資訊安全署。</description>\n     <pubDate>2026-11-24  11:11:21</pubDate>\n <dc:creator>張明德</dc:creator>\n <guid isPermaLink=\"true\">https://www.ithome.com.tw/news/180744</guid>\n  </item></channel></rss>"
 }

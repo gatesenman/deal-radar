@@ -1,7 +1,7 @@
 {
   "id": "producthunt-ai",
   "url": "https://www.producthunt.com/feed?category=artificial-intelligence",
-  "at": "2026-11-24T11:43:54.028+08:00",
+  "at": "2026-11-24T11:48:40.674+08:00",
   "format": "rss",
   "body": "<feed xmlns=\"http://www.w3.org/2005/Atom\"><entry>\n    <id>tag:www.producthunt.com,2005:Post/1326572</id>\n    <published>2026-11-22T09:13:25-08:00</published>\n    <updated>2026-11-23T19:18:32-08:00</updated>\n    <link rel=\"alternate\" type=\"text/html\" href=\"https://www.producthunt.com/products/replit\"/>\n    <title>Replit Missions</title>\n    <content type=\"html\">          &lt;p&gt;\n            Set a budget, coordinate teams of AI agents,\n          &lt;/p&gt;\n          &lt;p&gt;\n            &lt;a href=\"https://www.producthunt.com/products/replit?utm_campaign=producthunt-atom-posts-feed&amp;amp;utm_medium=rss-feed&amp;amp;utm_source=producthunt-atom-posts-feed\"&gt;Discussion&lt;/a&gt;\n            |\n            &lt;a href=\"https://www.producthunt.com/r/p/1326572?app_id=339\"&gt;Link&lt;/a&gt;\n          &lt;/p&gt;\n</content>\n    <author>\n      <name>Shivam Kushwaha</name>\n    </author>\n  </entry></feed>"
 }

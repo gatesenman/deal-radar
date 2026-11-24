@@ -105,7 +105,7 @@ const GOODS_SOURCES = [
   { id: 'smzdm-post', name: '什么值得买 原创/好文', platform: '什么值得买', region: 'cn', country: '中国', kind: 'news', url: 'https://post.smzdm.com/feed' },
   { id: 'ithome', name: 'IT之家', platform: 'IT之家', region: 'cn', country: '中国', kind: 'news', url: 'https://www.ithome.com/rss/' },
   { id: 'mydrivers', name: '快科技（驱动之家）', platform: '快科技', region: 'cn', country: '中国', kind: 'news', url: 'https://rss.mydrivers.com/rss.aspx?Tid=1' },
-  { id: 'cnbeta', name: 'cnBeta', platform: 'cnBeta', region: 'cn', country: '中国', kind: 'news', url: 'https://www.cnbeta.com.tw/backend.php' },
+  { id: 'cnbeta', name: 'cnBeta', platform: 'cnBeta', region: 'cn', country: '中国', kind: 'news', url: 'https://rss.cnbeta.com.tw/' },
   { id: 'v2ex-deals', name: 'V2EX 交易', platform: 'V2EX', region: 'cn', country: '中国', kind: 'deal', skip: '^\\s*[【\\[(（]?\\s*(收|求|求购|回收)|拼车|合租', url: 'https://www.v2ex.com/feed/tab/deals.xml' },
   // —— 按品牌全网搜索 ——
   { id: 'gnews-en', name: 'Google 新闻（英文）品牌优惠搜索', platform: 'Google News', region: 'intl', country: '全球', kind: 'search', searchSuffix: '(sale OR deal OR discount OR "% off")', url: 'https://news.google.com/rss/search?q={q}+when:7d&hl=en-US&gl=US&ceid=US:en' },
@@ -190,7 +190,7 @@ const AI_SOURCES = [
 // 以下渠道均于 2026-10-12 实测可免登录抓取
 const yt = (id) => ({ type: 'youtube', opts: { channelId: id } });
 const PRICE_KW = '$,free,month,trial,student,% off,credit,discount,contact sales,contact us,custom pricing,pay as you go,免费,联系销售';
-const ZH_KW = '免费,元,折,额度,优惠,限时,赠,价格';
+const ZH_KW = '免费,元,¥,￥,$,CNY,USD,折,额度,优惠,特惠,首月,套餐,限时,赠,价格';
 const VENDOR_CHANNELS = {
   openai: [
     { id: 'news', sub: 'blog', type: 'rss', name: '官方新闻', url: 'https://openai.com/news/rss.xml', maxItems: 120 },
@@ -322,8 +322,8 @@ const VENDOR_CHANNELS = {
     { id: 'ios', sub: 'app', type: 'appstore', name: 'App Store：Notion', opts: { appId: '1232780281' } },
   ],
   adobe: [
-    { id: 'firefly', sub: 'pricing', type: 'page', name: 'Firefly 套餐页', url: 'https://www.adobe.com/products/firefly/plans.html' },
-    { id: 'cc', sub: 'pricing', type: 'page', name: 'Creative Cloud 套餐页', url: 'https://www.adobe.com/creativecloud/plans.html' },
+    { id: 'firefly', sub: 'pricing', type: 'render', name: 'Firefly 套餐页', url: 'https://www.adobe.com/products/firefly/plans.html' },
+    { id: 'cc', sub: 'pricing', type: 'render', name: 'Creative Cloud 套餐页', url: 'https://www.adobe.com/creativecloud/plans.html' },
     { id: 'reddit', sub: 'reddit', type: 'reddit', name: 'r/Adobe', opts: { sub: 'Adobe' }, flaky: true },
   ],
   canva: [
@@ -410,7 +410,7 @@ const VENDOR_CHANNELS = {
     { id: 'autoclaw-blog', sub: 'blog', type: 'page', name: 'AutoClaw 官方博客（活动公告）', url: 'https://autoclaw.z.ai/blog' },
   ],
   qwen: [
-    { id: 'models', sub: 'pricing', type: 'page', name: '百炼 模型列表与价格', url: 'https://help.aliyun.com/zh/model-studio/models' },
+    { id: 'models', sub: 'pricing', type: 'page', name: '百炼 模型调用价格', url: 'https://help.aliyun.com/zh/model-studio/model-pricing' },
     { id: 'free-quota', sub: 'pricing', type: 'page', name: '百炼 新人免费额度', url: 'https://help.aliyun.com/zh/model-studio/new-free-quota' },
     { id: 'new-models', sub: 'changelog', type: 'page', name: '百炼 新发布模型', url: 'https://help.aliyun.com/zh/model-studio/newly-released-models', keyword: ZH_KW },
     { id: 'bailian', sub: 'pricing', type: 'page', name: '阿里云百炼 产品页', url: 'https://www.aliyun.com/product/bailian' },

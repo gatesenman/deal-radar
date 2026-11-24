@@ -2248,9 +2248,9 @@ function bindV26() {
 }
 
 // —— v2.7：价格表 / 智能引擎 / 反馈学习 ——
-const PERIOD_L = () => ({ month: L('/月'), year: L('/年'), 'seat-month': L('/人/月'), mtok: L('/百万 tokens') });
+const PERIOD_L = () => ({ month: L('/月'), year: L('/年'), 'seat-month': L('/人/月'), mtok: L('/百万 tokens'), invocation: L('/次调用'), request: L('/次请求') });
 const CURSYM = { USD: '$', CNY: '¥', EUR: '€', GBP: '£', HKD: 'HK$', SGD: 'S$', INR: '₹', AUD: 'A$', CAD: 'C$', TWD: 'NT$' };
-function money(v, cur) { if (v === null || v === undefined || !Number.isFinite(v)) return '—'; return (CURSYM[cur] || cur + ' ') + (Math.round(v * 100) / 100).toLocaleString(LOC); }
+function money(v, cur) { if (v === null || v === undefined || !Number.isFinite(v)) return '—'; return (CURSYM[cur] || cur + ' ') + v.toLocaleString(LOC,{maximumFractionDigits:Math.abs(v)>0&&Math.abs(v)<1?8:2}); }
 function spark(hist) {
   if (!hist || hist.length < 2) return `<span class="dim">${L('暂无变化')}</span>`;
   const xs = hist.map((h) => h[0]); const ys = hist.map((h) => h[1]); const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);

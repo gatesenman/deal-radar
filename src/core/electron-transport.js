@@ -2,6 +2,7 @@
 // Electron fetch rejects manual redirects without exposing the 3xx response.
 // Surface the ClientRequest redirect event as a Response; makeFetchText validates each hop.
 function electronTransport(url, init = {}, { net, session, maxBytes = 8 * 1024 * 1024 } = {}) {
+  if(init.method && init.method !== 'GET')return Promise.reject(new Error('Public source transport permits GET only'));
   net = net || require('electron').net;
   return new Promise((resolve, reject) => {
     let settled=false;let request;

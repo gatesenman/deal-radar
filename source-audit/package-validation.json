@@ -1,0 +1,43 @@
+{
+  "version": "2.22.0",
+  "results": [
+    {
+      "platform": "win",
+      "version": "2.22.0",
+      "runtimeFilesMatched": 49,
+      "asarSHA256": "707d1de5f3ceb7406328014e3188a65f2cbf702181afb412d9093bf392864845",
+      "memberCount": 497,
+      "secretScannedTextFiles": 213,
+      "forbiddenPaths": [],
+      "productionDependencies": [
+        "fast-xml-parser",
+        "node-html-parser"
+      ]
+    },
+    {
+      "platform": "linux",
+      "version": "2.22.0",
+      "runtimeFilesMatched": 49,
+      "asarSHA256": "707d1de5f3ceb7406328014e3188a65f2cbf702181afb412d9093bf392864845",
+      "memberCount": 497,
+      "secretScannedTextFiles": 213,
+      "forbiddenPaths": [],
+      "productionDependencies": [
+        "fast-xml-parser",
+        "node-html-parser"
+      ]
+    }
+  ],
+  "installer": {
+    "format": "NSIS",
+    "applicationArchitecture": "Windows x64 (PE AMD64)",
+    "embeddedAsarMatches": true,
+    "signed": false,
+    "nativeExecutionTested": false
+  },
+  "limitations": [
+    "README docs were updated after binary builds; all runtime source files match exactly.",
+    "Production dependency node-html-parser/dist is required runtime code, not project build output.",
+    "Native Windows installer execution/upgrade and SmartScreen are untested."
+  ]
+}

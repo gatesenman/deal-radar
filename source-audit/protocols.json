@@ -1,0 +1,520 @@
+{
+  "count": 20,
+  "protocols": [
+    {
+      "type": "rss",
+      "label": "RSS / Atom / RDF",
+      "fields": [
+        "url"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "rss",
+        "missing": [
+          "url"
+        ],
+        "hint": "Required: url"
+      },
+      "builtInInstances": 119,
+      "liveStatusCounts": {
+        "parsed": 81,
+        "rate-limited": 13,
+        "blocked": 16,
+        "unreachable": 9
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "jsonfeed",
+      "label": "JSON Feed",
+      "fields": [
+        "url"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "jsonfeed",
+        "missing": [
+          "url"
+        ],
+        "hint": "Required: url"
+      },
+      "builtInInstances": 0,
+      "liveStatusCounts": {},
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "No built-in instance; configuration-required or documented default, not live-tested"
+    },
+    {
+      "type": "json",
+      "label": "通用 JSON API（JSONPath 字段映射）",
+      "fields": [
+        "url",
+        "itemsPath",
+        "titleField",
+        "linkField",
+        "dateField",
+        "summaryField",
+        "linkPrefix"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "json",
+        "missing": [
+          "url"
+        ],
+        "hint": "Required: url"
+      },
+      "builtInInstances": 0,
+      "liveStatusCounts": {},
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "No built-in instance; configuration-required or documented default, not live-tested"
+    },
+    {
+      "type": "html",
+      "label": "HTML 列表抓取（CSS 选择器）",
+      "fields": [
+        "url",
+        "list",
+        "title",
+        "link",
+        "date",
+        "summary",
+        "render"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "html",
+        "missing": [
+          "url",
+          "list"
+        ],
+        "hint": "Required: url, list"
+      },
+      "builtInInstances": 0,
+      "liveStatusCounts": {},
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "No built-in instance; configuration-required or documented default, not live-tested"
+    },
+    {
+      "type": "page",
+      "label": "网页变化监控（价格页）",
+      "fields": [
+        "url",
+        "selector",
+        "keyword",
+        "render"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "page",
+        "missing": [
+          "url"
+        ],
+        "hint": "Required: url"
+      },
+      "builtInInstances": 84,
+      "liveStatusCounts": {
+        "blocked": 9,
+        "parsed": 71,
+        "login-required": 2,
+        "unreachable": 1,
+        "not-found": 1
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "render",
+      "label": "JS 渲染页面变化监控（隐藏浏览器）",
+      "fields": [
+        "url",
+        "selector",
+        "keyword",
+        "wait"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "render",
+        "missing": [
+          "url"
+        ],
+        "hint": "Required: url"
+      },
+      "builtInInstances": 19,
+      "liveStatusCounts": {
+        "blocked": 10,
+        "login-required": 1,
+        "parsed": 5,
+        "js-only": 1,
+        "unreachable": 1,
+        "coverage-mismatch": 1
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "sitemap",
+      "label": "Sitemap 新页面检测",
+      "fields": [
+        "url",
+        "filter"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "sitemap",
+        "missing": [
+          "url"
+        ],
+        "hint": "Required: url"
+      },
+      "builtInInstances": 10,
+      "liveStatusCounts": {
+        "parsed": 10
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "github",
+      "label": "GitHub 发布 / 标签 / 提交",
+      "fields": [
+        "repo",
+        "what",
+        "branch",
+        "api"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "github",
+        "missing": [
+          "repo"
+        ],
+        "hint": "Required: repo"
+      },
+      "builtInInstances": 14,
+      "liveStatusCounts": {
+        "parsed": 9,
+        "unreachable": 5
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "hn",
+      "label": "Hacker News（Algolia）",
+      "fields": [
+        "query",
+        "minPoints"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "hn",
+        "missing": [
+          "query or keyword"
+        ],
+        "hint": "Required: query or keyword"
+      },
+      "builtInInstances": 18,
+      "liveStatusCounts": {
+        "parsed": 16,
+        "unreachable": 1,
+        "valid-empty": 1
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "reddit",
+      "label": "Reddit 版块",
+      "fields": [
+        "sub",
+        "query"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "reddit",
+        "missing": [
+          "sub"
+        ],
+        "hint": "Required: sub"
+      },
+      "builtInInstances": 13,
+      "liveStatusCounts": {
+        "unreachable": 13
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "discourse",
+      "label": "Discourse 论坛（JSON）",
+      "fields": [
+        "url",
+        "category"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "discourse",
+        "missing": [
+          "url"
+        ],
+        "hint": "Required: url"
+      },
+      "builtInInstances": 4,
+      "liveStatusCounts": {
+        "blocked": 1,
+        "parsed": 3
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "telegram",
+      "label": "Telegram 公开频道（t.me/s）",
+      "fields": [
+        "channel"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "telegram",
+        "missing": [
+          "channel"
+        ],
+        "hint": "Required: channel"
+      },
+      "builtInInstances": 0,
+      "liveStatusCounts": {},
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "No built-in instance; configuration-required or documented default, not live-tested"
+    },
+    {
+      "type": "mastodon",
+      "label": "Mastodon（账号或话题）",
+      "fields": [
+        "instance",
+        "acct",
+        "tag"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "mastodon",
+        "missing": [
+          "acct or tag"
+        ],
+        "hint": "Required: acct or tag"
+      },
+      "builtInInstances": 0,
+      "liveStatusCounts": {},
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "No built-in instance; configuration-required or documented default, not live-tested"
+    },
+    {
+      "type": "bluesky",
+      "label": "Bluesky 账号动态",
+      "fields": [
+        "handle"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "bluesky",
+        "missing": [
+          "handle"
+        ],
+        "hint": "Required: handle"
+      },
+      "builtInInstances": 4,
+      "liveStatusCounts": {
+        "parsed": 4
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "youtube",
+      "label": "YouTube 频道",
+      "fields": [
+        "channelId"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "youtube",
+        "missing": [
+          "channelId or feed URL"
+        ],
+        "hint": "Required: channelId or feed URL"
+      },
+      "builtInInstances": 9,
+      "liveStatusCounts": {
+        "parsed": 9
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "producthunt",
+      "label": "Product Hunt",
+      "fields": [
+        "url"
+      ],
+      "unconfigured": {
+        "state": "ready",
+        "type": "producthunt",
+        "missing": [],
+        "hint": "Public GET adapter"
+      },
+      "builtInInstances": 2,
+      "liveStatusCounts": {
+        "parsed": 2
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "appstore",
+      "label": "App Store 应用更新",
+      "fields": [
+        "appId",
+        "country"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "appstore",
+        "missing": [
+          "appId"
+        ],
+        "hint": "Required: appId"
+      },
+      "builtInInstances": 13,
+      "liveStatusCounts": {
+        "parsed": 10,
+        "unreachable": 3
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "gplay",
+      "label": "Google Play 应用更新",
+      "fields": [
+        "pkg"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "gplay",
+        "missing": [
+          "pkg"
+        ],
+        "hint": "Required: pkg"
+      },
+      "builtInInstances": 10,
+      "liveStatusCounts": {
+        "parsed": 9,
+        "unreachable": 1
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    },
+    {
+      "type": "rsshub",
+      "label": "RSSHub 路由（自建实例：X/微博/公众号/B站）",
+      "fields": [
+        "route"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "rsshub",
+        "missing": [
+          "route",
+          "rsshubBase"
+        ],
+        "hint": "Required: route, rsshubBase"
+      },
+      "builtInInstances": 0,
+      "liveStatusCounts": {},
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "No built-in instance; configuration-required or documented default, not live-tested"
+    },
+    {
+      "type": "search",
+      "label": "搜索关键词（Google / Bing 新闻）",
+      "fields": [
+        "keyword",
+        "engine"
+      ],
+      "unconfigured": {
+        "state": "config-required",
+        "type": "search",
+        "missing": [
+          "keyword"
+        ],
+        "hint": "Required: keyword"
+      },
+      "builtInInstances": 48,
+      "liveStatusCounts": {
+        "rate-limited": 48
+      },
+      "offlineValidation": {
+        "test": "test/v222.test.js — every protocol traverses the actual fetch/parse/normalization pipeline",
+        "mode": "mocked public responses; no live availability claim"
+      },
+      "liveValidation": "See individual built-in results"
+    }
+  ]
+}

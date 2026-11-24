@@ -1,7 +1,7 @@
 {
   "id": "ch-openai-news",
   "url": "https://openai.com/news/rss.xml",
-  "at": "2026-11-24T11:44:29.084+08:00",
+  "at": "2026-11-24T11:49:16.782+08:00",
   "format": "rss",
   "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item>\n            <title><![CDATA[OpenAI and Cisco introduce Shirudo]]></title>\n            <description><![CDATA[OpenAI and Cisco introduce Shirudo, an open-source runtime for Linux. It helps teams protect running systems while they roll out patches.]]></description>\n            <link>https://openai.com/index/introducing-shirudo</link>\n            <guid isPermaLink=\"true\">https://openai.com/index/introducing-shirudo</guid>\n            <category><![CDATA[Security]]></category>\n            <pubDate>Mon, 23 Nov 2026 21:20:00 GMT</pubDate>\n        </item></channel></rss>"
 }

@@ -1,7 +1,7 @@
 {
   "id": "ch-openai-codex",
   "url": "https://github.com/openai/codex/releases.atom",
-  "at": "2026-11-24T11:44:37.330+08:00",
+  "at": "2026-11-24T11:49:25.655+08:00",
   "format": "rss",
   "body": "<feed xmlns=\"http://www.w3.org/2005/Atom\"><entry>\n    <id>tag:github.com,2008:Repository/965415649/rust-v0.174.0-alpha.1</id>\n    <updated>2026-11-24T01:51:10Z</updated>\n    <link rel=\"alternate\" type=\"text/html\" href=\"https://github.com/openai/codex/releases/tag/rust-v0.174.0-alpha.1\"/>\n    <title>0.174.0-alpha.1</title>\n    <content type=\"html\">&lt;p&gt;Release 0.174.0-alpha.1&lt;/p&gt;</content>\n    <author>\n      <name>github-actions[bot]</name>\n    </author>\n    <media:thumbnail height=\"30\" width=\"30\" url=\"https://avatars.githubusercontent.com/in/15368?s=60&amp;v=4\"/>\n  </entry></feed>"
 }

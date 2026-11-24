@@ -1,7 +1,7 @@
 {
   "id": "ch-cursor-status",
   "url": "https://status.cursor.com/history.rss",
-  "at": "2026-11-24T11:45:44.692+08:00",
+  "at": "2026-11-24T11:58:41.202+08:00",
   "format": "rss",
   "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item>\n      <title>[Grok Build and Cursor: Desktop] Grok 4.5 Degraded</title>\n      <link>https://status.x.ai/cursor-desktop/ps_ce2b4247388345bd</link>\n      <guid isPermaLink=\"false\">ps_ce2b4247388345bd</guid>\n      <description><![CDATA[<h3>Status: RESOLVED</h3><p>Severity: disruption</p><p>Resolved: Mon, 23 Nov 2026 03:36:53 GMT</p><hr /><h4>Updates:</h4><div><p><strong>Mon, 23 Nov 2026 03:36:53 GMT</strong></p><h3>Resolved</h3><p>This incident has been resolved.</p></div><div><p><strong>Mon, 23 Nov 2026 03:05:16 GMT</strong></p><h3>Monitoring</h3><p>A fix has been implemented and we are monitoring for service restoration.</p></div><div><p><strong>Mon, 23 Nov 2026 03:02:19 GMT</strong></p><h3>Investigating</h3><p>We are investigating a service degradation affecting Grok 4.5.</p></div>]]></description>\n      <pubDate>Mon, 23 Nov 2026 03:02:19 GMT</pubDate>\n      <category>disruption</category>\n      <category>resolved</category>\n    </item></channel></rss>"
 }

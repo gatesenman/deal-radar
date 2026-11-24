@@ -1,7 +1,7 @@
 {
   "id": "v2ex-promotions",
   "url": "https://www.v2ex.com/feed/promotions.xml",
-  "at": "2026-11-24T11:43:54.749+08:00",
+  "at": "2026-11-24T11:48:41.948+08:00",
   "format": "rss",
   "body": "<feed xmlns=\"http://www.w3.org/2005/Atom\"><entry>\n\t<title>如何给自己的 agent 加上高质量私域数据？</title>\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://www.v2ex.com/t/1259395#reply0\" />\n\t<id>tag:www.v2ex.com,2026-11-24:/t/1259395</id>\n\t<published>2026-11-24T03:37:34Z</published>\n\t<updated>2026-11-24T03:37:34Z</updated>\n\t<author>\n\t\t<name>Clannad0708</name>\n\t\t<uri>https://www.v2ex.com/member/Clannad0708</uri>\n\t</author>\n\t<content type=\"html\" xml:base=\"https://www.v2ex.com/\" xml:lang=\"en\"><![CDATA[\n\t<p>最近了解到这个需求，自己开发了一个网页后台接入 api，可以实现让自己的 agent 接入高质量的数据，比如小红书，reddit，抖音，aws，1688 等~</p>\n<p>欢迎各位 v 友体验下并且给些反馈！\n地址如下：\n<a href=\"https://haitu.mumong.cn/\" rel=\"nofollow\">https://haitu.mumong.cn/</a></p>\n<p>注册就送免费额度，使用方便，官网也有写真实案例供大家参考~ 感兴趣的朋友也可以交流。</p>\n<p><a href=\"https://i.imgur.com/4wnIPri.png\" rel=\"nofollow\">https://i.imgur.com/4wnIPri.png</a></p>\n\n\t]]></content>\n</entry></feed>"
 }

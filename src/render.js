@@ -18,7 +18,7 @@ async function renderHTML(url, { timeout = 45000, wait = 2500, ua, partition = '
   await acquire();
   const ses = session.fromPartition(partition);
   if (!guarded.has(ses)) {
-    ses.webRequest.onBeforeRequest({ urls: ['http://*/*', 'https://*/*', 'file://*/*', 'ws://*/*', 'wss://*/*'] }, (details, cb) => { guard(details.url).then(() => cb({ cancel: false }), () => cb({ cancel: true })); });
+    ses.webRequest.onBeforeRequest({ urls: ['http://*/*', 'https://*/*', 'file://*/*', 'ws://*/*', 'wss://*/*'] }, (details, cb) => { if(details.method !== 'GET'){cb({cancel:true});return;}guard(details.url).then(() => cb({ cancel: false }), () => cb({ cancel: true })); });
     observers.set(ses,new Map());
     ses.webRequest.onHeadersReceived((details,cb)=>{const fn=observers.get(ses)?.get(details.webContentsId);let blocked=false;if(details.resourceType==='mainFrame'&&fn)blocked=fn(details);cb(blocked?{cancel:true}:{});});
     guarded.add(ses);

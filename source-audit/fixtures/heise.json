@@ -1,7 +1,7 @@
 {
   "id": "heise",
   "url": "https://www.heise.de/rss/heise-atom.xml",
-  "at": "2026-11-24T11:44:06.111+08:00",
+  "at": "2026-11-24T11:48:53.244+08:00",
   "format": "rss",
   "body": "<feed xmlns=\"http://www.w3.org/2005/Atom\"><entry>\n        <title type=\"html\"><![CDATA[Binance-Kryptodiebstahl: USA wollen eine Milliarde US-Dollar zurück]]></title>\n        <id>http://heise.de/-11535386</id>\n        <updated>2026-11-23T22:18:00+01:00</updated>\n        <published>2026-11-23T22:18:00+01:00</published>\n        <link href=\"https://www.heise.de/news/Binance-Kryptodiebstahl-USA-wollen-eine-Milliarde-US-Dollar-zurueck-11535386.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag\"/>\n        <author>\n            <name>Andreas Knobloch</name>\n        </author>\n        \n        <summary type=\"html\"><![CDATA[Das US-Justizministerium jagt die Gelder aus dem Binance-Hack und will mehr als eine Milliarde Dollar in USDC-Stablecoin auf diversen Blockchains einziehen.]]></summary>\n        <content type=\"html\"><![CDATA[<p><a href=\"https://www.heise.de/news/Binance-Kryptodiebstahl-USA-wollen-eine-Milliarde-US-Dollar-zurueck-11535386.html?wt_mc=rss.red.ho.ho.atom.beitrag.beitrag\"><img src=\"https://www.heise.de/scale/geometry/450/q80//imgs/18/5/2/0/6/7/9/1/shutterstock_1185999847-074322de1e82d402.jpeg\" class=\"webfeedsFeaturedVisual\" alt=\"Binance-App\" /></a></p><p>Das US-Justizministerium jagt die Gelder aus dem Binance-Hack und will mehr als eine Milliarde Dollar in USDC-Stablecoin auf diversen Blockchains einziehen.</p>]]></content>\n    </entry></feed>"
 }

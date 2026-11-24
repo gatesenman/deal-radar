@@ -66,7 +66,7 @@ test('v222: every protocol traverses the actual fetch/parse/normalization pipeli
 });
 test('v222: actual public feed regression fragments retain meaningful normalized items',()=>{
  const dir=path.join(__dirname,'../source-audit/fixtures');const files=fs.readdirSync(dir).filter(f=>f.endsWith('.json'));assert.ok(files.length>30);
- for(const file of files){const f=JSON.parse(fs.readFileSync(path.join(dir,file)));const parsed=parseFeed(f.body,{baseURL:f.url});assert.ok(parsed.items.length>0,f.id);assert.match(parsed.items[0].link,/^https?:\/\//,f.id);assert.ok(parsed.items[0].title,f.id);}
+ for(const file of files){const f=JSON.parse(fs.readFileSync(path.join(dir,file)));if(f.format!=='rss')continue;const parsed=parseFeed(f.body,{baseURL:f.url});assert.ok(parsed.items.length>0,f.id);assert.match(parsed.items[0].link,/^https?:\/\//,f.id);assert.ok(parsed.items[0].title,f.id);}
 });
 test('v222: authentication redirects are stopped before a login request, metadata is sanitized',async()=>{
  let calls=0;const {makeFetchText}=require('../src/core/http');const f=makeFetchText(async()=>{calls++;return new Response(null,{status:302,headers:{location:'https://accounts.google.com/o/oauth2/v2/auth?state=MOCK_STATE'}});},{validateUrl:async()=>{}});
@@ -78,4 +78,36 @@ test('v222: authentication redirects are stopped before a login request, metadat
 test('v222: nested sitemap traversal resolves encoded URLs and reports sampling and child failures',async()=>{
  const f=async u=>u.endsWith('/root.xml')?'<sitemapindex><sitemap><loc>child.xml</loc></sitemap><sitemap><loc>missing.xml</loc></sitemap></sitemapindex>':u.endsWith('/missing.xml')?Promise.reject(new Error('HTTP 503')):'<urlset><url><loc><![CDATA[https://official.example.org/news?a=1&amp;b=2]]></loc></url></urlset>';
  const urls=await C.sitemapUrls({url:'https://official.example.org/root.xml'},f);assert.equal(urls[0],'https://official.example.org/news?a=1&b=2');assert.deepEqual(urls.warnings,['HTTP 503']);assert.equal(urls.stats.fetchedMaps,3);
+});
+test('v222: real per-invocation public table prices retain tiny amounts and explicit units',()=>{
+ const {tableUnitPrices}=require('../src/core/pricing-quotes');const fixture=require('../source-audit/fixtures/perplexity-pricing-table.json');const quotes=tableUnitPrices(fixture.body);assert.equal(quotes[0].amount,0.0025);assert.equal(quotes[0].currency,'USD');assert.equal(quotes[0].period,'invocation');
+ assert.deepEqual(tableUnitPrices('<table><tr><td>Search</td><td>$10 credits</td></tr></table>'),[]);
+ const vm=require('node:vm'),src=fs.readFileSync(path.join(__dirname,'../src/renderer/app.js'),'utf8');const func=src.match(/function money\(v, cur\) \{[^\n]+/)[0];const format=vm.runInNewContext('('+func+')',{CURSYM:{USD:'$'},LOC:'en-US'});assert.equal(format(0.0025,'USD'),'$0.0025');
+});
+test('v222: public student/activity content is not rejected for lacking a monthly price',async()=>{
+ const source={id:'student',kind:'page',type:'page',sub:'pricing',name:'Student official offer',url:'https://official.example.org/students'};
+ const r=await M.fetchSource(source,[],{fetchText:async()=>'<main><h1>Students</h1><p>Get started for free today.</p><p>See official eligibility details.</p></main>'});assert.equal(r.status.ok,true);
+ const api=await M.fetchSource({...source,url:'https://official.example.org/pricing',name:'API pricing'},[],{fetchText:async()=>'<main><h1>Tool pricing</h1><table><tr><td>web_search</td><td>$0.0025 per invocation</td></tr></table></main>'});assert.equal(api.status.ok,true);
+});
+test('v222: public rendering is GET-only and cannot submit automatic site POSTs',()=>{
+ const source=fs.readFileSync(path.join(__dirname,'../src/render.js'),'utf8');assert.match(source,/if\(details\.method !== 'GET'\)\{cb\(\{cancel:true\}\);return;\}/);
+});
+test('v222: preset protocol selections are preserved, unchanged Adobe defaults move to rendering',()=>{
+ const b=require('../src/core/preset-baseline-v221.json').channels.adobe.find(c=>c.id==='firefly');
+ assert.equal(mergePreset({...b,enabled:true},{...b,type:'render'},{brandId:'adobe'}).type,'render');
+ assert.equal(mergePreset({...b,type:'html',enabled:false},{...b,type:'render'},{brandId:'adobe'}).type,'html');
+ const oldSnapshot={url:b.url,name:b.name};assert.equal(mergePreset({...b,_presetDefaults:oldSnapshot,enabled:true},{...b,type:'render'},{brandId:'adobe'}).type,'render');
+});
+test('v222: actual Chinese yen-denominated plan fragments survive built-in keyword filtering',()=>{
+ const rows=require('../source-audit/gap-inspection.json');const row=rows.find(r=>r.id==='ch-qwen-coding-plan');assert.ok(row.inlinePriceFragments.length);
+ const html='<main>'+row.inlinePriceFragments.join('')+'</main>';const ch=require('../src/core/defaults').VENDOR_CHANNELS.qwen.find(c=>c.id==='coding-plan');const lines=require('../src/core/page').extractLines(html,{keyword:ch.keyword});assert.ok(lines.some(l=>/¥\s*200/.test(l)));assert.ok(require('../src/core/v29').priceFacts(lines).prices.size>0);
+});
+test('v222: official Kimi usage-billing text is valid parsed content, not an invented numeric rate',async()=>{
+ const g=require('../source-audit/gap-inspection.json').find(r=>r.id==='ch-kimi-pricing');const line=g.text.find(x=>x.includes('按量计费'));assert.ok(line);
+ const pages={};const r=await M.fetchSource({id:'kimi-billing',kind:'page',type:'page',sub:'pricing',name:'Kimi API 价格页',url:'https://platform.kimi.com/docs/pricing/chat'},[],{pages,fetchText:async()=>'<main><h1>模型推理定价</h1><p>'+line+'</p></main>'});assert.equal(r.status.ok,true);assert.equal(require('../src/core/v27').extractPrices(pages['kimi-billing'].lines).length,0);
+});
+test('v222: final sanitized audit contains one outcome for every original source, with exact totals',()=>{
+ const audit=require('../source-audit/results.json');const original=require('../source-audit/original-v2.21.1.json');assert.equal(audit.completed,367);assert.equal(audit.total,367);assert.equal(Object.values(audit.counts).reduce((a,n)=>a+n,0),367);assert.equal(audit.liveAttemptSourceCount+audit.suppressedSourceCount,367);assert.deepEqual(audit.sources.map(s=>s.id).sort(),original.sources.map(s=>s.id).sort());
+ for(const r of audit.sources){assert.ok(r.checkedAt.endsWith('+08:00'));assert.ok(C.PROTOCOLS[r.protocol]);assert.ok(r.reason);assert.ok(r.checkedCodeSHA256);if(r.status==='parsed')assert.ok(r.parsedCount>0,r.id);if(!r.liveAttempted)assert.ok(r.suppressedBy,r.id);}
+ assert.equal(require('../source-audit/protocols.json').count,Object.keys(C.PROTOCOLS).length);
 });

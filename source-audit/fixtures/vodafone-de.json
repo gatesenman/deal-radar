@@ -1,7 +1,7 @@
 {
   "id": "vodafone-de",
   "url": "https://www.vodafone.de/newsroom/feed/",
-  "at": "2026-11-24T11:44:07.862+08:00",
+  "at": "2026-11-24T11:48:55.319+08:00",
   "format": "rss",
   "body": "<rss version=\"2.0\"><channel><title>Public audit fixture</title><item>\n      <title>Champions League schlägt GTA6 – Fußball-Streaming dominiert weiterhin das Netz</title>\n      <link>https://unternehmen.vodafone.de/newsroom/champions-league-schlaegt-gta6</link>\n      <guid>6afc2f8a13ca2500cca39ca6</guid>\n      <description>GTA6 sorgt für enormen Datenverkehr im Vodafone-Netz. Doch die Champions League hält mit 37 Tbit/s weiterhin den Jahreshöchstwert.</description>\n      <pubDate>2026-11-19T09:01:00.603Z</pubDate>\n      <author></author>\n    </item></channel></rss>"
 }

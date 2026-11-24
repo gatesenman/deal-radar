@@ -1,7 +1,7 @@
 {
   "id": "geeknews",
   "url": "https://news.hada.io/rss/news",
-  "at": "2026-11-24T11:43:58.388+08:00",
+  "at": "2026-11-24T11:48:45.794+08:00",
   "format": "rss",
   "body": "<feed xmlns=\"http://www.w3.org/2005/Atom\"><entry>\n  <title><![CDATA[Show GN: CRAMA FILE – 파일을 서버에 안 올리는 무료 PDF·이미지 도구 21종]]></title>\n  <link rel='alternate' type='text/html' href='https://news.hada.io/topic?id=37753&amp;utm_source=geeknews&amp;utm_medium=rss&amp;utm_campaign=news' />\n  <id>https://news.hada.io/topic?id=37753</id>\n  <updated>2026-11-24T11:56:43+09:00</updated>\n  <published>2026-11-24T11:56:43+09:00</published>\n  <author>\n    <name>gmlthd94</name>\n    <uri>https://news.hada.io/user/gmlthd94</uri>\n  </author>\n  <content type='html' xml:lang='ko'><![CDATA[<div><p>PDF 합치기, 용량 줄이기, JPG→PDF, HEIC→JPG 같은 일을 하려고 변환 사이트에 들어가면, 회사 서류나 신분증 사본을 남의 서버에 올리는 게 늘 찜찜했습니다. 몇 번 쓰면 유료로 바뀌거나 무료 체험에 카드를 등록하게 하는 곳도 많고요.</p><p>그래서 변환을 전부 브라우저 안에서 끝내는 도구 모음을 만들었습니다.</p><ul><li>파일이 기기 밖으로 나가지 않음. 페이지를 연 뒤 와이파이를 끄고 써도 변환됨(개발자 도구 Network 탭에서도 확인 가능)</li><li>가입·결제·횟수 제한·워터마크 없음</li><li>PDF 13종: 합치기, 용량 줄이기, 분할, 페이지 삭제·추출, 순서</li></ul></div>…]]></content>\n</entry></feed>"
 }

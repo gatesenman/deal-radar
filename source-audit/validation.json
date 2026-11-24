@@ -1,0 +1,105 @@
+{
+  "version": "2.22.0",
+  "recordedAt": "2026-11-24 12:22:13 +08:00",
+  "offlineSuite": {
+    "command": "OFFLINE=1 npm test",
+    "total": 177,
+    "passed": 176,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "LIVE: preset sources reachable & produce matched deals intentionally disabled in offline suite; replaced by separately recorded complete app-path audit.",
+    "log": "validation-logs/offline-tests.log"
+  },
+  "realElectronTransport": {
+    "command": "npm run test:transport",
+    "passed": 3,
+    "failed": 0,
+    "scope": [
+      "real Electron redirect and UTF-8/per-hop validation",
+      "non-GET rejected before request",
+      "forbidden redirect never requested"
+    ],
+    "network": "local fixture server only",
+    "log": "validation-logs/electron-transport.log"
+  },
+  "linuxUISmoke": {
+    "command": "SMOKE_APP=<linux-unpacked>/deal-radar SMOKE_OUTPUT=<external-fixture-dir> npm run smoke",
+    "languages": [
+      "zh-CN",
+      "en"
+    ],
+    "checksPerLanguage": 16,
+    "total": 32,
+    "passed": 32,
+    "failed": 0,
+    "sourceCheckoutAlsoPassed": 32,
+    "fixtureOnly": true,
+    "scope": [
+      "real packaged Electron boot",
+      "synthetic legacy upgrade preserves custom URL/options/headers and disabled preferences",
+      "favourite/claimed data",
+      "settings and backup/restore IPC",
+      "localized health explanations",
+      "search and keyboard dialog focus"
+    ],
+    "log": "validation-logs/linux-packaged-smoke.log"
+  },
+  "builds": {
+    "windows": "NSIS x64 successful; unsigned",
+    "linux": "unpacked x64 successful; packaged smoke passed",
+    "windowsCommand": "CSC_IDENTITY_AUTO_DISCOVERY=false npx electron-builder --win nsis --x64 --publish never --config.win.signAndEditExecutable=false --config.directories.output=<external-build-dir>",
+    "linuxCommand": "CSC_IDENTITY_AUTO_DISCOVERY=false npx electron-builder --linux dir --x64 --publish never --config.electronDist=node_modules/electron/dist --config.directories.output=<external-build-dir>",
+    "packageValidation": "package-validation.json",
+    "windowsAsarSHA256": "707d1de5f3ceb7406328014e3188a65f2cbf702181afb412d9093bf392864845"
+  },
+  "liveAudit": {
+    "total": 367,
+    "counts": {
+      "parsed": 229,
+      "rate-limited": 61,
+      "blocked": 36,
+      "unreachable": 34,
+      "login-required": 3,
+      "js-only": 1,
+      "valid-empty": 1,
+      "not-found": 1,
+      "coverage-mismatch": 1
+    },
+    "liveAttempts": 289,
+    "httpResponseHeadersCaptured": 261,
+    "failedBeforeHeaders": 28,
+    "suppressedBeforeRequest": 78,
+    "partialRedirectThenSuppressed": 2,
+    "definition": "A live attempt includes failures during production DNS/network validation before response headers. Suppression is a separate prior-block decision, not an independent HTTP result.",
+    "registeredProtocols": 20,
+    "fullPass": "verified.json",
+    "followUps": [
+      "results-final.json",
+      "release-results.json",
+      "final.json",
+      "final-validated.json"
+    ],
+    "final": "results.json",
+    "remaining": "REMAINING.md",
+    "allOriginalIdsPreserved": true,
+    "queryTemplates": "one representative OpenAI/Apple query; not all vendor/query combinations"
+  },
+  "secretAudit": {
+    "publishableTextFilesScannedBeforeValidationLogs": 296,
+    "knownSecretPatternMatches": 0,
+    "packageTextFilesScannedEach": 213,
+    "credentialsRequestedOrUsed": false,
+    "realPushSends": false
+  },
+  "limitations": [
+    "137 sources are not established healthy; exact original IDs/URLs/reasons and setup actions are retained in REMAINING.md/remaining.json.",
+    "Host-wide suppression is conservative; suppressed routes did not each return the same HTTP status.",
+    "A complete pass was followed by affected-adapter follow-ups; checkedCodeSHA256 identifies each retained evidence stage.",
+    "Kimi API billing text is parsed but numeric model rates are not extracted; structured pricing tables/regions are incomplete.",
+    "Native Windows installation/upgrade, SmartScreen, signing, signed updates, screen readers and real notification delivery are untested. Linux smoke uses synthetic legacy data, not a real Windows upgrade.",
+    "DNS preflight is not IP pinning/rebinding-proof. LAN/private RSSHub is deliberately rejected; optional account-dependent protocols remain configuration-required/not live-tested.",
+    "Push endpoint credentials remain locally stored without encryption; no new credentials were collected.",
+    "No deal-recall percentage or all-sources-work claim. Public access varies by time/region; no block or login was bypassed.",
+    "README documentation changed after binary build, but every runtime source file matches both ASARs exactly."
+  ]
+}

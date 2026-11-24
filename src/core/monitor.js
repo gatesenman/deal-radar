@@ -106,21 +106,23 @@ async function fetchPage(source, allBrands, { fetchText = defaultFetchText, rend
   // v2.9：无选择器 / 关键词时用正文抽取（去掉 Cookie 横幅、对话框、导航页眉页脚），并把相对时间等易变内容归一化
   try { lines = source.selector || source.keyword ? V29.cleanLines(extractLines(body, { selector: source.selector, keyword: source.keyword })) : V29.extractMain(body, extractLines); } catch (e) { return { items: [], status: st(false, { error: e.message }) }; }
   if (!lines.length) return { items: [], status: st(false, { error: '未从页面提取到文字（可能需要 JS 渲染，或关键词/选择器不匹配）' }) };
-  if (source.sub==='pricing' && !V27.extractPrices(lines).length && !/contact (?:us|sales)|talk to (?:us|sales)|request (?:a )?(?:quote|demo)|custom pricing|pay.as.you.go|free (?:plan|tier|forever)|联系我们|联系销售|按量付费|免费(?:版|套餐)/i.test(lines.join(' '))) return {items:[],status:st(false,{error:'No pricing evidence / 未提取到价格或明确的联系销售、免费套餐信息；请检查选择器或 JS 渲染'})};
-  const key = 'm29|' + (source.selector || '') + '|' + (source.keyword || '') + '|' + source.url; // v2.9 抽取方式变化：升级后静默重建基线
+  const quotes=source.sub==='pricing' ? require('./pricing-quotes').tableUnitPrices(body) : [];
+  const pricingRequired = /pricing|prices?\b|billing|plans?\b/i.test(new URL(source.url).pathname) || /价格|定价|\bpricing\b/i.test(source.name||'');
+  if (source.sub==='pricing' && pricingRequired && !V29.priceFacts(lines).prices.size && !quotes.length && !/contact (?:us|sales)|talk to (?:us|sales)|request (?:a )?(?:quote|demo)|custom pricing|pay.as.you.go|free (?:plan|tier|forever)|for free|联系我们|联系销售|按量(?:付费|计费)|免费(?:版|套餐)/i.test(lines.join(' '))) return {items:[],status:st(false,{error:'No pricing evidence / 未提取到价格或明确的联系销售、免费套餐信息；请检查选择器或 JS 渲染'})};
+  const key = 'm222|' + (source.selector || '') + '|' + (source.keyword || '') + '|' + source.url; // v2.9 抽取方式变化：升级后静默重建基线
   const prev = pages[source.id];
   const hash = hashLines(lines);
   const items = [];
   let note = '';
   if (!prev || prev.key !== key) {
-    pages[source.id] = { key, hash, lines, at: now, changedAt: 0, seen: [hash] };
+    pages[source.id] = { key, hash, lines, quotes, at: now, changedAt: 0, seen: [hash] };
     note = `已建立基线（${lines.length} 行），内容变化时提醒`;
   } else if (prev.hash !== hash) {
     const j = V29.judgeChange(prev.lines, lines, { sub: source.sub, seen: prev.seen || [], hash });
     // v2.6.1：JS 渲染页里混进的 CSS 类名 / Tailwind 选择器（如 [&>[data-slot=icon]]:shrink-0）不算内容变化
     const d = { added: j.added.filter((l) => !isCodeNoise(l)), removed: j.removed.filter((l) => !isCodeNoise(l)) };
     const alert = j.alert && (d.added.length || d.removed.length);
-    pages[source.id] = { key, hash, lines, at: now, changedAt: alert ? now : prev.changedAt, seen: V29.remember(V29.remember(prev.seen || [], prev.hash), hash), quiet: alert ? 0 : (prev.quiet || 0) + 1 };
+    pages[source.id] = { key, hash, lines, quotes, at: now, changedAt: alert ? now : prev.changedAt, seen: V29.remember(V29.remember(prev.seen || [], prev.hash), hash), quiet: alert ? 0 : (prev.quiet || 0) + 1 };
     if (alert) {
       const pd = j.priceDiff;
       const head = pd && (pd.added.length || pd.removed.length) ? `价格 ${pd.removed.slice(0, 3).join(' / ') || '—'} → ${pd.added.slice(0, 3).join(' / ') || '—'}` : pd && (pd.plansAdded.length || pd.plansRemoved.length) ? `套餐 ${pd.plansAdded.length ? '+' + pd.plansAdded.join(' / ') : ''}${pd.plansRemoved.length ? ' -' + pd.plansRemoved.join(' / ') : ''}` : (d.added[0] || ('移除：' + d.removed[0]));
