@@ -12,6 +12,8 @@ function mkDate(y, m, d, ref) {
   const base = new Date(ref || Date.now());
   let year = y || base.getFullYear();
   let t = new Date(year, m, d, 23, 59, 59).getTime();
+  const check = new Date(t);
+  if (check.getFullYear() !== year || check.getMonth() !== m || check.getDate() !== d) return 0;
   if (!y && t < (ref || Date.now()) - 60 * 86400000) t = new Date(year + 1, m, d, 23, 59, 59).getTime();
   if (isNaN(t) || m < 0 || m > 11 || d < 1 || d > 31) return 0;
   return t;
@@ -19,6 +21,13 @@ function mkDate(y, m, d, ref) {
 function parseDeadline(text, ref) {
   const s = String(text || '');
   let m;
+  // Explicit zoned deadlines represent an instant, not machine-local end of day.
+  const stamp = s.match(/(?:until|ends?(?:\s+on)?|expires?(?:\s+on)?|deadline:?|截止(?:日期)?[:：]?)\s*(20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2})?(?:Z|[+-]\d{2}:\d{2}))/i);
+  if (stamp) {
+    const date = stamp[1].slice(0, 10).split('-').map(Number);
+    if (!mkDate(date[0], date[1] - 1, date[2], ref)) return 0;
+    return Number.isFinite(Date.parse(stamp[1])) ? Date.parse(stamp[1]) : 0;
+  }
   // 英文：until / through / by / before / ends / expires / till + Month Day[, Year]
   const en = new RegExp(`\\b(?:until|through|thru|by|before|ends?(?:\\s+on)?|expires?(?:\\s+on)?|valid\\s+(?:until|till|through)|till|deadline:?)\\s+(${MON_RE})\\.?\\s+(\\d{1,2})(?:st|nd|rd|th)?(?:,?\\s+(20\\d{2}))?`, 'i');
   if ((m = s.match(en))) return mkDate(m[3] ? Number(m[3]) : 0, MONTHS[m[1].toLowerCase()], Number(m[2]), ref);
@@ -35,6 +44,7 @@ function parseDeadline(text, ref) {
   // v2.11：until 11/30/2026 或 30/11/2026（首位 > 12 则视为日/月/年）
   if ((m = s.match(/\b(?:until|through|thru|by|before|ends?(?:\s+on)?|expires?(?:\s+on)?|valid\s+(?:until|till|through)|till|deadline:?)\s+(\d{1,2})[/-](\d{1,2})[/-](20\d{2})/i))) {
     const a = Number(m[1]), b = Number(m[2]), y = Number(m[3]);
+    if (a <= 12 && b <= 12 && a !== b) return 0; // locale-ambiguous, do not invent an expiry
     return a > 12 ? mkDate(y, b - 1, a, ref) : mkDate(y, a - 1, b, ref);
   }
   // v2.11：ends in 3 days / 还有 2 周

@@ -48,7 +48,7 @@ function adaptiveSkip(status, { now = Date.now(), base = 15, max = 360, id = '' 
 
 // ———————————— 2. 价格抽取 ————————————
 const CUR = { '$': 'USD', 'US$': 'USD', '€': 'EUR', '£': 'GBP', '¥': 'CNY', '￥': 'CNY', 'HK$': 'HKD', 'NT$': 'TWD', 'S$': 'SGD', '₹': 'INR', 'A$': 'AUD', 'C$': 'CAD' };
-const PRICE_RE = /(US\$|HK\$|NT\$|S\$|A\$|C\$|[$€£¥￥₹])\s?(\d{1,5}(?:[.,]\d{1,3})?)|(USD|EUR|GBP|CNY)\s*\$?\s*(\d{1,5}(?:[.,]\d{1,3})?)|(\d{1,6}(?:\.\d{1,2})?)\s?(元|美元|美金|欧元|英镑|dollars?|euros?|pounds?|USD|EUR|GBP|CNY|RMB)(?![A-Za-z])/;
+const PRICE_RE = /(US\$|HK\$|NT\$|S\$|A\$|C\$|[$€£¥￥₹])\s?(\d[\d.,]*)|(USD|EUR|GBP|CNY|JPY|CAD|AUD|SGD|HKD|TWD)\s*[$¥]?\s*(\d[\d.,]*)|(\d[\d.,]*)\s?(元|美元|美金|欧元|英镑|dollars?|euros?|pounds?|USD|EUR|GBP|CNY|RMB|JPY|CAD|AUD|SGD|HKD|TWD)(?![A-Za-z])/;
 const UNIT_CUR = { '元': 'CNY', 'RMB': 'CNY', 'CNY': 'CNY', '美元': 'USD', '美金': 'USD', 'USD': 'USD', '欧元': 'EUR', 'EUR': 'EUR', '英镑': 'GBP', 'GBP': 'GBP', 'dollar': 'USD', 'dollars': 'USD', 'euro': 'EUR', 'euros': 'EUR', 'pound': 'GBP', 'pounds': 'GBP' };
 const PERIOD_RE = [
   [/per\s*1m|\/\s*1m|1m tokens|百万\s*tokens|per million|\/\s*mtok|每百万/i, 'mtok'],
@@ -58,12 +58,19 @@ const PERIOD_RE = [
 ];
 const PLAN_RE = /^(free|hobby|plus|pro\+?|max|team|teams|business|enterprise|premium|standard|basic|starter|ultra|ultimate|individual|personal|developer|scale|growth|go|lite|advanced|免费版|专业版|团队版|企业版|个人版|旗舰版|标准版|高级版|基础版)(?![a-z])/i;
 function periodOf(t) { for (const [re, p] of PERIOD_RE) if (re.test(t)) return p; return ''; }
-function parseAmount(s) { const t = String(s).replace(/,(?=\d{3}\b)/g, '').replace(',', '.'); return Number(t); }
+function parseAmount(s) {
+  let t = String(s).replace(/[.,]+$/, '');
+  if (t.includes(',') && t.includes('.')) {
+    if (t.lastIndexOf(',') > t.lastIndexOf('.')) t = t.replace(/\./g, '').replace(',', '.');
+    else t = t.replace(/,/g, '');
+  } else if (t.includes(',')) t = /^\d{1,3}(,\d{3})+$/.test(t) ? t.replace(/,/g, '') : t.replace(',', '.');
+  return Number(t);
+}
 /**
  * 从价格页的文本行中抽取「套餐 → 价格」：
  * 套餐名取最近出现的短标题行（Free / Pro / Team / 专业版…），价格取同行或紧随两行内的金额 + 周期
  */
-function extractPrices(lines, { max = 16 } = {}) {
+function extractPrices(lines, { max = 16, currencyHint = '' } = {}) {
   const out = []; const seen = new Set(); let plan = ''; let planAge = 99; let was = null;
   const L = (lines || []).map((x) => String(x || '').trim()).filter(Boolean);
   for (let i = 0; i < L.length && out.length < max; i++) {
@@ -73,9 +80,11 @@ function extractPrices(lines, { max = 16 } = {}) {
     const m = t.match(PRICE_RE); if (!m || t.length > 160) continue;
     let amount, currency;
     if (m[1] && m[2]) { amount = parseAmount(m[2]); currency = CUR[m[1]]; }
-    else if (m[3] && m[4]) { amount = parseAmount(m[4]); currency = { USD: 'USD', EUR: 'EUR', GBP: 'GBP', CNY: 'CNY' }[m[3]]; }
-    else { amount = parseAmount(m[5]); currency = UNIT_CUR[(m[6] || '').toLowerCase()] || UNIT_CUR[m[6]]; }
-    if (!Number.isFinite(amount) || !currency) continue;
+    else if (m[3] && m[4]) { amount = parseAmount(m[4]); currency = m[3]; }
+    else { amount = parseAmount(m[5]); currency = UNIT_CUR[(m[6] || '').toLowerCase()] || UNIT_CUR[m[6]] || (/^[A-Z]{3}$/.test(m[6]) ? m[6] : ''); }
+    const stated = (t.match(/\b(USD|EUR|GBP|CNY|JPY|CAD|AUD|SGD|HKD|TWD)\b/) || [])[1];
+    if (m[1] === '$' || m[1] === '¥') currency = stated || currencyHint || currency;
+    if (t.slice(0, m.index).trim().endsWith('-') || !Number.isFinite(amount) || amount < 0 || !currency) continue;
     if (/\b(save|saving|off|discount)\b|节省|立省|省下|优惠\s*[$¥€£]/i.test(t)) continue; // 「Save $36/year」是省下的钱，不是套餐价
     const ctx = [t, L[i + 1] || ''].join(' ');
     const period = periodOf(ctx);
@@ -109,7 +118,7 @@ function updatePriceBook(book, sourceId, meta, list, now = Date.now()) {
   const changes = diffPrices(Object.values(b.plans).map((x) => ({ plan: x.plan, period: x.period, currency: x.currency, amount: x.hist[x.hist.length - 1][1], was: x.was })), list);
   for (const p of list) {
     const k = p.plan.toLowerCase() + '|' + p.period;
-    const cur = b.plans[k] || { plan: p.plan, period: p.period, currency: p.currency, hist: [] };
+    const cur = b.plans[k] && b.plans[k].currency === p.currency ? b.plans[k] : { plan: p.plan, period: p.period, currency: p.currency, hist: [] };
     const last = cur.hist[cur.hist.length - 1];
     if (!last || last[1] !== p.amount) cur.hist.push([now, p.amount]); else last[2] = now;
     cur.hist = cur.hist.slice(-60); cur.currency = p.currency; cur.seen = now; if (p.was) cur.was = p.was; else delete cur.was;
@@ -206,4 +215,4 @@ function lshPairs(items, { bands = 16, rows = 4 } = {}) {
   return [...pairs].map((p) => p.split('|'));
 }
 
-module.exports = { PRICE_RE, PLAN_RE, recordCheck, estimateRate, adaptiveInterval, adaptiveSkip, extractPrices, diffPrices, updatePriceBook, toCNY, parseFx, FX_FALLBACK, sourceReliability, tokens, newModel, learn, predict, uncertain, minhash, mhSim, lshPairs, shingles, periodOf };
+module.exports = { PRICE_RE, PLAN_RE, recordCheck, estimateRate, adaptiveInterval, adaptiveSkip, extractPrices, diffPrices, updatePriceBook, toCNY, parseFx, FX_FALLBACK, sourceReliability, parseAmount, tokens, newModel, learn, predict, uncertain, minhash, mhSim, lshPairs, shingles, periodOf };

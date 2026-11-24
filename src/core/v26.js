@@ -52,8 +52,8 @@ async function recheckDeals(deals, fetchText, opts = {}) {
     let r;
     try { const html = await fetchText(d.link, { timeout: 15000, cache: false }); r = judgeLanding(html, 200); } catch (e) { r = e.status ? judgeLanding('', e.status) : { ok: false, gone: false, reason: 'error' }; }
     // v2.6.1：HTTP 404/410 可能是 CDN / 反爬的偶发错误——须连续两次复查都 404 才判定已下线；页面文字明确写「已结束」则立即判定
-    if (r.gone && /^http-/.test(r.reason) && !(d.recheck && d.recheck.suspect)) r = { ok: false, gone: false, suspect: true, reason: r.reason };
-    if (r.gone && /^http-/.test(r.reason)) r.confirmed = true;
+    if (r.gone && /^(http-|soft-404)/.test(r.reason) && !(d.recheck && d.recheck.suspect)) r = { ok: false, gone: false, suspect: true, reason: r.reason };
+    if (r.gone && /^(http-|soft-404)/.test(r.reason)) r.confirmed = true;
     d.recheck = { at: now, ...r }; if (r.gone) gone++;
   }
   return { checked: list.length, gone };

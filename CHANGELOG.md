@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.18.0 — Conservative expiry and currency interpretation
+
+- Reject impossible calendar dates and ambiguous numeric dates; honour explicit zoned ISO deadline instants. Parse grouped/European price amounts and explicit JPY/regional currency. Start fresh price history on currency switches; soft-404 requires confirmation.
+
+
 ## 2.17.0 — Validated rollback-safe backup restore
 
 - Validate backup shape and dangerous keys before mutation; stage config/deals/prices and roll back on replacement failure. Preserve device push/AI endpoints and credentials; merge price books; preserve trial lifecycle fields; strip nested auth fields and all portable push URLs.
