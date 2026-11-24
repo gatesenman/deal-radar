@@ -36,7 +36,7 @@ function validateChannel(c) {
 }
 function mask(c) { // 给界面看的：不回传完整密钥
   const m = (v) => (v ? v.slice(0, 4) + '…' + v.slice(-3) : '');
-  return { ...c, url: c.url ? '••••' : '', hasUrl: !!c.url, secret: c.secret ? '••••' : '', token: m(c.token), key: m(c.key), hasSecret: !!c.secret, hasToken: !!c.token, hasKey: !!c.key };
+  return { ...c, url: c.url ? '••••' : '', hasUrl: !!c.url, secret: c.secret ? '••••' : '', token: m(c.token), key: m(c.key), hasSecret: !!c.secret, hasToken: !!c.token, hasKey: !!c.key, last: c.last ? { ...c.last, err: c.last.err ? 'Push delivery failed' : undefined } : null };
 }
 
 // 统一消息 → {title, text(markdown), plain, link}
@@ -100,7 +100,7 @@ async function sendChannel(c, msg, fetchImpl, now = Date.now()) {
   const res = await fetchImpl(r.url, { method: 'POST', headers: r.headers, body: r.body });
   const body = await res.text().catch(() => '');
   const err = checkResponse(c, res.status, body);
-  if (err) throw new Error(err);
+  if (err) { const e = new Error(err); e.status = res.status; throw e; }
   return true;
 }
 

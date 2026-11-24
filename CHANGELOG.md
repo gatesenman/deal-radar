@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.20.0 — Persistent push delivery reservations
+
+- Reserve per-channel offer/digest/trial keys on disk before external POSTs; deduplicate overlapping saved views and process restarts. Separate daily/weekly scopes. Bound request timeout and stop blindly retrying ambiguous POST outcomes; mask legacy push error bodies.
+
+
 ## 2.19.0 — Rate-limit-aware source recovery
 
 - Honour seconds and HTTP-date Retry-After (max 24h), persist cooldowns through collector status and do not bypass server cooldown on manual refresh. Keep last successful check across outages; reset streaks on recovery. Authenticated HTTP responses no longer populate the public URL cache.

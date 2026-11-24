@@ -23,6 +23,8 @@ const V212 = require('./core/v212');
 const V213 = require('./core/v213');
 const { assertPublicURL } = require('./core/network-policy');
 const sourceURL = (u) => assertPublicURL(u, { lookup: require('node:dns').promises.lookup });
+const { DeliveryLedger, deliveryKey } = require('./core/delivery-ledger');
+let deliveries;
 const V214 = require('./core/v214');
 const I18N = require('./renderer/i18n');
 const L = I18N.t; const tx = I18N.tx;
@@ -540,21 +542,22 @@ function dailyDigest(force) {
     const items = V28.weeklyItems(decorateDeals(store.deals));
     const title = L('每周优惠周报：本周 {0} 条值得关注', items.length);
     if (Notification.isSupported() && st.notify && items.length) showNote({ title, body: items.slice(0, 3).map((d) => noteTitle(d)).join('\n') }, () => { showWindow(); send('go', 'home'); });
-    pushChannels('digest', items, { title }).catch(() => {});
+    pushChannels('digest', items, { title, deliveryScope: 'weekly:' + V28.isoWeek(now) }).catch(() => {});
     dg.weekly = { title, n: items.length };
   }
   return dg;
 }
 // —— v2.8：推送渠道 ——
-function channelFetch(url, opts) { return net.fetch(url, { ...opts, bypassCustomProtocolHandlers: true }); }
+function channelFetch(url, opts) { return net.fetch(url, { signal: AbortSignal.timeout(15000), ...opts, bypassCustomProtocolHandlers: true }); }
 async function sendTo(c, msg) {
   const ch = (store.config.settings.channels || []).find((x) => x.id === c.id) || c;
   try {
-    await V213.withRetry(() => V28.sendChannel(ch, msg, channelFetch), { tries: 3, delays: [400, 1200] });
+    // POST acknowledgements can be lost after delivery: never blindly retry.
+    await V28.sendChannel(ch, msg, channelFetch);
     ch.last = { at: Date.now(), ok: true, kind: msg.kind, n: msg.count, tries: 1 };
     return true;
   } catch (e) {
-    ch.last = { at: Date.now(), ok: false, kind: msg.kind, err: String(e.message || e).slice(0, 200) };
+    ch.last = { at: Date.now(), ok: false, kind: msg.kind, err: e.status ? 'HTTP ' + e.status : 'Delivery outcome unknown (not retried)' };
     log(L('推送到「{0}」失败：{1}', ch.name, ch.last.err), 'warn');
     return false;
   } finally { store.saveConfig(); }
@@ -577,15 +580,22 @@ async function checkForUpdate({ force = false, notify = false } = {}) {
   return { current: app.getVersion(), latest: info, newer };
 }
 const pushT = (k, ...a) => L(k, ...a);
-async function pushChannels(kind, items, { title, viewId } = {}) {
+async function pushChannels(kind, items, { title, viewId, deliveryScope } = {}) {
   const chs = (store.config.settings.channels || []).filter((c) => c.enabled && (kind === 'digest' ? c.digest : kind === 'trial' ? c.trial : c.instant) && (!viewId || !c.viewId || c.viewId === viewId));
   if (!chs.length || (!items.length && kind !== 'test')) return 0;
   let n = 0;
   for (const c of chs) {
-    const list = kind === 'new' ? items.filter((d) => (d.score || 0) >= (c.minScore || 0) && (!c.viewId || c.viewId === viewId)) : items;
+    let list = kind === 'new' ? items.filter((d) => (d.score || 0) >= (c.minScore || 0) && (!c.viewId || c.viewId === viewId)) : items;
     if (!list.length) continue;
+    if (!deliveries) deliveries = new DeliveryLedger(path.join(app.getPath('userData'), 'delivery-ledger.json'));
+    const scope = deliveryScope || (kind === 'digest' ? 'daily:' + V28.localDay(new Date()) : kind === 'trial' ? (title || '') : '');
+    const keyOf = (d) => deliveryKey(c.id, kind, d.id, scope);
+    list = list.filter((d) => !deliveries.blocked(keyOf(d)));
+    if (!list.length) continue;
+    const keys = list.map(keyOf);
+    if (!deliveries.claim(keys)) continue; // persisted before external POST
     const msg = V28.buildMessage(kind, list.map((d) => ({ ...d, title: noteTitle(d) })), { t: pushT, title, brandName: (id) => tx(brandName(id)) });
-    if (await sendTo(c, msg)) n++;
+    const ok = await sendTo(c, msg); deliveries.settle(keys, ok); if (ok) n++;
   }
   return n;
 }
